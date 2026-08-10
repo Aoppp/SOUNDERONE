@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import re
+
 from langgraph.checkpoint.memory import InMemorySaver
 from langgraph.graph import END, START, StateGraph
 
@@ -43,6 +45,7 @@ class SounderOneGraphAgent:
         builder = StateGraph(AgentState)
         builder.add_node("safety_guard", self._safety_guard)
         builder.add_node("understand_query", self._understand_query)
+        builder.add_node("smalltalk_response", self._smalltalk_response)
         builder.add_node("hybrid_retrieve", self._hybrid_retrieve)
         builder.add_node("relevance_gate", self._relevance_gate)
         builder.add_node("generate_answer", self._generate_answer)
@@ -56,7 +59,12 @@ class SounderOneGraphAgent:
             self._route_after_safety,
             {"continue": "understand_query", "handoff": "handoff"},
         )
-        builder.add_edge("understand_query", "hybrid_retrieve")
+        builder.add_conditional_edges(
+            "understand_query",
+            self._route_after_understanding,
+            {"smalltalk": "smalltalk_response", "retrieve": "hybrid_retrieve"},
+        )
+        builder.add_edge("smalltalk_response", "output_guard")
         builder.add_edge("hybrid_retrieve", "relevance_gate")
         builder.add_conditional_edges(
             "relevance_gate",
@@ -91,14 +99,52 @@ class SounderOneGraphAgent:
 
     def _understand_query(self, state: AgentState) -> dict:
         text = self._message(state).text
+        normalized = re.sub(r"[\s，。！？!?~～,.]+", "", text.lower())
+        greetings = {
+            "你好",
+            "你好呀",
+            "你好啊",
+            "您好",
+            "您好呀",
+            "嗨",
+            "哈喽",
+            "hello",
+            "hi",
+            "在吗",
+            "在不在",
+            "早上好",
+            "下午好",
+            "晚上好",
+        }
+        if normalized in greetings:
+            return {
+                "conversation_intent": "smalltalk",
+                "retrieval_query": "",
+                "trace": self._step(state, "understand_query"),
+            }
         explicit_product = self.knowledge.identify_product(text)
         last_product = explicit_product or state.get("last_product", "")
         refers_to_context = any(word in text for word in ("这个", "它", "这款", "刚才那个"))
         retrieval_query = f"{last_product} {text}" if last_product and refers_to_context else text
         return {
             "retrieval_query": retrieval_query,
+            "conversation_intent": "knowledge_query",
             "last_product": last_product,
             "trace": self._step(state, "understand_query"),
+        }
+
+    @staticmethod
+    def _route_after_understanding(state: AgentState) -> str:
+        return "smalltalk" if state.get("conversation_intent") == "smalltalk" else "retrieve"
+
+    def _smalltalk_response(self, state: AgentState) -> dict:
+        return {
+            "generated_text": (
+                "宝宝你好～我是 SounderOne 智能客服。"
+                "你可以直接问我产品用法、成分搭配或其他售前问题。"
+            ),
+            "hits": [],
+            "trace": self._step(state, "smalltalk_response"),
         }
 
     def _hybrid_retrieve(self, state: AgentState) -> dict:

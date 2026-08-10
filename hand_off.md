@@ -4,7 +4,7 @@
 
 项目已重构为抖音单平台 Agent MVP，不应直接连接生产店铺。核心流程使用 LangGraph，知识库使用 Qdrant Dense + BM25 混合 RAG 和 RRF 融合。默认 `LLM_PROVIDER=mock`、`EMBEDDING_PROVIDER=hash`，可离线测试。`knowledge/sounderone_knowledge.json` 的 287 条中只有 210 条 active 会写入 Qdrant。
 
-项目已增加 `http://127.0.0.1:8000/tester` 浏览器测试窗口。自动化测试最后结果为 29 passed，持久 Qdrant 索引命令已成功写入 210 条 active 知识。工作区 Git 对象位于 `.git.nosync`，避免再次被 iCloud 自动卸载。
+项目已增加 `http://127.0.0.1:8000/tester` 浏览器测试窗口。纯问候已路由到 `smalltalk_response`，不再触发产品 RAG。自动化测试最后结果为 31 passed，持久 Qdrant 索引命令已成功写入 210 条 active 知识。工作区 Git 对象位于 `.git.nosync`，避免再次被 iCloud 自动卸载。
 
 ## iCloud 恢复记录（已处理）
 

@@ -81,6 +81,53 @@ def test_webhook_answers_grounded_question_and_records_history():
         assert len(history.json()) == 1
 
 
+def test_pure_greeting_bypasses_rag_and_returns_welcome():
+    payload = {
+        "message_id": "greeting-1",
+        "conversation_id": "greeting-conversation",
+        "user_id": "user-1",
+        "text": "你好",
+    }
+    with make_client() as client:
+        response = client.post(
+            "/v1/webhooks/simulator",
+            headers={"X-Webhook-Secret": "test-secret"},
+            json=payload,
+        )
+    assert response.status_code == 200
+    body = response.json()
+    assert body["decision"] == "answered"
+    assert "SounderOne 智能客服" in body["text"]
+    assert body["citations"] == []
+    assert body["graph_trace"] == [
+        "safety_guard",
+        "understand_query",
+        "smalltalk_response",
+        "output_guard",
+        "finalize_response",
+    ]
+
+
+def test_greeting_with_business_question_still_uses_hybrid_rag():
+    payload = {
+        "message_id": "greeting-question-1",
+        "conversation_id": "greeting-question-conversation",
+        "user_id": "user-1",
+        "text": "你好，多久发货？",
+    }
+    with make_client() as client:
+        response = client.post(
+            "/v1/webhooks/simulator",
+            headers={"X-Webhook-Secret": "test-secret"},
+            json=payload,
+        )
+    assert response.status_code == 200
+    body = response.json()
+    assert body["decision"] == "answered"
+    assert body["citations"][0]["document_id"] == "demo-shipping-001"
+    assert "hybrid_retrieve" in body["graph_trace"]
+
+
 def test_webhook_handoffs_refund_request():
     payload = {
         "message_id": "msg-2",

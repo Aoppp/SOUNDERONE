@@ -11,6 +11,7 @@ START
   -> safety_guard
        | risk -> handoff -> END
   -> understand_query
+       | pure greeting -> smalltalk_response -> output_guard
   -> hybrid_retrieve
   -> relevance_gate
        | low confidence -> handoff -> END
@@ -22,7 +23,8 @@ START
 ```
 
 - `safety_guard`：确定性检测不良反应、孕期、医美、复杂售后、法律/舆情和 PII。
-- `understand_query`：恢复“这个/这款”指代的上一产品，生成检索查询。
+- `understand_query`：识别纯问候，或恢复“这个/这款”指代的上一产品并生成检索查询。
+- `smalltalk_response`：对“你好/在吗/hello”等纯问候返回固定欢迎语，不查询 RAG，避免把寒暄误匹配为产品知识。
 - `hybrid_retrieve`：同时执行 Dense 和 BM25，使用 RRF 合并名次。
 - `relevance_gate`：应用置信度、工作时间、产品浓度和查询意图门槛。
 - `generate_answer`：Mock 或 OpenAI Responses API 只使用召回文档组织答案。

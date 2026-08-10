@@ -10,6 +10,7 @@
 START
   -> safety_guard
   -> understand_query
+       | pure greeting -> smalltalk_response
   -> hybrid_retrieve
   -> relevance_gate
   -> generate_answer
