@@ -96,6 +96,8 @@ def test_formal_knowledge_runs_through_agent_with_source_citation():
     settings = Settings(
         llm_provider="mock",
         knowledge_path=KNOWLEDGE_PATH,
+        qdrant_path=None,
+        qdrant_url=None,
         webhook_secret="test-secret",
         admin_api_key="test-admin",
         business_hours_start="00:00",
@@ -123,6 +125,8 @@ def test_pregnancy_question_handoffs_before_knowledge_generation():
     settings = Settings(
         llm_provider="mock",
         knowledge_path=KNOWLEDGE_PATH,
+        qdrant_path=None,
+        qdrant_url=None,
         webhook_secret="test-secret",
         admin_api_key="test-admin",
     )
@@ -147,6 +151,8 @@ def test_langgraph_resolves_product_reference_across_turns():
     settings = Settings(
         llm_provider="mock",
         knowledge_path=KNOWLEDGE_PATH,
+        qdrant_path=None,
+        qdrant_url=None,
         webhook_secret="test-secret",
         admin_api_key="test-admin",
         business_hours_start="00:00",

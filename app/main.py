@@ -1,6 +1,8 @@
 from contextlib import asynccontextmanager
+from pathlib import Path
 
 from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
 
 from app.api.routes import router
 from app.config import Settings, get_settings
@@ -56,6 +58,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         knowledge.close()
 
     app = FastAPI(title="SounderOne Douyin Customer Service Agent", version="0.2.0", lifespan=lifespan)
+    app.mount("/static", StaticFiles(directory=Path(__file__).parent / "static"), name="static")
     app.include_router(router)
     return app
 

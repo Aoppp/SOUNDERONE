@@ -1,13 +1,26 @@
 import hmac
+from pathlib import Path
 from typing import Annotated, Any
 
 from fastapi import APIRouter, Header, HTTPException, Request
+from fastapi.responses import FileResponse, RedirectResponse
 from pydantic import ValidationError
 
 from app.adapters.douyin import DouyinAdapter
 from app.models import Platform
 
 router = APIRouter()
+TESTER_PAGE = Path(__file__).resolve().parents[1] / "static" / "tester.html"
+
+
+@router.get("/", include_in_schema=False)
+async def root() -> RedirectResponse:
+    return RedirectResponse(url="/tester")
+
+
+@router.get("/tester", include_in_schema=False)
+async def tester() -> FileResponse:
+    return FileResponse(TESTER_PAGE)
 
 
 def _require_admin(request: Request, provided: str | None) -> None:

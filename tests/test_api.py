@@ -10,6 +10,8 @@ def make_client() -> TestClient:
     settings = Settings(
         llm_provider="mock",
         knowledge_path=Path("knowledge/sample.json"),
+        qdrant_path=None,
+        qdrant_url=None,
         webhook_secret="test-secret",
         admin_api_key="test-admin",
         business_hours_start="00:00",
@@ -26,6 +28,22 @@ def test_health():
         assert response.json()["agent_runtime"] == "langgraph"
         assert response.json()["retrieval"] == "qdrant_dense_bm25_rrf"
         assert response.json()["platforms"] == ["douyin", "simulator"]
+
+
+def test_browser_tester_and_static_assets_are_served():
+    with make_client() as client:
+        page = client.get("/tester")
+        assert page.status_code == 200
+        assert "SounderOne Agent Lab" in page.text
+        assert 'id="messageForm"' in page.text
+        assert 'src="/static/tester.js"' in page.text
+
+        script = client.get("/static/tester.js")
+        stylesheet = client.get("/static/tester.css")
+        assert script.status_code == 200
+        assert 'fetch("/v1/webhooks/simulator"' in script.text
+        assert stylesheet.status_code == 200
+        assert ".chat-panel" in stylesheet.text
 
 
 def test_webhook_answers_grounded_question_and_records_history():

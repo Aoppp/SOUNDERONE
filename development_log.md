@@ -97,3 +97,12 @@
 - 每次 Agent 回复增加 `graph_trace` 和 `retrieval_channels`，可核对节点路径与 Dense/BM25 召回情况。
 - 新增 `scripts/index_knowledge.py`，可将审核后 JSON 重建为 Qdrant 双索引。
 - 重构后验证：28 passed；持久 Qdrant 索引命令成功写入 210 条 active 知识；`compileall` 和 `git diff --check` 通过。
+
+### Agent Lab 浏览器测试窗口
+
+- 新增 `/tester` 可视化对话页，由 FastAPI 直接提供 HTML/CSS/JavaScript，不增加独立前端工程和构建链。
+- 支持连续多轮消息、新建会话、Webhook Secret、快捷场景和服务健康状态。
+- 回复可视化 `decision`、转人工原因、风险标签、Excel 来源、RRF 分数、Dense/BM25 通道和 LangGraph 节点轨迹。
+- 用户文本统一通过 DOM `textContent` 渲染，不把测试输入作为 HTML 执行。
+- 测试配置强制使用内存 Qdrant，避免与正在运行的本地持久索引争抢文件锁。
+- 验证：29 passed；JavaScript 语法检查通过；页面、健康接口和浏览器模拟问答烟雾测试通过。

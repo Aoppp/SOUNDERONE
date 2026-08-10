@@ -45,6 +45,7 @@ Qdrant 只写入 210 条 `active` 文档。`review_required` 和 `handoff_only` 
 ## 运行边界
 
 - FastAPI 负责 HTTP、共享密钥、载荷校验和管理接口。
+- `/tester` 是内置的本地测试窗口，只调用 `simulator` API，可视化引用、检索通道和 Graph 轨迹；它不是生产坐席系统。
 - `DouyinAdapter` 目前是归一化联调契约，不声称已完成官方验签和发信。
 - `(platform, message_id)` 负责单进程幂等。
 - 审计记录写入前脱敏手机号和身份证号。
