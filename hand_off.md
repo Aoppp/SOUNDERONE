@@ -4,24 +4,19 @@
 
 项目已具备可运行、可测试的多平台客服 Agent MVP 骨架，但不应直接连接生产店铺。默认 `LLM_PROVIDER=mock`，知识库 `knowledge/sample.json` 明确为虚假测试数据。真实平台 Adapter、数据库持久化和正式知识仍待输入。
 
-自动化测试最后一次执行结果为 15 passed；本地根提交是 `2e2a5d6`。GitHub 远程目前仍为空，原因不是 SSH 权限，而是 iCloud 把工作区和 Git 对象自动卸载为 `dataless`，push 无法读取完整对象。详见 `development_log.md`。
+自动化测试最后一次执行结果为 15 passed；恢复后的根提交 `f6f51ca` 已推送至 GitHub `main`。工作区 Git 对象迁移至 `.git.nosync`，避免再次被 iCloud 自动卸载。详见 `development_log.md`。
 
-## 周一先做：恢复本地文件并推送
+## iCloud 恢复记录（已处理）
 
-1. Finder 右键 `/Users/ao/Desktop/SounderOne客服开发`，选择“立即下载”。
-2. 确认 `ls -lO app/main.py .git/objects/*/* | head` 不再显示 `dataless`。
-3. 删除或忽略 `development_log.md.icloud-placeholder` 与 `hand_off.md.icloud-placeholder`；它们是不可读占位备份。
-4. 执行：
+原工作区曾被 iCloud 卸载为 `dataless`，已通过非 iCloud 临时目录重建并推送。原损坏内容保存在 `*.nosync` 备份目录，正常开发无需使用。验证命令：
 
 ```bash
-git add .
-git commit --amend --no-edit
 git fsck --full
 UV_CACHE_DIR=/tmp/sounderone-uv-cache uv run pytest -q
-git push -u origin main
+git status --short --branch
 ```
 
-远程地址：`git@github.com:Aoppp/SOUNDERONE.git`。
+远程地址：`git@github.com:Aoppp/SOUNDERONE.git`，分支：`main`。
 
 ## 恢复后业务推进顺序
 
@@ -64,4 +59,3 @@ UV_CACHE_DIR=/tmp/sounderone-uv-cache uv run uvicorn app.main:app --reload
 - 正式知识库可追溯到版本和负责人，评测集通过业务验收。
 - 会话、审计和工单持久化；人工端能看到完整上下文与引用。
 - 监控至少覆盖错误率、延迟、转人工率、无答案率、禁词命中和平台发送失败。
-
