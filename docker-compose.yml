@@ -7,7 +7,7 @@ services:
       OPENAI_MODEL: ${OPENAI_MODEL:-gpt-5-mini}
       WEBHOOK_SECRET: ${WEBHOOK_SECRET:-change-me}
       ADMIN_API_KEY: ${ADMIN_API_KEY:-change-me-admin}
-      KNOWLEDGE_PATH: /app/knowledge/sample.json
+      KNOWLEDGE_PATH: /app/knowledge/sounderone_knowledge.json
     ports:
       - "8000:8000"
     volumes:

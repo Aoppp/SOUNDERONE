@@ -1,0 +1,715 @@
+{
+  "schema_version": "1.0",
+  "source": {
+    "file": "产品话术汇总完整版本.xlsx",
+    "sha256": "0298b52d3da7479340742b23936577853a441ff025d6e9acad084f20b22a9d7d"
+  },
+  "summary": {
+    "sheets": 11,
+    "embedded_images_reviewed": 28,
+    "documents": 287,
+    "raw_documents": 291,
+    "duplicates_merged": 4,
+    "active_documents": 210,
+    "review_required_documents": 39,
+    "handoff_only_documents": 38,
+    "conflicts": 46
+  },
+  "status_counts": {
+    "active": 210,
+    "handoff_only": 38,
+    "review_required": 39
+  },
+  "category_counts": {
+    "customer_service_faq": 223,
+    "product_comparison": 4,
+    "product_contraindication": 19,
+    "product_note": 8,
+    "product_overview": 19,
+    "product_usage": 14
+  },
+  "risk_tag_counts": {
+    "adverse_reaction": 20,
+    "canonical_numeric_conflict": 6,
+    "complex_after_sales": 24,
+    "medical_or_procedure": 6,
+    "minor_usage": 1,
+    "pregnancy_conflict": 16,
+    "regulated_claim": 5,
+    "unsafe_reassurance": 8
+  },
+  "sheets": [
+    {
+      "sheet": "话术汇总",
+      "rows": 88,
+      "header": [
+        "答"
+      ],
+      "decision": "ingested",
+      "documents": 73,
+      "skipped_rows": 15
+    },
+    {
+      "sheet": "三蛋丸产品介绍",
+      "rows": 46,
+      "header": [
+        "nick name",
+        "产品名称",
+        "使用方法",
+        "使用禁忌",
+        "卖点"
+      ],
+      "decision": "review_only",
+      "reason": "legacy_product_sheet_used_for_conflict_detection"
+    },
+    {
+      "sheet": "运营话术",
+      "rows": 27,
+      "header": [
+        "常见问题",
+        "解决回答的话术"
+      ],
+      "decision": "ingested",
+      "documents": 27,
+      "skipped_rows": 0
+    },
+    {
+      "sheet": "三蛋丸微信群QA记录",
+      "rows": 128,
+      "header": [
+        "A",
+        "Q",
+        "备注"
+      ],
+      "decision": "ingested",
+      "documents": 121,
+      "skipped_rows": 7
+    },
+    {
+      "sheet": "三蛋丸",
+      "rows": 23,
+      "header": [
+        "nick name",
+        "产品名称",
+        "使用方法",
+        "使用禁忌",
+        "卖点"
+      ],
+      "decision": "ingested",
+      "documents": 64
+    },
+    {
+      "sheet": "CXD",
+      "rows": 150,
+      "header": [
+        "实付金额",
+        "数量",
+        "订单号",
+        "订单明细-小样",
+        "订单明细-正装",
+        "订单是否已完成",
+        "负责人"
+      ],
+      "decision": "excluded",
+      "reason": "order_data_with_personal_or_transaction_data"
+    },
+    {
+      "sheet": "无所谓",
+      "rows": 132,
+      "header": [
+        "实付金额",
+        "数量",
+        "订单号",
+        "订单明细-小样",
+        "订单明细-正装",
+        "订单是否已完成",
+        "负责人"
+      ],
+      "decision": "excluded",
+      "reason": "order_data_with_personal_or_transaction_data"
+    },
+    {
+      "sheet": "京东问答",
+      "rows": 6,
+      "header": [
+        "回复",
+        "问题"
+      ],
+      "decision": "ingested",
+      "documents": 6,
+      "skipped_rows": 0
+    },
+    {
+      "sheet": "Sheet14",
+      "rows": 317,
+      "header": [
+        "实付金额",
+        "数量",
+        "订单号",
+        "订单明细-小样",
+        "订单明细-正装",
+        "订单是否已完成",
+        "负责人"
+      ],
+      "decision": "excluded",
+      "reason": "order_data_with_personal_or_transaction_data"
+    },
+    {
+      "sheet": "菲斯特",
+      "rows": 0,
+      "header": [],
+      "decision": "excluded",
+      "reason": "empty_sheet"
+    },
+    {
+      "sheet": "女神哇咔",
+      "rows": 0,
+      "header": [],
+      "decision": "excluded",
+      "reason": "empty_sheet"
+    }
+  ],
+  "conflicts": [
+    {
+      "type": "canonical_numeric_conflict",
+      "product": "麦角硫因精华",
+      "canonical_source": "三蛋丸!14",
+      "other_source": "运营话术!26",
+      "canonical_percentages": [
+        "0.5"
+      ],
+      "other_percentages": [
+        "1",
+        "1.5",
+        "3"
+      ],
+      "unexpected_percentages": [
+        "1",
+        "1.5",
+        "3"
+      ]
+    },
+    {
+      "type": "canonical_numeric_conflict",
+      "product": "麦角硫因精华",
+      "canonical_source": "三蛋丸!14",
+      "other_source": "三蛋丸微信群QA记录!40",
+      "canonical_percentages": [
+        "0.5"
+      ],
+      "other_percentages": [
+        "2",
+        "99"
+      ],
+      "unexpected_percentages": [
+        "2",
+        "99"
+      ]
+    },
+    {
+      "type": "canonical_numeric_conflict",
+      "product": "麦角硫因精华",
+      "canonical_source": "三蛋丸!14",
+      "other_source": "三蛋丸微信群QA记录!49",
+      "canonical_percentages": [
+        "0.5"
+      ],
+      "other_percentages": [
+        "0.1",
+        "3"
+      ],
+      "unexpected_percentages": [
+        "0.1",
+        "3"
+      ]
+    },
+    {
+      "type": "canonical_numeric_conflict",
+      "product": "euk-134精华",
+      "canonical_source": "三蛋丸!15",
+      "other_source": "三蛋丸微信群QA记录!51",
+      "canonical_percentages": [
+        "0.12"
+      ],
+      "other_percentages": [
+        "2",
+        "30"
+      ],
+      "unexpected_percentages": [
+        "2",
+        "30"
+      ]
+    },
+    {
+      "type": "canonical_numeric_conflict",
+      "product": "麦角硫因精华",
+      "canonical_source": "三蛋丸!14",
+      "other_source": "三蛋丸微信群QA记录!110",
+      "canonical_percentages": [
+        "0.5"
+      ],
+      "other_percentages": [
+        "2"
+      ],
+      "unexpected_percentages": [
+        "2"
+      ]
+    },
+    {
+      "type": "canonical_numeric_conflict",
+      "product": "麦角硫因精华",
+      "canonical_source": "三蛋丸!14",
+      "other_source": "三蛋丸微信群QA记录!111",
+      "canonical_percentages": [
+        "0.5"
+      ],
+      "other_percentages": [
+        "2",
+        "30"
+      ],
+      "unexpected_percentages": [
+        "2",
+        "30"
+      ]
+    },
+    {
+      "type": "product_version_conflict",
+      "product_key": "10vc甘草精华",
+      "field": "usage",
+      "canonical_source": "三蛋丸!9",
+      "legacy_source": "三蛋丸产品介绍!10",
+      "canonical_preview": "根据脸的大小,取1-2泵全脸涂抹。\n等干了之后,再叠加使用其他护肤品。\n早晚都可使用,早上出门建议正常做好防晒工作",
+      "legacy_preview": "根据脸的大小,取1-2泵全脸涂抹。等干了之后,在叠加使用其他护肤品。早晚都可使用。"
+    },
+    {
+      "type": "product_version_conflict",
+      "product_key": "10传明酸精华",
+      "field": "usage",
+      "canonical_source": "三蛋丸!4",
+      "legacy_source": "三蛋丸产品介绍!5",
+      "canonical_preview": "建议护肤第一步,可以替代化妆水/爽肤水。\n干手干脸使用,根据脸的大小,取1-2滴灌全脸使用。\n等干了之后,再叠加使用其他护肤品。\n如果脸上有特别想要加强的部位,可以湿敷或者局部叠加使用。\n早晚都可使用,早上出门建议正常做好防晒工作",
+      "legacy_preview": "建议护肤第一步,可以替代化妆水/爽肤水。干手干脸使用,根据脸的大小,取1-2滴灌全脸使用。等干了之后,在叠加使用其他护肤品。如果脸上有特别想要加强的部位,可以湿敷或者局部叠加使用。早晚都可使用。"
+    },
+    {
+      "type": "product_version_conflict",
+      "product_key": "30玻色因精华",
+      "field": "usage",
+      "canonical_source": "三蛋丸!11",
+      "legacy_source": "三蛋丸产品介绍!12",
+      "canonical_preview": "根据脸的大小,取1-2滴灌全脸涂抹。\n等干了之后,再叠加使用其他护肤品。\n早晚都可使用,早上出门建议正常做好防晒工作",
+      "legacy_preview": "根据脸的大小,取1-2滴灌全脸涂抹。等干了之后,在叠加使用其他护肤品。早晚都可使用。"
+    },
+    {
+      "type": "product_version_conflict",
+      "product_key": "5传明酸精华",
+      "field": "contraindications",
+      "canonical_source": "三蛋丸!3",
+      "legacy_source": "三蛋丸产品介绍!3",
+      "canonical_preview": "不建议和水杨酸一起使用\n可以早晚分开使用。\n孕妈妈是可以使用的。",
+      "legacy_preview": "不建议和水杨酸一起使用\n可以早晚分开使用。\n孕妈妈遵医嘱"
+    },
+    {
+      "type": "product_version_conflict",
+      "product_key": "5传明酸精华",
+      "field": "selling_points",
+      "canonical_source": "三蛋丸!3",
+      "legacy_source": "三蛋丸产品介绍!4",
+      "canonical_preview": "核心主打自研传明酸脂质体,可以有效净透肌肤,尤其是红色痘印可以很好的减退,在光电类项目后可以辅助预防反黑~尤其是夏天到了,可以很好的帮助对抗紫外线的损伤不容易变黑。",
+      "legacy_preview": "5%传明酸可以和a醇/VC类产品一起使用的。可以很好的促进功效的加乘,以及预防a醇所带来的反黑效果。如果建立耐受后,可以逐步使用10%浓度的传明酸精华。"
+    },
+    {
+      "type": "product_version_conflict",
+      "product_key": "5传明酸精华",
+      "field": "usage",
+      "canonical_source": "三蛋丸!3",
+      "legacy_source": "三蛋丸产品介绍!3",
+      "canonical_preview": "建议护肤第一步,可以替代化妆水/爽肤水。\n干手干脸使用,根据脸的大小,取1-2滴灌全脸使用。\n等干了之后,再叠加使用其他护肤品。\n如果脸上有特别想要加强的部位,可以湿敷或者局部叠加使用。\n早晚都可使用,早上出门建议正常做好防晒工作",
+      "legacy_preview": "建议护肤第一步,可以替代化妆水/爽肤水。干手干脸使用,根据脸的大小,取1-2滴管全脸使用。等干了之后,在叠加使用其他护肤品。如果脸上有特别想要加强的部位,可以湿敷或者局部叠加使用。早晚都可使用。"
+    },
+    {
+      "type": "product_version_conflict",
+      "product_key": "5和10传明酸精华的区别",
+      "field": "contraindications",
+      "canonical_source": "三蛋丸!5",
+      "legacy_source": "三蛋丸产品介绍!6",
+      "canonical_preview": "5%传明酸是敏感肌都可以安心使用的,是做了鸡胚刺激实验,刺激度为0。10%传明酸因为渗透性高,以及含有1%的烟酰胺。所以它需要建立一定的耐受,但如果你是健康肌肤,可以完成安心选择10%传明酸,毕竟效果确实10%传明酸更强。",
+      "legacy_preview": "宝宝,可以看一下轩轩的主页视频~\n早:\n护肤最后一步15%壬二酸点涂或者全脸涂。如果比较敏感,可以叠加修护乳一起搭配使用!15%壬二酸一定要先建立耐受~只要7天就可以建立耐受完毕啦。\n晚:\n护肤第一步10%传明酸精华~然后再叠加其他产品。"
+    },
+    {
+      "type": "product_version_conflict",
+      "product_key": "5和10传明酸精华的区别",
+      "field": "usage",
+      "canonical_source": "三蛋丸!5",
+      "legacy_source": "三蛋丸产品介绍!6",
+      "canonical_preview": "5%传明酸是敏感肌都可以安心使用的,是做了鸡胚刺激实验,刺激度为0。10%传明酸因为渗透性高,以及含有1%的烟酰胺。所以它需要建立一定的耐受,但如果你是健康肌肤,可以完成安心选择10%传明酸,毕竟效果确实10%传明酸更强。",
+      "legacy_preview": "[敏感履约信息已排除]"
+    },
+    {
+      "type": "product_version_conflict",
+      "product_key": "6vc甘草精华",
+      "field": "usage",
+      "canonical_source": "三蛋丸!8",
+      "legacy_source": "三蛋丸产品介绍!9",
+      "canonical_preview": "根据脸的大小,取1-2泵全脸涂抹。\n等干了之后,再叠加使用其他护肤品。\n早晚都可使用,早上出门建议正常做好防晒工作",
+      "legacy_preview": "根据脸的大小,取1-2泵全脸涂抹。等干了之后,在叠加使用其他护肤品。早晚都可使用。"
+    },
+    {
+      "type": "product_version_conflict",
+      "product_key": "euk134精华",
+      "field": "contraindications",
+      "canonical_source": "三蛋丸!15",
+      "legacy_source": "三蛋丸产品介绍!16",
+      "canonical_preview": "暂无/怀孕人群不可用",
+      "legacy_preview": "暂无/怀孕人群遵医嘱"
+    },
+    {
+      "type": "product_version_conflict",
+      "product_key": "euk134精华",
+      "field": "usage",
+      "canonical_source": "三蛋丸!15",
+      "legacy_source": "三蛋丸产品介绍!16",
+      "canonical_preview": "根据脸的大小,取1-2泵全脸涂抹。等干了之后,再叠加使用其他护肤品。早晚都可使用。",
+      "legacy_preview": "根据脸的大小,取1-2泵全脸涂抹。等干了之后,在叠加使用其他护肤品。早晚都可使用。"
+    },
+    {
+      "type": "product_version_conflict",
+      "product_key": "双a醇眼霜",
+      "field": "contraindications",
+      "canonical_source": "三蛋丸!13",
+      "legacy_source": "三蛋丸产品介绍!14",
+      "canonical_preview": "晚上使用/怀孕人群不可用",
+      "legacy_preview": "晚上使用/怀孕人群遵医嘱"
+    },
+    {
+      "type": "product_version_conflict",
+      "product_key": "双a醇眼霜",
+      "field": "usage",
+      "canonical_source": "三蛋丸!13",
+      "legacy_source": "三蛋丸产品介绍!14",
+      "canonical_preview": "用指腹轻轻点涂在眼周围,慢慢按摩至吸收。\n建议晚上使用。",
+      "legacy_preview": "用指腹轻轻点涂在眼周围,慢慢按摩至吸收。晚上使用。"
+    },
+    {
+      "type": "product_version_conflict",
+      "product_key": "土",
+      "field": "selling_points",
+      "canonical_source": "三蛋丸!24",
+      "legacy_source": "三蛋丸产品介绍!40",
+      "canonical_preview": "主打:马拉色菌导致的控油+去屑\n核心成分:1% 二硫化硒+玻色因\n可以抑制马拉色菌繁殖,去屑止痒。独家的自研专利技术,可以很好的将二硫化硒颗粒均匀包裹在料体中~发货功效的同时,还可以保湿护理发质~泡沫丰富、细密、清洁去油、轻盈蓬松。\n清新赤霞血橙调,满满活力~",
+      "legacy_preview": "【土】二硫化硒去屑洗发水主打:马拉色菌导致的控油+去屑\n核心成分:1% 二硫化硒+玻色因\n可以抑制马拉色菌繁殖,去屑止痒。独家的自研专利技术,可以很好的将二硫化硒颗粒均匀包裹在料体中~发货功效的同时,还可以保湿护理发质~泡沫丰富、细密、清洁去油、轻盈蓬松。\n清新赤霞血橙调,满满活力~"
+    },
+    {
+      "type": "product_version_conflict",
+      "product_key": "夜猫子精华",
+      "field": "contraindications",
+      "canonical_source": "三蛋丸!2",
+      "legacy_source": "三蛋丸产品介绍!2",
+      "canonical_preview": "暂无/怀孕人群不可用",
+      "legacy_preview": "暂无/怀孕人群遵医嘱"
+    },
+    {
+      "type": "product_version_conflict",
+      "product_key": "夜猫子精华",
+      "field": "usage",
+      "canonical_source": "三蛋丸!2",
+      "legacy_source": "三蛋丸产品介绍!2",
+      "canonical_preview": "根据脸的大小,取1-2泵全脸涂抹。\n等干了之后,再叠加使用其他护肤品。\n早晚都可使用,早上出门建议正常做好防晒工作",
+      "legacy_preview": "根据脸的大小,取1-2泵全脸涂抹。等干了之后,在叠加使用其他护肤品。早晚都可使用。"
+    },
+    {
+      "type": "product_version_conflict",
+      "product_key": "木",
+      "field": "contraindications",
+      "canonical_source": "三蛋丸!21",
+      "legacy_source": "三蛋丸产品介绍!37",
+      "canonical_preview": "净澈控油沁爽洗发水(木) + 二硫化硒去屑洗发水(土)\n适用人群:油性头皮、头屑头痒严重,且头皮油脂分泌旺盛的人群。\n搭配理由:\n净澈控油沁爽洗发水:日常清洁,调节油脂分泌,保持头皮清爽。\n二硫化硒去屑洗发水:每周使用 1-2 次,针对头屑问题,抑制马拉色菌生长,\n缓解头痒。\n使用建议:\n日常使用净澈控油洗发水,保持头皮清洁。\n头屑严重时,每周交替使用二硫化",
+      "legacy_preview": "绿色"
+    },
+    {
+      "type": "product_version_conflict",
+      "product_key": "木",
+      "field": "selling_points",
+      "canonical_source": "三蛋丸!21",
+      "legacy_source": "三蛋丸产品介绍!37",
+      "canonical_preview": "主打:控油去屑\n核心成分:自研原料专利成分SHUHE.WANG 可比落复合物\n清爽控油复配OCT,蓬松的同时可以改善头皮发痒,0硅油配方体系,头皮更清爽~自带薄荷凉感,头皮“灭火器“抑制出油~\n甜柚茉莉气味,清新的大自然气息,心旷神怡",
+      "legacy_preview": "净澈控油沁爽洗发水主打:控油去屑\n核心成分:自研原料专利成分SHUHE.WANG 可比落复合物\n清爽控油复配OCT,蓬松的同时可以改善头皮发痒,0硅油配方体系,头皮更清爽~自带薄荷凉感,头皮“灭火器“抑制出油~\n甜柚茉莉气味,清新的大自然气息,心旷神怡"
+    },
+    {
+      "type": "product_version_conflict",
+      "product_key": "水",
+      "field": "selling_points",
+      "canonical_source": "三蛋丸!22",
+      "legacy_source": "三蛋丸产品介绍!38",
+      "canonical_preview": "主打:舒缓、保湿\n核心成分:自研原料神经酰胺NP脂质体\n舒缓保湿头皮,预防修护紫外线、化学损伤等问题导致的头皮受损。缓解干、敏、红。泡沫丰富、细密、洗后清爽水润、不干涩\n清新赤霞血橙调,满满活力~",
+      "legacy_preview": "神经酰胺头皮专护洗发水主打:舒缓、保湿\n核心成分:自研原料神经酰胺NP脂质体\n舒缓保湿头皮,预防修护紫外线、化学损伤等问题导致的头皮受损。缓解干、敏、红。泡沫丰富、细密、洗后清爽水润、不干涩\n清新赤霞血橙调,满满活力~"
+    },
+    {
+      "type": "product_version_conflict",
+      "product_key": "水杨酸精华",
+      "field": "usage",
+      "canonical_source": "三蛋丸!7",
+      "legacy_source": "三蛋丸产品介绍!8",
+      "canonical_preview": "根据脸的大小,取1-2滴灌全脸涂抹。\n等干了之后,再叠加使用其他护肤品。\n在尤其想要加强的部位,湿敷或者叠加使用。\n建议晚上使用。",
+      "legacy_preview": "根据脸的大小,取1-2滴灌全脸涂抹。等干了之后,在叠加使用其他护肤品。在尤其想要加强的部位,湿敷或者叠加使用。建议晚上使用。"
+    },
+    {
+      "type": "product_version_conflict",
+      "product_key": "火",
+      "field": "selling_points",
+      "canonical_source": "三蛋丸!23",
+      "legacy_source": "三蛋丸产品介绍!39",
+      "canonical_preview": "主打:蓬松轻盈\n核心成分:自研专利原料三因脂质体(玻色因、依克多因、麦角硫因)\n温和双牛磺酸钠氨基酸表面活性剂配方,自带调理,头发蓬松顺滑;无硅油配方, 头皮更清爽;高效抗老新组合,精选三种抗衰老、抗氧化、保湿的活性成分,协同增效,头发更蓬松;\n其中也添加了,自研成分透明神经酰胺 NP脂质体,舒缓头皮,修护毛躁秀发,更顺滑\n乌木沉香气味,沉稳中有热烈火热的奔",
+      "legacy_preview": "蓬松丰盈洗发水主打:蓬松轻盈\n核心成分:自研专利原料三因脂质体(玻色因、依克多因、麦角硫因)\n温和双牛磺酸钠氨基酸表面活性剂配方,自带调理,头发蓬松顺滑;无硅油配方, 头皮更清爽;高效抗老新组合,精选三种抗衰老、抗氧化、保湿的活性成分,协同增效,头发更蓬松;\n其中也添加了,自研成分透明神经酰胺 NP脂质体,舒缓头皮,修护毛躁秀发,更顺滑\n乌木沉香气味,沉稳中"
+    },
+    {
+      "type": "product_version_conflict",
+      "product_key": "玻色因面霜清爽版",
+      "field": "usage",
+      "canonical_source": "三蛋丸!12",
+      "legacy_source": "三蛋丸产品介绍!13",
+      "canonical_preview": "根据脸的大小,取面霜全脸涂抹。\n等干了之后,再叠加使用其他护肤品。\n早晚都可使用,早上出门建议正常做好防晒工作",
+      "legacy_preview": "根据脸的大小,取面霜全脸涂抹。等干了之后,在叠加使用其他护肤品。早晚都可使用。"
+    },
+    {
+      "type": "product_version_conflict",
+      "product_key": "肌护舒缓精华",
+      "field": "contraindications",
+      "canonical_source": "三蛋丸!6",
+      "legacy_source": "三蛋丸产品介绍!7",
+      "canonical_preview": "暂无/怀孕人群不可用",
+      "legacy_preview": "暂无/怀孕人群遵医嘱"
+    },
+    {
+      "type": "product_version_conflict",
+      "product_key": "肌护舒缓精华",
+      "field": "usage",
+      "canonical_source": "三蛋丸!6",
+      "legacy_source": "三蛋丸产品介绍!7",
+      "canonical_preview": "根据脸的大小,取1-2滴灌全脸涂抹。\n等干了之后,再叠加使用其他护肤品。\n早晚都可使用,早上出门建议正常做好防晒工作",
+      "legacy_preview": "根据脸的大小,取1-2滴灌全脸涂抹。等干了之后,在叠加使用其他护肤品。早晚都可使用。"
+    },
+    {
+      "type": "product_version_conflict",
+      "product_key": "麦角硫因精华",
+      "field": "contraindications",
+      "canonical_source": "三蛋丸!14",
+      "legacy_source": "三蛋丸产品介绍!15",
+      "canonical_preview": "不可以和酸一起使用/怀孕人群不可用",
+      "legacy_preview": "不可以和酸一起使用/怀孕人群遵医嘱"
+    },
+    {
+      "type": "product_version_conflict",
+      "product_key": "麦角硫因精华",
+      "field": "selling_points",
+      "canonical_source": "三蛋丸!14",
+      "legacy_source": "三蛋丸产品介绍!15",
+      "canonical_preview": "核心添加了0.5%的麦角硫因,可以赶走暗黄对抗自由基,达到抗皱、紧致、保湿效果。而且还复配了艾地苯醌脂质体,更好的协同麦角硫因对抗光损伤~更加适合白天使用!",
+      "legacy_preview": "2%麦角硫因日光精华(五抗精华),和核心主打的是2%的麦角硫因,我们也是用到了纳米渗透包裹技术,所以可以很好的对抗自由基、抗AGEs产物、抗皱、抗紫外线损伤、抗泛红(舒缓),更全面的抗皱紧致肌肤!"
+    },
+    {
+      "type": "product_version_conflict",
+      "product_key": "麦角硫因精华",
+      "field": "usage",
+      "canonical_source": "三蛋丸!14",
+      "legacy_source": "三蛋丸产品介绍!15",
+      "canonical_preview": "根据脸的大小,取1-2泵全脸涂抹。等干了之后,再叠加使用其他护肤品。早晚都可使用。",
+      "legacy_preview": "根据脸的大小,取1-2泵全脸涂抹。等干了之后,在叠加使用其他护肤品。早晚都可使用。"
+    },
+    {
+      "type": "faq_answer_conflict",
+      "title_key": "5传明酸瓶身的50指的是什么",
+      "sources": [
+        "话术汇总!37",
+        "三蛋丸微信群QA记录!26"
+      ],
+      "previews": [
+        "标准话术 1:瓶身的50%是脂质体添加量,即传明酸干料含量5%~\n标准话术 2:瓶身的50%是脂质体添加量,核心添加了50%的SHUHE.WANG",
+        "瓶身的50%是脂质体添加量,即传明酸干料含量5%~"
+      ]
+    },
+    {
+      "type": "faq_answer_conflict",
+      "title_key": "am洗发水使用过敏",
+      "sources": [
+        "话术汇总!60",
+        "话术汇总!61"
+      ],
+      "previews": [
+        "标准话术 1:我们的产品氨基酸表活产品,初次接触氨基酸会有一段时间适应期,轻微的不适比价正常,头皮没有出现红肿过敏一般7到15天适应了就没什么问题呢\n标准话术 2:咱们洗护产品的成分都是注重安全健康的,为纯氨基酸表活产品,滋养度偏高,氨基酸的含量也是比较高哒,使用上也是建议您多加冲洗避免因未冲洗干净导致的洗发产品残留造成头皮屑头痒情况产生哦\n标准话术 3:我",
+        "标准话术 1:亲亲 咱们aminomason主打的为高滋养度的氨基酸表活产品,初次接触氨基酸的用户可能会出现轻微的不适,属于正常现象,只要是头皮无过敏坚持使用都会慢慢得到改善。\n类似于缺水的肌肤初次使用高保湿的玻尿酸面膜会有刺痛感一样,无过敏现象坚持使用都会有改善的。\n使用注意事项:建议您使用完洗发产品后冲洗时间久一点,最好是冲洗时间在40-50秒左右,保证"
+      ]
+    },
+    {
+      "type": "faq_answer_conflict",
+      "title_key": "vc甘草精华发黄",
+      "sources": [
+        "话术汇总!21",
+        "三蛋丸微信群QA记录!67"
+      ],
+      "previews": [
+        "标准话术 1:宝宝,VC这个成分比较特殊,接触到空气后很容易发黄,但是您放心,只要精华颜色不是深沉的暗黄色,都是不影响使用的呢\n标准话术 2:建议小宝后续用完后尽快将泵头收回去,平时放在阳光无法直射到的位置常温存放哦~\n标准话术 3:VC甘草精华系列,料体是透明至淡淡黄色这个都是正常使用范围内~因为里面含有VC衍生物成分,微微的淡黄色都是属于正常哒,不会影响",
+        "VC甘草精华系列,料体是透明至淡淡黄色这个都是正常使用范围内~因为里面含有VC衍生物成分,微微的淡黄色都是属于正常哒,不会影响活性物。可以正常使用"
+      ]
+    },
+    {
+      "type": "faq_answer_conflict",
+      "title_key": "产品成分含量",
+      "sources": [
+        "三蛋丸微信群QA记录!38",
+        "三蛋丸微信群QA记录!39",
+        "三蛋丸微信群QA记录!40",
+        "三蛋丸微信群QA记录!41",
+        "三蛋丸微信群QA记录!42",
+        "三蛋丸微信群QA记录!43",
+        "三蛋丸微信群QA记录!44",
+        "三蛋丸微信群QA记录!45",
+        "三蛋丸微信群QA记录!46",
+        "三蛋丸微信群QA记录!47",
+        "三蛋丸微信群QA记录!48",
+        "三蛋丸微信群QA记录!49",
+        "三蛋丸微信群QA记录!50",
+        "三蛋丸微信群QA记录!51",
+        "三蛋丸微信群QA记录!52",
+        "三蛋丸微信群QA记录!53",
+        "三蛋丸微信群QA记录!54",
+        "三蛋丸微信群QA记录!55"
+      ],
+      "previews": [
+        "只要是问成分含量在 微量成分的,就回答:微量添加在0.1%以下",
+        "VCIP精华油577含量:577的净含量在0.3%~\n肉豆蔻烟酸酯含量:0.2%\n577 学名 4- 丁基间苯二酚,属于“间苯二酚家族”一员",
+        "宝宝我们家的2%麦角硫因纯度是在99%以上哒!添加量是20000ppm=2%",
+        "10%VC甘草精华:3%SAP(抗坏血酸磷酸酯钠) + 3%MAP(抗坏血酸磷酸酯镁)+4%AA2G(抗坏血酸葡糖苷)",
+        "6%VC甘草精华:3%SAP(抗坏血酸磷酸酯钠) + 3%MAP(抗坏血酸磷酸酯镁)",
+        "5%传明酸乳液:5%",
+        "5%传明酸:5%",
+        "10%传明酸;10%",
+        "ace精华(euk-134精华):0.12%",
+        "麦角硫因精华:0.5%",
+        "眼霜:0.4% 双a醇脂质体",
+        "夜猫子精华:3% 5D抗氧化脂质体+0.1%麦角硫因",
+        "面霜:9%的玻色因",
+        "玻色因精华:30%玻色因 + 2% euk-134脂质体",
+        "b5洗发水,b5含量0.2%",
+        "眼霜的维A浓度:脂质体的添加量在0.4%双A油溶脂质体~里面是HPR和VA视黄醇丙酸酯~",
+        "Lipo为脂质体的意思,Lipo Nano都是脂质体。",
+        "传明酸里面添加了2%的光甘草定脂质体~实际光甘草定的净含量在0.04%左右。"
+      ]
+    },
+    {
+      "type": "faq_answer_conflict",
+      "title_key": "传明酸两种进阶教学两个浓度都可以",
+      "sources": [
+        "话术汇总!15",
+        "运营话术!15"
+      ],
+      "previews": [
+        "湿敷法:用传明酸把化妆棉浸湿之后,敷在问题处或全脸5-10分钟,不需要洗掉!用手轻轻按摩吸收,吸收完后进行后续护肤流程~\n封包法:把传明酸涂抹在脸上,用保鲜膜或者或者透明的面膜把他封住,大概10-15分钟就可以拿掉,拿掉后也不需要洗掉!用手轻轻按摩吸收,吸收完后进行后续护肤流程~\n我们家的传明酸本身用脂质体包裹后促渗效果本身就高于普通传明酸,大部分时期只用湿",
+        "湿敷法:用传明酸把化妆棉浸湿之后,敷在问题处或全脸5-10分钟,不需要洗掉!用手轻轻按压拍打吸收,吸收完后进行后续护肤流程~\n封包法:把传明酸涂抹在脸上,用保鲜膜或者透明的面膜把他封住,大概10-15分钟就可以拿掉,拿掉后也不需要洗掉!用手轻轻按压拍打吸收,吸收完后进行后续护肤流程~\n我们家的传明酸本身用脂质体包裹后促渗效果本身就高于普通传明酸,大部分时期只"
+      ]
+    },
+    {
+      "type": "faq_answer_conflict",
+      "title_key": "壬二酸耐受",
+      "sources": [
+        "三蛋丸微信群QA记录!106",
+        "三蛋丸微信群QA记录!107"
+      ],
+      "previews": [
+        "壬二酸如何建立耐受~\n1、第一次使用的宝宝,可以先在耳后进行测试如果没有不舒服可以上脸使用~\n2、局部涂抹问题处,因为15%壬二浓度比较高又做了渗透技术,所以会出现刺痒感~但这个是属于正常的现象!宝宝不用担心哒~\n3、如果能忍就忍一下,这个刺痒感10-15分钟左右就会逐渐消失~若不能忍,建议宝宝立刻清洗掉。\n4、每天这样循序渐进,或者一天隔一天使用~在第二周",
+        "哦对啦~宝宝,换季秋冬皮肤比较敏感,若出现使用后觉得干燥,可以轻轻地涂抹一些保湿乳液增加保湿力~"
+      ]
+    },
+    {
+      "type": "faq_answer_conflict",
+      "title_key": "多久有效果",
+      "sources": [
+        "话术汇总!6",
+        "运营话术!4"
+      ],
+      "previews": [
+        "标准话术 1:皮肤的新陈代谢周期约为28天,但每个人的体质差异不同,大家都不一样。但正常的话7-14天就可以看得到效果~\n标准话术 2:皮肤的新陈代谢周期约为28天,但随着年龄增长,新陈代谢速度会变慢‌,可能会需要久一些才能看到效果的哦~ 每个人皮肤环境不同哦~吸收程度也是不一样的哦~",
+        "每个人的肤质不一样,所以效果也会不同。宝宝您主要想针对的是哪方面问题呢?\n正常情况,红色痘印差不多7-14天有作用体现~其他的效果,差不多在28天左右~(如果是黄褐 斑斑点点参考下面的话术)"
+      ]
+    },
+    {
+      "type": "faq_answer_conflict",
+      "title_key": "天猫三蛋丸旗舰店售后处理",
+      "sources": [
+        "三蛋丸微信群QA记录!69",
+        "三蛋丸微信群QA记录!70"
+      ],
+      "previews": [
+        "天猫SOUNDERONE旗舰店,是有过敏险的哈,过敏原因发起的售后大家都正常处理~不要拒绝",
+        "如果客户描述问题严重或者客户情绪很大就全退,如果问题较小客户可以理解我们这边不能二次销售的情况,可以退一半,金额你们协商。"
+      ]
+    },
+    {
+      "type": "faq_answer_conflict",
+      "title_key": "怎么建立皮肤耐受",
+      "sources": [
+        "话术汇总!7",
+        "话术汇总!8"
+      ],
+      "previews": [
+        "标准话术 1:15%壬二酸是需要建立耐受哒~上脸的刺痒感是正常的,一般5-10分钟左右消失~忍一忍!壬二酸是微薄脱的酸,可以帮助毛孔代谢多余油脂和老废角质。\n第一周使用:一天隔一天,每天晚上涂抹。\n第二周使用:可以每天涂抹。\n过程中,如果实在忍不住可以清水洗去~\n一般7天左右时间就可以建立耐受完毕!\n标准话术 2:5%传明酸不需要建立耐受,他很温和敏感肌可用",
+        "如果壬二酸中途中断过使用\n壬二酸是一定需要建立耐受的,如果长期不用,是需要重新建立哒!\n建立中出现刺痒感是正常的,按照耐受方式一般7天左右就可以建立耐受成功。"
+      ]
+    },
+    {
+      "type": "faq_answer_conflict",
+      "title_key": "有美白效果吗",
+      "sources": [
+        "京东问答!4",
+        "京东问答!5"
+      ],
+      "previews": [
+        "夜猫子精华核心成分是5D抗氧化脂质体,是有国家发明专利的,可以很好的去黄提亮~",
+        "10%传明酸精华里含有高浓度传明酸,搭配光甘草定脂质体以及烟酰胺成分,可以很好的净透肌肤。"
+      ]
+    },
+    {
+      "type": "faq_answer_conflict",
+      "title_key": "玻色因紧致面霜页面写的30收到包装是9的",
+      "sources": [
+        "三蛋丸微信群QA记录!58",
+        "三蛋丸微信群QA记录!59"
+      ],
+      "previews": [
+        "30%的玻色因水溶液添加了30%,就是9%的玻色因含量",
+        "宝宝,是30%的玻色因水溶液添加了30%\n所以30%*30%=9%(玻色因的净含量)"
+      ]
+    },
+    {
+      "type": "faq_answer_conflict",
+      "title_key": "看到光甘草定详情页只写了渗透油溶我们的产品应该都做了脂质体包裹技术吧如果继续问回复下面的话术",
+      "sources": [
+        "三蛋丸微信群QA记录!122",
+        "三蛋丸微信群QA记录!123"
+      ],
+      "previews": [
+        "宝宝我们这个产品用到的是油溶微囊包裹技术~\n我们会根据每个原料和最终呈现的方式采用不同的包裹技术~",
+        "宝宝,这个已经超出我的知识范畴啦~如果感兴趣的话,可以购买回去试一下效果!不会让你失望哒~"
+      ]
+    },
+    {
+      "type": "faq_answer_conflict",
+      "title_key": "退货售后",
+      "sources": [
+        "话术汇总!87",
+        "话术汇总!88"
+      ],
+      "previews": [
+        "您好 这边收到了您的退货 只有X瓶正装,没有X支小样 您看下能否退回呢\n未退回是按单支9.9扣除金额的哦\n您好,您寄回的产品正装已拆封,已影响商品完好暂不支持退货入仓,仓库预计会在48小时内退回产品,有单号后给您留言,辛苦后续查收包裹",
+        "因为我们这边是海外店铺,是保税仓直发的,出库即扣税,您这边坚持要退的话,这边可以为您申请了,但是要求退回产品赠品必须是全新未拆封哦,需要您承担产品出库税费"
+      ]
+    }
+  ],
+  "decisions": [
+    "Order sheets are excluded in full.",
+    "The 三蛋丸 sheet is canonical; 三蛋丸产品介绍 is treated as legacy and only compared for conflicts.",
+    "Rows containing phone, ID, or long transaction numbers are excluded.",
+    "Adverse reaction and complex after-sales entries are handoff-only and not searchable for automatic answers.",
+    "Pregnancy, medical, minor-use, absolute reassurance, and regulated-claim entries require human review.",
+    "Embedded images were visually audited but are not OCR-ingested because their content is not authoritative structured text."
+  ]
+}

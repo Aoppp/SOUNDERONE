@@ -10,7 +10,7 @@ class Settings(BaseSettings):
     llm_provider: str = "mock"
     openai_api_key: str | None = None
     openai_model: str = "gpt-5-mini"
-    knowledge_path: Path = Path("knowledge/sample.json")
+    knowledge_path: Path = Path("knowledge/sounderone_knowledge.json")
     knowledge_min_score: float = 0.18
     webhook_secret: str | None = "change-me"
     admin_api_key: str = "change-me-admin"

@@ -18,7 +18,11 @@ def _require_admin(request: Request, provided: str | None) -> None:
 
 @router.get("/health")
 async def health(request: Request) -> dict[str, Any]:
-    return {"status": "ok", "knowledge_documents": len(request.app.state.knowledge.documents)}
+    return {
+        "status": "ok",
+        "knowledge_documents": len(request.app.state.knowledge.documents),
+        "active_knowledge_documents": len(request.app.state.knowledge.active_documents),
+    }
 
 
 @router.post("/v1/webhooks/{platform}")

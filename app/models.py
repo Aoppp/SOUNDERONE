@@ -39,6 +39,9 @@ class Citation(BaseModel):
     document_id: str
     title: str
     score: float
+    source_sheet: str | None = None
+    source_row: int | None = None
+    category: str | None = None
 
 
 class AgentReply(BaseModel):

@@ -28,5 +28,6 @@ class GenericAdapter(PlatformAdapter):
             "text": reply.text,
             "handoff": reply.decision.value != "answered",
             "handoff_reason": reply.handoff_reason,
+            "risk_tags": reply.risk_tags,
             "citations": [citation.model_dump() for citation in reply.citations],
         }

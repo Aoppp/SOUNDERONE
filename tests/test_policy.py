@@ -36,3 +36,9 @@ def test_business_hours_are_timezone_aware():
     policy = make_policy()
     assert policy.is_business_hours(datetime(2026, 8, 8, 14, 0, tzinfo=ZoneInfo("Asia/Shanghai")))
     assert not policy.is_business_hours(datetime(2026, 8, 8, 23, 0, tzinfo=ZoneInfo("Asia/Shanghai")))
+
+
+def test_pregnancy_and_medical_procedure_questions_force_handoff():
+    policy = make_policy()
+    assert policy.evaluate_incoming("孕妇可以用5%传明酸吗").must_handoff
+    assert policy.evaluate_incoming("做完光电项目后怎么用").must_handoff
