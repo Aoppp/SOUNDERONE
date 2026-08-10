@@ -8,6 +8,7 @@ class AgentState(TypedDict, total=False):
     risk: dict
     retrieval_query: str
     conversation_intent: str
+    response_decision: str
     last_product: str
     hits: list[dict]
     generated_text: str

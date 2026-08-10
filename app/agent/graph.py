@@ -17,6 +17,89 @@ from app.store import InMemoryConversationStore
 class SounderOneGraphAgent:
     """Small, deterministic LangGraph workflow for product-support RAG."""
 
+    SUPPORT_CUES = (
+        "产品",
+        "精华",
+        "面霜",
+        "乳霜",
+        "眼霜",
+        "洗发水",
+        "护发素",
+        "头皮",
+        "护肤",
+        "成分",
+        "浓度",
+        "功效",
+        "效果",
+        "用法",
+        "使用",
+        "怎么用",
+        "搭配",
+        "叠加",
+        "区别",
+        "适合",
+        "肤质",
+        "敏感肌",
+        "油皮",
+        "干皮",
+        "痘",
+        "斑",
+        "泛红",
+        "搓泥",
+        "结晶",
+        "质地",
+        "气味",
+        "味道",
+        "包装",
+        "瓶子",
+        "保质期",
+        "生产日期",
+        "发货",
+        "物流",
+        "快递",
+        "订单",
+        "价格",
+        "活动",
+        "赠品",
+        "发票",
+        "退款",
+        "退货",
+        "补发",
+        "漏发",
+        "少发",
+        "破损",
+        "售后",
+        "投诉",
+    )
+
+    # These intents can be answered without a product name. Product-specific
+    # questions such as "怎么用" or "效果怎么样" require an explicit product
+    # or a product carried over from the conversation.
+    STANDALONE_SERVICE_CUES = (
+        "发货",
+        "物流",
+        "快递",
+        "配送",
+        "到货",
+        "订单",
+        "价格",
+        "多少钱",
+        "优惠",
+        "活动",
+        "折扣",
+        "到手价",
+        "赠品",
+        "发票",
+        "退款",
+        "退货",
+        "补发",
+        "漏发",
+        "少发",
+        "破损",
+        "售后",
+        "投诉",
+    )
+
     def __init__(
         self,
         settings: Settings,
@@ -46,6 +129,7 @@ class SounderOneGraphAgent:
         builder.add_node("safety_guard", self._safety_guard)
         builder.add_node("understand_query", self._understand_query)
         builder.add_node("smalltalk_response", self._smalltalk_response)
+        builder.add_node("clarify_response", self._clarify_response)
         builder.add_node("hybrid_retrieve", self._hybrid_retrieve)
         builder.add_node("relevance_gate", self._relevance_gate)
         builder.add_node("generate_answer", self._generate_answer)
@@ -62,9 +146,14 @@ class SounderOneGraphAgent:
         builder.add_conditional_edges(
             "understand_query",
             self._route_after_understanding,
-            {"smalltalk": "smalltalk_response", "retrieve": "hybrid_retrieve"},
+            {
+                "smalltalk": "smalltalk_response",
+                "clarify": "clarify_response",
+                "retrieve": "hybrid_retrieve",
+            },
         )
         builder.add_edge("smalltalk_response", "output_guard")
+        builder.add_edge("clarify_response", "output_guard")
         builder.add_edge("hybrid_retrieve", "relevance_gate")
         builder.add_conditional_edges(
             "relevance_gate",
@@ -125,6 +214,23 @@ class SounderOneGraphAgent:
         explicit_product = self.knowledge.identify_product(text)
         last_product = explicit_product or state.get("last_product", "")
         refers_to_context = any(word in text for word in ("这个", "它", "这款", "刚才那个"))
+        has_supported_cue = any(cue in text for cue in self.SUPPORT_CUES)
+        has_standalone_service_cue = any(cue in text for cue in self.STANDALONE_SERVICE_CUES)
+        needs_clarification = (
+            (refers_to_context and not last_product)
+            or (not explicit_product and not last_product and not has_standalone_service_cue)
+            or (
+                not explicit_product
+                and bool(last_product)
+                and not (has_supported_cue or has_standalone_service_cue)
+            )
+        )
+        if needs_clarification:
+            return {
+                "conversation_intent": "clarification",
+                "retrieval_query": "",
+                "trace": self._step(state, "understand_query"),
+            }
         retrieval_query = f"{last_product} {text}" if last_product and refers_to_context else text
         return {
             "retrieval_query": retrieval_query,
@@ -135,7 +241,12 @@ class SounderOneGraphAgent:
 
     @staticmethod
     def _route_after_understanding(state: AgentState) -> str:
-        return "smalltalk" if state.get("conversation_intent") == "smalltalk" else "retrieve"
+        intent = state.get("conversation_intent")
+        if intent == "smalltalk":
+            return "smalltalk"
+        if intent == "clarification":
+            return "clarify"
+        return "retrieve"
 
     def _smalltalk_response(self, state: AgentState) -> dict:
         return {
@@ -145,6 +256,17 @@ class SounderOneGraphAgent:
             ),
             "hits": [],
             "trace": self._step(state, "smalltalk_response"),
+        }
+
+    def _clarify_response(self, state: AgentState) -> dict:
+        return {
+            "generated_text": (
+                "宝宝，我还没理解你想咨询的具体问题～"
+                "可以告诉我产品名称，以及你想了解用法、成分搭配还是售后问题。"
+            ),
+            "hits": [],
+            "response_decision": Decision.safe_fallback.value,
+            "trace": self._step(state, "clarify_response"),
         }
 
     def _hybrid_retrieve(self, state: AgentState) -> dict:
@@ -209,7 +331,7 @@ class SounderOneGraphAgent:
         trace = self._step(state, "finalize_response")
         reply = AgentReply(
             conversation_id=self._message(state).external_conversation_id,
-            decision=Decision.answered,
+            decision=Decision(state.get("response_decision", Decision.answered.value)),
             text=state["generated_text"],
             citations=[hit.citation() for hit in self.knowledge.restore_hits(state["hits"])],
             graph_trace=trace,
@@ -254,6 +376,7 @@ class SounderOneGraphAgent:
                 "forbidden_claims": [],
                 "handoff_reason": "",
                 "risk_tags": [],
+                "response_decision": Decision.answered.value,
             },
             config=config,
         )

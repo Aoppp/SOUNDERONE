@@ -80,6 +80,11 @@ def test_missing_vcip_usage_does_not_return_unrelated_documents():
     assert hits == []
 
 
+def test_missing_shipping_answer_does_not_match_product_effectiveness():
+    knowledge = make_knowledge()
+    assert knowledge.search("多久发货") == []
+
+
 def test_comparison_and_hair_pairing_use_the_workbook_semantics():
     knowledge = make_knowledge()
     comparison_hits = knowledge.search("5%和10%传明酸有什么区别")
@@ -184,6 +189,46 @@ def test_langgraph_resolves_product_reference_across_turns():
     assert second.json()["decision"] == "answered"
     assert second.json()["citations"][0]["category"] == "product_usage"
     assert second.json()["citations"][0]["source_row"] == 3
+
+
+def test_nonsense_does_not_retrieve_even_when_conversation_has_product_context():
+    settings = Settings(
+        llm_provider="mock",
+        knowledge_path=KNOWLEDGE_PATH,
+        qdrant_path=None,
+        qdrant_url=None,
+        webhook_secret="test-secret",
+        admin_api_key="test-admin",
+        business_hours_start="00:00",
+        business_hours_end="23:59",
+    )
+    headers = {"X-Webhook-Secret": "test-secret"}
+    with TestClient(create_app(settings)) as client:
+        first = client.post(
+            "/v1/webhooks/simulator",
+            headers=headers,
+            json={
+                "message_id": "context-nonsense-1",
+                "conversation_id": "context-nonsense-conversation",
+                "user_id": "context-user",
+                "text": "5%传明酸是什么？",
+            },
+        )
+        second = client.post(
+            "/v1/webhooks/simulator",
+            headers=headers,
+            json={
+                "message_id": "context-nonsense-2",
+                "conversation_id": "context-nonsense-conversation",
+                "user_id": "context-user",
+                "text": "他好",
+            },
+        )
+    assert first.json()["decision"] == "answered"
+    body = second.json()
+    assert body["decision"] == "safe_fallback"
+    assert body["citations"] == []
+    assert "hybrid_retrieve" not in body["graph_trace"]
 
 
 @pytest.mark.skipif(not SOURCE_PATH.exists(), reason="private source workbook is intentionally not committed")

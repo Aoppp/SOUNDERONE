@@ -128,6 +128,54 @@ def test_greeting_with_business_question_still_uses_hybrid_rag():
     assert "hybrid_retrieve" in body["graph_trace"]
 
 
+def test_low_signal_and_out_of_domain_messages_ask_for_clarification_without_rag():
+    messages = ("他好", "随便说说", "天气怎么样", "……", "怎么用")
+    with make_client() as client:
+        for index, text in enumerate(messages):
+            response = client.post(
+                "/v1/webhooks/simulator",
+                headers={"X-Webhook-Secret": "test-secret"},
+                json={
+                    "message_id": f"nonsense-{index}",
+                    "conversation_id": f"nonsense-conversation-{index}",
+                    "user_id": "user-1",
+                    "text": text,
+                },
+            )
+            assert response.status_code == 200
+            body = response.json()
+            assert body["decision"] == "safe_fallback"
+            assert body["handoff"] is False
+            assert "还没理解" in body["text"]
+            assert body["citations"] == []
+            assert body["graph_trace"] == [
+                "safety_guard",
+                "understand_query",
+                "clarify_response",
+                "output_guard",
+                "finalize_response",
+            ]
+
+
+def test_contextless_pronoun_asks_for_product_name():
+    payload = {
+        "message_id": "pronoun-1",
+        "conversation_id": "pronoun-conversation",
+        "user_id": "user-1",
+        "text": "这个怎么使用？",
+    }
+    with make_client() as client:
+        response = client.post(
+            "/v1/webhooks/simulator",
+            headers={"X-Webhook-Secret": "test-secret"},
+            json=payload,
+        )
+    body = response.json()
+    assert body["decision"] == "safe_fallback"
+    assert body["citations"] == []
+    assert "clarify_response" in body["graph_trace"]
+
+
 def test_webhook_handoffs_refund_request():
     payload = {
         "message_id": "msg-2",

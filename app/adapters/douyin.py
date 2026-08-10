@@ -33,7 +33,7 @@ class DouyinAdapter:
             "conversation_id": reply.conversation_id,
             "decision": reply.decision.value,
             "text": reply.text,
-            "handoff": reply.decision.value != "answered",
+            "handoff": reply.decision.value == "handoff",
             "handoff_reason": reply.handoff_reason,
             "risk_tags": reply.risk_tags,
             "graph_trace": reply.graph_trace,

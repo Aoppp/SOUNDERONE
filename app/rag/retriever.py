@@ -76,6 +76,12 @@ class SearchHit:
 
 
 def _query_intent(query: str) -> str | None:
+    if re.search(r"发货|物流|快递|配送|到货", query):
+        return "shipping"
+    if "发票" in query:
+        return "invoice"
+    if re.search(r"价格|多少钱|优惠|活动|折扣|到手价", query):
+        return "promotion"
     if re.search(r"区别|对比|选哪个|怎么选", query):
         return "comparison"
     if re.search(r"搭配|叠加|一起用|能和|可以和|不能和|同用", query):
@@ -89,6 +95,17 @@ def _matches_intent(document: KnowledgeDocument, intent: str | None) -> bool:
     if intent is None:
         return True
     searchable = document.index_text
+    title_and_tags = f"{document.title}\n{' '.join(document.tags)}"
+    if intent == "shipping":
+        return document.category in {"customer_service_faq", "general"} and bool(
+            re.search(r"发货|物流|快递|配送|到货|时效", title_and_tags)
+        )
+    if intent == "invoice":
+        return document.category in {"customer_service_faq", "general"} and "发票" in title_and_tags
+    if intent == "promotion":
+        return document.category in {"customer_service_faq", "general"} and bool(
+            re.search(r"价格|优惠|活动|折扣|到手价|价保", title_and_tags)
+        )
     if intent == "usage":
         return document.category == "product_usage"
     if intent == "compatibility":
@@ -324,7 +341,10 @@ class HybridKnowledgeBase:
             if required_ascii and not required_ascii.issubset(document_tokens):
                 continue
             intersection = query_tokens & document_tokens
-            meaningful_overlap = any(len(token) >= 2 for token in intersection) or len(intersection) >= 2
+            # Chinese single characters are too noisy for a relevance decision:
+            # e.g. "他好" shares 他/好 with ordinary product copy. Require a
+            # real multi-character term (or an exact ASCII entity handled above).
+            meaningful_overlap = any(len(token) >= 2 for token in intersection)
             if not meaningful_overlap:
                 continue
             rrf = sum(1 / (60 + rank) for rank in channel_ranks.values())

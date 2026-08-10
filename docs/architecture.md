@@ -12,6 +12,7 @@ START
        | risk -> handoff -> END
   -> understand_query
        | pure greeting -> smalltalk_response -> output_guard
+       | unclear / out of domain -> clarify_response -> output_guard
   -> hybrid_retrieve
   -> relevance_gate
        | low confidence -> handoff -> END
@@ -23,8 +24,9 @@ START
 ```
 
 - `safety_guard`：确定性检测不良反应、孕期、医美、复杂售后、法律/舆情和 PII。
-- `understand_query`：识别纯问候，或恢复“这个/这款”指代的上一产品并生成检索查询。
+- `understand_query`：识别纯问候、业务意图和产品上下文；无业务语义、缺少必要产品名或无法解析指代时进入澄清分支，不调用 RAG。
 - `smalltalk_response`：对“你好/在吗/hello”等纯问候返回固定欢迎语，不查询 RAG，避免把寒暄误匹配为产品知识。
+- `clarify_response`：对“他好”“天气怎么样”“怎么用”等低信息或缺上下文消息返回安全澄清，不生成引用，也不错误标记为人工转接。
 - `hybrid_retrieve`：同时执行 Dense 和 BM25，使用 RRF 合并名次。
 - `relevance_gate`：应用置信度、工作时间、产品浓度和查询意图门槛。
 - `generate_answer`：Mock 或 OpenAI Responses API 只使用召回文档组织答案。
@@ -40,7 +42,7 @@ START
 1. `dense`：语义向量。开发/测试使用可复现 hash embedding，生产使用 OpenAI embedding。
 2. `bm25`：基于词频、文档长度和语料 IDF 生成的稀疏向量。
 
-查询时两个通道各召回 Top 50，用 RRF 融合，再结合 IDF 查询覆盖率排序。查询中的英文/数字词元（如 VCIP、5、10）必须出现在候选文档中；“用法/搭配/对比”只在对应知识类别中排序。
+查询时两个通道各召回 Top 50，用 RRF 融合，再结合 IDF 查询覆盖率排序。查询中的英文/数字词元（如 VCIP、5、10）必须出现在候选文档中；中文候选必须与查询共享至少一个多字词，不能仅凭“他/好”等单字碰撞通过。用法、搭配、对比、物流、发票和促销意图只允许匹配相应知识类别及标题标签。若正式库没有物流答案，“多久发货”会转人工，不能误匹配“多久有效果”。
 
 Qdrant 只写入 210 条 `active` 文档。`review_required` 和 `handoff_only` 从运行索引中物理排除。
 

@@ -20,3 +20,5 @@ def test_retrieves_shipping_document():
 def test_unrelated_question_has_no_reliable_hit():
     kb = make_knowledge()
     assert kb.search("你们老板今天穿什么颜色") == []
+    assert kb.search("他好") == []
+    assert kb.search("天气怎么样") == []

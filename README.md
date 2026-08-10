@@ -11,6 +11,7 @@ START
   -> safety_guard
   -> understand_query
        | pure greeting -> smalltalk_response
+       | unclear / out of domain -> clarify_response
   -> hybrid_retrieve
   -> relevance_gate
   -> generate_answer
@@ -19,7 +20,7 @@ START
   -> END
 ```
 
-`safety_guard`、`relevance_gate` 和 `output_guard` 都可以分支到 `handoff`。每次回复会返回 `graph_trace`、知识引用以及命中的 `dense` / `bm25` 检索通道。
+`clarify_response` 不查询知识库，也不附带引用；知识库不存在可靠答案时由 `relevance_gate` 转人工。`safety_guard`、`relevance_gate` 和 `output_guard` 都可以分支到 `handoff`。每次回复会返回 `graph_trace`、知识引用以及命中的 `dense` / `bm25` 检索通道。
 
 ## 技术栈
 
