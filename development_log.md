@@ -70,4 +70,4 @@
 - 在非 iCloud 的 `/tmp` 重建内容等价的干净仓库，保留原始问卷与全部项目文件。
 - 重新生成 `uv.lock`，再次运行测试：15 passed；`compileall` 通过。
 - 干净根提交 `f6f51ca` 已成功推送至 `origin/main`。
-- 工作区使用 `.git.nosync` 保存 Git 对象，避免 iCloud 再次自动卸载；原损坏 Git 对象和占位源码保留在 `*.nosync` 备份目录，不会入库。
+- 工作区使用 `.git.nosync` 保存 Git 对象，虚拟环境固定为 `.venv.nosync`，避免 iCloud 再次自动卸载；原损坏 Git 对象和占位源码保留在 `*.nosync` 备份目录，不会入库。

@@ -18,9 +18,9 @@
 
 ```bash
 cp .env.example .env
-uv venv --python /Users/ao/anaconda3/bin/python
-uv sync --extra dev
-uv run uvicorn app.main:app --reload
+UV_PROJECT_ENVIRONMENT=.venv.nosync uv venv --python /Users/ao/anaconda3/bin/python
+UV_PROJECT_ENVIRONMENT=.venv.nosync uv sync --extra dev
+UV_PROJECT_ENVIRONMENT=.venv.nosync uv run uvicorn app.main:app --reload
 ```
 
 服务启动后：
@@ -53,5 +53,7 @@ curl -X POST http://127.0.0.1:8000/v1/webhooks/simulator \
 ## 测试
 
 ```bash
-uv run pytest
+UV_PROJECT_ENVIRONMENT=.venv.nosync uv run pytest
 ```
+
+项目放在 iCloud Desktop 下时必须保留 `UV_PROJECT_ENVIRONMENT=.venv.nosync`，避免虚拟环境被自动卸载为 `dataless`。

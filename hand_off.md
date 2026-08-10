@@ -12,7 +12,7 @@
 
 ```bash
 git fsck --full
-UV_CACHE_DIR=/tmp/sounderone-uv-cache uv run pytest -q
+UV_CACHE_DIR=/tmp/sounderone-uv-cache UV_PROJECT_ENVIRONMENT=.venv.nosync uv run pytest -q
 git status --short --branch
 ```
 
@@ -29,10 +29,10 @@ git status --short --branch
 
 ```bash
 cp .env.example .env
-UV_CACHE_DIR=/tmp/sounderone-uv-cache uv venv --python /Users/ao/anaconda3/bin/python
-UV_CACHE_DIR=/tmp/sounderone-uv-cache uv sync --extra dev
-UV_CACHE_DIR=/tmp/sounderone-uv-cache uv run pytest
-UV_CACHE_DIR=/tmp/sounderone-uv-cache uv run uvicorn app.main:app --reload
+UV_CACHE_DIR=/tmp/sounderone-uv-cache UV_PROJECT_ENVIRONMENT=.venv.nosync uv venv --python /Users/ao/anaconda3/bin/python
+UV_CACHE_DIR=/tmp/sounderone-uv-cache UV_PROJECT_ENVIRONMENT=.venv.nosync uv sync --extra dev
+UV_CACHE_DIR=/tmp/sounderone-uv-cache UV_PROJECT_ENVIRONMENT=.venv.nosync uv run pytest
+UV_CACHE_DIR=/tmp/sounderone-uv-cache UV_PROJECT_ENVIRONMENT=.venv.nosync uv run uvicorn app.main:app --reload
 ```
 
 详见 `README.md`。接口文档在服务启动后的 `/docs`。
