@@ -86,3 +86,14 @@
 - 生成文件不含手机号、订单号、退货地址或收件人信息；原始 Excel 因包含交易数据加入 `.gitignore`。
 - 检索升级为 IDF 加权的中文单字/双字 + 英文数字词元策略，加入浓度/英文缩写硬匹配和使用/搭配意图过滤。
 - 最终测试：26 passed（含 Excel 重建、PII 排除、冲突隔离、护发搭配、产品对比检索和 Agent 端到端）；`compileall` 通过。
+
+### 抖音单平台 LangGraph + 混合 RAG 重构
+
+- 开发范围从九平台收缩为 `douyin` 和 `simulator`，删除其他平台枚举、GenericAdapter、Adapter 基类和旧平台接入文档。
+- 删除线性 `CustomerServiceAgent` 和旧 `LocalKnowledgeBase`，引入 LangGraph `StateGraph`。
+- 新图包含 `safety_guard`、`understand_query`、`hybrid_retrieve`、`relevance_gate`、`generate_answer`、`output_guard`、`finalize_response` 和 `handoff` 节点。
+- 引入 Qdrant；每条 active 知识同时索引 Dense Vector 和 BM25 Sparse Vector，两路 Top 50 使用 RRF 和 IDF 覆盖率融合。
+- 默认 hash embedding 保证无密钥、无网络的可复现测试；配置 `EMBEDDING_PROVIDER=openai` 后使用真实语义向量。
+- 每次 Agent 回复增加 `graph_trace` 和 `retrieval_channels`，可核对节点路径与 Dense/BM25 召回情况。
+- 新增 `scripts/index_knowledge.py`，可将审核后 JSON 重建为 Qdrant 双索引。
+- 重构后验证：28 passed；持久 Qdrant 索引命令成功写入 210 条 active 知识；`compileall` 和 `git diff --check` 通过。

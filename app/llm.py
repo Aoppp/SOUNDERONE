@@ -2,7 +2,7 @@ from typing import Protocol
 
 from openai import AsyncOpenAI
 
-from app.knowledge import SearchHit
+from app.rag import SearchHit
 
 
 SYSTEM_PROMPT = """你是 SounderOne 官方客服。称呼用户为“宝宝”，语气亲切、柔和、简洁。

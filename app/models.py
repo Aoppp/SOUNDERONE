@@ -7,15 +7,7 @@ from pydantic import BaseModel, Field
 
 
 class Platform(str, Enum):
-    taobao = "taobao"
     douyin = "douyin"
-    jd = "jd"
-    pinduoduo = "pinduoduo"
-    xiaohongshu = "xiaohongshu"
-    wechat_store = "wechat_store"
-    kuaishou = "kuaishou"
-    mogujie = "mogujie"
-    dewu = "dewu"
     simulator = "simulator"
 
 
@@ -42,6 +34,7 @@ class Citation(BaseModel):
     source_sheet: str | None = None
     source_row: int | None = None
     category: str | None = None
+    retrieval_channels: list[str] = Field(default_factory=list)
 
 
 class AgentReply(BaseModel):
@@ -52,6 +45,7 @@ class AgentReply(BaseModel):
     citations: list[Citation] = Field(default_factory=list)
     handoff_reason: str | None = None
     risk_tags: list[str] = Field(default_factory=list)
+    graph_trace: list[str] = Field(default_factory=list)
 
 
 class ConversationEvent(BaseModel):

@@ -4,10 +4,11 @@ from fastapi import FastAPI
 
 from app.api.routes import router
 from app.config import Settings, get_settings
-from app.knowledge import LocalKnowledgeBase
+from app.agent import SounderOneGraphAgent
 from app.llm import MockLanguageModel, OpenAILanguageModel
 from app.policy import SafetyPolicy
-from app.service import CustomerServiceAgent
+from app.rag import HybridKnowledgeBase
+from app.rag.embeddings import HashDenseEmbedder, OpenAIDenseEmbedder
 from app.store import InMemoryConversationStore
 
 
@@ -16,7 +17,25 @@ def create_app(settings: Settings | None = None) -> FastAPI:
 
     @asynccontextmanager
     async def lifespan(app: FastAPI):
-        knowledge = LocalKnowledgeBase(resolved.knowledge_path)
+        if resolved.embedding_provider == "openai":
+            if not resolved.openai_api_key:
+                raise RuntimeError("OPENAI_API_KEY is required when EMBEDDING_PROVIDER=openai")
+            embedder = OpenAIDenseEmbedder(
+                resolved.openai_api_key,
+                resolved.embedding_model,
+                resolved.embedding_dimensions,
+            )
+        else:
+            embedder = HashDenseEmbedder(resolved.embedding_dimensions)
+        knowledge = HybridKnowledgeBase(
+            resolved.knowledge_path,
+            embedder,
+            collection_name=resolved.qdrant_collection,
+            qdrant_url=resolved.qdrant_url,
+            qdrant_api_key=resolved.qdrant_api_key,
+            qdrant_path=resolved.qdrant_path,
+            rebuild=resolved.rag_rebuild_on_startup,
+        )
         policy = SafetyPolicy(
             resolved.business_timezone,
             resolved.business_hours_start,
@@ -32,10 +51,11 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         app.state.settings = resolved
         app.state.knowledge = knowledge
         app.state.store = store
-        app.state.agent = CustomerServiceAgent(resolved, knowledge, policy, llm, store)
+        app.state.agent = SounderOneGraphAgent(resolved, knowledge, policy, llm, store)
         yield
+        knowledge.close()
 
-    app = FastAPI(title="SounderOne Customer Service Agent", version="0.1.0", lifespan=lifespan)
+    app = FastAPI(title="SounderOne Douyin Customer Service Agent", version="0.2.0", lifespan=lifespan)
     app.include_router(router)
     return app
 

@@ -23,6 +23,9 @@ def test_health():
         response = client.get("/health")
         assert response.status_code == 200
         assert response.json()["knowledge_documents"] == 3
+        assert response.json()["agent_runtime"] == "langgraph"
+        assert response.json()["retrieval"] == "qdrant_dense_bm25_rrf"
+        assert response.json()["platforms"] == ["douyin", "simulator"]
 
 
 def test_webhook_answers_grounded_question_and_records_history():
@@ -42,6 +45,16 @@ def test_webhook_answers_grounded_question_and_records_history():
         body = response.json()
         assert body["decision"] == "answered"
         assert body["citations"][0]["document_id"] == "demo-shipping-001"
+        assert body["citations"][0]["retrieval_channels"] == ["bm25", "dense"]
+        assert body["graph_trace"] == [
+            "safety_guard",
+            "understand_query",
+            "hybrid_retrieve",
+            "relevance_gate",
+            "generate_answer",
+            "output_guard",
+            "finalize_response",
+        ]
 
         history = client.get(
             "/v1/conversations/conversation-1", headers={"X-Admin-Key": "test-admin"}
@@ -59,7 +72,7 @@ def test_webhook_handoffs_refund_request():
     }
     with make_client() as client:
         response = client.post(
-            "/v1/webhooks/taobao",
+            "/v1/webhooks/douyin",
             headers={"X-Webhook-Secret": "test-secret"},
             json=payload,
         )
@@ -69,14 +82,14 @@ def test_webhook_handoffs_refund_request():
 
 def test_webhook_requires_secret():
     with make_client() as client:
-        response = client.post("/v1/webhooks/jd", json={})
+        response = client.post("/v1/webhooks/douyin", json={})
         assert response.status_code == 401
 
 
 def test_malformed_authenticated_webhook_returns_422():
     with make_client() as client:
         response = client.post(
-            "/v1/webhooks/jd",
+            "/v1/webhooks/douyin",
             headers={"X-Webhook-Secret": "test-secret"},
             json={"text": "缺少消息标识"},
         )
@@ -116,7 +129,7 @@ def test_sensitive_data_is_redacted_in_audit_history():
     }
     with make_client() as client:
         client.post(
-            "/v1/webhooks/wechat_store",
+            "/v1/webhooks/douyin",
             headers={"X-Webhook-Secret": "test-secret"},
             json=payload,
         )
@@ -125,3 +138,13 @@ def test_sensitive_data_is_redacted_in_audit_history():
         ).json()
         assert "13800138000" not in history[0]["incoming"]["text"]
         assert "[已脱敏]" in history[0]["incoming"]["text"]
+
+
+def test_removed_platform_is_rejected():
+    with make_client() as client:
+        response = client.post(
+            "/v1/webhooks/taobao",
+            headers={"X-Webhook-Secret": "test-secret"},
+            json={"message_id": "1", "conversation_id": "1", "user_id": "1", "text": "hi"},
+        )
+        assert response.status_code == 422

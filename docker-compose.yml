@@ -5,11 +5,30 @@ services:
       LLM_PROVIDER: ${LLM_PROVIDER:-mock}
       OPENAI_API_KEY: ${OPENAI_API_KEY:-}
       OPENAI_MODEL: ${OPENAI_MODEL:-gpt-5-mini}
+      EMBEDDING_PROVIDER: ${EMBEDDING_PROVIDER:-hash}
+      EMBEDDING_MODEL: ${EMBEDDING_MODEL:-text-embedding-3-small}
+      EMBEDDING_DIMENSIONS: ${EMBEDDING_DIMENSIONS:-384}
       WEBHOOK_SECRET: ${WEBHOOK_SECRET:-change-me}
       ADMIN_API_KEY: ${ADMIN_API_KEY:-change-me-admin}
       KNOWLEDGE_PATH: /app/knowledge/sounderone_knowledge.json
+      KNOWLEDGE_MIN_SCORE: ${KNOWLEDGE_MIN_SCORE:-0.48}
+      QDRANT_URL: http://qdrant:6333
+      QDRANT_COLLECTION: sounderone_knowledge
+      RAG_REBUILD_ON_STARTUP: "true"
     ports:
       - "8000:8000"
     volumes:
       - ./knowledge:/app/knowledge:ro
+    depends_on:
+      - qdrant
     restart: unless-stopped
+  qdrant:
+    image: qdrant/qdrant:v1.19.0
+    ports:
+      - "6333:6333"
+    volumes:
+      - qdrant_data:/qdrant/storage
+    restart: unless-stopped
+
+volumes:
+  qdrant_data:

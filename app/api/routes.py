@@ -4,7 +4,7 @@ from typing import Annotated, Any
 from fastapi import APIRouter, Header, HTTPException, Request
 from pydantic import ValidationError
 
-from app.adapters.generic import GenericAdapter
+from app.adapters.douyin import DouyinAdapter
 from app.models import Platform
 
 router = APIRouter()
@@ -22,6 +22,9 @@ async def health(request: Request) -> dict[str, Any]:
         "status": "ok",
         "knowledge_documents": len(request.app.state.knowledge.documents),
         "active_knowledge_documents": len(request.app.state.knowledge.active_documents),
+        "agent_runtime": "langgraph",
+        "retrieval": "qdrant_dense_bm25_rrf",
+        "platforms": ["douyin", "simulator"],
     }
 
 
@@ -35,7 +38,7 @@ async def webhook(
     expected = request.app.state.settings.webhook_secret
     if expected and not hmac.compare_digest(x_webhook_secret or "", expected):
         raise HTTPException(status_code=401, detail="invalid webhook secret")
-    adapter = GenericAdapter(platform)
+    adapter = DouyinAdapter(platform)
     try:
         message = adapter.parse(payload)
     except (KeyError, TypeError, ValidationError) as exc:

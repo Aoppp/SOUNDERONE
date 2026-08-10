@@ -7,13 +7,18 @@ from fastapi.testclient import TestClient
 
 from app.config import Settings
 from app.ingestion.xlsx import build_knowledge
-from app.knowledge import LocalKnowledgeBase
+from app.rag import HybridKnowledgeBase
+from app.rag.embeddings import HashDenseEmbedder
 from app.main import create_app
 
 
 KNOWLEDGE_PATH = Path("knowledge/sounderone_knowledge.json")
 REPORT_PATH = Path("knowledge/build_report.json")
 SOURCE_PATH = Path("产品话术汇总完整版本.xlsx")
+
+
+def make_knowledge() -> HybridKnowledgeBase:
+    return HybridKnowledgeBase(KNOWLEDGE_PATH, HashDenseEmbedder())
 
 
 def test_generated_knowledge_has_expected_safety_partition():
@@ -52,7 +57,7 @@ def test_order_sheets_are_excluded_and_conflicts_are_reported():
 
 
 def test_product_usage_retrieval_is_concentration_specific_and_traceable():
-    knowledge = LocalKnowledgeBase(KNOWLEDGE_PATH)
+    knowledge = make_knowledge()
     hits = knowledge.search("5%传明酸怎么使用")
     assert hits
     assert hits[0].document.category == "product_usage"
@@ -62,7 +67,7 @@ def test_product_usage_retrieval_is_concentration_specific_and_traceable():
 
 
 def test_conflicting_ergothioneine_concentration_is_not_searchable():
-    knowledge = LocalKnowledgeBase(KNOWLEDGE_PATH)
+    knowledge = make_knowledge()
     hits = knowledge.search("麦角硫因浓度是多少", limit=10)
     assert hits
     assert "0.5%" in hits[0].document.content
@@ -70,13 +75,13 @@ def test_conflicting_ergothioneine_concentration_is_not_searchable():
 
 
 def test_missing_vcip_usage_does_not_return_unrelated_documents():
-    knowledge = LocalKnowledgeBase(KNOWLEDGE_PATH)
+    knowledge = make_knowledge()
     hits = knowledge.search("VCIP怎么用")
     assert hits == []
 
 
 def test_comparison_and_hair_pairing_use_the_workbook_semantics():
-    knowledge = LocalKnowledgeBase(KNOWLEDGE_PATH)
+    knowledge = make_knowledge()
     comparison_hits = knowledge.search("5%和10%传明酸有什么区别")
     assert comparison_hits[0].document.category == "product_comparison"
     assert comparison_hits[0].document.source_row == 5
@@ -136,6 +141,43 @@ def test_pregnancy_question_handoffs_before_knowledge_generation():
     body = response.json()
     assert body["decision"] == "handoff"
     assert "sensitive_population" in body["risk_tags"]
+
+
+def test_langgraph_resolves_product_reference_across_turns():
+    settings = Settings(
+        llm_provider="mock",
+        knowledge_path=KNOWLEDGE_PATH,
+        webhook_secret="test-secret",
+        admin_api_key="test-admin",
+        business_hours_start="00:00",
+        business_hours_end="23:59",
+    )
+    headers = {"X-Webhook-Secret": "test-secret"}
+    with TestClient(create_app(settings)) as client:
+        first = client.post(
+            "/v1/webhooks/simulator",
+            headers=headers,
+            json={
+                "message_id": "context-1",
+                "conversation_id": "context-conversation",
+                "user_id": "context-user",
+                "text": "5%传明酸是什么？",
+            },
+        )
+        second = client.post(
+            "/v1/webhooks/simulator",
+            headers=headers,
+            json={
+                "message_id": "context-2",
+                "conversation_id": "context-conversation",
+                "user_id": "context-user",
+                "text": "这个怎么使用？",
+            },
+        )
+    assert first.json()["decision"] == "answered"
+    assert second.json()["decision"] == "answered"
+    assert second.json()["citations"][0]["category"] == "product_usage"
+    assert second.json()["citations"][0]["source_row"] == 3
 
 
 @pytest.mark.skipif(not SOURCE_PATH.exists(), reason="private source workbook is intentionally not committed")

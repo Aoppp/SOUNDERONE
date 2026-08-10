@@ -10,8 +10,16 @@ class Settings(BaseSettings):
     llm_provider: str = "mock"
     openai_api_key: str | None = None
     openai_model: str = "gpt-5-mini"
+    embedding_provider: str = "hash"
+    embedding_model: str = "text-embedding-3-small"
+    embedding_dimensions: int = 384
     knowledge_path: Path = Path("knowledge/sounderone_knowledge.json")
-    knowledge_min_score: float = 0.18
+    knowledge_min_score: float = 0.48
+    qdrant_url: str | None = None
+    qdrant_api_key: str | None = None
+    qdrant_path: Path | None = None
+    qdrant_collection: str = "sounderone_knowledge"
+    rag_rebuild_on_startup: bool = True
     webhook_secret: str | None = "change-me"
     admin_api_key: str = "change-me-admin"
     business_timezone: str = "Asia/Shanghai"

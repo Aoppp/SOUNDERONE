@@ -1,37 +1,53 @@
-# SounderOne 多平台智能客服 Agent
+# SounderOne 抖音智能客服 Agent
 
-这是一个可运行的首期客服 Agent 后端。项目已将问卷中的业务边界落实为程序规则：AI 不执行退款、补发或修改订单；不良反应、复杂售后、强烈情绪、法律/舆情、敏感个人信息及知识不足场景自动转人工；非工作时间采取更严格的回答阈值。
+这是一个聚焦抖音单平台的客服 Agent MVP。LangGraph 负责有状态工作流，Qdrant 同时执行 Dense Vector 和 BM25 检索，再使用 RRF 融合。高风险、知识不足和生成违规内容会绕过自动回答并转人工。
 
-当前已经由 `产品话术汇总完整版本.xlsx` 构建出可追溯的正式知识库候选集。系统只自动检索审核规则允许的条目；冲突、孕期/医美、不良反应和复杂售后内容不会作为自动回答依据。淘宝、抖音、京东、拼多多、小红书、微信小店、快手、蘑菇街、得物均已有统一接入入口；各平台真实验签、消息字段和发消息 API 仍需要开放平台应用、权限和官方回调样例。
+当前只接受 `douyin` 和本地 `simulator`，已删除其他电商平台的预留代码。抖音正式验签、解密和发送 API 需要应用凭证与官方回调样例后完成。
+
+## 工作流
+
+```text
+START
+  -> safety_guard
+  -> understand_query
+  -> hybrid_retrieve
+  -> relevance_gate
+  -> generate_answer
+  -> output_guard
+  -> finalize_response
+  -> END
+```
+
+`safety_guard`、`relevance_gate` 和 `output_guard` 都可以分支到 `handoff`。每次回复会返回 `graph_trace`、知识引用以及命中的 `dense` / `bm25` 检索通道。
 
 ## 技术栈
 
 - Python 3.11+、FastAPI、Pydantic
-- OpenAI Responses API（可选）；默认 Mock 模式无需密钥
-- Excel 确定性导入、IDF 加权中文词法检索；生产目标为 BM25 + PostgreSQL/pgvector 混合检索
-- 进程内会话存储用于开发；生产目标为 PostgreSQL，Redis 用于幂等、限流和异步任务
-- pytest、Docker、GitHub Actions（待绑定远程仓库后启用仓库规则）
+- LangGraph `StateGraph` 和开发期 `InMemorySaver`
+- Qdrant Dense Vector + BM25 Sparse Vector
+- Reciprocal Rank Fusion（RRF）
+- OpenAI Responses API（可选）
+- OpenAI Embeddings（生产可选）；默认 hash embedding 只用于离线开发和测试
+- Excel 确定性清洗、冲突检测和风险分区
 
-架构和演进说明见 [docs/architecture.md](docs/architecture.md)，知识审计见 [docs/knowledge_base_analysis.md](docs/knowledge_base_analysis.md)，平台接入清单见 [docs/platform_integration.md](docs/platform_integration.md)。
+架构详情见 [docs/architecture.md](docs/architecture.md)，抖音接入边界见 [docs/douyin_integration.md](docs/douyin_integration.md)，知识审计见 [docs/knowledge_base_analysis.md](docs/knowledge_base_analysis.md)。
 
 ## 本地运行
 
 ```bash
 cp .env.example .env
-UV_PROJECT_ENVIRONMENT=.venv.nosync uv venv --python /Users/ao/anaconda3/bin/python
-UV_PROJECT_ENVIRONMENT=.venv.nosync uv sync --extra dev
-UV_PROJECT_ENVIRONMENT=.venv.nosync uv run uvicorn app.main:app --reload
+UV_CACHE_DIR=/tmp/sounderone-uv-cache UV_PROJECT_ENVIRONMENT=.venv.nosync uv sync --extra dev
+UV_CACHE_DIR=/tmp/sounderone-uv-cache UV_PROJECT_ENVIRONMENT=.venv.nosync uv run uvicorn app.main:app --reload
 ```
 
-服务启动后：
+默认使用内存 Qdrant、hash embedding 和 Mock LLM，无需密钥。生产向量需设置：
 
-- 健康检查：`GET http://127.0.0.1:8000/health`
-- OpenAPI：`http://127.0.0.1:8000/docs`
-- 模拟消息：`POST /v1/webhooks/simulator`
-- 重载知识库：`POST /v1/admin/knowledge/reload`
-- 会话审计：`GET /v1/conversations/{conversation_id}`
-
-管理接口需传 `X-Admin-Key`；生产环境必须替换示例密钥。平台会以 `(platform, message_id)` 幂等处理重复事件，审计记录会自动遮盖手机号和身份证号。
+```dotenv
+LLM_PROVIDER=openai
+EMBEDDING_PROVIDER=openai
+OPENAI_API_KEY=...
+QDRANT_URL=http://qdrant:6333
+```
 
 模拟请求：
 
@@ -39,33 +55,32 @@ UV_PROJECT_ENVIRONMENT=.venv.nosync uv run uvicorn app.main:app --reload
 curl -X POST http://127.0.0.1:8000/v1/webhooks/simulator \
   -H 'Content-Type: application/json' \
   -H 'X-Webhook-Secret: change-me' \
-  -d '{"message_id":"m1","conversation_id":"c1","user_id":"u1","text":"多久发货？"}'
+  -d '{"message_id":"m1","conversation_id":"c1","user_id":"u1","text":"5%传明酸怎么使用？"}'
 ```
 
-## 使用 OpenAI
+常用接口：
 
-在 `.env` 中设置 `LLM_PROVIDER=openai`、`OPENAI_API_KEY` 和可用的 `OPENAI_MODEL`。模型只负责在召回资料的范围内组织语言；转人工和合规判断位于模型调用前后，不依赖提示词自觉。
+- `GET /health`
+- `POST /v1/webhooks/douyin`
+- `POST /v1/webhooks/simulator`
+- `POST /v1/admin/knowledge/reload`
+- `GET /v1/conversations/{conversation_id}`
 
-## 重建知识库
+## 知识库更新
 
-原始工作簿含订单明细，因此被明确排除在 Git 之外。更新本地 Excel 后运行：
+原始 Excel 含订单数据，已被 Git 忽略。更新流程：
 
 ```bash
-UV_PROJECT_ENVIRONMENT=.venv.nosync uv run python scripts/build_knowledge.py \
-  '产品话术汇总完整版本.xlsx'
+UV_PROJECT_ENVIRONMENT=.venv.nosync uv run python scripts/build_knowledge.py '产品话术汇总完整版本.xlsx'
+UV_PROJECT_ENVIRONMENT=.venv.nosync uv run python scripts/index_knowledge.py
 ```
 
-构建器会生成：
-
-- `knowledge/sounderone_knowledge.json`：Agent 使用的知识条目。
-- `knowledge/build_report.json`：工作表决策、条目状态、风险标签和冲突报告。
-
-不要直接编辑生成 JSON。应修改来源 Excel，重新构建并检查报告，然后调用 `POST /v1/admin/knowledge/reload`。当前从 291 条原始候选合并 4 条重复内容后得到 287 条：210 条 active、39 条 review-required、38 条 handoff-only。只有 active 条目参与自动检索。
+第一条命令生成脱敏 JSON 和冲突报告；第二条命令将 210 条 `active` 知识建立为 Dense + BM25 双索引。
 
 ## 测试
 
 ```bash
-UV_PROJECT_ENVIRONMENT=.venv.nosync uv run pytest
+UV_CACHE_DIR=/tmp/sounderone-uv-cache UV_PROJECT_ENVIRONMENT=.venv.nosync uv run pytest -q -p no:cacheprovider
 ```
 
-项目放在 iCloud Desktop 下时必须保留 `UV_PROJECT_ENVIRONMENT=.venv.nosync`，避免虚拟环境被自动卸载为 `dataless`。
+原始知识中 39 条 `review_required` 和 38 条 `handoff_only` 不会进入 Qdrant 自动回答索引。
