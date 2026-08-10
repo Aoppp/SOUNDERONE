@@ -1,0 +1,15 @@
+services:
+  api:
+    build: .
+    environment:
+      LLM_PROVIDER: ${LLM_PROVIDER:-mock}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      OPENAI_MODEL: ${OPENAI_MODEL:-gpt-5-mini}
+      WEBHOOK_SECRET: ${WEBHOOK_SECRET:-change-me}
+      ADMIN_API_KEY: ${ADMIN_API_KEY:-change-me-admin}
+      KNOWLEDGE_PATH: /app/knowledge/sample.json
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./knowledge:/app/knowledge:ro
+    restart: unless-stopped
