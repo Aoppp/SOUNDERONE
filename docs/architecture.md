@@ -37,7 +37,7 @@ START
 - `hybrid_retrieve`：同时执行 Dense 和 BM25，使用 RRF 合并名次。
 - `relevance_gate`：应用置信度、工作时间、产品浓度和查询意图门槛。
 - `generate_answer`：默认 Mock；生产可配置 DeepSeek V4 Flash，亦保留 OpenAI 替代。模型只组织检索片段，返回 `INSUFFICIENT_KNOWLEDGE` 或调用失败时转人工。
-- `output_guard`：拦截医疗、绝对化功效和未授权承诺。
+- `output_guard`：拦截医疗、绝对化功效和未授权承诺，并确定性清理“根据现有资料/知识库提到/目前资料里”等第三方转述措辞。
 - `finalize_response`：返回引用、检索通道和完整节点轨迹。
 
 开发期使用 LangGraph `InMemorySaver`。它支持单进程多轮上下文，但重启后丢失；抖音灰度上线前替换为 Postgres Checkpointer。

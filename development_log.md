@@ -140,4 +140,5 @@
 - 接入官方 OpenAI 兼容接口的 `DeepSeekLanguageModel`，默认生产模型配置为 `deepseek-v4-flash`；模型只依据召回片段组织话术，返回 `INSUFFICIENT_KNOWLEDGE`、空内容或 API 故障时统一转人工。
 - 保留 Mock 和 OpenAI 适配器；自动化测试不需要模型密钥。DeepSeek 适配器先使用模拟响应完成请求结构隔离测试，随后使用本地 `.env` 中的密钥完成真实 `deepseek-v4-flash` 调用；密钥文件被 Git 忽略，密钥值不写入日志或提交。
 - 第一次真实调用因上下文只包含规范标题和正文、缺少“5%传明酸”别名标签而安全返回 `INSUFFICIENT_KNOWLEDGE`。修复为向模型提供知识类型、分类、标签和正文，并明确标签只用于产品身份确认；复测与运行中完整 Graph 请求均正确回答且引用唯一可靠产品文档。
-- 验证：42 passed；Python `compileall`、JavaScript 语法和 `git diff --check` 通过。正式双库运行烟雾测试确认287条/210 active，范围外、缺上下文、产品回答和高危转人工四条路径符合预期。
+- 客服口吻改为官方直接回答：生成提示明确禁止“根据产品介绍”“根据现有资料”“知识库里提到的”“目前资料里”等内部来源表达；Mock 同步移除固定前缀，`output_guard` 增加确定性清理作为第二层保障。
+- 验证：43 passed；Python `compileall`、JavaScript 语法和 `git diff --check` 通过。正式 DeepSeek 烟雾测试以直接客服口吻回答5%传明酸用法，没有内部资料转述措辞。

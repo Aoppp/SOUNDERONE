@@ -53,6 +53,17 @@ class SafetyPolicy:
     }
     FORBIDDEN_CLAIMS = ("治疗", "治愈", "抗炎", "消炎", "药到病除", "永久", "百分百", "保证有效")
     SENSITIVE_DATA = re.compile(r"(?<!\d)1[3-9]\d{9}(?!\d)|\b\d{15,18}[0-9Xx]\b")
+    INTERNAL_SOURCE_PATTERNS = (
+        re.compile(
+            r"(?:根据|按照)(?:SOUNDERONE)?(?:的)?(?:产品介绍|现有资料|目前资料|相关资料|官方资料)[，,：:\s]*",
+            re.IGNORECASE,
+        ),
+        re.compile(
+            r"(?:从)?(?:知识库|资料)(?:里|中)?(?:提到|显示|说明|介绍)(?:的|了)?[，,：:\s]*"
+        ),
+        re.compile(r"(?:据)?(?:现有|目前)?资料(?:里|中)?(?:提到|显示|说明|介绍)[，,：:\s]*"),
+        re.compile(r"从知识库来看[，,：:\s]*"),
+    )
 
     def __init__(self, timezone: str, start: str, end: str):
         self.timezone = ZoneInfo(timezone)
@@ -81,9 +92,12 @@ class SafetyPolicy:
         return self.start <= local <= self.end
 
     def sanitize_output(self, text: str) -> tuple[str, list[str]]:
+        for pattern in self.INTERNAL_SOURCE_PATTERNS:
+            text = pattern.sub("", text)
+        text = re.sub(r"宝宝[，,]\s*[，,：:]", "宝宝，", text).strip()
         found = [word for word in self.FORBIDDEN_CLAIMS if word in text]
         if found:
-            return "宝宝，这个问题需要以商品详情页和官方资料为准，我帮您转接人工客服进一步确认。", found
+            return "宝宝，这个问题需要进一步确认，我马上为您转接人工客服。", found
         return text, []
 
     def redact_sensitive_data(self, text: str) -> str:

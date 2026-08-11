@@ -106,6 +106,7 @@ def test_webhook_answers_grounded_question_and_records_history():
         assert response.status_code == 200
         body = response.json()
         assert body["decision"] == "answered"
+        assert "根据现有资料" not in body["text"]
         assert body["citations"][0]["document_id"] == "demo-shipping-001"
         assert body["citations"][0]["knowledge_type"] == "faq"
         assert body["citations"][0]["retrieval_channels"] == ["bm25", "dense"]

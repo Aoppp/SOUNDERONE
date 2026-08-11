@@ -32,6 +32,26 @@ def test_output_claim_is_blocked():
     assert "转接人工" in output
 
 
+def test_output_guard_removes_internal_source_language():
+    policy = make_policy()
+    examples = (
+        "宝宝，根据现有资料：建议早晚使用。",
+        "宝宝，根据产品介绍，建议早晚使用。",
+        "宝宝，知识库里提到的建议是早晚使用。",
+        "宝宝，目前资料里显示建议早晚使用。",
+        "宝宝，从知识库来看，建议早晚使用。",
+    )
+    for example in examples:
+        output, found = policy.sanitize_output(example)
+        assert output.startswith("宝宝，")
+        assert "早晚使用" in output
+        assert all(
+            phrase not in output
+            for phrase in ("根据现有资料", "根据产品介绍", "知识库", "目前资料", "资料里")
+        )
+        assert found == []
+
+
 def test_business_hours_are_timezone_aware():
     policy = make_policy()
     assert policy.is_business_hours(datetime(2026, 8, 8, 14, 0, tzinfo=ZoneInfo("Asia/Shanghai")))
