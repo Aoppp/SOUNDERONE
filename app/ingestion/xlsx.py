@@ -9,6 +9,7 @@ import unicodedata
 import zipfile
 from collections import Counter, defaultdict
 from dataclasses import dataclass
+from decimal import Decimal, InvalidOperation, ROUND_HALF_UP
 from pathlib import Path
 from typing import Any
 from xml.etree import ElementTree as ET
@@ -18,6 +19,20 @@ MAIN_NS = "http://schemas.openxmlformats.org/spreadsheetml/2006/main"
 REL_NS = "http://schemas.openxmlformats.org/officeDocument/2006/relationships"
 PACKAGE_REL_NS = "http://schemas.openxmlformats.org/package/2006/relationships"
 NS = {"m": MAIN_NS, "r": REL_NS, "pr": PACKAGE_REL_NS}
+
+# Excel stores percentages as fractions (for example, 0.002) and relies on the
+# cell style to display them as 0.20%.  Knowledge ingestion must preserve that
+# displayed meaning instead of exposing the raw OOXML storage value.
+BUILTIN_NUMBER_FORMATS = {
+    0: "General",
+    1: "0",
+    2: "0.00",
+    3: "#,##0",
+    4: "#,##0.00",
+    9: "0%",
+    10: "0.00%",
+}
+SCIENTIFIC_NUMBER_RE = re.compile(r"^[+-]?(?:\d+(?:\.\d*)?|\.\d+)[Ee][+-]?\d+$")
 
 CANONICAL_PRODUCT_SHEET = "三蛋丸"
 LEGACY_PRODUCT_SHEET = "三蛋丸产品介绍"
@@ -121,6 +136,41 @@ def split_reference(reference: str) -> tuple[str, int]:
     return match.group(1), int(match.group(2))
 
 
+def _visible_number_format(format_code: str) -> str:
+    """Remove quoted/escaped literals before inspecting an Excel format code."""
+
+    return re.sub(r'"[^"]*"|\\.', "", format_code).split(";", 1)[0]
+
+
+def _format_numeric_value(raw_value: str, format_code: str) -> str:
+    """Render numeric OOXML values using the meaningful part of their cell style."""
+
+    visible_format = _visible_number_format(format_code)
+    if "%" in visible_format:
+        try:
+            value = Decimal(raw_value) * 100
+        except InvalidOperation:
+            return raw_value
+        before_percent = visible_format.split("%", 1)[0]
+        decimal_match = re.search(r"\.([0#?]+)", before_percent)
+        decimal_places = len(decimal_match.group(1)) if decimal_match else 0
+        value = value.quantize(Decimal(1).scaleb(-decimal_places), rounding=ROUND_HALF_UP)
+        return f"{value:.{decimal_places}f}%"
+
+    # A raw scientific-notation value is an implementation detail, and is easy
+    # for an LLM to repeat verbatim. Use a plain decimal when no display scaling
+    # (such as percentage) applies.
+    if SCIENTIFIC_NUMBER_RE.fullmatch(raw_value):
+        try:
+            plain = format(Decimal(raw_value), "f")
+        except InvalidOperation:
+            return raw_value
+        if "." in plain:
+            plain = plain.rstrip("0").rstrip(".")
+        return plain or "0"
+    return raw_value
+
+
 @dataclass(frozen=True)
 class Sheet:
     name: str
@@ -143,6 +193,7 @@ class XlsxWorkbook:
     def read(self) -> tuple[list[Sheet], int]:
         with zipfile.ZipFile(self.path) as archive:
             shared_strings = self._shared_strings(archive)
+            number_formats = self._number_formats(archive)
             workbook = ET.fromstring(archive.read("xl/workbook.xml"))
             relationships = ET.fromstring(archive.read("xl/_rels/workbook.xml.rels"))
             targets = {rel.attrib["Id"]: rel.attrib["Target"] for rel in relationships}
@@ -152,7 +203,15 @@ class XlsxWorkbook:
                 target = targets[relationship_id].lstrip("/")
                 if not target.startswith("xl/"):
                     target = posixpath.normpath(posixpath.join("xl", target))
-                sheets.append(self._sheet(archive, target, element.attrib["name"], shared_strings))
+                sheets.append(
+                    self._sheet(
+                        archive,
+                        target,
+                        element.attrib["name"],
+                        shared_strings,
+                        number_formats,
+                    )
+                )
             image_count = sum(name.startswith("xl/media/") for name in archive.namelist())
             return sheets, image_count
 
@@ -167,8 +226,32 @@ class XlsxWorkbook:
         ]
 
     @staticmethod
+    def _number_formats(archive: zipfile.ZipFile) -> tuple[str, ...]:
+        if "xl/styles.xml" not in archive.namelist():
+            return ()
+        root = ET.fromstring(archive.read("xl/styles.xml"))
+        custom_formats = {
+            int(node.attrib["numFmtId"]): node.attrib.get("formatCode", "General")
+            for node in root.findall("m:numFmts/m:numFmt", NS)
+        }
+        cell_formats = root.find("m:cellXfs", NS)
+        if cell_formats is None:
+            return ()
+        return tuple(
+            custom_formats.get(
+                int(style.attrib.get("numFmtId", "0")),
+                BUILTIN_NUMBER_FORMATS.get(int(style.attrib.get("numFmtId", "0")), "General"),
+            )
+            for style in cell_formats.findall("m:xf", NS)
+        )
+
+    @staticmethod
     def _sheet(
-        archive: zipfile.ZipFile, target: str, name: str, shared_strings: list[str]
+        archive: zipfile.ZipFile,
+        target: str,
+        name: str,
+        shared_strings: list[str],
+        number_formats: tuple[str, ...],
     ) -> Sheet:
         root = ET.fromstring(archive.read(target))
         row_map: dict[int, dict[str, str]] = {}
@@ -188,6 +271,11 @@ class XlsxWorkbook:
                     value = shared_strings[int(value_node.text or "0")]
                 else:
                     value = value_node.text or ""
+                    style_index = int(cell.attrib.get("s", "0"))
+                    format_code = (
+                        number_formats[style_index] if style_index < len(number_formats) else "General"
+                    )
+                    value = _format_numeric_value(value, format_code)
                 values[column] = normalize_text(value)
             row_map[row_number] = values
 

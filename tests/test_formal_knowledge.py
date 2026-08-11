@@ -6,7 +6,12 @@ import pytest
 from fastapi.testclient import TestClient
 
 from app.config import Settings
-from app.ingestion.xlsx import build_knowledge, split_knowledge_payload
+from app.ingestion.xlsx import (
+    XlsxWorkbook,
+    _format_numeric_value,
+    build_knowledge,
+    split_knowledge_payload,
+)
 from app.rag import HybridKnowledgeBase
 from app.rag.embeddings import HashDenseEmbedder
 from app.main import create_app
@@ -21,6 +26,20 @@ SOURCE_PATH = Path("source_materials/产品话术汇总完整版本.xlsx")
 
 def make_knowledge() -> HybridKnowledgeBase:
     return HybridKnowledgeBase(KNOWLEDGE_PATH, HashDenseEmbedder())
+
+
+def test_excel_numeric_display_formats_are_preserved():
+    assert _format_numeric_value("2E-3", "0.00%") == "0.20%"
+    assert _format_numeric_value("0.125", "0%") == "13%"
+    assert _format_numeric_value("2E-3", "General") == "0.002"
+
+
+@pytest.mark.skipif(not SOURCE_PATH.exists(), reason="private source workbook is intentionally not committed")
+def test_source_b5_percentage_uses_excel_display_value():
+    sheets, _ = XlsxWorkbook(SOURCE_PATH).read()
+    faq_sheet = next(sheet for sheet in sheets if sheet.name == "三蛋丸微信群QA记录")
+    row = next(item for item in faq_sheet.rows if item["_row"] == "85")
+    assert row["B"] == "0.20%"
 
 
 def test_generated_knowledge_has_expected_safety_partition():
@@ -79,6 +98,18 @@ def test_product_usage_retrieval_is_concentration_specific_and_traceable():
     assert hits[0].document.source_sheet == "三蛋丸"
     assert hits[0].document.source_row == 3
     assert "10%传明酸" not in hits[0].document.title
+
+
+def test_b5_percentage_retrieval_never_exposes_raw_scientific_notation():
+    knowledge = make_knowledge()
+    hits = knowledge.search("b5洗发水，b5含量百分之多少呢")
+    assert hits
+    assert hits[0].document.content == "0.20%"
+    assert hits[0].document.source_row == 85
+    searchable_text = "\n".join(
+        document.title + "\n" + document.content for document in knowledge.documents
+    )
+    assert re.search(r"(?i)(?<![\w])\d+(?:\.\d+)?e[+-]?\d+(?![\w])", searchable_text) is None
 
 
 def test_conflicting_ergothioneine_concentration_is_not_searchable():
@@ -155,6 +186,36 @@ def test_formal_knowledge_runs_through_agent_with_source_citation():
     assert body["decision"] == "answered"
     assert body["citations"][0]["source_sheet"] == "三蛋丸"
     assert body["citations"][0]["source_row"] == 3
+
+
+def test_agent_answers_b5_percentage_with_display_value():
+    settings = Settings(
+        llm_provider="mock",
+        knowledge_path=KNOWLEDGE_PATH,
+        qdrant_path=None,
+        qdrant_url=None,
+        webhook_secret="test-secret",
+        admin_api_key="test-admin",
+        business_hours_start="00:00",
+        business_hours_end="23:59",
+    )
+    with TestClient(create_app(settings)) as client:
+        response = client.post(
+            "/v1/webhooks/simulator",
+            headers={"X-Webhook-Secret": "test-secret"},
+            json={
+                "message_id": "b5-percentage-1",
+                "conversation_id": "b5-percentage-conversation",
+                "user_id": "b5-percentage-user",
+                "text": "b5洗发水，b5含量百分之多少呢",
+            },
+        )
+    assert response.status_code == 200
+    body = response.json()
+    assert body["decision"] == "answered"
+    assert body["text"] == "宝宝，0.20%"
+    assert body["citations"][0]["source_row"] == 85
+    assert "2E-3" not in body["text"]
 
 
 def test_agent_answers_grounded_recommendation_and_handoffs_when_missing():
