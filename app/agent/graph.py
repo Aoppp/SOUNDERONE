@@ -504,10 +504,15 @@ class SounderOneGraphAgent:
     def _handoff(self, state: AgentState) -> dict:
         trace = self._step(state, "handoff")
         generated_text = state.get("generated_text")
-        text = generated_text if state.get("forbidden_claims") else (
-            "宝宝，这个问题需要人工客服进一步确认，"
-            "我已为您记录并转接，请稍候。"
-        )
+        if "user_requested_handoff" in state.get("risk_tags", []):
+            text = "好的，这就为您转接人工～"
+        elif state.get("forbidden_claims"):
+            text = generated_text
+        else:
+            text = (
+                "宝宝，这个问题需要人工客服进一步确认，"
+                "我已为您记录并转接，请稍候。"
+            )
         reply = AgentReply(
             conversation_id=self._message(state).external_conversation_id,
             decision=Decision.handoff,

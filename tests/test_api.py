@@ -288,6 +288,7 @@ def test_user_can_explicitly_request_human_service():
             assert body["handoff"] is True
             assert body["handoff_reason"] == "用户主动要求转人工"
             assert body["risk_tags"] == ["user_requested_handoff"]
+            assert body["text"] == "好的，这就为您转接人工～"
             assert body["citations"] == []
             assert body["graph_trace"] == ["safety_guard", "handoff"]
 
