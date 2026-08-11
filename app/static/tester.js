@@ -146,7 +146,7 @@ function appendAssistantMessage(response) {
   const avatar = createElement("div", "avatar", "S1");
   const content = createElement("div", "message-content");
   const meta = createElement("div", "message-meta");
-  meta.append(createElement("strong", "", "SounderOne Agent"), createElement("span", "", currentTime()));
+  meta.append(createElement("strong", "", "SOUNDERONE Agent"), createElement("span", "", currentTime()));
   content.append(meta, createElement("div", "bubble", response.text));
   appendStatus(content, response);
   appendDebugDetails(content, response);

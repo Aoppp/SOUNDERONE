@@ -1,0 +1,1610 @@
+{
+  "schema_version": "1.1",
+  "source": {
+    "file": "产品话术汇总完整版本.xlsx",
+    "sha256": "0298b52d3da7479340742b23936577853a441ff025d6e9acad084f20b22a9d7d"
+  },
+  "knowledge_type": "product",
+  "documents": [
+    {
+      "id": "kb-5603a590145750a3",
+      "title": "SOUNDER ONE\n熬夜焕能赋妍精华液使用禁忌",
+      "content": "暂无/怀孕人群不可用",
+      "tags": [
+        "SOUNDER ONE\n熬夜焕能赋妍精华液",
+        "不能搭配",
+        "产品",
+        "使用禁忌",
+        "夜猫子精华",
+        "孕妇"
+      ],
+      "category": "product_contraindication",
+      "status": "review_required",
+      "risk_tags": [
+        "pregnancy_conflict"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 2,
+        "field": "contraindication_1"
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-65cbf89a5abe3012",
+      "title": "SOUNDER ONE\n熬夜焕能赋妍精华液(夜猫子精华)产品介绍",
+      "content": "核心主打自研专利成分5D抗氧化脂质体,可以有效清楚自由基达到抗氧化提亮的效果,改善因为熬夜导致的暗黄、皮肤干燥的问题。",
+      "tags": [
+        "SOUNDER ONE\n熬夜焕能赋妍精华液",
+        "产品",
+        "功效",
+        "卖点",
+        "夜猫子精华",
+        "成分",
+        "适合肤质"
+      ],
+      "category": "product_overview",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 2,
+        "field": "selling_points"
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-fc04edb26595cd20",
+      "title": "SOUNDER ONE\n熬夜焕能赋妍精华液怎么使用",
+      "content": "根据脸的大小,取1-2泵全脸涂抹。\n等干了之后,再叠加使用其他护肤品。\n早晚都可使用,早上出门建议正常做好防晒工作",
+      "tags": [
+        "SOUNDER ONE\n熬夜焕能赋妍精华液",
+        "产品",
+        "使用方法",
+        "使用顺序",
+        "夜猫子精华",
+        "早晚",
+        "用量"
+      ],
+      "category": "product_usage",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 2,
+        "field": "usage"
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-08afa0a088606c6f",
+      "title": "SOUNDER ONE\n净透焕颜保湿精华液使用禁忌",
+      "content": "不建议和水杨酸一起使用",
+      "tags": [
+        "5%传明酸精华",
+        "SOUNDER ONE\n净透焕颜保湿精华液",
+        "不能搭配",
+        "产品",
+        "使用禁忌",
+        "孕妇"
+      ],
+      "category": "product_contraindication",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 3,
+        "field": "contraindication_1"
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-2ef6c4fb6ac95d36",
+      "title": "SOUNDER ONE\n净透焕颜保湿精华液怎么使用",
+      "content": "建议护肤第一步,可以替代化妆水/爽肤水。\n干手干脸使用,根据脸的大小,取1-2滴灌全脸使用。\n等干了之后,再叠加使用其他护肤品。\n如果脸上有特别想要加强的部位,可以湿敷或者局部叠加使用。\n早晚都可使用,早上出门建议正常做好防晒工作",
+      "tags": [
+        "5%传明酸精华",
+        "SOUNDER ONE\n净透焕颜保湿精华液",
+        "产品",
+        "使用方法",
+        "使用顺序",
+        "早晚",
+        "用量"
+      ],
+      "category": "product_usage",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 3,
+        "field": "usage"
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-c813d1305cebe02e",
+      "title": "SOUNDER ONE\n净透焕颜保湿精华液补充说明",
+      "content": "5%传明酸可以和a醇/VC类产品一起使用的。可以很好的促进功效的加乘,以及预防a醇所带来的反黑效果。如果建立耐受后,可以逐步使用10%浓度的传明酸精华。",
+      "tags": [
+        "5%传明酸精华",
+        "SOUNDER ONE\n净透焕颜保湿精华液",
+        "产品",
+        "搭配",
+        "补充说明"
+      ],
+      "category": "product_note",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 3,
+        "field": "notes"
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-c947bdcdd8e3797b",
+      "title": "SOUNDER ONE\n净透焕颜保湿精华液使用禁忌",
+      "content": "可以早晚分开使用。",
+      "tags": [
+        "5%传明酸精华",
+        "SOUNDER ONE\n净透焕颜保湿精华液",
+        "不能搭配",
+        "产品",
+        "使用禁忌",
+        "孕妇"
+      ],
+      "category": "product_contraindication",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 3,
+        "field": "contraindication_2"
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-e1d5b4a3b6319446",
+      "title": "SOUNDER ONE\n净透焕颜保湿精华液使用禁忌",
+      "content": "孕妈妈是可以使用的。",
+      "tags": [
+        "5%传明酸精华",
+        "SOUNDER ONE\n净透焕颜保湿精华液",
+        "不能搭配",
+        "产品",
+        "使用禁忌",
+        "孕妇"
+      ],
+      "category": "product_contraindication",
+      "status": "review_required",
+      "risk_tags": [
+        "pregnancy_conflict"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 3,
+        "field": "contraindication_3"
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-fdb478ff747dabf0",
+      "title": "SOUNDER ONE\n净透焕颜保湿精华液(5%传明酸精华)产品介绍",
+      "content": "核心主打自研传明酸脂质体,可以有效净透肌肤,尤其是红色痘印可以很好的减退,在光电类项目后可以辅助预防反黑~尤其是夏天到了,可以很好的帮助对抗紫外线的损伤不容易变黑。",
+      "tags": [
+        "5%传明酸精华",
+        "SOUNDER ONE\n净透焕颜保湿精华液",
+        "产品",
+        "功效",
+        "卖点",
+        "成分",
+        "适合肤质"
+      ],
+      "category": "product_overview",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 3,
+        "field": "selling_points"
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-2d190265e03d7094",
+      "title": "SOUNDER ONE\n传明酸焕颜精华液(10%传明酸精华)产品介绍",
+      "content": "核心主打自研传明酸脂质体Pro,更高效的渗透肌肤解决红色痘印以及预防反黑。",
+      "tags": [
+        "10%传明酸精华",
+        "SOUNDER ONE\n传明酸焕颜精华液",
+        "产品",
+        "功效",
+        "卖点",
+        "成分",
+        "适合肤质"
+      ],
+      "category": "product_overview",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 4,
+        "field": "selling_points"
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-88c5dd04a8e87a78",
+      "title": "SOUNDER ONE\n传明酸焕颜精华液使用禁忌",
+      "content": "怀孕人群不可用",
+      "tags": [
+        "10%传明酸精华",
+        "SOUNDER ONE\n传明酸焕颜精华液",
+        "不能搭配",
+        "产品",
+        "使用禁忌",
+        "孕妇"
+      ],
+      "category": "product_contraindication",
+      "status": "review_required",
+      "risk_tags": [
+        "pregnancy_conflict"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 4,
+        "field": "contraindication_3"
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-9f48312feeaa9767",
+      "title": "SOUNDER ONE\n传明酸焕颜精华液使用禁忌",
+      "content": "可以早晚分开使用",
+      "tags": [
+        "10%传明酸精华",
+        "SOUNDER ONE\n传明酸焕颜精华液",
+        "不能搭配",
+        "产品",
+        "使用禁忌",
+        "孕妇"
+      ],
+      "category": "product_contraindication",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 4,
+        "field": "contraindication_2"
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-b5acbf358af32431",
+      "title": "SOUNDER ONE\n传明酸焕颜精华液使用禁忌",
+      "content": "不建议和水杨酸一起使用",
+      "tags": [
+        "10%传明酸精华",
+        "SOUNDER ONE\n传明酸焕颜精华液",
+        "不能搭配",
+        "产品",
+        "使用禁忌",
+        "孕妇"
+      ],
+      "category": "product_contraindication",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 4,
+        "field": "contraindication_1"
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-ffae922fa163cab6",
+      "title": "SOUNDER ONE\n传明酸焕颜精华液怎么使用",
+      "content": "建议护肤第一步,可以替代化妆水/爽肤水。\n干手干脸使用,根据脸的大小,取1-2滴灌全脸使用。\n等干了之后,再叠加使用其他护肤品。\n如果脸上有特别想要加强的部位,可以湿敷或者局部叠加使用。\n早晚都可使用,早上出门建议正常做好防晒工作",
+      "tags": [
+        "10%传明酸精华",
+        "SOUNDER ONE\n传明酸焕颜精华液",
+        "产品",
+        "使用方法",
+        "使用顺序",
+        "早晚",
+        "用量"
+      ],
+      "category": "product_usage",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 4,
+        "field": "usage"
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-73e0165fdb51c88d",
+      "title": "5%和10%传明酸精华的区别",
+      "content": "5%传明酸是敏感肌都可以安心使用的,是做了鸡胚刺激实验,刺激度为0。10%传明酸因为渗透性高,以及含有1%的烟酰胺。所以它需要建立一定的耐受,但如果你是健康肌肤,可以完成安心选择10%传明酸,毕竟效果确实10%传明酸更强。",
+      "tags": [
+        "5%和10%传明酸精华的区别",
+        "产品区别",
+        "产品选择"
+      ],
+      "category": "product_comparison",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 5,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-24f2e139dcc82efe",
+      "title": "SOUNDER ONE\n肌护舒缓精华使用禁忌",
+      "content": "暂无/怀孕人群不可用",
+      "tags": [
+        "SOUNDER ONE\n肌护舒缓精华",
+        "不能搭配",
+        "产品",
+        "使用禁忌",
+        "孕妇",
+        "肌护舒缓精华"
+      ],
+      "category": "product_contraindication",
+      "status": "review_required",
+      "risk_tags": [
+        "pregnancy_conflict"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 6,
+        "field": "contraindication_1"
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-d018f8a11933de5f",
+      "title": "SOUNDER ONE\n肌护舒缓精华产品介绍",
+      "content": "核心主打自研成分神经酰胺脂质体,以及自研专利4D积雪草微囊。可以有效舒缓肌肤的突发性泛红、瘙痒等问题,长期使用可以令肌肤恢复健康状态。",
+      "tags": [
+        "SOUNDER ONE\n肌护舒缓精华",
+        "产品",
+        "功效",
+        "卖点",
+        "成分",
+        "肌护舒缓精华",
+        "适合肤质"
+      ],
+      "category": "product_overview",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 6,
+        "field": "selling_points"
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-d2adee9e05c11a61",
+      "title": "SOUNDER ONE\n肌护舒缓精华怎么使用",
+      "content": "根据脸的大小,取1-2滴灌全脸涂抹。\n等干了之后,再叠加使用其他护肤品。\n早晚都可使用,早上出门建议正常做好防晒工作",
+      "tags": [
+        "SOUNDER ONE\n肌护舒缓精华",
+        "产品",
+        "使用方法",
+        "使用顺序",
+        "早晚",
+        "用量",
+        "肌护舒缓精华"
+      ],
+      "category": "product_usage",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 6,
+        "field": "usage"
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-1e7a64bfb1f8b9f2",
+      "title": "SOUNDER ONE\n水杨酸焕肤精华液使用禁忌",
+      "content": "不建议和传明酸产品一起使用,可以早上用传明酸,晚上使用水杨酸。",
+      "tags": [
+        "SOUNDER ONE\n水杨酸焕肤精华液",
+        "不能搭配",
+        "产品",
+        "使用禁忌",
+        "孕妇",
+        "水杨酸精华"
+      ],
+      "category": "product_contraindication",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 7,
+        "field": "contraindication_1"
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-2086a2b2e4d00e7c",
+      "title": "SOUNDER ONE\n水杨酸焕肤精华液使用禁忌",
+      "content": "怀孕人群不可用",
+      "tags": [
+        "SOUNDER ONE\n水杨酸焕肤精华液",
+        "不能搭配",
+        "产品",
+        "使用禁忌",
+        "孕妇",
+        "水杨酸精华"
+      ],
+      "category": "product_contraindication",
+      "status": "review_required",
+      "risk_tags": [
+        "pregnancy_conflict"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 7,
+        "field": "contraindication_2"
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-43a97c1d18c09757",
+      "title": "SOUNDER ONE\n水杨酸焕肤精华液(水杨酸精华)产品介绍",
+      "content": "核心主打自研专利成分四维酸脂质体(水杨酸、杏仁酸、壬二酸、甘草亭酸),其中水杨酸的含量是1.2%,可以有效的缓解油脂分泌过多导致的肌肤问题,温和的疏通毛孔。",
+      "tags": [
+        "SOUNDER ONE\n水杨酸焕肤精华液",
+        "产品",
+        "功效",
+        "卖点",
+        "成分",
+        "水杨酸精华",
+        "适合肤质"
+      ],
+      "category": "product_overview",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 7,
+        "field": "selling_points"
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-6b95361d2a481870",
+      "title": "SOUNDER ONE\n水杨酸焕肤精华液怎么使用",
+      "content": "根据脸的大小,取1-2滴灌全脸涂抹。\n等干了之后,再叠加使用其他护肤品。\n在尤其想要加强的部位,湿敷或者叠加使用。\n建议晚上使用。",
+      "tags": [
+        "SOUNDER ONE\n水杨酸焕肤精华液",
+        "产品",
+        "使用方法",
+        "使用顺序",
+        "早晚",
+        "水杨酸精华",
+        "用量"
+      ],
+      "category": "product_usage",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 7,
+        "field": "usage"
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-30bb8b95fe587183",
+      "title": "SOUNDER ONE\nVC甘草亭酸精华液(6%VC甘草精华)产品介绍",
+      "content": "核心主打3%SAP+3%MAP(VC衍生物)组合搭配三重舒缓甘草成分(自研成分甘草亭酸脂质体+自研专利甘珀酸钠+甘草酸二钾)可以有效控油,舒缓肌肤。疏通毛孔解决红红点点的问题。质地轻盈不粘腻。",
+      "tags": [
+        "6%VC甘草精华",
+        "SOUNDER ONE\nVC甘草亭酸精华液",
+        "产品",
+        "功效",
+        "卖点",
+        "成分",
+        "适合肤质"
+      ],
+      "category": "product_overview",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 8,
+        "field": "selling_points"
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-a0493badc8ed025c",
+      "title": "SOUNDER ONE\nVC甘草亭酸精华液怎么使用",
+      "content": "根据脸的大小,取1-2泵全脸涂抹。\n等干了之后,再叠加使用其他护肤品。\n早晚都可使用,早上出门建议正常做好防晒工作",
+      "tags": [
+        "6%VC甘草精华",
+        "SOUNDER ONE\nVC甘草亭酸精华液",
+        "产品",
+        "使用方法",
+        "使用顺序",
+        "早晚",
+        "用量"
+      ],
+      "category": "product_usage",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 8,
+        "field": "usage"
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-e955b7e19eef397d",
+      "title": "SOUNDER ONE\nVC甘草亭酸精华液使用禁忌",
+      "content": "暂无/怀孕人群不可用",
+      "tags": [
+        "6%VC甘草精华",
+        "SOUNDER ONE\nVC甘草亭酸精华液",
+        "不能搭配",
+        "产品",
+        "使用禁忌",
+        "孕妇"
+      ],
+      "category": "product_contraindication",
+      "status": "review_required",
+      "risk_tags": [
+        "pregnancy_conflict"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 8,
+        "field": "contraindication_1"
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-b57859a1fce7cfd8",
+      "title": "SOUNDER ONE\nVC净颜甘草亭酸精华液怎么使用",
+      "content": "根据脸的大小,取1-2泵全脸涂抹。\n等干了之后,再叠加使用其他护肤品。\n早晚都可使用,早上出门建议正常做好防晒工作",
+      "tags": [
+        "10%VC甘草精华",
+        "SOUNDER ONE\nVC净颜甘草亭酸精华液",
+        "产品",
+        "使用方法",
+        "使用顺序",
+        "早晚",
+        "用量"
+      ],
+      "category": "product_usage",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 9,
+        "field": "usage"
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-b905f168a934ab91",
+      "title": "SOUNDER ONE\nVC净颜甘草亭酸精华液(10%VC甘草精华)产品介绍",
+      "content": "核心主打3%SAP+3%MAP+4%AA2G(VC衍生物)组合搭配三重舒缓甘草成分(自研成分甘草亭酸脂质体+自研专利甘珀酸钠+甘草酸二钾)可以有效控油,舒缓肌肤。疏通毛孔解决红红点点的问题。质地轻盈不粘腻。",
+      "tags": [
+        "10%VC甘草精华",
+        "SOUNDER ONE\nVC净颜甘草亭酸精华液",
+        "产品",
+        "功效",
+        "卖点",
+        "成分",
+        "适合肤质"
+      ],
+      "category": "product_overview",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 9,
+        "field": "selling_points"
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-e2c0436e45d8ff69",
+      "title": "SOUNDER ONE\nVC净颜甘草亭酸精华液使用禁忌",
+      "content": "暂无/怀孕人群不可用",
+      "tags": [
+        "10%VC甘草精华",
+        "SOUNDER ONE\nVC净颜甘草亭酸精华液",
+        "不能搭配",
+        "产品",
+        "使用禁忌",
+        "孕妇"
+      ],
+      "category": "product_contraindication",
+      "status": "review_required",
+      "risk_tags": [
+        "pregnancy_conflict"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 9,
+        "field": "contraindication_1"
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-7c56798d6b55f233",
+      "title": "6%VC甘草精华和10%VC甘草精华区别",
+      "content": "配方都是一样的,只是10%VC甘草精华额外多添加了4%AA2G,可以更好的帮助缓解痘印问题,达到净透的效果。肤感上10%比较偏润。",
+      "tags": [
+        "6%VC甘草精华和10%VC甘草精华区别",
+        "产品区别",
+        "产品选择"
+      ],
+      "category": "product_comparison",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 10,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-19203bf2fe87ccde",
+      "title": "SOUNDER ONE\n玻色因熨纹紧致精华液(30%玻色因精华)产品介绍",
+      "content": "核心主打30%玻色因溶液(玻色因净含量为9%)搭配自研专利成分EUK-134脂质体,可以很好紧致肌肤,改善皱纹。",
+      "tags": [
+        "30%玻色因精华",
+        "SOUNDER ONE\n玻色因熨纹紧致精华液",
+        "产品",
+        "功效",
+        "卖点",
+        "成分",
+        "适合肤质"
+      ],
+      "category": "product_overview",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 11,
+        "field": "selling_points"
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-80d7e8e30ff4d306",
+      "title": "SOUNDER ONE\n玻色因熨纹紧致精华液使用禁忌",
+      "content": "暂无/怀孕人群不可用",
+      "tags": [
+        "30%玻色因精华",
+        "SOUNDER ONE\n玻色因熨纹紧致精华液",
+        "不能搭配",
+        "产品",
+        "使用禁忌",
+        "孕妇"
+      ],
+      "category": "product_contraindication",
+      "status": "review_required",
+      "risk_tags": [
+        "pregnancy_conflict"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 11,
+        "field": "contraindication_1"
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-ebb68d499b1555a4",
+      "title": "SOUNDER ONE\n玻色因熨纹紧致精华液怎么使用",
+      "content": "根据脸的大小,取1-2滴灌全脸涂抹。\n等干了之后,再叠加使用其他护肤品。\n早晚都可使用,早上出门建议正常做好防晒工作",
+      "tags": [
+        "30%玻色因精华",
+        "SOUNDER ONE\n玻色因熨纹紧致精华液",
+        "产品",
+        "使用方法",
+        "使用顺序",
+        "早晚",
+        "用量"
+      ],
+      "category": "product_usage",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 11,
+        "field": "usage"
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-14b8d9ec33da064d",
+      "title": "SOUNDER ONE\n净透淡纹提拉面霜怎么使用",
+      "content": "根据脸的大小,取面霜全脸涂抹。\n等干了之后,再叠加使用其他护肤品。\n早晚都可使用,早上出门建议正常做好防晒工作",
+      "tags": [
+        "SOUNDER ONE\n净透淡纹提拉面霜",
+        "产品",
+        "使用方法",
+        "使用顺序",
+        "早晚",
+        "玻色因面霜\n(清爽版)",
+        "用量"
+      ],
+      "category": "product_usage",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 12,
+        "field": "usage"
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-aa58bfdca9b0c87a",
+      "title": "SOUNDER ONE\n净透淡纹提拉面霜(玻色因面霜\n(清爽版))产品介绍",
+      "content": "核心主打玻色因紧致肌肤,对于初抗老的人群来说是很不错的选择~里面也有自研专利成分5D抗氧化脂质体,增加抗氧化抗初老的功效。",
+      "tags": [
+        "SOUNDER ONE\n净透淡纹提拉面霜",
+        "产品",
+        "功效",
+        "卖点",
+        "成分",
+        "玻色因面霜\n(清爽版)",
+        "适合肤质"
+      ],
+      "category": "product_overview",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 12,
+        "field": "selling_points"
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-d784b914415002af",
+      "title": "SOUNDER ONE\n净透淡纹提拉面霜使用禁忌",
+      "content": "暂无/怀孕人群不可用",
+      "tags": [
+        "SOUNDER ONE\n净透淡纹提拉面霜",
+        "不能搭配",
+        "产品",
+        "使用禁忌",
+        "孕妇",
+        "玻色因面霜\n(清爽版)"
+      ],
+      "category": "product_contraindication",
+      "status": "review_required",
+      "risk_tags": [
+        "pregnancy_conflict"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 12,
+        "field": "contraindication_1"
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-041c29ef5d7d62d7",
+      "title": "SOUNDER ONE\n淡纹紧致眼霜(双a醇眼霜)产品介绍",
+      "content": "核心主打双A油溶脂质体技术(HPR+维生素A丙酸酯)都是非常好吸收的维A衍生物,搭配类蛇肽等成分可以很好的缓解眼部的细纹、干纹。添加了咖啡因成分可以缓解黑眼圈问题,而且无需建立耐受。每天晚上都可以使用~",
+      "tags": [
+        "SOUNDER ONE\n淡纹紧致眼霜",
+        "产品",
+        "功效",
+        "卖点",
+        "双a醇眼霜",
+        "成分",
+        "适合肤质"
+      ],
+      "category": "product_overview",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 13,
+        "field": "selling_points"
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-4794dc3a8b017070",
+      "title": "SOUNDER ONE\n淡纹紧致眼霜使用禁忌",
+      "content": "晚上使用/怀孕人群不可用",
+      "tags": [
+        "SOUNDER ONE\n淡纹紧致眼霜",
+        "不能搭配",
+        "产品",
+        "使用禁忌",
+        "双a醇眼霜",
+        "孕妇"
+      ],
+      "category": "product_contraindication",
+      "status": "review_required",
+      "risk_tags": [
+        "pregnancy_conflict"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 13,
+        "field": "contraindication_1"
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-f949153c13168c93",
+      "title": "SOUNDER ONE\n淡纹紧致眼霜怎么使用",
+      "content": "用指腹轻轻点涂在眼周围,慢慢按摩至吸收。\n建议晚上使用。",
+      "tags": [
+        "SOUNDER ONE\n淡纹紧致眼霜",
+        "产品",
+        "使用方法",
+        "使用顺序",
+        "双a醇眼霜",
+        "早晚",
+        "用量"
+      ],
+      "category": "product_usage",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 13,
+        "field": "usage"
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-48ec7e0b7901c198",
+      "title": "SOUNDER ONE\n麦角硫因日光精华(麦角硫因精华)产品介绍",
+      "content": "核心添加了0.5%的麦角硫因,可以赶走暗黄对抗自由基,达到抗皱、紧致、保湿效果。而且还复配了艾地苯醌脂质体,更好的协同麦角硫因对抗光损伤~更加适合白天使用!",
+      "tags": [
+        "SOUNDER ONE\n麦角硫因日光精华",
+        "产品",
+        "功效",
+        "卖点",
+        "成分",
+        "适合肤质",
+        "麦角硫因精华"
+      ],
+      "category": "product_overview",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 14,
+        "field": "selling_points"
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-9cb1bdecf0156a12",
+      "title": "SOUNDER ONE\n麦角硫因日光精华怎么使用",
+      "content": "根据脸的大小,取1-2泵全脸涂抹。等干了之后,再叠加使用其他护肤品。早晚都可使用。",
+      "tags": [
+        "SOUNDER ONE\n麦角硫因日光精华",
+        "产品",
+        "使用方法",
+        "使用顺序",
+        "早晚",
+        "用量",
+        "麦角硫因精华"
+      ],
+      "category": "product_usage",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 14,
+        "field": "usage"
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-b04ac071f7fd9efa",
+      "title": "SOUNDER ONE\n麦角硫因日光精华使用禁忌",
+      "content": "不可以和酸一起使用/怀孕人群不可用",
+      "tags": [
+        "SOUNDER ONE\n麦角硫因日光精华",
+        "不能搭配",
+        "产品",
+        "使用禁忌",
+        "孕妇",
+        "麦角硫因精华"
+      ],
+      "category": "product_contraindication",
+      "status": "review_required",
+      "risk_tags": [
+        "pregnancy_conflict"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 14,
+        "field": "contraindication_1"
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-088ce4dad693ddb9",
+      "title": "SOUNDER ONE\n抗皱紧致焕颜精华液使用禁忌",
+      "content": "暂无/怀孕人群不可用",
+      "tags": [
+        "SOUNDER ONE\n抗皱紧致焕颜精华液",
+        "euk-134精华",
+        "不能搭配",
+        "产品",
+        "使用禁忌",
+        "孕妇"
+      ],
+      "category": "product_contraindication",
+      "status": "review_required",
+      "risk_tags": [
+        "pregnancy_conflict"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 15,
+        "field": "contraindication_1"
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-e65b26f68ff63a38",
+      "title": "SOUNDER ONE\n抗皱紧致焕颜精华液怎么使用",
+      "content": "根据脸的大小,取1-2泵全脸涂抹。等干了之后,再叠加使用其他护肤品。早晚都可使用。",
+      "tags": [
+        "SOUNDER ONE\n抗皱紧致焕颜精华液",
+        "euk-134精华",
+        "产品",
+        "使用方法",
+        "使用顺序",
+        "早晚",
+        "用量"
+      ],
+      "category": "product_usage",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 15,
+        "field": "usage"
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-f678ca5c9263a1c3",
+      "title": "SOUNDER ONE\n抗皱紧致焕颜精华液(euk-134精华)产品介绍",
+      "content": "核心添加了0.12%的euk-134成分,是目前市面上添加量比较高的成分了,可以很好的对抗自由基的伤害,还复配了ACE脂质体,更好的协同一起抗皱、紧致肌肤~",
+      "tags": [
+        "SOUNDER ONE\n抗皱紧致焕颜精华液",
+        "euk-134精华",
+        "产品",
+        "功效",
+        "卖点",
+        "成分",
+        "适合肤质"
+      ],
+      "category": "product_overview",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 15,
+        "field": "selling_points"
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-b22f7b4439046c8d",
+      "title": "麦角硫因和euk-134的区别",
+      "content": "两款精华的侧重点不一样,麦角硫因精华他更全部的可以对抗自由基,尤其是光损伤对肌肤带来的伤害~你是非油痘肌,可以选择麦角硫因精华去清除自由基~如果你是一个油皮,就选择euk-134精华,因为对抗自由基的时候,会产生一个因子容易导致长痘痘,而euk-134这个成分恰好可以清楚~\n非油痘肌:0.5%麦角硫因\n油痘肌选euk-134",
+      "tags": [
+        "产品区别",
+        "产品选择",
+        "麦角硫因和euk-134的区别"
+      ],
+      "category": "product_comparison",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 16,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-45bc1e4419424fbd",
+      "title": "SOUNDER ONE\n15%壬二酸净颜精华乳补充说明",
+      "content": "搭配上我们家传明酸精华系列可以很好的改善红黑脸",
+      "tags": [
+        "15%壬二酸50g",
+        "SOUNDER ONE\n15%壬二酸净颜精华乳",
+        "产品",
+        "搭配",
+        "补充说明"
+      ],
+      "category": "product_note",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 17,
+        "field": "notes"
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-53e0d8ad3d5b6523",
+      "title": "SOUNDER ONE\n15%壬二酸净颜精华乳(15%壬二酸50g)产品介绍",
+      "content": "运用了双专研微囊壬二酸包裹技术,将两种不同体系的壬二酸融合在这一瓶面霜里,里面还添加了5重舒缓成分。可以有效改善红黑脸、痘痘、闭口、粉刺等问题。",
+      "tags": [
+        "15%壬二酸50g",
+        "SOUNDER ONE\n15%壬二酸净颜精华乳",
+        "产品",
+        "功效",
+        "卖点",
+        "成分",
+        "适合肤质"
+      ],
+      "category": "product_overview",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 17,
+        "field": "selling_points"
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-85d5e59ae6fb6ca6",
+      "title": "SOUNDER ONE\n15%壬二酸净颜精华乳怎么使用",
+      "content": "根据脸的大小,取1-2泵全脸涂抹。等干了之后,再叠加使用其他护肤品。早晚都可使用。不过宝宝,一定需要建立耐受哦~\n*个别肌肤初次使用时出现短时刺痒感,属于正常现象,可逐步建立耐受后使用。使用前,请在耳后、手臂内侧等皮肤柔嫩处小范围进行测试。",
+      "tags": [
+        "15%壬二酸50g",
+        "SOUNDER ONE\n15%壬二酸净颜精华乳",
+        "产品",
+        "使用方法",
+        "使用顺序",
+        "早晚",
+        "用量"
+      ],
+      "category": "product_usage",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 17,
+        "field": "usage"
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-dd72147d60d8c988",
+      "title": "SOUNDER ONE\n15%壬二酸净颜精华乳使用禁忌",
+      "content": "暂无/怀孕人群不可用",
+      "tags": [
+        "15%壬二酸50g",
+        "SOUNDER ONE\n15%壬二酸净颜精华乳",
+        "不能搭配",
+        "产品",
+        "使用禁忌",
+        "孕妇"
+      ],
+      "category": "product_contraindication",
+      "status": "review_required",
+      "risk_tags": [
+        "pregnancy_conflict"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 17,
+        "field": "contraindication_1"
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-25cfa86f8026ee19",
+      "title": "SOUNDER ONE\n20%壬二酸密集焕颜乳霜使用禁忌",
+      "content": "暂无/怀孕人群不可用",
+      "tags": [
+        "20%壬二酸15g",
+        "SOUNDER ONE\n20%壬二酸密集焕颜乳霜",
+        "不能搭配",
+        "产品",
+        "使用禁忌",
+        "孕妇"
+      ],
+      "category": "product_contraindication",
+      "status": "review_required",
+      "risk_tags": [
+        "pregnancy_conflict"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 18,
+        "field": "contraindication_1"
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-5d73bc8b912ed92e",
+      "title": "SOUNDER ONE\n20%壬二酸密集焕颜乳霜(20%壬二酸15g)产品介绍",
+      "content": "运用了双专研微囊壬二酸包裹技术,将两种不同体系的壬二酸融合在这一瓶精华里,里面还添加了专利成分苦参碱、和厚朴酚包裹、琥珀酸、PCA锌等,更加强局部痘痘的消退~",
+      "tags": [
+        "20%壬二酸15g",
+        "SOUNDER ONE\n20%壬二酸密集焕颜乳霜",
+        "产品",
+        "功效",
+        "卖点",
+        "成分",
+        "适合肤质"
+      ],
+      "category": "product_overview",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 18,
+        "field": "selling_points"
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-93c6ba5cf04ab7e8",
+      "title": "SOUNDER ONE\n20%壬二酸密集焕颜乳霜怎么使用",
+      "content": "根据痘痘的大小,点涂在痘痘上。早晚都可以使用~\n*个别肌肤初次使用时出现短时刺痒感,属于正常现象,可逐步建立耐受后使用。使用前,请在耳后、手臂内侧等皮肤柔嫩处小范围进行测试。",
+      "tags": [
+        "20%壬二酸15g",
+        "SOUNDER ONE\n20%壬二酸密集焕颜乳霜",
+        "产品",
+        "使用方法",
+        "使用顺序",
+        "早晚",
+        "用量"
+      ],
+      "category": "product_usage",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 18,
+        "field": "usage"
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-8249eaf0fff12398",
+      "title": "15%壬二酸精华和20%壬二酸精华区别",
+      "content": "15%配方更温和,适合日常全脸涂抹改善肌肤痘痘、闭口、红黑脸等问题,20%则更倾向于点涂~两款壬二酸侧重方向不一样~如果作为日常调理,更推荐15%壬二酸面霜哦~",
+      "tags": [
+        "15%壬二酸精华和20%壬二酸精华区别",
+        "产品区别",
+        "产品选择"
+      ],
+      "category": "product_comparison",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 19,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-3f9c4fd99e6fdd21",
+      "title": "SOUNDER ONE 柔润亮泽护发素(金\n护发素)搭配与使用建议",
+      "content": "全部都可搭配",
+      "tags": [
+        "SOUNDER ONE 柔润亮泽护发素",
+        "产品",
+        "使用建议",
+        "护发产品",
+        "搭配",
+        "洗护组合",
+        "金\n护发素"
+      ],
+      "category": "product_note",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 20,
+        "field": "pairing_1"
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-895ddafb7c8b6e83",
+      "title": "SOUNDER ONE 柔润亮泽护发素(金\n护发素)产品介绍",
+      "content": "核心成分:4%玻色因,头发的奢侈保养品\n角鲨烷,轻质油脂,清爽易吸收,快速渗透丝,为发丝注入活力,易吸收,质地轻盈不油腻,快速修护发丝外层受损毛鳞片,强韧发丝,改善分叉。自研原料柔软保湿剂,可像神经酰胺一样形成液态晶体薄膜。具有改造头发毛躁,提高头发毛躁的效果。\n甜柚茉莉气味,清新的大自然气息,心旷神怡",
+      "tags": [
+        "SOUNDER ONE 柔润亮泽护发素",
+        "产品",
+        "功效",
+        "卖点",
+        "成分",
+        "护发产品",
+        "适用人群",
+        "金\n护发素"
+      ],
+      "category": "product_overview",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 20,
+        "field": "selling_points"
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-19a1798e118bce47",
+      "title": "SOUNDER ONE 净澈控油沁爽洗发水(木)搭配与使用建议",
+      "content": "净澈控油沁爽洗发水(木) + 二硫化硒去屑洗发水(土)\n适用人群:油性头皮、头屑头痒严重,且头皮油脂分泌旺盛的人群。\n搭配理由:\n净澈控油沁爽洗发水:日常清洁,调节油脂分泌,保持头皮清爽。\n二硫化硒去屑洗发水:每周使用 1-2 次,针对头屑问题,抑制马拉色菌生长,\n缓解头痒。\n使用建议:\n日常使用净澈控油洗发水,保持头皮清洁。\n头屑严重时,每周交替使用二硫化硒洗发水 2-3 次,持续使用至头屑问题缓解\n后,减少频率。",
+      "tags": [
+        "SOUNDER ONE 净澈控油沁爽洗发水",
+        "产品",
+        "使用建议",
+        "护发产品",
+        "搭配",
+        "木",
+        "洗护组合"
+      ],
+      "category": "product_note",
+      "status": "review_required",
+      "risk_tags": [
+        "regulated_claim"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 21,
+        "field": "pairing_2"
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-e6a0b816d4757277",
+      "title": "SOUNDER ONE 净澈控油沁爽洗发水(木)搭配与使用建议",
+      "content": "净澈控油沁爽洗发水 (木)+ 蓬松丰盈洗发水(火)\n适用人群:混合性头皮,发质细软扁塌,希望控油的同时增加发丝蓬松感的人群。\n搭配理由:\n净澈控油沁爽洗发水:清洁油脂,调节头皮油脂平衡。\n蓬松丰盈洗发水:温和清洁的同时,增加发根蓬松感,改善扁塌问题。\n使用建议:\n日常使用净澈控油洗发水,重点清洁。\n每周使用 2-3 次蓬松丰盈洗发水,提升整体发型的蓬松感。",
+      "tags": [
+        "SOUNDER ONE 净澈控油沁爽洗发水",
+        "产品",
+        "使用建议",
+        "护发产品",
+        "搭配",
+        "木",
+        "洗护组合"
+      ],
+      "category": "product_note",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 21,
+        "field": "pairing_1"
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-f5fe9d8e6dc5bd05",
+      "title": "SOUNDER ONE 净澈控油沁爽洗发水(木)产品介绍",
+      "content": "主打:控油去屑\n核心成分:自研原料专利成分SHUHE.WANG 可比落复合物\n清爽控油复配OCT,蓬松的同时可以改善头皮发痒,0硅油配方体系,头皮更清爽~自带薄荷凉感,头皮“灭火器“抑制出油~\n甜柚茉莉气味,清新的大自然气息,心旷神怡",
+      "tags": [
+        "SOUNDER ONE 净澈控油沁爽洗发水",
+        "产品",
+        "功效",
+        "卖点",
+        "成分",
+        "护发产品",
+        "木",
+        "适用人群"
+      ],
+      "category": "product_overview",
+      "status": "handoff_only",
+      "risk_tags": [
+        "adverse_reaction"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 21,
+        "field": "selling_points"
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-0cedb8311d53b316",
+      "title": "SOUNDER ONE 神经酰胺头皮专护洗发水(水)搭配与使用建议",
+      "content": "神经酰胺头皮专护洗发水(水) + 蓬松丰盈洗发水(火)\n适用人群: 干性、敏感头皮,但发质细软扁塌,希望改善头皮健康的同时提升\n发丝蓬松感的人群。\n搭配理由:\n神经酰胺头皮专护洗发水:舒缓敏感头皮,改善干燥、红痒问题。\n蓬松丰盈洗发水:温和清洁油脂,增加发根支撑力,打造蓬松丰盈效果。\n使用建议:\n日常使用神经酰胺洗发水,重点护理头皮健康。\n需要提升发型蓬松感时,每周使用 2-3 次蓬松丰盈洗发水,交替使用。",
+      "tags": [
+        "SOUNDER ONE 神经酰胺头皮专护洗发水",
+        "产品",
+        "使用建议",
+        "护发产品",
+        "搭配",
+        "水",
+        "洗护组合"
+      ],
+      "category": "product_note",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 22,
+        "field": "pairing_1"
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-1c000ec054ba8f44",
+      "title": "SOUNDER ONE 神经酰胺头皮专护洗发水(水)产品介绍",
+      "content": "主打:舒缓、保湿\n核心成分:自研原料神经酰胺NP脂质体\n舒缓保湿头皮,预防修护紫外线、化学损伤等问题导致的头皮受损。缓解干、敏、红。泡沫丰富、细密、洗后清爽水润、不干涩\n清新赤霞血橙调,满满活力~",
+      "tags": [
+        "SOUNDER ONE 神经酰胺头皮专护洗发水",
+        "产品",
+        "功效",
+        "卖点",
+        "成分",
+        "护发产品",
+        "水",
+        "适用人群"
+      ],
+      "category": "product_overview",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 22,
+        "field": "selling_points"
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-698f71fdd984db29",
+      "title": "SOUNDER ONE 蓬松丰盈洗发水(火)搭配与使用建议",
+      "content": "蓬松丰盈洗发水(火) + 二硫化硒去屑洗发水(土)\n适用人群:细软扁塌发质,同时伴有头屑问题的人群。\n搭配理由:\n蓬松丰盈洗发水:增加发根支撑力,改善扁塌问题。\n二硫化硒去屑洗发水:针对头屑问题,每周使用 1-2 次,温和去屑。\n使用建议:\n日常使用蓬松丰盈洗发水,提升发型蓬松感。\n头屑问题出现时,每周使用 1-2 次二硫化硒洗发水,交替使用。",
+      "tags": [
+        "SOUNDER ONE 蓬松丰盈洗发水",
+        "产品",
+        "使用建议",
+        "护发产品",
+        "搭配",
+        "洗护组合",
+        "火"
+      ],
+      "category": "product_note",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 23,
+        "field": "pairing_1"
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-a1989f3fc5712fd4",
+      "title": "SOUNDER ONE 蓬松丰盈洗发水(火)产品介绍",
+      "content": "主打:蓬松轻盈\n核心成分:自研专利原料三因脂质体(玻色因、依克多因、麦角硫因)\n温和双牛磺酸钠氨基酸表面活性剂配方,自带调理,头发蓬松顺滑;无硅油配方, 头皮更清爽;高效抗老新组合,精选三种抗衰老、抗氧化、保湿的活性成分,协同增效,头发更蓬松;\n其中也添加了,自研成分透明神经酰胺 NP脂质体,舒缓头皮,修护毛躁秀发,更顺滑\n乌木沉香气味,沉稳中有热烈火热的奔放",
+      "tags": [
+        "SOUNDER ONE 蓬松丰盈洗发水",
+        "产品",
+        "功效",
+        "卖点",
+        "成分",
+        "护发产品",
+        "火",
+        "适用人群"
+      ],
+      "category": "product_overview",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 23,
+        "field": "selling_points"
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-033518d6fd2059b5",
+      "title": "SOUNDER ONE 二硫化硒去屑洗发水(土)搭配与使用建议",
+      "content": "只要是因为马拉色菌导致的,都可以搭配使用。",
+      "tags": [
+        "SOUNDER ONE 二硫化硒去屑洗发水",
+        "产品",
+        "使用建议",
+        "土",
+        "护发产品",
+        "搭配",
+        "洗护组合"
+      ],
+      "category": "product_note",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 24,
+        "field": "pairing_1"
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    },
+    {
+      "id": "kb-412ef8c472bcc148",
+      "title": "SOUNDER ONE 二硫化硒去屑洗发水(土)产品介绍",
+      "content": "主打:马拉色菌导致的控油+去屑\n核心成分:1% 二硫化硒+玻色因\n可以抑制马拉色菌繁殖,去屑止痒。独家的自研专利技术,可以很好的将二硫化硒颗粒均匀包裹在料体中~发货功效的同时,还可以保湿护理发质~泡沫丰富、细密、清洁去油、轻盈蓬松。\n清新赤霞血橙调,满满活力~",
+      "tags": [
+        "SOUNDER ONE 二硫化硒去屑洗发水",
+        "产品",
+        "功效",
+        "卖点",
+        "土",
+        "成分",
+        "护发产品",
+        "适用人群"
+      ],
+      "category": "product_overview",
+      "status": "review_required",
+      "risk_tags": [
+        "regulated_claim"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸",
+        "row": 24,
+        "field": "selling_points"
+      },
+      "alternate_sources": [],
+      "knowledge_type": "product"
+    }
+  ]
+}

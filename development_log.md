@@ -123,3 +123,20 @@
 - `safe_fallback` 澄清与真正的 `handoff` 分离，抖音适配响应中的 `handoff` 仅在决策确实为 `handoff` 时为 true。
 - 回归覆盖纯问候、无厘头文本、标点、域外问题、缺产品用法、无上下文指代、带历史产品上下文的无厘头消息、正确发货知识及正式库缺失发货知识。
 - 验证：35 passed；JavaScript 语法、Python `compileall` 和 `git diff --check` 均通过；运行中正式知识库烟雾测试确认“他好”安全澄清且无引用，“多久发货”因无可靠答案转人工。
+
+## 2026-08-11
+
+### SOUNDERONE 范围路由、双知识库与 DeepSeek Flash
+
+- 将客服能力范围明确为“SOUNDERONE 品牌及其相关产品”，所有新增话术均不包含“王叔”或“王叔和”。
+- LangGraph 调整为：`safety_guard -> intent_router -> rewrite_query -> route_knowledge -> hybrid_retrieve -> relevance_gate -> generate_answer -> output_guard -> finalize_response`；任一高危、无可靠命中、生成资料不足、模型故障或输出违规分支均可进入 `handoff`。
+- 高危逻辑仍是消息进入后的第一个判断，不良反应、孕期、医美、复杂售后、法律/舆情等不会先经过普通意图或 RAG。
+- 范围外问题进入 `out_of_scope_response`；创建20条已审核的 SOUNDERONE 范围说明，使用会话ID和消息ID哈希稳定选择，既有文案变化又保持 webhook 重试一致。
+- 将范围外问题和信息不足分开：“天气怎么样/他好”等回复能力范围；“怎么用/这个适合吗”等缺少产品上下文的问题进入 `clarify_response` 追问产品名。
+- 新增受约束问题改写：只把 LangGraph 会话中已确认的上一产品补入查询，不调用 LLM，不允许创造产品名、浓度或用户情况。
+- 将完整审计源无损拆分为 `product_knowledge.json`（64条，47 active）与 `customer_faq.json`（223条，163 active）；运行时加载两文件，完整 `sounderone_knowledge.json` 保留为审计基准。
+- `route_knowledge` 对物流、发票、促销只检索 FAQ；产品用法、搭配、对比和信息问题同时检索产品知识与 FAQ。引用新增 `knowledge_type`。
+- `relevance_gate` 新增可靠候选裁剪：低于最低分或与 Top1 分差超过 `KNOWLEDGE_SCORE_WINDOW` 的次级结果不会发送给生成模型，也不会出现在引用中。
+- 接入官方 OpenAI 兼容接口的 `DeepSeekLanguageModel`，默认生产模型配置为 `deepseek-v4-flash`；模型只依据召回片段组织话术，返回 `INSUFFICIENT_KNOWLEDGE`、空内容或 API 故障时统一转人工。
+- 保留 Mock 和 OpenAI 适配器；本地测试不需要模型密钥。DeepSeek 适配器使用模拟响应完成请求结构隔离测试，尚未使用真实 API Key 发起计费调用。
+- 验证：42 passed；Python `compileall`、JavaScript 语法和 `git diff --check` 通过。正式双库运行烟雾测试确认287条/210 active，范围外、缺上下文、产品回答和高危转人工四条路径符合预期。

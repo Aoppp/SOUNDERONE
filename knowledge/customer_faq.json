@@ -1,0 +1,4851 @@
+{
+  "schema_version": "1.1",
+  "source": {
+    "file": "产品话术汇总完整版本.xlsx",
+    "sha256": "0298b52d3da7479340742b23936577853a441ff025d6e9acad084f20b22a9d7d"
+  },
+  "knowledge_type": "faq",
+  "documents": [
+    {
+      "id": "kb-716af57a6e415bbe",
+      "title": "退货规定",
+      "content": "公司规定是需要全部退回才能全额退款的。\n过敏需要手持产品+面部同框:宝 ,给您带来不便实在抱歉的哈,辛苦您提供下手持产品和脸部不适的同框照片为您反馈处理的哈~",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "客服话术",
+        "退货规定"
+      ],
+      "category": "customer_service_faq",
+      "status": "handoff_only",
+      "risk_tags": [
+        "adverse_reaction",
+        "complex_after_sales"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 2,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-078c915f0b7b3950",
+      "title": "确认收货返现是我们店处理吗",
+      "content": "所有的返现,博主的抽奖,都是找博主~",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "客服话术",
+        "确认收货返现是我们店处理吗"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 3,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-f22bcad3818fa5d0",
+      "title": "入会券100-5 反馈使用不了",
+      "content": "5天过期,等到升级下个会员就可以有新的券,无法补发",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "入会券100-5 反馈使用不了",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "handoff_only",
+      "risk_tags": [
+        "complex_after_sales"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 4,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-514da0c1223165b2",
+      "title": "传明酸乳液有晶体",
+      "content": "传明酸乳液,如果天天使用是完全不会有颗粒感的~\n已经开封使用过的传明酸乳液,如果长期不用,会存在泵头口水分蒸发有微微晶体问题~只要把第一泵挤掉就可以安心使用啦。",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "传明酸乳液有晶体",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 5,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-68474659f17cd281",
+      "title": "15%壬二酸作用",
+      "content": "SOUNDER ONE壬二酸系列用的是双重专研微囊技术,15%是适合于全脸使用的,可以很好的祛痘、去红黑痘印、去闭口等肌肤问题~搭配上我们家传明酸精华系列可以很好的改善红黑脸哦~",
+      "tags": [
+        "15%壬二酸作用",
+        "三蛋丸微信群QA记录",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 6,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-bc5ca156acfdeb3e",
+      "title": "20%壬二酸作用",
+      "content": "20%壬二酸更侧重于局部红肿问题痘痘~",
+      "tags": [
+        "20%壬二酸作用",
+        "三蛋丸微信群QA记录",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "handoff_only",
+      "risk_tags": [
+        "adverse_reaction"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 7,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-839b3c89fe058736",
+      "title": "缩小毛孔的推荐哪款",
+      "content": "控油疏通毛孔用VC甘草精华,夏日比较推荐6%的",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "客服话术",
+        "缩小毛孔的推荐哪款"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 8,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-afadd30d438a8b95",
+      "title": "我们三蛋丸的15%和20%壬二酸精华孕妇可用吗?\n配方上只有浓度的区别吗?",
+      "content": "15%里面加了舒缓成分,所以建立耐受的情况下,可以全脸使用\n20%更加测中精准祛痘,里面添加了琥珀酸等成分协同祛痘。\n配方是不一样哒~宝宝可以根据你自己的需求选择哦\n孕妈妈建议还是听医生的建议再使用。",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "客服话术",
+        "我们三蛋丸的15%和20%壬二酸精华孕妇可用吗?\n配方上只有浓度的区别吗?"
+      ],
+      "category": "customer_service_faq",
+      "status": "review_required",
+      "risk_tags": [
+        "medical_or_procedure",
+        "pregnancy_conflict"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 9,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-547005f06d6aa72c",
+      "title": "夜猫子精华里的烟酰胺含量超过2%了吗",
+      "content": "夜猫子是2%的烟酰胺",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "夜猫子精华里的烟酰胺含量超过2%了吗",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 10,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-bcb1398aca12db43",
+      "title": "客户地址是甘肃的 要买一瓶10%传明酸 运费15元 申请10元的优惠 可以给吗?",
+      "content": "优惠5元 收10元",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "客户地址是甘肃的 要买一瓶10%传明酸 运费15元 申请10元的优惠 可以给吗?",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 11,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-ee41caefee91a556",
+      "title": "客户反馈甘草小样比较黄,正常是白色的 不放心使用小样",
+      "content": "宝宝,只要不是暗黄色,黄色都是可以使用的~因为小样的包装并不是全真空的,所以密封性会差一些~\n宝宝这个淡淡的黄色也不会影响使用的~可以放心使用。因为正装是全真空包装,所以不太容易氧化,小样有点点轻微氧化,但也在正常范围内~",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "客户反馈甘草小样比较黄,正常是白色的 不放心使用小样",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 12,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-8146ca4d3b793a54",
+      "title": "三蛋丸的洗发水 孕妇 都可以使用吗",
+      "content": "二硫化硒不可以,其他都可以(建议孕妇谨遵医嘱)",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "三蛋丸的洗发水 孕妇 都可以使用吗",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "review_required",
+      "risk_tags": [
+        "medical_or_procedure",
+        "pregnancy_conflict"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 14,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-19919909d4ae1863",
+      "title": "传明酸瓶口有晶体",
+      "content": "因为传明酸高浓度情况下水溶性比较差,虽然我们做了包裹技术,但是一直暴露在空气中水分蒸发了~所以晶体析出了~宝宝这边帮您申请重新换一瓶",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "传明酸瓶口有晶体",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 15,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-43cf70dc6c2c227c",
+      "title": "咱们的肌护,刷酸后能直接使用吗?",
+      "content": "可以",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "咱们的肌护,刷酸后能直接使用吗?",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 16,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-973195a5d605cdb9",
+      "title": "抗皱紧致焕颜精华EUK134 · ACE(30ml*2)这个产品的 ACE就是EUK134吗",
+      "content": "是的",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "客服话术",
+        "抗皱紧致焕颜精华EUK134 · ACE(30ml*2)这个产品的 ACE就是EUK134吗"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 18,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-948a540463c7fa7b",
+      "title": "传明酸是没有美白特证的吧",
+      "content": "没有",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "传明酸是没有美白特证的吧",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 19,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-9faefe5b4153ec94",
+      "title": "凝血酸应该就是传明酸吧",
+      "content": "传明酸、凝血酸都是氨甲环酸,是一个东西",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "凝血酸应该就是传明酸吧",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 20,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-a24c5cbf0e1a1c5c",
+      "title": "客户想知道5%传明酸的原理和材料,以及这款产品的促渗剂是什么",
+      "content": "我们使用过原料本身把传明酸包裹成脂质体,利用双分子磷脂层(卵磷脂等成分)把他的粒径变成13.44纳米\n人的毛孔纳米直径在20000-50000左右,甚至有些人可以达到100000。传明酸脂质体只有毛孔的千分之一,所以渗透性很强。\n我们通过脂质体技术改变他的渗透性,而并非促渗剂。因为促渗剂添加过多,好的、不好的成分都会促进皮肤,敏感肌不太适合。\n然后脂质体双分子磷脂层的亲油基团,和我们皮脂膜的化学分子式几乎一摸一样。所以渗透性一定是更佳哒~xiu的一下进去了!",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "客户想知道5%传明酸的原理和材料,以及这款产品的促渗剂是什么",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 21,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-01a9b1f537518c55",
+      "title": "玻色因紧致面霜保湿 · 50g是不是有升级过包装",
+      "content": "配方是一样的,包装升级了哦~",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "客服话术",
+        "玻色因紧致面霜保湿 · 50g是不是有升级过包装"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 22,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-5495b2084642fd9d",
+      "title": "客户反映肌护比较混浊,正常的吗",
+      "content": "肌护是这样的",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "客户反映肌护比较混浊,正常的吗",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 23,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-dfb8c100467d4525",
+      "title": "客户夜猫子过敏,使用半个月左右,这种可以退吗",
+      "content": "我们的夜猫子做了鸡胚测试的~应该不会出现容易过敏的现象\n大半个月过敏,不退哈",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "客户夜猫子过敏,使用半个月左右,这种可以退吗",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "handoff_only",
+      "risk_tags": [
+        "adverse_reaction"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 24,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-2e6675aaaebfcc42",
+      "title": "5%传明酸 瓶身的50%指的是什么",
+      "content": "瓶身的50%是脂质体添加量,即传明酸干料含量5%~",
+      "tags": [
+        "5%传明酸 瓶身的50%指的是什么",
+        "三蛋丸微信群QA记录",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 26,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-07113543dabc936b",
+      "title": "出现售后关于瓶子按压不出来:",
+      "content": "宝宝,这边瓶子因为是真空的,所以需要多按压几下,把空气排出~",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "出现售后关于瓶子按压不出来:",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "handoff_only",
+      "risk_tags": [
+        "complex_after_sales"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 27,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-74e530892e745a20",
+      "title": "瓶子里面有玻璃渣",
+      "content": "宝宝~确实不知道是什么原因~方便把这瓶退回吗?我们这边做个检测,目前只收到您有这个反馈,我们这边和检测部再确认一下这个晶体是什么物质。",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "客服话术",
+        "瓶子里面有玻璃渣"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 29,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-2eb0701647c38324",
+      "title": "三蛋丸是国产还是进口",
+      "content": "国产的哦,自主研发的 有自己的研发工作室哦",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "三蛋丸是国产还是进口",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 30,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-e883aba8adaa22d9",
+      "title": "有破口的可以用吗",
+      "content": "医美72小时后使用 破皮项目结痂之后使用",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "客服话术",
+        "有破口的可以用吗"
+      ],
+      "category": "customer_service_faq",
+      "status": "review_required",
+      "risk_tags": [
+        "medical_or_procedure"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 31,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-8b1d5f2a5ff73e47",
+      "title": "我们三蛋丸金木水火土的洗发水含硅油吗",
+      "content": "只有土和金有硅油,其他都不含呢",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "客服话术",
+        "我们三蛋丸金木水火土的洗发水含硅油吗"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 32,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-1348f8e06e7eecd6",
+      "title": "传明酸湿敷的话,大概建议多长时间呢",
+      "content": "5-10分钟",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "传明酸湿敷的话,大概建议多长时间呢",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 33,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-e91982740f754089",
+      "title": "客户问传明酸乳液的角鲨烷是怎么提取的",
+      "content": "橄榄来源的,我们添加了5%的角鲨烷~",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "客户问传明酸乳液的角鲨烷是怎么提取的",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 34,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-11c1bba3bec05792",
+      "title": "抖音平台,关注3元劵还有吗",
+      "content": "领取后,不使用就过期了,官方平台的优惠券过期后我们无法控制,可以晚上8:30蹲蹲直播间~",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "客服话术",
+        "抖音平台,关注3元劵还有吗"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 35,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-b0fad06b055d81d1",
+      "title": "然后之后用了爆痘的,可以这样和他们说:",
+      "content": "宝宝,长痘痘可能是因为你肌底的老废角质和油脂爆发出来了~这个是属于正常现象,是一个催熟的过程。宝宝您坚持使用~一定会皮肤越来越好哒!\n一定要特别注意长痘痘后的护理,让他不要留下印子。",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "客服话术",
+        "然后之后用了爆痘的,可以这样和他们说:"
+      ],
+      "category": "customer_service_faq",
+      "status": "review_required",
+      "risk_tags": [
+        "unsafe_reassurance"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 36,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-2cf122ed50cceade",
+      "title": "入会有礼有赠送什么吗",
+      "content": "宝宝,入会后会有积分好礼兑换活动的福利~不入会就没有呢,这个是自愿入会的",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "入会有礼有赠送什么吗",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 37,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-10cf5007feedc3e0",
+      "title": "产品成分含量",
+      "content": "只要是问成分含量在 微量成分的,就回答:微量添加在0.1%以下",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "产品成分含量",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 38,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-8e5376780b7a3ced",
+      "title": "产品成分含量",
+      "content": "VCIP精华油577含量:577的净含量在0.3%~\n肉豆蔻烟酸酯含量:0.2%\n577 学名 4- 丁基间苯二酚,属于“间苯二酚家族”一员",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "产品成分含量",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 39,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-61efc57ba6e59cfe",
+      "title": "产品成分含量",
+      "content": "宝宝我们家的2%麦角硫因纯度是在99%以上哒!添加量是20000ppm=2%",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "产品成分含量",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "review_required",
+      "risk_tags": [
+        "canonical_numeric_conflict"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 40,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-e86082c180b5edc5",
+      "title": "产品成分含量",
+      "content": "10%VC甘草精华:3%SAP(抗坏血酸磷酸酯钠) + 3%MAP(抗坏血酸磷酸酯镁)+4%AA2G(抗坏血酸葡糖苷)",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "产品成分含量",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 41,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-1ad1f16d859f831f",
+      "title": "产品成分含量",
+      "content": "6%VC甘草精华:3%SAP(抗坏血酸磷酸酯钠) + 3%MAP(抗坏血酸磷酸酯镁)",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "产品成分含量",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 42,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-45fb083d9c96389f",
+      "title": "产品成分含量",
+      "content": "5%传明酸乳液:5%",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "产品成分含量",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 43,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-b57077d52f1ca03a",
+      "title": "产品成分含量",
+      "content": "5%传明酸:5%",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "产品成分含量",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 44,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-3e59ccddcbb13ac0",
+      "title": "产品成分含量",
+      "content": "10%传明酸;10%",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "产品成分含量",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 45,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-e343e9823f8bcad2",
+      "title": "产品成分含量",
+      "content": "ace精华(euk-134精华):0.12%",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "产品成分含量",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 46,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-121ce5081b6f1319",
+      "title": "产品成分含量",
+      "content": "麦角硫因精华:0.5%",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "产品成分含量",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 47,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-52430338021efc0d",
+      "title": "产品成分含量",
+      "content": "眼霜:0.4% 双a醇脂质体",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "产品成分含量",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 48,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-5566943b183b6de1",
+      "title": "产品成分含量",
+      "content": "夜猫子精华:3% 5D抗氧化脂质体+0.1%麦角硫因",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "产品成分含量",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "review_required",
+      "risk_tags": [
+        "canonical_numeric_conflict"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 49,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-f6a16915ed54b2af",
+      "title": "产品成分含量",
+      "content": "面霜:9%的玻色因",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "产品成分含量",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 50,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-c93c98e7ae5eadfc",
+      "title": "产品成分含量",
+      "content": "玻色因精华:30%玻色因 + 2% euk-134脂质体",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "产品成分含量",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "review_required",
+      "risk_tags": [
+        "canonical_numeric_conflict"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 51,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-4367c85525d10f81",
+      "title": "产品成分含量",
+      "content": "b5洗发水,b5含量0.2%",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "产品成分含量",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 52,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-b69baaaa760cd900",
+      "title": "产品成分含量",
+      "content": "眼霜的维A浓度:脂质体的添加量在0.4%双A油溶脂质体~里面是HPR和VA视黄醇丙酸酯~",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "产品成分含量",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 53,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-a40941a51250edc3",
+      "title": "产品成分含量",
+      "content": "Lipo为脂质体的意思,Lipo Nano都是脂质体。",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "产品成分含量",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 54,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-3a441e0d71374ccb",
+      "title": "产品成分含量",
+      "content": "传明酸里面添加了2%的光甘草定脂质体~实际光甘草定的净含量在0.04%左右。",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "产品成分含量",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 55,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-3ba060f909e90a0a",
+      "title": "强韧固发洗发水,详情页说【何首乌提取物和人参根提取物还有侧柏叶提取物是1:1:1】,但是成分表里何首乌+人参都在微量成分里",
+      "content": "有一个原料组是1:1:1,因为侧柏叶效果特别好,我们额外添加了该成分。这里的1:1:1是原料组的配方比例~\n我们用的侧柏叶是专利成分,防脱效果特别好~有国家的特证!",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "客服话术",
+        "强韧固发洗发水,详情页说【何首乌提取物和人参根提取物还有侧柏叶提取物是1:1:1】,但是成分表里何首乌+人参都在微量成分里"
+      ],
+      "category": "customer_service_faq",
+      "status": "review_required",
+      "risk_tags": [
+        "regulated_claim"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 56,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-9aed42bfd722a3a3",
+      "title": "A醛转化为A醇浓度大概是多少",
+      "content": "根据目前的一些研究论文显示0.1%A醛约等于0.5%A醇\n我们做了纳米包裹技术,很温和的宝宝~",
+      "tags": [
+        "A醛转化为A醇浓度大概是多少",
+        "三蛋丸微信群QA记录",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 57,
+        "field": ""
+      },
+      "alternate_sources": [
+        {
+          "file": "产品话术汇总完整版本.xlsx",
+          "sheet": "三蛋丸微信群QA记录",
+          "row": 121,
+          "field": ""
+        }
+      ],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-d10a94641a305fc3",
+      "title": "玻色因紧致面霜,页面写的30% 收到包装是9%的",
+      "content": "30%的玻色因水溶液添加了30%,就是9%的玻色因含量",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "客服话术",
+        "玻色因紧致面霜,页面写的30% 收到包装是9%的"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 58,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-4c464eec86920255",
+      "title": "玻色因紧致面霜,页面写的30% 收到包装是9%的",
+      "content": "宝宝,是30%的玻色因水溶液添加了30%\n所以30%*30%=9%(玻色因的净含量)",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "客服话术",
+        "玻色因紧致面霜,页面写的30% 收到包装是9%的"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 59,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-294451abc248b61b",
+      "title": "含量和浓度,除了公开的可以告诉,其他都不要说了",
+      "content": "宝宝,根据行业惯例和品牌配方保密原则,产品的完整成分表及精确配比属于品牌的核心商业机密,因此我们无法对外公开详细百分比,这一点也希望得到您的理解。",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "含量和浓度,除了公开的可以告诉,其他都不要说了",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 60,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-48b7277337088a6b",
+      "title": "下次问核心产品成分,回复",
+      "content": "宝宝,我们所有的核心成分的宣传浓度都是符合中国法规哒~如果不合法,是不可以宣传以及印刷在包装上的,我们从来不虚假宣传,宝宝你完全可以安心使用!",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "下次问核心产品成分,回复",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 61,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-cef46c6428d27f68",
+      "title": "客户咨询检测报告",
+      "content": "宝宝,大部分的检测报告我们都有在详情页贴出,根据行业惯例和品牌配方保密原则,产品的完整检测报告都已经严格按照平台要求进行上传,因此我们无法对外公开详细全部资料,这一点也希望得到您的理解。",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "客户咨询检测报告",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 62,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-5b9ef7c13e01a259",
+      "title": "抖音支持试用吗",
+      "content": "我们正常是不接受试用的~但是轩轩儿的宝宝是可以接受1支传明酸小样试用的,如果不喜欢的话,正装需要未拆封,已拆封小样和未拆封小样也需要全部退回哦~宝宝~",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "客服话术",
+        "抖音支持试用吗"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 63,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-d080bdd1b212eba1",
+      "title": "10的传明酸可以和油橄榄,杏仁酸的产品搭配使用吗?",
+      "content": "可以和油橄榄一起使用 不能和杏仁酸产品一起使用 建议分开使用",
+      "tags": [
+        "10的传明酸可以和油橄榄,杏仁酸的产品搭配使用吗?",
+        "三蛋丸微信群QA记录",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 64,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-b2f1215c5d7d2067",
+      "title": "产品有没有相关报告",
+      "content": "有的报告都在详情页了",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "产品有没有相关报告",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 65,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-217318080e9bf8cc",
+      "title": "VC甘草精华发黄",
+      "content": "VC甘草精华系列,料体是透明至淡淡黄色这个都是正常使用范围内~因为里面含有VC衍生物成分,微微的淡黄色都是属于正常哒,不会影响活性物。可以正常使用",
+      "tags": [
+        "VC甘草精华发黄",
+        "三蛋丸微信群QA记录",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 67,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-12b88596c7920820",
+      "title": "三蛋丸头皮精华液质地颜色",
+      "content": "淡黄色的",
+      "tags": [
+        "三蛋丸头皮精华液质地颜色",
+        "三蛋丸微信群QA记录",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 68,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-427b322e43a019f1",
+      "title": "天猫三蛋丸旗舰店售后处理",
+      "content": "天猫SOUNDERONE旗舰店,是有过敏险的哈,过敏原因发起的售后大家都正常处理~不要拒绝",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "天猫三蛋丸旗舰店售后处理",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "handoff_only",
+      "risk_tags": [
+        "adverse_reaction",
+        "complex_after_sales"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 69,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-4dac6383c91d8684",
+      "title": "天猫三蛋丸旗舰店售后处理",
+      "content": "如果客户描述问题严重或者客户情绪很大就全退,如果问题较小客户可以理解我们这边不能二次销售的情况,可以退一半,金额你们协商。",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "天猫三蛋丸旗舰店售后处理",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "handoff_only",
+      "risk_tags": [
+        "complex_after_sales"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 70,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-e48d9ed5337ffa8a",
+      "title": "B5洗发水是什么香型的",
+      "content": "橙香",
+      "tags": [
+        "B5洗发水是什么香型的",
+        "三蛋丸微信群QA记录",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 71,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-14ba7d73099e97ca",
+      "title": "传明酸到多少度会影响到产品成分失活",
+      "content": "宝宝,不会的~我们的产品都通过高低温稳定性测试的,高温50度内都不会变色~",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "传明酸到多少度会影响到产品成分失活",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 72,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-f2d8457bd214b1cb",
+      "title": "传明酸小样的颜色深浅不一",
+      "content": "包材会因为批次不同有些许不一样",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "传明酸小样的颜色深浅不一",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 73,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-94ee10c5b4f0f3ea",
+      "title": "7月底购买的肌护精华到第二个月液体有不一样的变化",
+      "content": "因为里面的卵磷脂成分是天然的,每个批次号不一样所以颜色会略微的不同~请宝宝放心,我们所有的产品都是通过质检合格才会出厂哒!",
+      "tags": [
+        "7月底购买的肌护精华到第二个月液体有不一样的变化",
+        "三蛋丸微信群QA记录",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 74,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-cff2b61dbb1d47e8",
+      "title": "传明酸结晶",
+      "content": "宝宝先拍照给我看下可以吗?我们也是第一次遇到这个反馈~\n很抱歉有这样的购物体验,我们本身液体是不会存在晶体的情况。这边可能是因为滴管的液体停留在瓶口,在空气中经过反复摩擦会有析出晶体的可能,这边尽量避免液体接触在瓶口导致液体有残留。\n宝宝这边可以选择一下【7天无理由】退货下,仓库看到后会优先为您处理!这样也会有一个免费的运费险不需要支付运费,我们这边为您退货,然后我们也检测一下是什么物质。",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "传明酸结晶",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "handoff_only",
+      "risk_tags": [
+        "complex_after_sales"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 75,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-89600347e51a0baf",
+      "title": "头皮精华印刷脱落",
+      "content": "实在不好意思,因为生产上高温杀毒可能导致的印刷脱落~真的很抱歉",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "头皮精华印刷脱落",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 77,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-d037a233666fcea4",
+      "title": "月强韧固发洗发水成分 桂醇聚醚硫酸酯钠 成分致癌",
+      "content": "宝宝~博主的科普还是不可尽信的呢,产品成分这个都是严格符合国家标准,且我们是有国家药监局颁布的防脱特证哦~\n如果是致癌物质,国家绝对不会让我们添加哒!要相信我们国家~",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "客服话术",
+        "月强韧固发洗发水成分 桂醇聚醚硫酸酯钠 成分致癌"
+      ],
+      "category": "customer_service_faq",
+      "status": "review_required",
+      "risk_tags": [
+        "regulated_claim"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 78,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-9fba1d81a8b83f6b",
+      "title": "15%和20%壬二酸 溶解度 是多少",
+      "content": "宝宝,我们暂时没有涉及到这方面~我们采用的是双微交联专研壬二酸,可以做到很好的吸收和渗透~",
+      "tags": [
+        "15%和20%壬二酸 溶解度 是多少",
+        "三蛋丸微信群QA记录",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 79,
+        "field": ""
+      },
+      "alternate_sources": [
+        {
+          "file": "产品话术汇总完整版本.xlsx",
+          "sheet": "三蛋丸微信群QA记录",
+          "row": 95,
+          "field": ""
+        }
+      ],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-0a73656aa6181c0d",
+      "title": "为什么没装满/容量",
+      "content": "宝宝~包装都是有一定空隙率的,他会有一个安全空间哒,我们所有的产品出厂都是符合国家质检标准的。不可能出现不达标的情况,净含量符合国家标准以及包装标注哒!",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "为什么没装满/容量",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 80,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-c928ffc2390fba08",
+      "title": "5%和10%传明酸,除了传明酸还有复配什么其他的吗",
+      "content": "5%传明酸复配了光甘草定脂质体,还有1%依克多因~肌肤容易敏的宝宝也是可以使用。\n10%传明酸也复配了光甘草定脂质体,但额外添加了1%烟酰胺以及泛醇B5。\n两款传明酸都是用的独家渗透脂质体包裹。",
+      "tags": [
+        "5%和10%传明酸,除了传明酸还有复配什么其他的吗",
+        "三蛋丸微信群QA记录",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 81,
+        "field": ""
+      },
+      "alternate_sources": [
+        {
+          "file": "产品话术汇总完整版本.xlsx",
+          "sheet": "三蛋丸微信群QA记录",
+          "row": 93,
+          "field": ""
+        }
+      ],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-0f5f8ae15e02b0cc",
+      "title": "这款洗发水是弱酸性还是碱性?",
+      "content": "弱酸性",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "客服话术",
+        "这款洗发水是弱酸性还是碱性?"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 82,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-310f80e44ee8c5e4",
+      "title": "1498赠品黑色面霜是女神咔哇FairyWakka,为什么网上搜索不到呢",
+      "content": "宝宝这个是和博主沟通,他选择的这款作为赠品哈~\n这个里面是高浓度的玻色因,秋冬季节很适合抗皱紧致~",
+      "tags": [
+        "1498赠品黑色面霜是女神咔哇FairyWakka,为什么网上搜索不到呢",
+        "三蛋丸微信群QA记录",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 83,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-b7c7f3df509281e4",
+      "title": "Sounder One三蛋丸臻白淡斑精华乳 的NLC专利号",
+      "content": "NLC是一种包裹方法,没有特定的专利",
+      "tags": [
+        "Sounder One三蛋丸臻白淡斑精华乳 的NLC专利号",
+        "三蛋丸微信群QA记录",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 84,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-86c0d7064bee4164",
+      "title": "b5洗发水,b5含量百分之多少呢",
+      "content": "2E-3",
+      "tags": [
+        "b5洗发水,b5含量百分之多少呢",
+        "三蛋丸微信群QA记录",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 85,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-8bcfa49fd677b242",
+      "title": "5%浓度的为什么黑色素减少是46%\n10%浓度的只减少20%?",
+      "content": "一个是14天,一个是28天,纬度天数不一样~",
+      "tags": [
+        "5%浓度的为什么黑色素减少是46%\n10%浓度的只减少20%?",
+        "三蛋丸微信群QA记录",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 86,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-999ac7f7cde2eed9",
+      "title": "有顾客问:洋妆源(天津)网络科技公司有售卖三蛋丸的资格吗?",
+      "content": "其他渠道我们不是很清楚~建议和他们联系呢~\n我们是官方SOUNDER ONE官方旗舰店,正规渠道❤️",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "客服话术",
+        "有顾客问:洋妆源(天津)网络科技公司有售卖三蛋丸的资格吗?"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 87,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-60c8b245ea9d1718",
+      "title": "euk的盖子",
+      "content": "宝宝,这个是我们新批次的新包装是白色盖子~",
+      "tags": [
+        "euk的盖子",
+        "三蛋丸微信群QA记录",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 88,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-fb6a46264ccff071",
+      "title": "传明酸像水一样",
+      "content": "我们里面是高浓度的传明酸含量,就是因为脂质体技术才可以那么的清爽~",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "传明酸像水一样",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 89,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-e64b1f50d0b55d58",
+      "title": "EUK是什么颜色呢,顾客购买的是这个颜色,有什么话术吗?",
+      "content": "EUK-134本身就是呈现琥珀色质地~里面含有0.12%EUK-134,活性物浓度比较高~",
+      "tags": [
+        "EUK是什么颜色呢,顾客购买的是这个颜色,有什么话术吗?",
+        "三蛋丸微信群QA记录",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 90,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-084e62dc4f38513a",
+      "title": "夜猫子精华可以和甘醇酸水搭配使用吗?\nph低会不会影响夜猫子精华的成分失活",
+      "content": "不建议和强酸搭配~甘醇酸还蛮刺激的\n建议和肌护舒缓精华一起使用",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "夜猫子精华可以和甘醇酸水搭配使用吗?\nph低会不会影响夜猫子精华的成分失活",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 91,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-af490a59bb1fe5d7",
+      "title": "瓶身印刷脱落",
+      "content": "产品是全新的呢,实在不好意思呢小宝,这个是因为生产上高温杀毒可能导致的印刷脱落~真的很抱歉",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "客服话术",
+        "瓶身印刷脱落"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 92,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-cc1a9e744cedc0c5",
+      "title": "客户反馈收到的壬二酸正装没有装满,怀疑净含量没有50g",
+      "content": "宝宝,我们的出品都是符合国家质检标准的。不可能出现不装满的情况哒!净含量都是50g~",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "客户反馈收到的壬二酸正装没有装满,怀疑净含量没有50g",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 94,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-c64dfa57b3260b80",
+      "title": "7月底购买的肌护精华到第二个月液体有不一样的变化,跟八月不一样",
+      "content": "因为里面的卵磷脂成分是天然的,每个批次号不一样所以颜色会略微的不同~请宝宝放心,我们所有的产品都是通过质检合格才会出厂哒!",
+      "tags": [
+        "7月底购买的肌护精华到第二个月液体有不一样的变化,跟八月不一样",
+        "三蛋丸微信群QA记录",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 96,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-597c17cea6c58133",
+      "title": "超出客服的知识范围,需要反馈询问时",
+      "content": "收到宝宝的反馈,我这边问下研发中心~稍后给您答复。",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "客服话术",
+        "超出客服的知识范围,需要反馈询问时"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 97,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-e139d501a022497b",
+      "title": "滴管有灰尘类",
+      "content": "宝宝你不用担心~因为快递过程中,小样卡片的纸屑会因为颠簸洒落,而且滴管是橡胶材质的\n我们的生产环境都是符合国家标准哒~",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "客服话术",
+        "滴管有灰尘类"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 98,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-015f45c40483b34a",
+      "title": "我们两款壬二酸全溶解还是半溶解呀",
+      "content": "我们是双联微观壬二酸+微囊壬二酸技术~\n壬二酸如果要做到全溶解,意味着他中和了,也就是ph值会改变~他就不是传统意义上的酸了。\n所以并不是全溶解就代表着壬二酸的产品越有效果哒宝宝~",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "客服话术",
+        "我们两款壬二酸全溶解还是半溶解呀"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 99,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-ad160a4a735816b7",
+      "title": "小红书客户下单中奖多次",
+      "content": "直播间中奖同一地址,只会发一次奖品~\n具体都是主播这边统一给我们核实哒宝宝~",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "客服话术",
+        "小红书客户下单中奖多次"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 100,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-2ae82d35f9219751",
+      "title": "壬二酸挤出来有一小块状",
+      "content": "宝宝,因为天气比较冷,您轻轻搓揉他就化开了",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "壬二酸挤出来有一小块状",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 101,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-cfc35463a4acc2f2",
+      "title": "长痘话术\n首先遇到客户!不是壬二酸,就回复:",
+      "content": "我们的产品里没有任何的致痘成分,宝宝长痘痘有很多原因。",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "客服话术",
+        "长痘话术\n首先遇到客户!不是壬二酸,就回复:"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 102,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-0ddde10e1c455f6c",
+      "title": "抖音客户问vc精华什么时候上线 看到博主用很想买",
+      "content": "宝宝可以关注一下我们~有任何信息都会在官方同步哒!",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "客服话术",
+        "抖音客户问vc精华什么时候上线 看到博主用很想买"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 103,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-281190e18a8cc8e5",
+      "title": "10%传明酸产品颜色差异话术",
+      "content": "脂质体技术采用的卵磷脂是天然的成分,每一个批次都会存在一定的差异。宝宝请您放心,只要是官方旗舰店购买的,质量绝对有保证。\n我们每一批产品出厂前都会检测合格符合标准哒~",
+      "tags": [
+        "10%传明酸产品颜色差异话术",
+        "三蛋丸微信群QA记录",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 104,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-5f54a587c8193e50",
+      "title": "用壬二酸脸干",
+      "content": "因为最近是秋冬季节用了脸很干,这个是正常的,可以叠加一个保湿乳或者面霜解决的~",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "客服话术",
+        "用壬二酸脸干"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 105,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-8bf33c4133f7e2b9",
+      "title": "壬二酸耐受",
+      "content": "壬二酸如何建立耐受~\n1、第一次使用的宝宝,可以先在耳后进行测试如果没有不舒服可以上脸使用~\n2、局部涂抹问题处,因为15%壬二浓度比较高又做了渗透技术,所以会出现刺痒感~但这个是属于正常的现象!宝宝不用担心哒~\n3、如果能忍就忍一下,这个刺痒感10-15分钟左右就会逐渐消失~若不能忍,建议宝宝立刻清洗掉。\n4、每天这样循序渐进,或者一天隔一天使用~在第二周,就可以建立好耐受并每天使用啦!",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "壬二酸耐受",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 106,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-677c60db1125590b",
+      "title": "壬二酸耐受",
+      "content": "哦对啦~宝宝,换季秋冬皮肤比较敏感,若出现使用后觉得干燥,可以轻轻地涂抹一些保湿乳液增加保湿力~",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "壬二酸耐受",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 107,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-b23d798d9c6e4e48",
+      "title": "VCIP 的PH值是多少呢?",
+      "content": "暂时还没有同步给我们~但是宝宝,VCIP和原型VC不一样需要PH在3.6左右才能促渗~VCIP是油,所以本身渗透就很不错哒!",
+      "tags": [
+        "VCIP 的PH值是多少呢?",
+        "三蛋丸微信群QA记录",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 108,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-d1b5173ac3f05d73",
+      "title": "30%VCIP光感清透精华油",
+      "content": "30%VCIP光感清透精华油,核心主打的是30%的VCIP含量~(比较贵的VC衍生物)以油养肤,可以很好的提亮、抗皱紧致肌肤~\n里面还复配了油溶577微囊珠、肉豆蔻烟酸酯、神经酰胺NP脂质体~可以更好的复配协同抗皱紧致舒缓肌肤!",
+      "tags": [
+        "30%VCIP光感清透精华油",
+        "三蛋丸微信群QA记录",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 109,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-e26aa048f0f7fc29",
+      "title": "2%麦角硫因日光精华",
+      "content": "核心主打的是2%的麦角硫因,我们也是用到了纳米渗透包裹技术,所以可以很好的对抗自由基、抗AGEs产物、抗皱、抗紫外线损伤、抗泛红(舒缓),更全面的抗皱紧致肌肤!",
+      "tags": [
+        "2%麦角硫因日光精华",
+        "三蛋丸微信群QA记录",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "review_required",
+      "risk_tags": [
+        "canonical_numeric_conflict"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 110,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-1f15c6beb84ba001",
+      "title": "30%VCIP光感清透精华油和2%麦角硫因日光精华 区别",
+      "content": "30%VCIP是精华油,所以质地更适合混干皮、干皮、混油皮,如果你是大油皮不太适合~而且可以作为打底油,叠加其他成分使用,可以放大之后使用的功效!\n2%麦角硫因(五抗精华),他的通路更全~更适合宝宝们白天使用,因为他可以对抗UV紫外线的伤害,清除自由基,帮助我们更好的在白天抗皱紧致肌肤!\n建议:白天使用2%麦角硫因(五抗精华),晚上使用:30% VCIP精华油",
+      "tags": [
+        "30%VCIP光感清透精华油和2%麦角硫因日光精华 区别",
+        "三蛋丸微信群QA记录",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "review_required",
+      "risk_tags": [
+        "canonical_numeric_conflict"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 111,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-990b430908a023bd",
+      "title": "产品使用过敏要赔偿",
+      "content": "您是否方便提供下相关的信息给到我,便于我更进一步为您确认下:1手持购买商品与过 敏部位的全脸同框照片原图2产品(正装及礼赠)剩余的容量3二级甲等医院开具的过 敏证明 请放心您提供的个人信息将由SOUNDER ONE处理,以调查您的疑虑、提高我们产品的安全性以及用于报告和分析目的。\n宝宝,我也非常希望能够帮助您,我只有收集完整的信息后才能为您提交去申请呢,还希望宝宝理解哦~",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "产品使用过敏要赔偿",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "handoff_only",
+      "risk_tags": [
+        "adverse_reaction",
+        "complex_after_sales"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 113,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-2a80f9ef27e9e101",
+      "title": "系统显示次日达,实际并没有到",
+      "content": "宝宝,这个是现在AI根据收货所在地预估的时间~",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "客服话术",
+        "系统显示次日达,实际并没有到"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 114,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-2ae068d6166b2b10",
+      "title": "传明酸精华发黄",
+      "content": "宝宝~传明酸精华里有2%光甘草定包裹,如果开封太久不使用光甘草定会微微变黄哒~但是完全不影响使用的",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "传明酸精华发黄",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 115,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-d195e1afd394990a",
+      "title": "壬二酸渗透度有没有临床检测报告 壬二酸的原料溯源在哪 ,可以提供给客户吗~",
+      "content": "我们是护肤品,是不可以做临床试验的,但是我们做了第三方人体VISIA报告。",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "壬二酸渗透度有没有临床检测报告 壬二酸的原料溯源在哪 ,可以提供给客户吗~",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "review_required",
+      "risk_tags": [
+        "medical_or_procedure"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 116,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-017fa1074aa895fd",
+      "title": "油橄榄和30%VCIP 油橄榄更清爽吧~",
+      "content": "是的,油橄榄精华是水感质地,VCIP是精华油",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "客服话术",
+        "油橄榄和30%VCIP 油橄榄更清爽吧~"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 117,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-8211c1e3248917be",
+      "title": "传明酸保湿乳按压话术",
+      "content": "宝宝~这款是真空锁鲜瓶设计哦。您可以稍用力按压,或是多按压几次排出内部负压,就能正常出料啦。",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "传明酸保湿乳按压话术",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 118,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-257b5da4b6f51d6b",
+      "title": "传明酸建议使用年龄",
+      "content": "满足13岁以上就可以使用我们的产品~头皮敏感的宝宝建议谨遵医嘱哦",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "传明酸建议使用年龄",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "review_required",
+      "risk_tags": [
+        "medical_or_procedure",
+        "minor_usage"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 119,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-e46bf69a7b62a198",
+      "title": "控价话术",
+      "content": "我们都是有严格控价标准哒!除我们授权以外的店铺,尤其是低价的商品可能是假货。\n宝宝~请认准官方旗舰店哦!",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "客服话术",
+        "控价话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 120,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-f6721279e5fd936e",
+      "title": "看到光甘草定详情页只写了渗透油溶,我们的产品应该都做了脂质体包裹技术吧\n================\n如果继续问,回复下面的话术",
+      "content": "宝宝我们这个产品用到的是油溶微囊包裹技术~\n我们会根据每个原料和最终呈现的方式采用不同的包裹技术~",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "客服话术",
+        "看到光甘草定详情页只写了渗透油溶,我们的产品应该都做了脂质体包裹技术吧\n================\n如果继续问,回复下面的话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 122,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-0f3d33b175ab996f",
+      "title": "看到光甘草定详情页只写了渗透油溶,我们的产品应该都做了脂质体包裹技术吧\n================\n如果继续问,回复下面的话术",
+      "content": "宝宝,这个已经超出我的知识范畴啦~如果感兴趣的话,可以购买回去试一下效果!不会让你失望哒~",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "客服话术",
+        "看到光甘草定详情页只写了渗透油溶,我们的产品应该都做了脂质体包裹技术吧\n================\n如果继续问,回复下面的话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 123,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-214729677482125b",
+      "title": "油橄榄高温会失活吗",
+      "content": "宝宝我们做过高温测试,45度以内都是ok的!",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "客服话术",
+        "油橄榄高温会失活吗"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 124,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-2c3255dcb9a2234b",
+      "title": "壬二酸料体流动性不同",
+      "content": "因批次号不同会有一点差异性这是属于正常范围内的,料体的粘度都是符合国家质检标准才出库哒!宝宝这个请您放心。",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "壬二酸料体流动性不同",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 125,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-0d5aee60e9bf443d",
+      "title": "5%传明酸的PH值",
+      "content": "6.62",
+      "tags": [
+        "5%传明酸的PH值",
+        "三蛋丸微信群QA记录",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 126,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-02178f4450dc6fe2",
+      "title": "10%传明酸的PH值",
+      "content": "5.53",
+      "tags": [
+        "10%传明酸的PH值",
+        "三蛋丸微信群QA记录",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 127,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-3bf693c5279cce3f",
+      "title": "VCIP泛黄",
+      "content": "VCIP精华油呈现淡黄色是正常哒,因为含有高浓度VC衍生物,这种情况是正常的,不会失活~宝宝可以安心使用!\n建议宝宝开封后3个月内尽量用完~",
+      "tags": [
+        "VCIP泛黄",
+        "三蛋丸微信群QA记录",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "三蛋丸微信群QA记录",
+        "row": 129,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-b889b58923e995e6",
+      "title": "浓度这么高需要先建立耐受吗?",
+      "content": "因为高浓度+渗透技术,第一次使用传明酸以及皮肤特别敏感的话,建议从5%浓度传明酸开始使用~",
+      "tags": [
+        "京东问答",
+        "客服话术",
+        "浓度这么高需要先建立耐受吗?"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "京东问答",
+        "row": 2,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-edef13c603270c4a",
+      "title": "看画眉推荐的牌子,这个项目反黑可以用吗?",
+      "content": "可以哒~传明酸成分可以抑制酪氨酸酶的活性,项目后可以很好的辅助反黑。我们家传明酸精华还运用了渗透包裹技术,可以更好的渗透吸收~",
+      "tags": [
+        "京东问答",
+        "客服话术",
+        "看画眉推荐的牌子,这个项目反黑可以用吗?"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "京东问答",
+        "row": 3,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-032a731476347b8c",
+      "title": "有美白效果吗?",
+      "content": "夜猫子精华核心成分是5D抗氧化脂质体,是有国家发明专利的,可以很好的去黄提亮~",
+      "tags": [
+        "京东问答",
+        "客服话术",
+        "有美白效果吗?"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "京东问答",
+        "row": 4,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-ead4a8e6fec6162c",
+      "title": "有美白效果吗",
+      "content": "10%传明酸精华里含有高浓度传明酸,搭配光甘草定脂质体以及烟酰胺成分,可以很好的净透肌肤。",
+      "tags": [
+        "京东问答",
+        "客服话术",
+        "有美白效果吗"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "京东问答",
+        "row": 5,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-3050e53c797aab3b",
+      "title": "请问项目反黑后用这个吗?效果怎么样?",
+      "content": "传明酸成分可以抑制酪氨酸酶的活性,项目后可以很好的辅助反黑。我们家传明酸精华还运用了渗透包裹技术,可以更好的渗透吸收~",
+      "tags": [
+        "京东问答",
+        "客服话术",
+        "请问项目反黑后用这个吗?效果怎么样?"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "京东问答",
+        "row": 6,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-178ffab18f994fb8",
+      "title": "传明酸去痘印有效果吗?",
+      "content": "传明酸又叫氨甲环酸(凝血酸)可以很好的帮助减少击退新生的红色痘印。",
+      "tags": [
+        "京东问答",
+        "传明酸去痘印有效果吗?",
+        "客服话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "京东问答",
+        "row": 7,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-37cdea30a7d3031f",
+      "title": "赠品未退回按照比例折价",
+      "content": "传明酸/壬二酸5ml折价9.9元/支\n传明酸15ml折价19.9元/瓶\nVCIP/麦角硫因5ml折价19.9/支\nVC甘草精华10ml折价19.9/支\n臻白面霜20g折价59元\n湿敷棉折价9.9/包\n赠品洗发水220ml折价59.9/瓶\n赠品洗发水50ml折价19.9/支",
+      "tags": [
+        "客服话术",
+        "话术汇总",
+        "赠品未退回按照比例折价"
+      ],
+      "category": "customer_service_faq",
+      "status": "handoff_only",
+      "risk_tags": [
+        "complex_after_sales"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 2,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-767a1ace3629637e",
+      "title": "关于控价",
+      "content": "我们都是有严格控价标准哒!除我们授权以外的店铺,尤其是低价的商品可能是假货。\n宝宝~请认准官方旗舰店哦!",
+      "tags": [
+        "关于控价",
+        "客服话术",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 3,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-1b85462ea5a61dd1",
+      "title": "小样是否支持试用",
+      "content": "标准话术 1:宝宝,我们的正装拆封是不支持退货的,如果您在使用过程中过敏了,辛苦宝宝提供一下手持产品在一起面部的照片~\n标准话术 2:宝宝,小样可以拆开试用,用前建议耳后测敏,如果不合适,退货需要将未拆封正装+已拆封的小样全部退回哦,有漏退回的产品是需要扣除费用的呢~\n标准话术 3:宝宝~这边如果不喜欢需要全部退回,小样(已拆封也要)以及正装一起退回给我们(正装在无拆封不影响二次销售的情况下)验货无误的话,我们将全额退款~",
+      "tags": [
+        "客服话术",
+        "小样是否支持试用",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "handoff_only",
+      "risk_tags": [
+        "adverse_reaction",
+        "complex_after_sales"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 4,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-a1e99082974d787c",
+      "title": "轩轩儿直播试用",
+      "content": "标准话术 1:我们正常是不接受试用的~但是轩轩儿的宝宝是可以接受1支小样试用的,如果不喜欢的话,正装需要未拆封,已拆封小样和未拆封小样也需要全部退回哦,未退回是需要折价扣款的呢~宝宝~\n标准话术 2:宝宝,我们所有的核心成分的宣传浓度都是符合中国法规哒~如果不合法,是不可以宣传以及印刷在包装上的,我们从来不虚假宣传,宝宝你完全可以安心使用!",
+      "tags": [
+        "客服话术",
+        "话术汇总",
+        "轩轩儿直播试用"
+      ],
+      "category": "customer_service_faq",
+      "status": "handoff_only",
+      "risk_tags": [
+        "complex_after_sales"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 5,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-cbc2a2d673687eaa",
+      "title": "多久有效果",
+      "content": "标准话术 1:皮肤的新陈代谢周期约为28天,但每个人的体质差异不同,大家都不一样。但正常的话7-14天就可以看得到效果~\n标准话术 2:皮肤的新陈代谢周期约为28天,但随着年龄增长,新陈代谢速度会变慢‌,可能会需要久一些才能看到效果的哦~ 每个人皮肤环境不同哦~吸收程度也是不一样的哦~",
+      "tags": [
+        "多久有效果",
+        "客服话术",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 6,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-67e87bc543a87e8b",
+      "title": "怎么建立皮肤耐受",
+      "content": "标准话术 1:15%壬二酸是需要建立耐受哒~上脸的刺痒感是正常的,一般5-10分钟左右消失~忍一忍!壬二酸是微薄脱的酸,可以帮助毛孔代谢多余油脂和老废角质。\n第一周使用:一天隔一天,每天晚上涂抹。\n第二周使用:可以每天涂抹。\n过程中,如果实在忍不住可以清水洗去~\n一般7天左右时间就可以建立耐受完毕!\n标准话术 2:5%传明酸不需要建立耐受,他很温和敏感肌可用。如果宝宝担心的话,可以先耳后使用哦, 然后可以面部采用点涂的方式, 慢慢过渡到全脸使用。\n标准话术 3:A醛精华是需要建立耐受哒~\n第一周使用:一天隔一天,每天晚上涂抹。\n第二周使用:可以每天涂抹。\n试用期间可以搭配5%传明酸一起使用~可以很好的预防使用A类精华所带来的色沉反黑问题。\n一般7天左右时间就可以建立耐受完毕!\n标准话术 4:其他精华:\n不需要建立耐受哒,如果宝宝担心的话,可以先耳后使用哦~ 然后可以面部采用点涂的方式, 慢慢过渡到全脸使用",
+      "tags": [
+        "客服话术",
+        "怎么建立皮肤耐受",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "review_required",
+      "risk_tags": [
+        "unsafe_reassurance"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 7,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-c9d319f4fcdc3595",
+      "title": "怎么建立皮肤耐受",
+      "content": "如果壬二酸中途中断过使用\n壬二酸是一定需要建立耐受的,如果长期不用,是需要重新建立哒!\n建立中出现刺痒感是正常的,按照耐受方式一般7天左右就可以建立耐受成功。",
+      "tags": [
+        "客服话术",
+        "怎么建立皮肤耐受",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 8,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-f2f64a397b715314",
+      "title": "退差价",
+      "content": "宝宝,非常抱歉,价保期内,我们可以按照您【实际支付的金额】和【页面到手价】进行退差价,【平台满减、优惠券、红包等不在保价和退差价范围内哦】",
+      "tags": [
+        "客服话术",
+        "话术汇总",
+        "退差价"
+      ],
+      "category": "customer_service_faq",
+      "status": "handoff_only",
+      "risk_tags": [
+        "complex_after_sales"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 9,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-ea6e933476725d75",
+      "title": "返现活动",
+      "content": "宝宝,直播间的返现、博主的抽奖等活动,都是找对应的博主哦~",
+      "tags": [
+        "客服话术",
+        "话术汇总",
+        "返现活动"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 10,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-4c5a89c9e06fcc69",
+      "title": "为什么不包邮",
+      "content": "标准话术 1:宝宝,非常抱歉,偏远地区是不包邮哒~\n标准话术 2:宝宝,商品的运费是根据商品重量和您的收货地址自动计算的,非包邮商品需要另外支付运费。我们已经与快递公司协商,争取到了优惠价格,实际运费以下单显示为准~",
+      "tags": [
+        "为什么不包邮",
+        "客服话术",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 11,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-68e10d0a52ba58d4",
+      "title": "已发货修改地址",
+      "content": "这边尝试反馈一下,运输途中修改地址有失败的风险,小宝还是做好原地址签收的准备哦~",
+      "tags": [
+        "客服话术",
+        "已发货修改地址",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "handoff_only",
+      "risk_tags": [
+        "complex_after_sales"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 12,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-e22592cc10e1c690",
+      "title": "什么时候有货",
+      "content": "宝,我们的仓库不定期进行补货哦,建议您收藏关注下,这样就能及时了解商品的补货情况啦~ 谢谢您的支持哟!",
+      "tags": [
+        "什么时候有货",
+        "客服话术",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 13,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-523da44123835987",
+      "title": "传明酸起白沫",
+      "content": "起白沫:1. 可以尝试减少一下用量\n2. 手法尽量不揉搓,可以按压拍打辅助吸收\n3. 等传明酸吸收、干了后,再去叠加后续的护肤品",
+      "tags": [
+        "传明酸起白沫",
+        "客服话术",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 14,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-34ff085980e897b6",
+      "title": "传明酸两种进阶教学(两个浓度都可以!)",
+      "content": "湿敷法:用传明酸把化妆棉浸湿之后,敷在问题处或全脸5-10分钟,不需要洗掉!用手轻轻按摩吸收,吸收完后进行后续护肤流程~\n封包法:把传明酸涂抹在脸上,用保鲜膜或者或者透明的面膜把他封住,大概10-15分钟就可以拿掉,拿掉后也不需要洗掉!用手轻轻按摩吸收,吸收完后进行后续护肤流程~\n我们家的传明酸本身用脂质体包裹后促渗效果本身就高于普通传明酸,大部分时期只用湿敷法就够啦~",
+      "tags": [
+        "传明酸两种进阶教学(两个浓度都可以!)",
+        "客服话术",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 15,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-07005d57fe8b1902",
+      "title": "面部使用过敏了",
+      "content": "宝宝,真的很抱歉,您目前面部情况有缓解吗?\n如果您在使用过程中过敏了,辛苦宝宝提供一下手持产品在一起面部的照片~\n您在使用过程中有搭配其他产品使用吗?",
+      "tags": [
+        "客服话术",
+        "话术汇总",
+        "面部使用过敏了"
+      ],
+      "category": "customer_service_faq",
+      "status": "handoff_only",
+      "risk_tags": [
+        "adverse_reaction"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 16,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-825f59023911b87e",
+      "title": "反馈长痘",
+      "content": "标准话术 1:您近期有没有熬夜或者饮食较为油腻的情况呢\n因为如果您前期已经使用过我们的产品了,正常相当于是皮肤不排斥这款产品,可能是近期作息比较紊乱或者压力较大造成的皮肤长痘呢\n护肤品只能是作为调节皮肤情况的方式之一,您也要爱惜自己的身体哦,尽量保持正常作息,饮食健康,也避免一下经常用手去触碰面部哦,手上是有细菌的呢~\n标准话术 2:宝宝,这款产品里没有致痘成分哒~长痘痘可能是因为您肌底的老废角质和油脂疏通爆发出来了~这个是一个催熟的过程。宝宝您坚持使用~一定会皮肤越来越好哒!\n一定要特别注意长痘痘后的护理,让他不要留下印子。\n标准话术 3:传明酸没有致痘成分,长痘痘的原因有很多的呢,比如饮食因素、作息与压力、面部清洁等问题呢",
+      "tags": [
+        "反馈长痘",
+        "客服话术",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "review_required",
+      "risk_tags": [
+        "unsafe_reassurance"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 17,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-3efb557f3ebfa1f9",
+      "title": "传明酸瓶内结晶",
+      "content": "标准话术 1:宝宝在使用的过程中,尽量不要残留在瓶口~因为滴管的液体残留在瓶口,滴管与瓶口在拧开的过程中,经过反复摩擦水分蒸发会有析出晶体的可能,这边尽量避免液体接触在瓶口导致液体有残留~不然可能会掉落进瓶内~\n标准话术 2:嗯嗯,确实非常抱歉给宝宝的使用上造成了不便,我们也在汇总产品的反馈,争取后续努力改进,谢谢小宝的理解~\n标准话术 3:这个是正常的,不影响使用效果的呢,建议后续放在阴凉避开阳光直射的位置,拧紧瓶口保存呢\n标准话术 4:因为开封的久,如果有液体残留在瓶口,每天使用还好不会有结晶问题~但是如果一小段时间不用,残留在瓶口液体的水分会蒸发,就会析出结晶~宝宝尽量每天使用的时候可以稍微擦一下瓶口~",
+      "tags": [
+        "传明酸瓶内结晶",
+        "客服话术",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 18,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-b5787abeceb07422",
+      "title": "传明酸瓶口结晶",
+      "content": "标准话术 1:宝宝在使用的过程中,尽量不要残留在瓶口~因为滴管的液体残留在瓶口,滴管与瓶口在拧开的过程中,经过反复摩擦水分蒸发会有析出晶体的可能,这边尽量避免液体接触在瓶口导致液体有残留。\n标准话术 2:使用时,一定要避免瓶口液体残留,若瓶口暴露在空气中并长期摩擦会产生白色粉末,不小心滴落入瓶内,会有晶体颗粒,虽然不影响使用效果,但会影响使用感受~\n标准话术 3:宝宝应该是运输的时候可能因为碰撞导致液体流出来了,在瓶口与空气接触晶体析出~",
+      "tags": [
+        "传明酸瓶口结晶",
+        "客服话术",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 19,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-c86fb99a4d845fa6",
+      "title": "传明酸乳液有颗粒感",
+      "content": "已经开封使用过的传明酸乳液,如果长期不用,会存在泵口的地方水分蒸发有微微晶体问题~只要把第一蹦挤掉就可以安心使用啦。",
+      "tags": [
+        "传明酸乳液有颗粒感",
+        "客服话术",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 20,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-f09e6934aeb00926",
+      "title": "VC甘草精华发黄",
+      "content": "标准话术 1:宝宝,VC这个成分比较特殊,接触到空气后很容易发黄,但是您放心,只要精华颜色不是深沉的暗黄色,都是不影响使用的呢\n标准话术 2:建议小宝后续用完后尽快将泵头收回去,平时放在阳光无法直射到的位置常温存放哦~\n标准话术 3:VC甘草精华系列,料体是透明至淡淡黄色这个都是正常使用范围内~因为里面含有VC衍生物成分,微微的淡黄色都是属于正常哒,不会影响活性物。可以正常使用\n标准话术 4:因为夏天部分地区高温情况下,料体会有一点点变成淡黄色,但这都不影响使用哒~",
+      "tags": [
+        "VC甘草精华发黄",
+        "客服话术",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 21,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-995deaa50edb666f",
+      "title": "痘痘形成的原因",
+      "content": "因为油脂分泌异常,长时间堵塞在毛孔排不出去,才会在脸上形成红色的痘痘~",
+      "tags": [
+        "客服话术",
+        "痘痘形成的原因",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 22,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-6c607d76115d70fe",
+      "title": "合作",
+      "content": "小宝,您可以提供一下您的方式,这边会反馈给对应负责人,有需要再联系您",
+      "tags": [
+        "合作",
+        "客服话术",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 23,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-ab26b96727a2534f",
+      "title": "拦截包裹",
+      "content": "小宝,您的订单申请售后,我们已发起拦截,但拦截仍有失败风险,辛苦您配合拒收一下包裹,待物流有退回物流记录后我们会尽快为您处理退款的呢`",
+      "tags": [
+        "客服话术",
+        "拦截包裹",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "handoff_only",
+      "risk_tags": [
+        "complex_after_sales"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 24,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-5803543e688be297",
+      "title": "包装脏的",
+      "content": "打包是人工打包的,可能是手套上陆续打包残留的灰尘,以及打包过程拿纸箱造成的,外包装不会影响产品实际使用的呢,客服这边也会传达您反馈的问题的哈,不好意思哦,小宝",
+      "tags": [
+        "包装脏的",
+        "客服话术",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 25,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-7f6e10f141368b96",
+      "title": "滴管内有异物",
+      "content": "这边都是无菌环境生产的,不可能会出现您说的这个情况哒!宝宝这边方便拍个照片,我们核实一下情况吗?",
+      "tags": [
+        "客服话术",
+        "滴管内有异物",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "review_required",
+      "risk_tags": [
+        "unsafe_reassurance"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 27,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-225508745979fbdc",
+      "title": "异常问题",
+      "content": "我们这边非常注重消费者的体验的小宝,您反馈的这种情况是第一次,我们这边要核实清楚是哪个环节的问题",
+      "tags": [
+        "客服话术",
+        "异常问题",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 28,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-b0ecbb4b96c2e9f0",
+      "title": "乳液按压不出来",
+      "content": "标准话术 1:宝宝,您可以将瓶身倒过来拍几下底部,将空气排出后再尝试按压呢,如果仍有问题您可以再来联系我们哦~\n标准话术 2:宝宝,考虑到您一直按压 不出来考虑到您使用的体验感不好 所以给您换一瓶的哈 我们也看下产品的具体情况的哈。",
+      "tags": [
+        "乳液按压不出来",
+        "客服话术",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 29,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-1496485eed58eeb6",
+      "title": "传明酸面部有创口可以使用吗",
+      "content": "标准话术 1:5%传明酸是敏感肌可用哒,可以在非创伤项目后隔天使用~其他的需要等结痂后再使用(一般是3天左右)\n标准话术 2:医美72小时后使用 或者医美24小时后使用 破皮项目结痂之后使用",
+      "tags": [
+        "传明酸面部有创口可以使用吗",
+        "客服话术",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "review_required",
+      "risk_tags": [
+        "medical_or_procedure"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 30,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-c2d56f015381032a",
+      "title": "能和XXX叠加吗",
+      "content": "因为每个人的肤质和耐受度不同,建议是上脸前先在耳后叠加测敏一下,没有异常再上脸",
+      "tags": [
+        "客服话术",
+        "能和XXX叠加吗",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 31,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-8ca3f3b9829d44af",
+      "title": "退货缺小样",
+      "content": "您好,仓库已收到您的退货,仓库是所有小样需要一起寄回的,您看可以帮忙把小样寄回吗?不能退回的话 小样是按一支9.9元扣除金额的哦",
+      "tags": [
+        "客服话术",
+        "话术汇总",
+        "退货缺小样"
+      ],
+      "category": "customer_service_faq",
+      "status": "handoff_only",
+      "risk_tags": [
+        "complex_after_sales"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 32,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-400b02a9a67807fc",
+      "title": "发顺丰补价",
+      "content": "小宝,发顺丰的件,中途如果要更换地址,或者拒收,来回的费用是都是您承担的呢\n江浙沪单瓶的运费 15元,套组(20元)\n其他地方单瓶18元,套组(23元)\n如果是青海,西藏,新疆 这些地方,一公斤25元,续重20元",
+      "tags": [
+        "发顺丰补价",
+        "客服话术",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 33,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-f82c344a3cb9857e",
+      "title": "小样折价",
+      "content": "传明酸小样5ml 均折价9.9\nVC甘草精华10ml 折价19.9",
+      "tags": [
+        "客服话术",
+        "小样折价",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 34,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-4485f8586aa803e9",
+      "title": "开专票",
+      "content": "您好,本店是默认开增值税电子普通发票哦\n----------------\n开具专用发票要求与交易相对应的款项是通过公司间的公对公打款方式进行支付的。如需开具【增值税专用发票】,需要您用开票的公司银行账号来进行购买。即【公对公付款】来进行交易的,专用专票的抬头也会依据您付款的对公账户进行开具。\n注:如付款的账号不是公司银行账号就无法开具专用发票,付款的时候请选择好对公账号呢",
+      "tags": [
+        "客服话术",
+        "开专票",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 35,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-b6eac5af70318ce3",
+      "title": "双a醇眼霜瓶子上的0.4%指的是什么",
+      "content": "双a醇脂质体的添加量。",
+      "tags": [
+        "三蛋丸微信群QA记录",
+        "双a醇眼霜瓶子上的0.4%指的是什么",
+        "客服话术",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 36,
+        "field": ""
+      },
+      "alternate_sources": [
+        {
+          "file": "产品话术汇总完整版本.xlsx",
+          "sheet": "三蛋丸微信群QA记录",
+          "row": 25,
+          "field": ""
+        }
+      ],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-7ac32a5f9fbd487d",
+      "title": "5%传明酸 瓶身的50%指的是什么",
+      "content": "标准话术 1:瓶身的50%是脂质体添加量,即传明酸干料含量5%~\n标准话术 2:瓶身的50%是脂质体添加量,核心添加了50%的SHUHE.WANG",
+      "tags": [
+        "5%传明酸 瓶身的50%指的是什么",
+        "客服话术",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 37,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-3813329d100f54aa",
+      "title": "差价",
+      "content": "标准话术 1:小宝,天猫平台您可以直接在订单 订单服务 价保里面可以申请价格保护\n哦\n标准话术 2:若您发现活动降价,请提交订单不要付款,联系客服,给您安排退差价,平台优惠券、红包除外。",
+      "tags": [
+        "客服话术",
+        "差价",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "handoff_only",
+      "risk_tags": [
+        "complex_after_sales"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 38,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-094d969aac7529ad",
+      "title": "三蛋丸保质期",
+      "content": "标准话术 1:生产日期后的三年,日常建议避光阴凉处保存哦~\n标准话术 2:未开封保质期三年,日常建议拧紧瓶口在阴凉避开阳光直射处保存呢",
+      "tags": [
+        "三蛋丸保质期",
+        "客服话术",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 39,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-8dad256597d6f141",
+      "title": "耳后测敏",
+      "content": "\"如何做过敏测试?\n使用任何新的护肤品,都要做过敏测试!\n👉测试小方法:取点产品,在耳后根的位置,观察半个小时或是更长时间,观察有没有不适,发痒,长小疹子等。\n👉如果没有不适,就可以正常使用。如果有,请立刻停用。\n注意:如果没有不适,用在脸上,却出现过敏,表示自身皮肤受损了,目前比较脆弱,是一种假性过敏,建议通过补水、修复来改善肌肤哦~\"",
+      "tags": [
+        "客服话术",
+        "耳后测敏",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "handoff_only",
+      "risk_tags": [
+        "adverse_reaction"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 41,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-e1848c5492acd08a",
+      "title": "部分产品使用顺序",
+      "content": "标准话术 1:传明酸:\n洁面后,干手干脸,护肤第一步可以替换爽肤水~根据脸的大小使用1-2滴管!均匀涂抹至吸收,等干了再叠加其他护肤品。\n标准话术 2:壬二酸:\n护肤最后一步~如果觉得干,可以再叠加使用一个保湿的面霜。",
+      "tags": [
+        "客服话术",
+        "话术汇总",
+        "部分产品使用顺序"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 42,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-d91456f69e42d479",
+      "title": "AM保质期",
+      "content": "五年",
+      "tags": [
+        "AM保质期",
+        "客服话术",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 50,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-33bab340b6b04f4f",
+      "title": "AM有试用装吗",
+      "content": "目前没有",
+      "tags": [
+        "AM有试用装吗",
+        "客服话术",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 51,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-86ba0122ce7da6b0",
+      "title": "AM产地",
+      "content": "标准话术 1:日本\n标准话术 2:日本原装进口到国内销售的",
+      "tags": [
+        "AM产地",
+        "客服话术",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 52,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-68094894c617d69f",
+      "title": "AM洗发水颜色黄",
+      "content": "标准话术 1:因为我们的洗发水是由氨基酸和大量植物活性蛋白成份的配方组成的,很容易受到温度和环境的影响,所以会发生些许颜色的改变,属于正常现象哈。不影响产品的质量和使用效果的\n标准话术 2:因为我们的洗发水是由100%氨基酸和大量植物活性蛋白成份的配方组成的,很容易受到温度和环境的影响,所以会发生些许颜色的改变,属于正常现象哈。不影响产品的质量和使用效果的呢~",
+      "tags": [
+        "AM洗发水颜色黄",
+        "客服话术",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "review_required",
+      "risk_tags": [
+        "unsafe_reassurance"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 53,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-6b4698ad13331032",
+      "title": "AM洗发水稀薄",
+      "content": "很多顾客刚收到都会误以为质地稀是品质问题,跟您说明下哦:咱们主打温和氨基酸配方,摒弃了市面洗护常用的化学增稠凝固剂,因此原液流动性高、质地轻薄,没有厚重胶感,对敏感头皮更友好,泡沫细腻也好冲洗。",
+      "tags": [
+        "AM洗发水稀薄",
+        "客服话术",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 54,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-a5b812765f61fa22",
+      "title": "京东自营转人工",
+      "content": "打开京东APP 点击右下角我的 再点击客户服务 在线客服 对话框输入“转人工”",
+      "tags": [
+        "京东自营转人工",
+        "客服话术",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 55,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-fda6f5949e1cbcfb",
+      "title": "京东自营需要售后",
+      "content": "目前咱们这边是品牌客服,无法直接转接售后,客服帮您提交工单反馈物流核实下哈,有结果给您留言~",
+      "tags": [
+        "京东自营需要售后",
+        "客服话术",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "handoff_only",
+      "risk_tags": [
+        "complex_after_sales"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 56,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-4588df776be94a24",
+      "title": "AM薄荷洗后没有凉感",
+      "content": "非常理解您的疑问~跟您解释下这款洗发水的薄荷叶植萃原理哦:\n咱们凉感并不是辣薄荷叶带来的,真正产生冰爽刺痛感的是高浓度提纯薄荷醇。这款只添加天然植物薄荷叶提取液,没有额外添加刺激型薄荷醇,所以不会有很明显的凉飕飕体感。添加薄荷叶主要作用是温和控油、舒缓头皮闷热、减少头油头痒,走温和养护路线,敏感头皮、烫染受损发质都可以放心用,不会刺激头皮泛红。如果您想要轻微清爽感,可以洗头最后用冷水冲一遍头皮,能更好带出草本清爽感哈!",
+      "tags": [
+        "AM薄荷洗后没有凉感",
+        "客服话术",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "handoff_only",
+      "risk_tags": [
+        "adverse_reaction"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 57,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-65f76a787c041a67",
+      "title": "AM瑕疵品是指什么瑕疵",
+      "content": "小宝,一般是泵头有瑕疵、效期将近、印刷褪色、液体发黄等随机问题哦",
+      "tags": [
+        "AM瑕疵品是指什么瑕疵",
+        "客服话术",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 58,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-18a10fb16cdcc304",
+      "title": "如何选择适合的洗发水",
+      "content": "控油:头皮油脂分泌旺 盛,头发出油打绺 ,油性发质。 功效:温和控油,镇静舒缓头 皮,预防头皮屑,防止脱 发,改善头皮健康,重塑 头皮健康水油平衡状态。香味是清新型的哦:西柚+柠檬香哦\n-----------------\n蓬松适合人群:头发软塌贴头皮, 头皮油脂分泌旺 盛,头发却因受损 干枯严重 功效:抑制头皮异味,修复头发 断裂,提升发丝光泽度, 让发根强韧蓬松。 适合混合型的发质,偏油偏干的发质较为适合,清香牡丹味\n------------------\n润泽适合人群:头皮干燥发丝干枯 ,干枯受损发质 功效:深层修复发芯,保湿锁 水,抚平毛鳞片。香甜的白玫瑰",
+      "tags": [
+        "如何选择适合的洗发水",
+        "客服话术",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 59,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-02931409a423dda5",
+      "title": "AM洗发水使用过敏",
+      "content": "标准话术 1:我们的产品氨基酸表活产品,初次接触氨基酸会有一段时间适应期,轻微的不适比价正常,头皮没有出现红肿过敏一般7到15天适应了就没什么问题呢\n标准话术 2:咱们洗护产品的成分都是注重安全健康的,为纯氨基酸表活产品,滋养度偏高,氨基酸的含量也是比较高哒,使用上也是建议您多加冲洗避免因未冲洗干净导致的洗发产品残留造成头皮屑头痒情况产生哦\n标准话术 3:我们的洗发水是通过调节头皮水油平衡来改善头皮环境的,头痒头屑都是头皮不健康导致的,本质需要调节头皮水油平衡环境,头皮环境健康了,头屑头痒等一系列头皮问题都会慢慢得到改善",
+      "tags": [
+        "AM洗发水使用过敏",
+        "客服话术",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "handoff_only",
+      "risk_tags": [
+        "adverse_reaction"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 60,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-843ebd8d345aee04",
+      "title": "AM洗发水使用过敏",
+      "content": "标准话术 1:亲亲 咱们aminomason主打的为高滋养度的氨基酸表活产品,初次接触氨基酸的用户可能会出现轻微的不适,属于正常现象,只要是头皮无过敏坚持使用都会慢慢得到改善。\n类似于缺水的肌肤初次使用高保湿的玻尿酸面膜会有刺痛感一样,无过敏现象坚持使用都会有改善的。\n使用注意事项:建议您使用完洗发产品后冲洗时间久一点,最好是冲洗时间在40-50秒左右,保证洗发产品完全洗净,避免有残留导致头皮富营养化堵塞毛孔造成额外的头屑头痒问题滋生,可以在选择产品前先咨询客服根据您的头皮情况进行指导推荐\n标准话术 2:小宝 如果是初次接触氨基酸表活洗护产品,头皮会有7-15天的适应期,期间可能会出现轻微不适,如头轻微头痒或者头屑问题,属于头皮的常规新陈代谢哒,头皮环境健康后不适应情况会得到改善好转。如果使用期间出现明显的头皮红肿和过敏情况请及时暂停使用,联系产品客服提供下手持产品拍下不适部位的清晰图片或者视频,客服帮您看下哈\n标准话术 3:非常抱歉本次使用没能达到您的预期!产品生产全程都有质检把控,质量您完全放心;不过洗护产品的使用感受和每个人的头皮状态、发质条件息息相关,行业内所有洗护品牌都很难做到适配每一位消费者,我们也由衷不希望这种适配不佳的情况让您遇上,您有任何诉求都可以和我说,我们尽力为您妥善处理。\n标准话术 4:养发是一项持久战,除了使用好的产品外,您日常也注意一下洗头发用指腹部位按摩头皮、作息规律、饮食清淡等生活习惯哦~",
+      "tags": [
+        "AM洗发水使用过敏",
+        "客服话术",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "handoff_only",
+      "risk_tags": [
+        "adverse_reaction"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 61,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-5cc8a2bd7cb21ca8",
+      "title": "AM质地稀",
+      "content": "您好,Aminomason洗发水不像一般的洗发水那样质地比较粘稠,倒出来之后你会发现它的质地清爽的就像水一样,不需要揉搓起泡直接将洗发水倒在头发上使用。就能够将头皮中的油脂打碎随着泡沫带走,这种去油方式非常温和有效哈,另外氨基酸洗发水根据配方做成什么样就是什么样的稠度,稀不能代表氨基酸浓度低,浓度越高就越稀。所以氨基酸洗发水越稀品质越高哟,可以安心使用呢。",
+      "tags": [
+        "AM质地稀",
+        "客服话术",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 62,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-c2a3e6d9cbaab2d2",
+      "title": "AM注意事项",
+      "content": "温馨提示:AM洗发水富含多种氨基酸洗净成分,安全且不伤头皮和头发,和AM里高配比的天然萃取植物精华 一起高效修护受损的毛鳞片。 而富含氨基酸洗净成分和植物滋润修护成分的AM洗发水和其他含硫酸盐洗净成分的洗发水不同,短短几十秒的冲洗时间无法完全冲洗干净。 因此,在冲洗AM产品时也需要适当增加冲洗时间。短发人群建议冲洗2-3分钟左右。长发人群建议 冲洗3-5分钟左右。",
+      "tags": [
+        "AM注意事项",
+        "客服话术",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 63,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-ad2c5cf4ed90dd40",
+      "title": "AM打结",
+      "content": "标准话术 1:宝宝,我们是零硅油的洗发水,头发在充分清洁的时候,表面毛鳞片会自然张开,由于没有硅油的填充,就会变得像衣服粘扣一样,粗糙的头发表面,自然会粘在一起,产生打结的现象。\n标准话术 2:我们在用无硅油洗发水洗头的时候,尽量要顺着头发生长的方向搓揉,由发根向发稍慢慢揉,避免发丝粘黏打结。长发建议搭配护发素使用",
+      "tags": [
+        "AM打结",
+        "客服话术",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 64,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-a652418a6e6e1635",
+      "title": "AM瓶身材质",
+      "content": "咱们产品瓶身采用专研梅森瓶,安全标准对标食品容器,密封性优异,能隔绝空气,避免有效成分氧化、香气挥发,适配洗护产品长期储存。极简包装是高端洗护的经典设计思路,品牌核心研发重点都放在洗护成分、护理功效、专属香调与品牌工艺沉淀上~简约外观也是当下高端洗护的流行趋势",
+      "tags": [
+        "AM瓶身材质",
+        "客服话术",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 65,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-3bb7944d0fa160b4",
+      "title": "AM塑封",
+      "content": "标准话术 1:跟您说明一下包装小细节哦~当下日本环保限塑条例执行标准十分严格,我们品牌主动配合减塑低碳行动,现阶段大部分洗护产品已去除外包装塑封,未来全系列也会全面取消塑封包装,在保障产品品质的同时践行可持续环保理念。\n标准话术 2:男士系列和健发系列都是没有塑封的",
+      "tags": [
+        "AM塑封",
+        "客服话术",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 66,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-8376a167ac37c11a",
+      "title": "AM味道/臭味",
+      "content": "标准话术 1:香味分前中后调层次比较丰富哦,刚刚散发出来的前调香味,可能会比较浓烈一点,每一种香味在散发过程中会慢慢变淡且更佳持久哦~在您的周身是会有淡淡的香气萦绕着的哦,由于人与人之间的嗅觉感受灵敏度不同,对气味的感知也是不一样呢\n标准话术 2:控油香味是清新的西柚+柠檬香\n蓬松属于清香牡丹味\n润泽带有香甜的白玫瑰\n标准话术 3:白色款润泽洗发水是白玫瑰味\n灰色款蓬松洗发水和薄荷控油洗发水是白牡丹味\n绿色款控油洗发水和粉色樱花控油是柠檬+西柚味道的\n粉色滋养是樱花味。",
+      "tags": [
+        "AM味道/臭味",
+        "客服话术",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 67,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-2a243547879659f2",
+      "title": "头皮精华使用方式",
+      "content": "小宝,这个精华早晚均可使用,需要均匀涂抹在整个头皮上,由于是液体质地,建议使用过程中用指腹按压揉搓开哦",
+      "tags": [
+        "头皮精华使用方式",
+        "客服话术",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 68,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-b0a9f9e9b223e59c",
+      "title": "为什么头发洗完还是感觉有点油?",
+      "content": "洗完依旧有油腻感,大多是冲洗时长不足导致的哦,跟您解释下原因:\n咱们 AM这款是氨基酸表活配方,搭配高浓度天然植萃修护精华,温和不伤头皮发丝,能修护受损毛鳞片;\n市面上很多廉价洗护用硫酸盐强清洁成分,起泡快、一冲就干净,但刺激性大;而氨基酸 + 植润精华质地更温润,泡沫附着在发丝、头皮缝隙里会更持久,如果只冲洗几十秒很难彻底冲净残留,残留就会让头发摸起来发油、发黏。\n给您参考冲洗时长:短发建议冲洗 1–2 分钟,长发 / 厚发建议 3–5 分钟,多冲洗一会儿就能清爽顺滑啦。",
+      "tags": [
+        "为什么头发洗完还是感觉有点油?",
+        "客服话术",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 69,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-2c22ac8d49563ed7",
+      "title": "为什么用完洗发水头屑增多?",
+      "content": "特别理解您用完头屑变多会觉得困扰,很多初次使用氨基酸洗护的顾客都碰到过类似情况,并不是产品本身刺激头皮哦!\n头屑的诱因其实很多:换季干燥、日常压力大、长期用强力硫酸盐洗发水,都会损伤头皮屏障,诱发干屑或油屑。硫酸盐清洁力过强,会掏空头皮保护油脂;洗头太频繁 / 太久不清洁,油脂堵塞毛囊也会加重头屑。\n咱们 AM 摒弃刺激性硫酸盐,靠温和氨基酸搭配植萃养护头皮,只洗多余油污、保留头皮健康保护层。但氨基酸滋润成分附着力更强,如果只是快速冲洗,洗护残留停留在头皮上,就会刺激头皮、产生头屑。\n您可以调整下洗护习惯:洗头时着重冲洗发根头皮,整体冲洗不少于 3 分钟;日常保持 1-2 天洗一次头,维持头皮水油平衡,坚持使用后头屑问题会明显改善",
+      "tags": [
+        "为什么用完洗发水头屑增多?",
+        "客服话术",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "review_required",
+      "risk_tags": [
+        "unsafe_reassurance"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 70,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-72df962eda65d63d",
+      "title": "为什么用完洗发水头皮会痒?",
+      "content": "宝,头皮发痒其实是多种因素共同引起的,先跟您说明下常见诱因,您可以对照看看:\n像秋冬空气干燥、头皮水油失衡(过干或出油旺盛)、洗头用指甲抓挠划伤头皮,都会造成头皮发痒;另外洗头时泡沫冲洗不彻底,洗护成分残留在头皮上,也会持续刺激头皮发痒。\n咱们 AM 洗发水是氨基酸搭配植萃修护配方,滋养成分附着力更强,比普通洗护更需要充分冲洗。给您参考时长:短发整体冲洗 1-2 分钟,长发 / 多发量建议冲洗 3-5 分钟,重点冲干净发根和头皮缝隙,能有效缓解发痒情况。",
+      "tags": [
+        "为什么用完洗发水头皮会痒?",
+        "客服话术",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "handoff_only",
+      "risk_tags": [
+        "adverse_reaction"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 71,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-eec7dd08549e5f8d",
+      "title": "AM洗发水和别的洗发水有什么不同?",
+      "content": "标准话术 1:市面上的很多洗发水洗净成分主要以硫酸盐为主,起泡和清洁能力强。\n硫酸盐类洗净成分属于石油提取,刺激性特别强,且导致干燥、脱发,会把健康油脂也全部洗净,导致头皮极度干燥,从而出现各种问题。\nAM洗发水中的洗净成分则是超级氨基酸,配比各类氨基酸的洗净成分,安全不过敏,适合6岁以上儿童、孕妇在内的各类人群。并且AM洗发水富含的氨基酸温和清洁不伤肤,里面植物系滋润修复成分多,所以和硫酸盐配方产品不一样,需要多次反复冲洗。AM洗发水产品在洗去多余油脂的同时,通过氨基酸的力量保留健康头皮所需的必要油分。\n标准话术 2:AM洗发水富含多种氨基酸洗净成分,安全且不伤头皮和头发,和AM里高配比的天然萃取植物精华 一起高效修护受损的毛鳞片。 而富含氨基酸洗净成分和植物滋润修护成分的AM洗发水和其他含硫酸盐洗净成分的洗发水不同,短短几十秒的冲洗时间无法完全冲洗干净。 因此,在冲洗AM产品时也需要适当增加冲洗时间。短发人群建议冲洗2-3分钟左右。长发人群建议 冲洗3-5分钟左右。",
+      "tags": [
+        "AM洗发水和别的洗发水有什么不同?",
+        "客服话术",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "handoff_only",
+      "risk_tags": [
+        "adverse_reaction"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 72,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-a54a98b89af6a358",
+      "title": "洗发水很干、打结",
+      "content": "宝,我们是零硅油的洗发水,头发在充分清洁的时候,表面毛鳞片会自然张开,由于没有硅油的填充,就会变得像衣服粘扣一样,粗糙的头发表面,自然会粘在一起,产生打结的现象。\n我们在用无硅油洗发水洗头的时候,尽量要顺着头发生长的方向搓揉,由发根向发稍慢慢揉,避免发丝粘黏打结。长发建议搭配护发素使用",
+      "tags": [
+        "客服话术",
+        "洗发水很干、打结",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 73,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-c589111290c4f5d5",
+      "title": "洗发水质地",
+      "content": "am洗发水不像一般的洗发水那样质地比较粘稠,倒出来之后你会发现它的质地清爽的就像水一样,不需要揉搓起泡直接将洗发水倒在头发上使用。就能够将头皮中的油脂打碎随着泡沫带走,这种去油方式非常温和有效哈,另外氨基酸洗发水根据配方做成什么样就是什么样的稠度,稀不能代表氨基酸浓度低,浓度越高就越稀。所以氨基酸洗发水越稀品质越高哟,可以安心使用呢。",
+      "tags": [
+        "客服话术",
+        "洗发水质地",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 74,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-2d8147a0e611f39b",
+      "title": "如何正确使用AM洗发水洗头",
+      "content": "・水温:适宜38度~40度左右。\n・揉搓按摩:取适量AM洗发水在手掌之后均匀涂抹于头发。再用指腹,按摩头皮的同时顺着头发生长方向轻轻揉搓,用力过度或方向 相反容易导致脱发、打结。切忌使用指甲揉搓。\n・揉搓时间:建议40秒~1分钟。搓揉之后用温水完全冲洗干净,洗发水的残留可能也会导致头皮屑增多或头皮发痒",
+      "tags": [
+        "如何正确使用AM洗发水洗头",
+        "客服话术",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "handoff_only",
+      "risk_tags": [
+        "adverse_reaction"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 75,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-568572bf114d3e9c",
+      "title": "洗发后应不应该马上吹干?",
+      "content": "・用AM洗发水产品洗完头发,正确吹干头发也是头部护理的重要一环。\n・擦干头发:洗完头先用干净的干毛巾将头发轻柔擦干。\n・热风吹干:开启吹风机热风档,用手轻轻撩开头发的同时,用热风吹干。\n使用热风时,切忌距离靠太近或对着一个部位吹。这样都会让头皮受热灼伤并损伤毛鳞片。建议吹风机和头皮保持20cm 以上的距离。\n・冷风吹干:当头发整体用热风吹干之后,开启吹风机冷风当,靠近头发吹干。冷风在给头发头皮整体降温的同时,可除去余留在头皮表面的水汽。",
+      "tags": [
+        "客服话术",
+        "洗发后应不应该马上吹干?",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 76,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-076875cf60184160",
+      "title": "选择无硫酸盐洗发水的六个理由",
+      "content": "1、硫酸盐是强效的洗涤剂,可以去除头皮的天然油脂并可能引起刺激\n我们皮肤的呼吸取决于它产生的少量天然油脂是维持和防护屏障。这种屏障有助于保持头发和头皮的健康、柔软和良好营养。反复清除这些天然油脂,尤其是像含硫酸盐成份这样的去油较强的洗发水是能够破坏这种保护功能的。这可能会导致:头发变得干燥脆弱,头皮发痒,皮肤松弛等危害。\n2、无硫酸盐洗发水对清洁有更好的效果。\n无SLS的洗发水并不意味着在性能上打折扣。这是一种常见的,错误的观念认为需要大量的泡沫才能使头发清洁。一种更温和、不那么冒泡的洗发水也能起到同样的效果。\n3、硫酸盐可能会损坏颜色的头发。硫酸盐是一种有效的去污剂,可能会去除染发剂中的染料。\n4、硫酸盐会干扰卷曲和直发。\n5、十二烷基硫酸钠或十二烷基硫酸铵对环境有害\n6、硫酸乙酯等乙氧基化物的毒性作用",
+      "tags": [
+        "客服话术",
+        "话术汇总",
+        "选择无硫酸盐洗发水的六个理由"
+      ],
+      "category": "customer_service_faq",
+      "status": "handoff_only",
+      "risk_tags": [
+        "adverse_reaction"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 77,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-61cfe54769804ced",
+      "title": "AM洗发水大小",
+      "content": "总长18厘米,宽度是8厘米",
+      "tags": [
+        "AM洗发水大小",
+        "客服话术",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 78,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-1cfc561c9220cbd9",
+      "title": "仓库对应的物流",
+      "content": "天猫办公室顺丰:顺丰-蜂蜜,云仓无法发顺丰",
+      "tags": [
+        "仓库对应的物流",
+        "客服话术",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 81,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-531dc49ff9253e9e",
+      "title": "小红书怎么退出会员",
+      "content": "点击右上角的“进入店铺”,再点击会员等级一栏的“查看”,最后点击查看会员规则,可以看到退出会员的入口",
+      "tags": [
+        "客服话术",
+        "小红书怎么退出会员",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 86,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-a4c80598bd62fcc5",
+      "title": "退货售后",
+      "content": "您好 这边收到了您的退货 只有X瓶正装,没有X支小样 您看下能否退回呢\n未退回是按单支9.9扣除金额的哦\n您好,您寄回的产品正装已拆封,已影响商品完好暂不支持退货入仓,仓库预计会在48小时内退回产品,有单号后给您留言,辛苦后续查收包裹",
+      "tags": [
+        "客服话术",
+        "话术汇总",
+        "退货售后"
+      ],
+      "category": "customer_service_faq",
+      "status": "handoff_only",
+      "risk_tags": [
+        "complex_after_sales"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 87,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-07fea7bf5a513169",
+      "title": "退货售后",
+      "content": "因为我们这边是海外店铺,是保税仓直发的,出库即扣税,您这边坚持要退的话,这边可以为您申请了,但是要求退回产品赠品必须是全新未拆封哦,需要您承担产品出库税费",
+      "tags": [
+        "客服话术",
+        "话术汇总",
+        "退货售后"
+      ],
+      "category": "customer_service_faq",
+      "status": "handoff_only",
+      "risk_tags": [
+        "complex_after_sales"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 88,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-16d83d12f5883d22",
+      "title": "AMPH值",
+      "content": "弱酸性5.5-5.6",
+      "tags": [
+        "AMPH值",
+        "客服话术",
+        "话术汇总"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "话术汇总",
+        "row": 89,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-3982663b83b6f5ed",
+      "title": "支不支持试用",
+      "content": "标准话术 1:宝宝,小样和正装我们都是非过敏情况不支持免费试用哒~先拆开小样试用,如果是过敏了,在正装不影响二次销售的情况下,将小样和正装一起退回即可。申请理由选择7天无理由退换货,仓库看到会优先处理的~谢谢宝宝理解!\n标准话术 2:宝宝,产品是有小样的,但是不支持免费试用哦,如果不合适会扣除小样费用 ,您把未拆封的正装及其他小样一并退回即可哈~",
+      "tags": [
+        "客服话术",
+        "支不支持试用",
+        "运营话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "handoff_only",
+      "risk_tags": [
+        "adverse_reaction"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "运营话术",
+        "row": 2,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-e3ed6ba6d151438d",
+      "title": "过敏能不能退/用后过敏的问题",
+      "content": "第一步:宝宝可以先拍一张你和产品在一起画面现在的肤质状况吗?\n第二部:如果真的过敏了,就直接退货。",
+      "tags": [
+        "客服话术",
+        "过敏能不能退/用后过敏的问题",
+        "运营话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "handoff_only",
+      "risk_tags": [
+        "adverse_reaction",
+        "complex_after_sales"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "运营话术",
+        "row": 3,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-4f096e419044056d",
+      "title": "多久有效果",
+      "content": "每个人的肤质不一样,所以效果也会不同。宝宝您主要想针对的是哪方面问题呢?\n正常情况,红色痘印差不多7-14天有作用体现~其他的效果,差不多在28天左右~(如果是黄褐 斑斑点点参考下面的话术)",
+      "tags": [
+        "多久有效果",
+        "客服话术",
+        "运营话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "运营话术",
+        "row": 4,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-7ce7e87ae0f83229",
+      "title": "用了我们家的产品,反而还长痘了,怎么解决",
+      "content": "本身该产品是没有致痘成分哒~长痘痘是因为肌底在抗火反应,这是一个正常的过程,宝宝你坚持使用,他一定是会改善肌肤哒~如果宝宝你是长期反反复复的长痘痘,建议少喝牛奶、奶茶、辛辣的食品,这些都会导致成为易长痘痘体质。",
+      "tags": [
+        "客服话术",
+        "用了我们家的产品,反而还长痘了,怎么解决",
+        "运营话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "review_required",
+      "risk_tags": [
+        "unsafe_reassurance"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "运营话术",
+        "row": 5,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-d7d1f138cad68534",
+      "title": "传明酸结晶问题,(可能会觉得是玻璃渣)",
+      "content": "第一步:宝宝先拍照给我看下可以吗?我们也是第一次遇到这个反馈~\n第二步:很抱歉有这样的购物体验,我们本身液体是不会存在晶体的情况。这边可能是因为滴管的液体停留在瓶口,在空气中经过反复摩擦会有析出晶体的可能,这边尽量避免液体接触在瓶口导致液体有残留。\n如果实在不接受或者不相信,宝宝这边可以选择一下【7天无理由】退货下,仓库看到后会优先为您处理!这样也会有一个免费的运费险不需要支付运费,我们这边为您退货,然后我们也检测一下是什么物质。",
+      "tags": [
+        "传明酸结晶问题,(可能会觉得是玻璃渣)",
+        "客服话术",
+        "运营话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "handoff_only",
+      "risk_tags": [
+        "complex_after_sales"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "运营话术",
+        "row": 6,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-8dd11e54a49867c4",
+      "title": "湿敷棉找不到了,无法一起退回怎么办",
+      "content": "宝宝湿敷棉这边作为赠品,如果退货的话是需要一起退回的,如果没有的话我们可能会抵扣相应的金额 实在抱歉呢~\n如果实在找不到就算了。",
+      "tags": [
+        "客服话术",
+        "湿敷棉找不到了,无法一起退回怎么办",
+        "运营话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "handoff_only",
+      "risk_tags": [
+        "complex_after_sales"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "运营话术",
+        "row": 7,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-63af9c66b5be3a27",
+      "title": "我们家产品搭配问题(清洁泥膜)",
+      "content": "有详细的产品表格,见表格。\n清洁泥膜因为是清洗类的产品,只要清洁干净,都可以直接用我们家精华。",
+      "tags": [
+        "客服话术",
+        "我们家产品搭配问题(清洁泥膜)",
+        "运营话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "运营话术",
+        "row": 8,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-22c5f2e123018266",
+      "title": "色斑 黄褐斑 斑斑点点的问题",
+      "content": "宝宝,传明酸这个成分主要是改善红色痘印及色沉问题,可以好的缓解~如果是非先天导致的斑斑点点及黄褐问题,正常情况28天及以上可以有一个的缓解~(每个人肤质一样,时间周期不同,因为斑斑点点及黄褐等问题本身就是几个月甚至一年以上形成的顽固色沉问题,时间周期都需要很长的 宝宝一定要耐心坚持使用哈!)",
+      "tags": [
+        "客服话术",
+        "色斑 黄褐斑 斑斑点点的问题",
+        "运营话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "review_required",
+      "risk_tags": [
+        "unsafe_reassurance"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "运营话术",
+        "row": 9,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-eb10e4897815f5d1",
+      "title": "少退回怎么办 未退回怎么办",
+      "content": "宝宝 实在抱歉 我们家不免费试用的,少寄回商品是需要金额按价值划扣的~",
+      "tags": [
+        "客服话术",
+        "少退回怎么办 未退回怎么办",
+        "运营话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "handoff_only",
+      "risk_tags": [
+        "complex_after_sales"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "运营话术",
+        "row": 10,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-f2a0a55e2b412273",
+      "title": "平台优惠券和店铺优惠券的区别",
+      "content": "我们一般很少给店铺优惠券,大多数都是博主自己发的。平台优惠券是平台的补贴~我们日常都是这个价格!很优惠哒~\n如果有客户故意为难:宝宝~其他平台我们不是很清楚唉,只要是通过官方旗舰店,我们都是很支持哪里优惠去哪里哒!",
+      "tags": [
+        "客服话术",
+        "平台优惠券和店铺优惠券的区别",
+        "运营话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "运营话术",
+        "row": 11,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-2e2bde4ed025419f",
+      "title": "收到后商品破损了是补发还是换货",
+      "content": "宝宝,破损的我们立刻给您补发~\n你这边也直接申请一下【7天无理由】退回下,仓库看到后会优先为您处理~这样会有一个免费的运费险不需要支付运费,我们这边为您换货~",
+      "tags": [
+        "客服话术",
+        "收到后商品破损了是补发还是换货",
+        "运营话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "handoff_only",
+      "risk_tags": [
+        "complex_after_sales"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "运营话术",
+        "row": 12,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-ab4dc6b9bd6dfd88",
+      "title": "我们家的产品不能和哪些产品一起使用?没有和上述的产品叠加使用,反而长痘或者过敏",
+      "content": "有详细的产品表格,见表格。",
+      "tags": [
+        "客服话术",
+        "我们家的产品不能和哪些产品一起使用?没有和上述的产品叠加使用,反而长痘或者过敏",
+        "运营话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "handoff_only",
+      "risk_tags": [
+        "adverse_reaction"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "运营话术",
+        "row": 13,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-212f82871a21652a",
+      "title": "如何湿敷 湿敷多长时间",
+      "content": "传明酸可以湿敷,一般5-10分钟~后续不需要洗掉 在进行后续的护肤流程就好啦~",
+      "tags": [
+        "如何湿敷 湿敷多长时间",
+        "客服话术",
+        "运营话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "运营话术",
+        "row": 14,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-1b1bb0af8fd2971a",
+      "title": "传明酸两种进阶教学(两个浓度都可以!)",
+      "content": "湿敷法:用传明酸把化妆棉浸湿之后,敷在问题处或全脸5-10分钟,不需要洗掉!用手轻轻按压拍打吸收,吸收完后进行后续护肤流程~\n封包法:把传明酸涂抹在脸上,用保鲜膜或者透明的面膜把他封住,大概10-15分钟就可以拿掉,拿掉后也不需要洗掉!用手轻轻按压拍打吸收,吸收完后进行后续护肤流程~\n我们家的传明酸本身用脂质体包裹后促渗效果本身就高于普通传明酸,大部分时期只用湿敷法就够啦~",
+      "tags": [
+        "传明酸两种进阶教学(两个浓度都可以!)",
+        "客服话术",
+        "运营话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "运营话术",
+        "row": 15,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-032e4d00351ca415",
+      "title": "传明酸结晶小贴士",
+      "content": "标准话术 1:很抱歉有这样的购物体验,我们本身液体是不会存在晶体的情况。这边可能是因为滴管的液体停留在瓶口,在空气中经过反复摩擦会有析出晶体的可能,宝宝每次使用后可以擦拭下,尽量避免液体接触在瓶口导致液体有残留。\n标准话术 2:这边可能是因为滴管的液体停留在瓶口,在空气中经过反复摩擦会有析出晶体的可能,使用过程中再掉落至瓶内形成结晶,宝宝每次使用后可以擦拭下,尽量避免液体接触在瓶口导致液体有残留。",
+      "tags": [
+        "传明酸结晶小贴士",
+        "客服话术",
+        "运营话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "运营话术",
+        "row": 16,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-f32142906a402ab2",
+      "title": "VC甘草颜色发黄",
+      "content": "VC甘草精华系列,料体是透明至淡黄色这个都是正常使用范围内~因为里面含有VC衍生物成分,偏黄色是属于正常哒,不会影响活性物。可以正常使用",
+      "tags": [
+        "VC甘草颜色发黄",
+        "客服话术",
+        "运营话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "运营话术",
+        "row": 17,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-df4d270e85fc98a5",
+      "title": "能不能用我们的产品(传明酸、壬二酸) 照大排灯、红蓝光等美容仪器",
+      "content": "传明酸、壬二酸里面没有任何的光敏性成分,可以直接照灯~",
+      "tags": [
+        "客服话术",
+        "能不能用我们的产品(传明酸、壬二酸) 照大排灯、红蓝光等美容仪器",
+        "运营话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "运营话术",
+        "row": 18,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-6da65cfa5d49ed8c",
+      "title": "产品灌装不满",
+      "content": "宝宝~包装都是有一定空隙率的,他会有一个安全空间哒,我们所有的产品出厂都是符合国家质检标准的。不可能出现不达标的情况,净含量符合国家标准以及包装标注哒!",
+      "tags": [
+        "产品灌装不满",
+        "客服话术",
+        "运营话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "运营话术",
+        "row": 19,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-7bdd274431ac4b8f",
+      "title": "四款全系小样的官方搭配用法",
+      "content": "宝宝~如果您购买这一套的话,我建议您:\n早上:护肤第一步,干手干脸10%传明酸,等干透了之后+VC甘草精华,全部干透了之后后续叠加其他的或者防晒。\n晚上:护肤第一步5%传明酸,干透了之后叠加15%壬二酸",
+      "tags": [
+        "四款全系小样的官方搭配用法",
+        "客服话术",
+        "运营话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "运营话术",
+        "row": 20,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-c34854524b05605d",
+      "title": "五款全系小样的官方搭配用法",
+      "content": "宝宝~如果您购买这一套的话,我建议您:\n早上:护肤第一步,干手干脸10%传明酸,等干透了之后+VC甘草精华,全部干透了之后后续叠加其他的或者防晒。\n晚上:护肤第一步5%传明酸,干透了之后叠加15%壬二酸\n如果您脸上有不舒服突然的泛红,可以涂抹肌护舒缓精华。",
+      "tags": [
+        "五款全系小样的官方搭配用法",
+        "客服话术",
+        "运营话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "运营话术",
+        "row": 21,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-4b40c8433a1971f2",
+      "title": "小样均未寄回,抖音客户言辞激烈的情况能不能特殊处理全额退款\n客户反馈是主播直播间承诺的全部都可以试用",
+      "content": "我们直播间一直都是如果过敏可以全部退回,并且空瓶也是需要一起退回哒~其他情况是不免费试用的哦~",
+      "tags": [
+        "客服话术",
+        "小样均未寄回,抖音客户言辞激烈的情况能不能特殊处理全额退款\n客户反馈是主播直播间承诺的全部都可以试用",
+        "运营话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "handoff_only",
+      "risk_tags": [
+        "adverse_reaction",
+        "complex_after_sales"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "运营话术",
+        "row": 22,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-a55321eb729867dd",
+      "title": "壬二酸面霜是可以长期使用吗?",
+      "content": "完全可以安心长期使用哒!",
+      "tags": [
+        "壬二酸面霜是可以长期使用吗?",
+        "客服话术",
+        "运营话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "运营话术",
+        "row": 23,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-63067c01c8e3faf6",
+      "title": "B5洗发水的卖点、使用方式和注意事项",
+      "content": "可比落脂质体以及B5成分,可以很好的焕活头皮~搭配我们的焕活头皮精华液可以效果事半功倍哦~",
+      "tags": [
+        "B5洗发水的卖点、使用方式和注意事项",
+        "客服话术",
+        "运营话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "运营话术",
+        "row": 24,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-7458514428c15a41",
+      "title": "焕活头皮精华的卖点、使用方式和注意事项",
+      "content": "里面添加了30%的可比落复合脂质体,2%专利侧柏叶提取液~还复配了咖啡因和腺苷,这些都是加足的~所以焕活头皮的效果非常不错呢~\n使用方法:早晚根据需求,使用1-2滴灌,轻轻滴在头皮根部按摩至吸收。",
+      "tags": [
+        "客服话术",
+        "焕活头皮精华的卖点、使用方式和注意事项",
+        "运营话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "运营话术",
+        "row": 25,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-4f3e94be461d6222",
+      "title": "美白系列产品的卖点、使用方式和注意事项需要提前给到客服侧",
+      "content": "美白系列都有美白淡斑特证~\n美白水:主打的是3%传明酸(渗透纳米脂质体技术)+1%光甘草定脂质体以及4msk+HEPES美白组合,还有麦角硫因的添加~美白效果真的很棒!\n美白乳:主打1.5%377NLC包裹+3%烟酰胺+酰本胺的组合~还复配了VCIP+HEPES,舒缓成分添加了5D积雪草微囊和防生皮脂膜脂质体~边修变白,科学美白淡斑~\n美白面霜:主打3%377NLC包裹(377含量浓度更高)+3%烟酰胺+酰本胺的组合~还复配了VCIP+HEPES,舒缓成分添加了5D积雪草微囊和防生皮脂膜脂质体~边修变白,科学美白淡斑~",
+      "tags": [
+        "客服话术",
+        "美白系列产品的卖点、使用方式和注意事项需要提前给到客服侧",
+        "运营话术"
+      ],
+      "category": "customer_service_faq",
+      "status": "review_required",
+      "risk_tags": [
+        "canonical_numeric_conflict"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "运营话术",
+        "row": 26,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-b49789371fb31b11",
+      "title": "防脱洗发水",
+      "content": "有国家防脱特证,成分用到的是专利侧柏叶提取物~以及中药复配成分有何首乌、人参提取液等可以更好的坚固毛囊、防脱固发!",
+      "tags": [
+        "客服话术",
+        "运营话术",
+        "防脱洗发水"
+      ],
+      "category": "customer_service_faq",
+      "status": "review_required",
+      "risk_tags": [
+        "regulated_claim"
+      ],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "运营话术",
+        "row": 27,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    },
+    {
+      "id": "kb-1baabd6b2187c69e",
+      "title": "配方",
+      "content": "宝宝,根据行业惯例和品牌配方保密原则,产品的完整成分表及精确配比属于品牌的核心商业机密,没有公开的目前无法回复哈宝宝~",
+      "tags": [
+        "客服话术",
+        "运营话术",
+        "配方"
+      ],
+      "category": "customer_service_faq",
+      "status": "active",
+      "risk_tags": [],
+      "source": {
+        "file": "产品话术汇总完整版本.xlsx",
+        "sheet": "运营话术",
+        "row": 28,
+        "field": ""
+      },
+      "alternate_sources": [],
+      "knowledge_type": "faq"
+    }
+  ]
+}

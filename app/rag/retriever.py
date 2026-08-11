@@ -5,6 +5,7 @@ import json
 import math
 import re
 from collections import Counter
+from collections.abc import Sequence
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
@@ -47,6 +48,7 @@ class KnowledgeDocument:
     content: str
     tags: tuple[str, ...]
     category: str = "general"
+    knowledge_type: str = "product"
     status: str = "active"
     risk_tags: tuple[str, ...] = ()
     source_sheet: str | None = None
@@ -71,6 +73,7 @@ class SearchHit:
             source_sheet=self.document.source_sheet,
             source_row=self.document.source_row,
             category=self.document.category,
+            knowledge_type=self.document.knowledge_type,
             retrieval_channels=list(self.retrieval_channels),
         )
 
@@ -107,9 +110,15 @@ def _matches_intent(document: KnowledgeDocument, intent: str | None) -> bool:
             re.search(r"价格|优惠|活动|折扣|到手价|价保", title_and_tags)
         )
     if intent == "usage":
-        return document.category == "product_usage"
+        return document.category == "product_usage" or (
+            document.knowledge_type == "faq"
+            and bool(re.search(r"使用|怎么用|用法|用量|顺序", title_and_tags))
+        )
     if intent == "compatibility":
-        return document.category in {"product_contraindication", "product_note"}
+        return document.category in {"product_contraindication", "product_note"} or (
+            document.knowledge_type == "faq"
+            and bool(re.search(r"搭配|叠加|一起用|同用", title_and_tags))
+        )
     if intent == "comparison":
         return document.category == "product_comparison" or "区别" in searchable
     return True
@@ -123,7 +132,7 @@ class HybridKnowledgeBase:
 
     def __init__(
         self,
-        path: Path,
+        path: Path | Sequence[Path],
         embedder: DenseEmbedder,
         *,
         collection_name: str = "sounderone_knowledge",
@@ -132,7 +141,10 @@ class HybridKnowledgeBase:
         qdrant_path: Path | None = None,
         rebuild: bool = True,
     ):
-        self.path = path
+        self.paths = (path,) if isinstance(path, Path) else tuple(path)
+        if not self.paths:
+            raise ValueError("at least one knowledge path is required")
+        self.path = self.paths[0]
         self.embedder = embedder
         self.collection_name = collection_name
         self.client = self._client(qdrant_url, qdrant_api_key, qdrant_path)
@@ -157,9 +169,13 @@ class HybridKnowledgeBase:
         return QdrantClient(location=":memory:")
 
     def reload(self, *, rebuild: bool = True) -> int:
-        payload: Any = json.loads(self.path.read_text(encoding="utf-8"))
-        raw = payload["documents"] if isinstance(payload, dict) else payload
-        self.documents = [self._parse_document(item) for item in raw]
+        raw_documents: list[dict[str, Any]] = []
+        for path in self.paths:
+            payload: Any = json.loads(path.read_text(encoding="utf-8"))
+            raw = payload["documents"] if isinstance(payload, dict) else payload
+            raw_documents.extend(raw)
+        parsed = [self._parse_document(item) for item in raw_documents]
+        self.documents = list({document.id: document for document in parsed}.values())
         self.active_documents = [doc for doc in self.documents if doc.status == "active"]
         self._product_aliases = {
             tag
@@ -211,12 +227,17 @@ class HybridKnowledgeBase:
     @staticmethod
     def _parse_document(item: dict[str, Any]) -> KnowledgeDocument:
         source = item.get("source", {})
+        category = item.get("category", "general")
         return KnowledgeDocument(
             id=item["id"],
             title=item["title"],
             content=item["content"],
             tags=tuple(item.get("tags", [])),
-            category=item.get("category", "general"),
+            category=category,
+            knowledge_type=item.get(
+                "knowledge_type",
+                "product" if category.startswith("product_") else "faq",
+            ),
             status=item.get("status", "active"),
             risk_tags=tuple(item.get("risk_tags", [])),
             source_sheet=source.get("sheet"),
@@ -288,7 +309,11 @@ class HybridKnowledgeBase:
                         self.DENSE_VECTOR: dense,
                         self.BM25_VECTOR: self._document_sparse_vector(document.index_text),
                     },
-                    payload={"document_id": document.id, "category": document.category},
+                    payload={
+                        "document_id": document.id,
+                        "category": document.category,
+                        "knowledge_type": document.knowledge_type,
+                    },
                 )
             )
         for start in range(0, len(points), 64):
@@ -298,7 +323,14 @@ class HybridKnowledgeBase:
                 wait=True,
             )
 
-    def search(self, query: str, limit: int = 4, prefetch_limit: int = 50) -> list[SearchHit]:
+    def search(
+        self,
+        query: str,
+        limit: int = 4,
+        prefetch_limit: int = 50,
+        *,
+        knowledge_types: set[str] | None = None,
+    ) -> list[SearchHit]:
         if not lexical_tokens(query):
             return []
         dense = self.client.query_points(
@@ -335,7 +367,11 @@ class HybridKnowledgeBase:
         maximum_rrf = 2 / 61
         for point_id, channel_ranks in rankings.items():
             document = self._documents_by_point.get(point_id)
-            if document is None or not _matches_intent(document, intent):
+            if (
+                document is None
+                or (knowledge_types and document.knowledge_type not in knowledge_types)
+                or not _matches_intent(document, intent)
+            ):
                 continue
             document_tokens = set(lexical_tokens(document.index_text))
             if required_ascii and not required_ascii.issubset(document_tokens):

@@ -6,6 +6,7 @@ from langgraph.checkpoint.memory import InMemorySaver
 from langgraph.graph import END, START, StateGraph
 
 from app.agent.state import AgentState
+from app.agent.responses import stable_out_of_scope_response
 from app.config import Settings
 from app.llm import LanguageModel
 from app.models import AgentReply, ConversationEvent, Decision, IncomingMessage
@@ -127,9 +128,12 @@ class SounderOneGraphAgent:
     def _build_graph(self):
         builder = StateGraph(AgentState)
         builder.add_node("safety_guard", self._safety_guard)
-        builder.add_node("understand_query", self._understand_query)
+        builder.add_node("intent_router", self._intent_router)
         builder.add_node("smalltalk_response", self._smalltalk_response)
+        builder.add_node("out_of_scope_response", self._out_of_scope_response)
         builder.add_node("clarify_response", self._clarify_response)
+        builder.add_node("rewrite_query", self._rewrite_query)
+        builder.add_node("route_knowledge", self._route_knowledge)
         builder.add_node("hybrid_retrieve", self._hybrid_retrieve)
         builder.add_node("relevance_gate", self._relevance_gate)
         builder.add_node("generate_answer", self._generate_answer)
@@ -141,26 +145,34 @@ class SounderOneGraphAgent:
         builder.add_conditional_edges(
             "safety_guard",
             self._route_after_safety,
-            {"continue": "understand_query", "handoff": "handoff"},
+            {"continue": "intent_router", "handoff": "handoff"},
         )
         builder.add_conditional_edges(
-            "understand_query",
-            self._route_after_understanding,
+            "intent_router",
+            self._route_after_intent,
             {
                 "smalltalk": "smalltalk_response",
+                "out_of_scope": "out_of_scope_response",
                 "clarify": "clarify_response",
-                "retrieve": "hybrid_retrieve",
+                "rewrite": "rewrite_query",
             },
         )
         builder.add_edge("smalltalk_response", "output_guard")
+        builder.add_edge("out_of_scope_response", "output_guard")
         builder.add_edge("clarify_response", "output_guard")
+        builder.add_edge("rewrite_query", "route_knowledge")
+        builder.add_edge("route_knowledge", "hybrid_retrieve")
         builder.add_edge("hybrid_retrieve", "relevance_gate")
         builder.add_conditional_edges(
             "relevance_gate",
             self._route_after_relevance,
             {"generate": "generate_answer", "handoff": "handoff"},
         )
-        builder.add_edge("generate_answer", "output_guard")
+        builder.add_conditional_edges(
+            "generate_answer",
+            self._route_after_generation,
+            {"respond": "output_guard", "handoff": "handoff"},
+        )
         builder.add_conditional_edges(
             "output_guard",
             self._route_after_output,
@@ -186,7 +198,7 @@ class SounderOneGraphAgent:
     def _route_after_safety(state: AgentState) -> str:
         return "handoff" if state["risk"]["must_handoff"] else "continue"
 
-    def _understand_query(self, state: AgentState) -> dict:
+    def _intent_router(self, state: AgentState) -> dict:
         text = self._message(state).text
         normalized = re.sub(r"[\s，。！？!?~～,.]+", "", text.lower())
         greetings = {
@@ -209,53 +221,83 @@ class SounderOneGraphAgent:
             return {
                 "conversation_intent": "smalltalk",
                 "retrieval_query": "",
-                "trace": self._step(state, "understand_query"),
+                "trace": self._step(state, "intent_router"),
             }
         explicit_product = self.knowledge.identify_product(text)
         last_product = explicit_product or state.get("last_product", "")
         refers_to_context = any(word in text for word in ("这个", "它", "这款", "刚才那个"))
         has_supported_cue = any(cue in text for cue in self.SUPPORT_CUES)
         has_standalone_service_cue = any(cue in text for cue in self.STANDALONE_SERVICE_CUES)
-        needs_clarification = (
-            (refers_to_context and not last_product)
-            or (not explicit_product and not last_product and not has_standalone_service_cue)
-            or (
-                not explicit_product
-                and bool(last_product)
-                and not (has_supported_cue or has_standalone_service_cue)
-            )
+        mentions_brand = bool(
+            re.search(r"sounder\s*one|搜得旺|你们(?:家)?品牌|你家品牌", text, re.IGNORECASE)
         )
-        if needs_clarification:
+        if refers_to_context and not last_product:
             return {
                 "conversation_intent": "clarification",
                 "retrieval_query": "",
-                "trace": self._step(state, "understand_query"),
+                "trace": self._step(state, "intent_router"),
             }
-        retrieval_query = f"{last_product} {text}" if last_product and refers_to_context else text
+        if (
+            not explicit_product
+            and not last_product
+            and has_supported_cue
+            and not has_standalone_service_cue
+        ):
+            return {
+                "conversation_intent": "clarification",
+                "retrieval_query": "",
+                "trace": self._step(state, "intent_router"),
+            }
+        is_knowledge_query = bool(
+            explicit_product
+            or (last_product and has_supported_cue)
+            or has_standalone_service_cue
+            or mentions_brand
+        )
+        if not is_knowledge_query:
+            return {
+                "conversation_intent": "out_of_scope",
+                "retrieval_query": "",
+                "trace": self._step(state, "intent_router"),
+            }
         return {
-            "retrieval_query": retrieval_query,
             "conversation_intent": "knowledge_query",
+            "explicit_product": explicit_product,
             "last_product": last_product,
-            "trace": self._step(state, "understand_query"),
+            "trace": self._step(state, "intent_router"),
         }
 
     @staticmethod
-    def _route_after_understanding(state: AgentState) -> str:
+    def _route_after_intent(state: AgentState) -> str:
         intent = state.get("conversation_intent")
         if intent == "smalltalk":
             return "smalltalk"
+        if intent == "out_of_scope":
+            return "out_of_scope"
         if intent == "clarification":
             return "clarify"
-        return "retrieve"
+        return "rewrite"
 
     def _smalltalk_response(self, state: AgentState) -> dict:
         return {
             "generated_text": (
-                "宝宝你好～我是 SounderOne 智能客服。"
+                "宝宝你好～我是 SOUNDERONE 智能客服。"
                 "你可以直接问我产品用法、成分搭配或其他售前问题。"
             ),
             "hits": [],
             "trace": self._step(state, "smalltalk_response"),
+        }
+
+    def _out_of_scope_response(self, state: AgentState) -> dict:
+        message = self._message(state)
+        return {
+            "generated_text": stable_out_of_scope_response(
+                message.external_conversation_id,
+                message.external_message_id,
+            ),
+            "hits": [],
+            "response_decision": Decision.safe_fallback.value,
+            "trace": self._step(state, "out_of_scope_response"),
         }
 
     def _clarify_response(self, state: AgentState) -> dict:
@@ -269,8 +311,49 @@ class SounderOneGraphAgent:
             "trace": self._step(state, "clarify_response"),
         }
 
+    def _rewrite_query(self, state: AgentState) -> dict:
+        """Resolve conversation references without allowing the model to invent entities."""
+        text = self._message(state).text
+        explicit_product = state.get("explicit_product", "")
+        resolved_product = explicit_product or state.get("last_product", "")
+        retrieval_query = text
+        if resolved_product and not explicit_product:
+            retrieval_query = f"{resolved_product} {text}"
+        return {
+            "retrieval_query": retrieval_query,
+            "last_product": resolved_product,
+            "trace": self._step(state, "rewrite_query"),
+        }
+
+    def _route_knowledge(self, state: AgentState) -> dict:
+        query = state["retrieval_query"]
+        if re.search(r"发货|物流|快递|配送|到货", query):
+            intent, knowledge_types = "shipping", ["faq"]
+        elif "发票" in query:
+            intent, knowledge_types = "invoice", ["faq"]
+        elif re.search(r"价格|多少钱|优惠|活动|折扣|到手价", query):
+            intent, knowledge_types = "promotion", ["faq"]
+        elif re.search(r"退款|退货|补发|漏发|少发|破损|售后|投诉", query):
+            intent, knowledge_types = "after_sales", ["faq"]
+        elif re.search(r"怎么使用|怎么用|如何用|怎样用|使用方法|使用顺序|用量", query):
+            intent, knowledge_types = "usage", ["product", "faq"]
+        elif re.search(r"搭配|叠加|一起用|能和|可以和|不能和|同用", query):
+            intent, knowledge_types = "compatibility", ["product", "faq"]
+        elif re.search(r"区别|对比|选哪个|怎么选", query):
+            intent, knowledge_types = "comparison", ["product", "faq"]
+        else:
+            intent, knowledge_types = "product_information", ["product", "faq"]
+        return {
+            "query_intent": intent,
+            "knowledge_types": knowledge_types,
+            "trace": self._step(state, "route_knowledge"),
+        }
+
     def _hybrid_retrieve(self, state: AgentState) -> dict:
-        hits = self.knowledge.search(state["retrieval_query"])
+        hits = self.knowledge.search(
+            state["retrieval_query"],
+            knowledge_types=set(state.get("knowledge_types", [])),
+        )
         serialized = [
             {
                 "document_id": hit.document.id,
@@ -285,11 +368,22 @@ class SounderOneGraphAgent:
         hits = state.get("hits", [])
         update: dict = {"trace": self._step(state, "relevance_gate")}
         if not hits or hits[0]["score"] < self.settings.knowledge_min_score:
+            update["hits"] = []
             update.update(
                 handoff_reason="知识库无可靠答案",
                 risk_tags=["low_knowledge_confidence"],
             )
-        elif not self.policy.is_business_hours() and hits[0]["score"] < 0.62:
+            return update
+
+        top_score = hits[0]["score"]
+        reliable_hits = [
+            hit
+            for hit in hits
+            if hit["score"] >= self.settings.knowledge_min_score
+            and top_score - hit["score"] <= self.settings.knowledge_score_window
+        ]
+        update["hits"] = reliable_hits
+        if not self.policy.is_business_hours() and top_score < 0.62:
             update.update(
                 handoff_reason="非工作时段且知识置信度不足",
                 risk_tags=["off_hours_restricted"],
@@ -303,11 +397,32 @@ class SounderOneGraphAgent:
         return "handoff" if state.get("handoff_reason") else "generate"
 
     async def _generate_answer(self, state: AgentState) -> dict:
-        generated = await self.llm.answer(
-            self._message(state).text,
-            self.knowledge.restore_hits(state["hits"]),
-        )
-        return {"generated_text": generated, "trace": self._step(state, "generate_answer")}
+        try:
+            generated = await self.llm.answer(
+                state["retrieval_query"],
+                self.knowledge.restore_hits(state["hits"]),
+            )
+        except Exception:
+            return {
+                "generated_text": "",
+                "handoff_reason": "回答模型暂时不可用",
+                "risk_tags": ["generation_unavailable"],
+                "trace": self._step(state, "generate_answer"),
+            }
+        update: dict = {
+            "generated_text": generated,
+            "trace": self._step(state, "generate_answer"),
+        }
+        if not generated or "INSUFFICIENT_KNOWLEDGE" in generated.upper():
+            update.update(
+                handoff_reason="知识片段不足以生成可靠答案",
+                risk_tags=["generation_insufficient_knowledge"],
+            )
+        return update
+
+    @staticmethod
+    def _route_after_generation(state: AgentState) -> str:
+        return "handoff" if state.get("handoff_reason") else "respond"
 
     def _output_guard(self, state: AgentState) -> dict:
         safe_text, forbidden = self.policy.sanitize_output(state["generated_text"])

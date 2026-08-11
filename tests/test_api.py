@@ -20,6 +20,22 @@ def make_client() -> TestClient:
     return TestClient(create_app(settings))
 
 
+def make_split_knowledge_client() -> TestClient:
+    settings = Settings(
+        knowledge_path=None,
+        product_knowledge_path=Path("knowledge/product_knowledge.json"),
+        faq_knowledge_path=Path("knowledge/customer_faq.json"),
+        llm_provider="mock",
+        qdrant_path=None,
+        qdrant_url=None,
+        webhook_secret="test-secret",
+        admin_api_key="test-admin",
+        business_hours_start="00:00",
+        business_hours_end="23:59",
+    )
+    return TestClient(create_app(settings))
+
+
 def test_health():
     with make_client() as client:
         response = client.get("/health")
@@ -30,11 +46,38 @@ def test_health():
         assert response.json()["platforms"] == ["douyin", "simulator"]
 
 
+def test_application_loads_product_and_faq_files_together():
+    with make_split_knowledge_client() as client:
+        health = client.get("/health").json()
+        assert health["knowledge_documents"] == 287
+        assert health["active_knowledge_documents"] == 210
+        assert health["knowledge_types"] == {"faq": 223, "product": 64}
+
+        response = client.post(
+            "/v1/webhooks/simulator",
+            headers={"X-Webhook-Secret": "test-secret"},
+            json={
+                "message_id": "split-knowledge-1",
+                "conversation_id": "split-knowledge-conversation",
+                "user_id": "user-1",
+                "text": "5%传明酸怎么使用？",
+            },
+        )
+        body = response.json()
+        assert body["decision"] == "answered"
+        assert body["citations"]
+        assert {citation["knowledge_type"] for citation in body["citations"]} <= {
+            "product",
+            "faq",
+        }
+        assert all(citation["score"] >= 0.48 for citation in body["citations"])
+
+
 def test_browser_tester_and_static_assets_are_served():
     with make_client() as client:
         page = client.get("/tester")
         assert page.status_code == 200
-        assert "SounderOne Agent Lab" in page.text
+        assert "SOUNDERONE Agent Lab" in page.text
         assert 'id="messageForm"' in page.text
         assert 'src="/static/tester.js"' in page.text
 
@@ -63,10 +106,13 @@ def test_webhook_answers_grounded_question_and_records_history():
         body = response.json()
         assert body["decision"] == "answered"
         assert body["citations"][0]["document_id"] == "demo-shipping-001"
+        assert body["citations"][0]["knowledge_type"] == "faq"
         assert body["citations"][0]["retrieval_channels"] == ["bm25", "dense"]
         assert body["graph_trace"] == [
             "safety_guard",
-            "understand_query",
+            "intent_router",
+            "rewrite_query",
+            "route_knowledge",
             "hybrid_retrieve",
             "relevance_gate",
             "generate_answer",
@@ -97,11 +143,11 @@ def test_pure_greeting_bypasses_rag_and_returns_welcome():
     assert response.status_code == 200
     body = response.json()
     assert body["decision"] == "answered"
-    assert "SounderOne 智能客服" in body["text"]
+    assert "SOUNDERONE 智能客服" in body["text"]
     assert body["citations"] == []
     assert body["graph_trace"] == [
         "safety_guard",
-        "understand_query",
+        "intent_router",
         "smalltalk_response",
         "output_guard",
         "finalize_response",
@@ -128,8 +174,8 @@ def test_greeting_with_business_question_still_uses_hybrid_rag():
     assert "hybrid_retrieve" in body["graph_trace"]
 
 
-def test_low_signal_and_out_of_domain_messages_ask_for_clarification_without_rag():
-    messages = ("他好", "随便说说", "天气怎么样", "……", "怎么用")
+def test_out_of_domain_messages_return_brand_scope_without_rag():
+    messages = ("他好", "随便说说", "天气怎么样", "……")
     with make_client() as client:
         for index, text in enumerate(messages):
             response = client.post(
@@ -146,15 +192,40 @@ def test_low_signal_and_out_of_domain_messages_ask_for_clarification_without_rag
             body = response.json()
             assert body["decision"] == "safe_fallback"
             assert body["handoff"] is False
-            assert "还没理解" in body["text"]
+            assert "SOUNDERONE" in body["text"]
+            assert "王叔" not in body["text"]
             assert body["citations"] == []
             assert body["graph_trace"] == [
                 "safety_guard",
-                "understand_query",
-                "clarify_response",
+                "intent_router",
+                "out_of_scope_response",
                 "output_guard",
                 "finalize_response",
             ]
+
+
+def test_product_question_without_product_name_asks_for_clarification():
+    with make_client() as client:
+        response = client.post(
+            "/v1/webhooks/simulator",
+            headers={"X-Webhook-Secret": "test-secret"},
+            json={
+                "message_id": "missing-product-1",
+                "conversation_id": "missing-product-conversation",
+                "user_id": "user-1",
+                "text": "怎么用",
+            },
+        )
+    body = response.json()
+    assert body["decision"] == "safe_fallback"
+    assert "产品名称" in body["text"]
+    assert body["graph_trace"] == [
+        "safety_guard",
+        "intent_router",
+        "clarify_response",
+        "output_guard",
+        "finalize_response",
+    ]
 
 
 def test_contextless_pronoun_asks_for_product_name():
@@ -190,7 +261,9 @@ def test_webhook_handoffs_refund_request():
             json=payload,
         )
         assert response.status_code == 200
-        assert response.json()["decision"] == "handoff"
+        body = response.json()
+        assert body["decision"] == "handoff"
+        assert body["graph_trace"] == ["safety_guard", "handoff"]
 
 
 def test_webhook_requires_secret():

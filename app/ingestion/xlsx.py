@@ -675,9 +675,49 @@ def build_knowledge(source_path: Path) -> tuple[dict[str, Any], dict[str, Any]]:
 
 
 def write_build_outputs(
-    source_path: Path, knowledge_path: Path, report_path: Path
+    source_path: Path,
+    knowledge_path: Path,
+    report_path: Path,
+    product_knowledge_path: Path | None = None,
+    faq_knowledge_path: Path | None = None,
 ) -> tuple[int, dict[str, Any]]:
     knowledge, report = build_knowledge(source_path)
     knowledge_path.write_text(json.dumps(knowledge, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     report_path.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    if product_knowledge_path and faq_knowledge_path:
+        product_knowledge, faq_knowledge = split_knowledge_payload(knowledge)
+        product_knowledge_path.write_text(
+            json.dumps(product_knowledge, ensure_ascii=False, indent=2) + "\n",
+            encoding="utf-8",
+        )
+        faq_knowledge_path.write_text(
+            json.dumps(faq_knowledge, ensure_ascii=False, indent=2) + "\n",
+            encoding="utf-8",
+        )
     return len(knowledge["documents"]), report
+
+
+def split_knowledge_payload(
+    knowledge: dict[str, Any],
+) -> tuple[dict[str, Any], dict[str, Any]]:
+    """Split the audited source without changing document IDs or safety status."""
+    product_documents: list[dict[str, Any]] = []
+    faq_documents: list[dict[str, Any]] = []
+    for document in knowledge["documents"]:
+        knowledge_type = (
+            "product" if document.get("category", "").startswith("product_") else "faq"
+        )
+        typed_document = {**document, "knowledge_type": knowledge_type}
+        if knowledge_type == "product":
+            product_documents.append(typed_document)
+        else:
+            faq_documents.append(typed_document)
+
+    common = {
+        "schema_version": "1.1",
+        "source": knowledge.get("source", {}),
+    }
+    return (
+        {**common, "knowledge_type": "product", "documents": product_documents},
+        {**common, "knowledge_type": "faq", "documents": faq_documents},
+    )

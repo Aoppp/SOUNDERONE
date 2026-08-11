@@ -34,6 +34,7 @@ class Citation(BaseModel):
     source_sheet: str | None = None
     source_row: int | None = None
     category: str | None = None
+    knowledge_type: str | None = None
     retrieval_channels: list[str] = Field(default_factory=list)
 
 

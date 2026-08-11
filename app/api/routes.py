@@ -1,4 +1,5 @@
 import hmac
+from collections import Counter
 from pathlib import Path
 from typing import Annotated, Any
 
@@ -31,10 +32,14 @@ def _require_admin(request: Request, provided: str | None) -> None:
 
 @router.get("/health")
 async def health(request: Request) -> dict[str, Any]:
+    type_counts = Counter(
+        document.knowledge_type for document in request.app.state.knowledge.documents
+    )
     return {
         "status": "ok",
         "knowledge_documents": len(request.app.state.knowledge.documents),
         "active_knowledge_documents": len(request.app.state.knowledge.active_documents),
+        "knowledge_types": dict(sorted(type_counts.items())),
         "agent_runtime": "langgraph",
         "retrieval": "qdrant_dense_bm25_rrf",
         "platforms": ["douyin", "simulator"],

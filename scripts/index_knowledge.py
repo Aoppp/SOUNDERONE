@@ -21,8 +21,13 @@ def main() -> None:
     local_path = settings.qdrant_path
     if not settings.qdrant_url and local_path is None:
         local_path = Path("data/qdrant")
+    knowledge_paths = (
+        [settings.knowledge_path]
+        if settings.knowledge_path
+        else [settings.product_knowledge_path, settings.faq_knowledge_path]
+    )
     knowledge = HybridKnowledgeBase(
-        settings.knowledge_path,
+        knowledge_paths,
         embedder,
         collection_name=settings.qdrant_collection,
         qdrant_url=settings.qdrant_url,

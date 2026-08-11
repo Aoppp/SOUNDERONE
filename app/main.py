@@ -7,7 +7,7 @@ from fastapi.staticfiles import StaticFiles
 from app.api.routes import router
 from app.config import Settings, get_settings
 from app.agent import SounderOneGraphAgent
-from app.llm import MockLanguageModel, OpenAILanguageModel
+from app.llm import DeepSeekLanguageModel, MockLanguageModel, OpenAILanguageModel
 from app.policy import SafetyPolicy
 from app.rag import HybridKnowledgeBase
 from app.rag.embeddings import HashDenseEmbedder, OpenAIDenseEmbedder
@@ -29,8 +29,13 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             )
         else:
             embedder = HashDenseEmbedder(resolved.embedding_dimensions)
+        knowledge_paths = (
+            [resolved.knowledge_path]
+            if resolved.knowledge_path
+            else [resolved.product_knowledge_path, resolved.faq_knowledge_path]
+        )
         knowledge = HybridKnowledgeBase(
-            resolved.knowledge_path,
+            knowledge_paths,
             embedder,
             collection_name=resolved.qdrant_collection,
             qdrant_url=resolved.qdrant_url,
@@ -47,6 +52,14 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             if not resolved.openai_api_key:
                 raise RuntimeError("OPENAI_API_KEY is required when LLM_PROVIDER=openai")
             llm = OpenAILanguageModel(resolved.openai_api_key, resolved.openai_model)
+        elif resolved.llm_provider == "deepseek":
+            if not resolved.deepseek_api_key:
+                raise RuntimeError("DEEPSEEK_API_KEY is required when LLM_PROVIDER=deepseek")
+            llm = DeepSeekLanguageModel(
+                resolved.deepseek_api_key,
+                resolved.deepseek_model,
+                resolved.deepseek_base_url,
+            )
         else:
             llm = MockLanguageModel()
         store = InMemoryConversationStore()

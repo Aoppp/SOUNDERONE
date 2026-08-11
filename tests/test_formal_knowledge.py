@@ -6,7 +6,7 @@ import pytest
 from fastapi.testclient import TestClient
 
 from app.config import Settings
-from app.ingestion.xlsx import build_knowledge
+from app.ingestion.xlsx import build_knowledge, split_knowledge_payload
 from app.rag import HybridKnowledgeBase
 from app.rag.embeddings import HashDenseEmbedder
 from app.main import create_app
@@ -14,6 +14,8 @@ from app.main import create_app
 
 KNOWLEDGE_PATH = Path("knowledge/sounderone_knowledge.json")
 REPORT_PATH = Path("knowledge/build_report.json")
+PRODUCT_KNOWLEDGE_PATH = Path("knowledge/product_knowledge.json")
+FAQ_KNOWLEDGE_PATH = Path("knowledge/customer_faq.json")
 SOURCE_PATH = Path("产品话术汇总完整版本.xlsx")
 
 
@@ -28,6 +30,19 @@ def test_generated_knowledge_has_expected_safety_partition():
     assert statuses.count("active") == 210
     assert statuses.count("review_required") == 39
     assert statuses.count("handoff_only") == 38
+
+
+def test_product_and_faq_files_are_a_lossless_split():
+    combined = json.loads(KNOWLEDGE_PATH.read_text(encoding="utf-8"))
+    expected_product, expected_faq = split_knowledge_payload(combined)
+    product = json.loads(PRODUCT_KNOWLEDGE_PATH.read_text(encoding="utf-8"))
+    faq = json.loads(FAQ_KNOWLEDGE_PATH.read_text(encoding="utf-8"))
+    assert product == expected_product
+    assert faq == expected_faq
+    assert len(product["documents"]) == 64
+    assert len(faq["documents"]) == 223
+    assert all(item["knowledge_type"] == "product" for item in product["documents"])
+    assert all(item["knowledge_type"] == "faq" for item in faq["documents"])
 
 
 def test_generated_knowledge_contains_no_phone_or_transaction_numbers():

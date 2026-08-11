@@ -15,8 +15,20 @@ def main() -> None:
     parser.add_argument("source", type=Path)
     parser.add_argument("--output", type=Path, default=Path("knowledge/sounderone_knowledge.json"))
     parser.add_argument("--report", type=Path, default=Path("knowledge/build_report.json"))
+    parser.add_argument(
+        "--product-output", type=Path, default=Path("knowledge/product_knowledge.json")
+    )
+    parser.add_argument(
+        "--faq-output", type=Path, default=Path("knowledge/customer_faq.json")
+    )
     args = parser.parse_args()
-    count, report = write_build_outputs(args.source, args.output, args.report)
+    count, report = write_build_outputs(
+        args.source,
+        args.output,
+        args.report,
+        args.product_output,
+        args.faq_output,
+    )
     summary = report["summary"]
     print(
         f"built {count} documents: {summary['active_documents']} active, "

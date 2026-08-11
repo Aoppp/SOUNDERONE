@@ -1,10 +1,12 @@
-# Hand-off（2026-08-10 周一衔接）
+# Hand-off（更新于 2026-08-11）
 
 ## 当前状态
 
-项目已重构为抖音单平台 Agent MVP，不应直接连接生产店铺。核心流程使用 LangGraph，知识库使用 Qdrant Dense + BM25 混合 RAG 和 RRF 融合。默认 `LLM_PROVIDER=mock`、`EMBEDDING_PROVIDER=hash`，可离线测试。`knowledge/sounderone_knowledge.json` 的 287 条中只有 210 条 active 会写入 Qdrant。
+项目已重构为抖音单平台 Agent MVP，不应直接连接生产店铺。核心流程使用 LangGraph，知识库使用 Qdrant Dense + BM25 混合 RAG 和 RRF 融合。默认 `LLM_PROVIDER=mock`、`EMBEDDING_PROVIDER=hash`，可离线测试；生产回答层已支持 `deepseek-v4-flash`。
 
-项目已增加 `http://127.0.0.1:8000/tester` 浏览器测试窗口。纯问候路由到 `smalltalk_response`；无业务语义、缺少必要产品上下文的消息路由到 `clarify_response`，两者都不会触发产品 RAG。检索还增加了多字词重合和业务意图一致性门槛，知识缺失时转人工，不会用相似但无关话术凑答案。自动化测试最后结果为 35 passed，持久 Qdrant 索引命令已成功写入 210 条 active 知识。工作区 Git 对象位于 `.git.nosync`，避免再次被 iCloud 自动卸载。
+运行知识已拆分为 `product_knowledge.json`（64条）和 `customer_faq.json`（223条），其中合计210条 active 写入 Qdrant。高危先转人工；范围外问题从20条 SOUNDERONE 文案中稳定选择；相关但缺产品信息时追问；有效问题经受约束改写、知识类型路由和混合检索，未可靠命中则转人工。工作区 Git 对象位于 `.git.nosync`，避免再次被 iCloud 自动卸载。
+
+最后验证结果为42项自动化测试通过；DeepSeek 请求结构使用模拟客户端验证，尚未使用真实 Key 发起计费请求。
 
 ## iCloud 恢复记录（已处理）
 
@@ -40,6 +42,7 @@ UV_CACHE_DIR=/tmp/sounderone-uv-cache UV_PROJECT_ENVIRONMENT=.venv.nosync uv run
 ## 尚缺资料/权限
 
 - Excel 中 39 条 review-required 内容的业务审核结果，尤其是浓度、孕期禁忌和监管声明。
+- 可用的 `DEEPSEEK_API_KEY`；当前只完成官方接口适配和模拟测试，未进行真实计费调用。
 - 正式 SKU 唯一编码、在售/停售状态、版本生效日期和知识负责人。
 - 抖音应用的 `app_key` / `app_secret`、客服消息权限包、官方回调和回复样例。
 - 人工工作时间、节假日规则、技能组、SLA、升级路径。
@@ -47,7 +50,7 @@ UV_CACHE_DIR=/tmp/sounderone-uv-cache UV_PROJECT_ENVIRONMENT=.venv.nosync uv run
 
 ## 重要限制
 
-- `knowledge/sample.json` 仅保留为测试夹具，运行时默认使用 `sounderone_knowledge.json`。
+- `knowledge/sample.json` 仅保留为测试夹具；运行时默认使用 `product_knowledge.json` 和 `customer_faq.json`，`sounderone_knowledge.json` 是完整审计基准。
 - 原始 Excel 含订单数据，不会推送 GitHub；更新知识时在本地重新构建，只提交脱敏后的 JSON 与报告。
 - 不要给 Agent 退款、补发或改订单权限。订单能力应先只读并经过脱敏和审计。
 - 不良反应必须直接转人工，不提供诊断；涉及强情绪、监管、法律和媒体同样转人工。

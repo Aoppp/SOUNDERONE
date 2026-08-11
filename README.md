@@ -1,4 +1,4 @@
-# SounderOne 抖音智能客服 Agent
+# SOUNDERONE 抖音智能客服 Agent
 
 这是一个聚焦抖音单平台的客服 Agent MVP。LangGraph 负责有状态工作流，Qdrant 同时执行 Dense Vector 和 BM25 检索，再使用 RRF 融合。高风险、知识不足和生成违规内容会绕过自动回答并转人工。
 
@@ -9,18 +9,24 @@
 ```text
 START
   -> safety_guard
-  -> understand_query
+       | high risk -> handoff
+  -> intent_router
        | pure greeting -> smalltalk_response
-       | unclear / out of domain -> clarify_response
+       | out of scope -> out_of_scope_response
+       | missing product/context -> clarify_response
+  -> rewrite_query
+  -> route_knowledge (product / faq)
   -> hybrid_retrieve
   -> relevance_gate
+       | no reliable hit -> handoff
   -> generate_answer
+       | insufficient context / model error -> handoff
   -> output_guard
   -> finalize_response
   -> END
 ```
 
-`clarify_response` 不查询知识库，也不附带引用；知识库不存在可靠答案时由 `relevance_gate` 转人工。`safety_guard`、`relevance_gate` 和 `output_guard` 都可以分支到 `handoff`。每次回复会返回 `graph_trace`、知识引用以及命中的 `dense` / `bm25` 检索通道。
+无关问题由20条已审核的 SOUNDERONE 能力范围话术稳定随机回复；缺少产品名的问题单独追问。两类响应均不查询知识库。命中后由 DeepSeek V4 Flash（或 Mock/OpenAI）严格依据检索片段组织回答；知识不足、模型不可用或输出违规都会转人工。
 
 ## 技术栈
 
@@ -28,7 +34,8 @@ START
 - LangGraph `StateGraph` 和开发期 `InMemorySaver`
 - Qdrant Dense Vector + BM25 Sparse Vector
 - Reciprocal Rank Fusion（RRF）
-- OpenAI Responses API（可选）
+- DeepSeek V4 Flash 官方 OpenAI 兼容 API（生产回答，可配置）
+- OpenAI Responses API（可选替代）
 - OpenAI Embeddings（生产可选）；默认 hash embedding 只用于离线开发和测试
 - Excel 确定性清洗、冲突检测和风险分区
 
@@ -42,14 +49,18 @@ UV_CACHE_DIR=/tmp/sounderone-uv-cache UV_PROJECT_ENVIRONMENT=.venv.nosync uv syn
 UV_CACHE_DIR=/tmp/sounderone-uv-cache UV_PROJECT_ENVIRONMENT=.venv.nosync uv run uvicorn app.main:app --reload
 ```
 
-默认使用内存 Qdrant、hash embedding 和 Mock LLM，无需密钥。生产向量需设置：
+默认使用内存 Qdrant、hash embedding 和 Mock LLM，无需密钥。接入 DeepSeek V4 Flash 时设置：
 
 ```dotenv
-LLM_PROVIDER=openai
+LLM_PROVIDER=deepseek
+DEEPSEEK_API_KEY=...
+DEEPSEEK_MODEL=deepseek-v4-flash
 EMBEDDING_PROVIDER=openai
 OPENAI_API_KEY=...
 QDRANT_URL=http://qdrant:6333
 ```
+
+`deepseek-v4-flash` 使用 DeepSeek 官方 OpenAI 兼容地址 `https://api.deepseek.com`；模型名与接口以 [DeepSeek Models & Pricing](https://api-docs.deepseek.com/quick_start/pricing) 为准。
 
 ### 浏览器测试窗口
 
@@ -95,7 +106,12 @@ UV_PROJECT_ENVIRONMENT=.venv.nosync uv run python scripts/build_knowledge.py '�
 UV_PROJECT_ENVIRONMENT=.venv.nosync uv run python scripts/index_knowledge.py
 ```
 
-第一条命令生成脱敏 JSON 和冲突报告；第二条命令将 210 条 `active` 知识建立为 Dense + BM25 双索引。
+第一条命令生成完整审计源、冲突报告以及运行时使用的两个文件：
+
+- `knowledge/product_knowledge.json`：64 条产品知识。
+- `knowledge/customer_faq.json`：223 条历史 FAQ。
+
+第二条命令把两个文件中的 210 条 `active` 知识建立为 Dense + BM25 双索引。
 
 ## 测试
 
