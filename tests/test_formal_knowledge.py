@@ -16,7 +16,7 @@ KNOWLEDGE_PATH = Path("knowledge/sounderone_knowledge.json")
 REPORT_PATH = Path("knowledge/build_report.json")
 PRODUCT_KNOWLEDGE_PATH = Path("knowledge/product_knowledge.json")
 FAQ_KNOWLEDGE_PATH = Path("knowledge/customer_faq.json")
-SOURCE_PATH = Path("产品话术汇总完整版本.xlsx")
+SOURCE_PATH = Path("source_materials/产品话术汇总完整版本.xlsx")
 
 
 def make_knowledge() -> HybridKnowledgeBase:

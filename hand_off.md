@@ -6,6 +6,8 @@
 
 运行知识已拆分为 `product_knowledge.json`（64条）和 `customer_faq.json`（223条），其中合计210条 active 写入 Qdrant。高危先转人工；范围外问题从20条 SOUNDERONE 文案中稳定选择；相关但缺产品信息时追问；有效问题经受约束改写、知识类型路由和混合检索，未可靠命中则转人工。工作区 Git 对象位于 `.git.nosync`，避免再次被 iCloud 自动卸载。
 
+原始业务资料已统一移动到 `source_materials/`；知识重建命令和测试路径均已更新。旧损坏备份、重复环境和缓存的可恢复副本位于 macOS 废纸篓 `SounderOne-cleanup-20260811/`。
+
 最后验证结果为46项自动化测试通过；`deepseek-v4-flash` 已完成真实 API 和运行中完整 Graph 调用。回复已禁止内部资料转述及 Markdown 标记，并由输出规则兜底清理。选品推荐支持多轮续问和目标同义词扩展；“美白推荐 → 那有没有什么抗衰的呢”已实测连续回答，去黑头推荐因无知识转人工。本地 `.env` 已切换为 `LLM_PROVIDER=deepseek`，密钥不在 Git 中。
 
 ## iCloud 恢复记录（已处理）
@@ -50,7 +52,7 @@ UV_CACHE_DIR=/tmp/sounderone-uv-cache UV_PROJECT_ENVIRONMENT=.venv.nosync uv run
 ## 重要限制
 
 - `knowledge/sample.json` 仅保留为测试夹具；运行时默认使用 `product_knowledge.json` 和 `customer_faq.json`，`sounderone_knowledge.json` 是完整审计基准。
-- 原始 Excel 含订单数据，不会推送 GitHub；更新知识时在本地重新构建，只提交脱敏后的 JSON 与报告。
+- 原始 Excel 位于 `source_materials/`，含订单数据，不会推送 GitHub；更新知识时在本地重新构建，只提交脱敏后的 JSON 与报告。
 - 不要给 Agent 退款、补发或改订单权限。订单能力应先只读并经过脱敏和审计。
 - 不良反应必须直接转人工，不提供诊断；涉及强情绪、监管、法律和媒体同样转人工。
 - `DouyinAdapter` 目前只是归一化联调契约，上线前必须做官方验签、解密、幂等、重放保护、限流和沙箱认证。

@@ -5,13 +5,18 @@ services:
       LLM_PROVIDER: ${LLM_PROVIDER:-mock}
       OPENAI_API_KEY: ${OPENAI_API_KEY:-}
       OPENAI_MODEL: ${OPENAI_MODEL:-gpt-5-mini}
+      DEEPSEEK_API_KEY: ${DEEPSEEK_API_KEY:-}
+      DEEPSEEK_BASE_URL: ${DEEPSEEK_BASE_URL:-https://api.deepseek.com}
+      DEEPSEEK_MODEL: ${DEEPSEEK_MODEL:-deepseek-v4-flash}
       EMBEDDING_PROVIDER: ${EMBEDDING_PROVIDER:-hash}
       EMBEDDING_MODEL: ${EMBEDDING_MODEL:-text-embedding-3-small}
       EMBEDDING_DIMENSIONS: ${EMBEDDING_DIMENSIONS:-384}
       WEBHOOK_SECRET: ${WEBHOOK_SECRET:-change-me}
       ADMIN_API_KEY: ${ADMIN_API_KEY:-change-me-admin}
-      KNOWLEDGE_PATH: /app/knowledge/sounderone_knowledge.json
+      PRODUCT_KNOWLEDGE_PATH: /app/knowledge/product_knowledge.json
+      FAQ_KNOWLEDGE_PATH: /app/knowledge/customer_faq.json
       KNOWLEDGE_MIN_SCORE: ${KNOWLEDGE_MIN_SCORE:-0.48}
+      KNOWLEDGE_SCORE_WINDOW: ${KNOWLEDGE_SCORE_WINDOW:-0.15}
       QDRANT_URL: http://qdrant:6333
       QDRANT_COLLECTION: sounderone_knowledge
       RAG_REBUILD_ON_STARTUP: "true"

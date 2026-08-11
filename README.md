@@ -43,6 +43,20 @@ START
 
 架构详情见 [docs/architecture.md](docs/architecture.md)，抖音接入边界见 [docs/douyin_integration.md](docs/douyin_integration.md)，知识审计见 [docs/knowledge_base_analysis.md](docs/knowledge_base_analysis.md)。
 
+## 目录结构
+
+```text
+app/                 应用源码、LangGraph、RAG、抖音适配器和测试页面
+knowledge/           脱敏知识、FAQ、完整审计源和构建报告
+source_materials/    原始问卷与Excel业务资料
+scripts/             知识构建和索引脚本
+tests/               单元测试与端到端测试
+docs/                架构、知识审计和抖音接入文档
+data/                本地 Qdrant 运行数据（Git 忽略）
+```
+
+根目录只保留项目入口文档、依赖配置、容器配置和开发交接记录。
+
 ## 本地运行
 
 ```bash
@@ -104,7 +118,7 @@ curl -X POST http://127.0.0.1:8000/v1/webhooks/simulator \
 原始 Excel 含订单数据，已被 Git 忽略。更新流程：
 
 ```bash
-UV_PROJECT_ENVIRONMENT=.venv.nosync uv run python scripts/build_knowledge.py '产品话术汇总完整版本.xlsx'
+UV_PROJECT_ENVIRONMENT=.venv.nosync uv run python scripts/build_knowledge.py 'source_materials/产品话术汇总完整版本.xlsx'
 UV_PROJECT_ENVIRONMENT=.venv.nosync uv run python scripts/index_knowledge.py
 ```
 

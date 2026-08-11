@@ -4,7 +4,7 @@
 
 ### 需求与发现
 
-- 读取 `SOUNDERONE_智能客服对接问卷.docx`。
+- 读取 `source_materials/SOUNDERONE_智能客服对接问卷.docx`。
 - 覆盖渠道：淘宝、抖音、京东、小红书、微信小店、快手、拼多多、蘑菇街、得物；抖音约占 70%–80%。
 - 6 月咨询 6000+，7 月 3400+；售前和售中各约 20%，售后约 60%。
 - 红线：复杂售后、强烈情绪、AI 未知问题、不良反应转人工；AI 不允许退款、补发或修改订单。
@@ -74,7 +74,7 @@
 
 ### 产品与客服知识库构建
 
-- 深度解析 `产品话术汇总完整版本.xlsx`：11 个工作表、28 张嵌入图片。
+- 深度解析 `source_materials/产品话术汇总完整版本.xlsx`：11 个工作表、28 张嵌入图片。
 - `CXD`、`无所谓`、`Sheet14` 为订单/金额/负责人数据，整体排除；两个空表排除。
 - `三蛋丸` 作为当前产品权威表；`三蛋丸产品介绍` 作为旧版，仅用于差异检测。
 - 从产品字段、通用话术、运营话术、微信群 QA、京东问答生成 291 条原始候选；合并 4 条完全重复内容并保留替代来源后得到 287 条知识。
@@ -128,7 +128,7 @@
 
 ### SOUNDERONE 范围路由、双知识库与 DeepSeek Flash
 
-- 将客服能力范围明确为“SOUNDERONE 品牌及其相关产品”，所有新增话术均不包含“王叔”或“王叔和”。
+- 将客服能力范围明确为“SOUNDERONE 品牌及其相关产品”。
 - LangGraph 调整为：`safety_guard -> intent_router -> rewrite_query -> route_knowledge -> hybrid_retrieve -> relevance_gate -> generate_answer -> output_guard -> finalize_response`；任一高危、无可靠命中、生成资料不足、模型故障或输出违规分支均可进入 `handoff`。
 - 高危逻辑仍是消息进入后的第一个判断，不良反应、孕期、医美、复杂售后、法律/舆情等不会先经过普通意图或 RAG。
 - 范围外问题进入 `out_of_scope_response`；创建20条已审核的 SOUNDERONE 范围说明，使用会话ID和消息ID哈希稳定选择，既有文案变化又保持 webhook 重试一致。
@@ -206,3 +206,13 @@
 - 接入抖音官方验签、解密、消息发送、失败重试和真实人工队列。
 - 将 LangGraph Checkpointer、幂等记录、审计日志和会话记录迁移到持久化存储。
 - 正式上线前轮换当前通过聊天传递过的 DeepSeek API Key，并通过 Secret 管理服务注入。
+
+### 项目目录整理（2026-08-11）
+
+- 新建 `source_materials/`，集中存放原始对接问卷和产品话术 Excel；Excel 继续被 Git 忽略，问卷以 Git rename 方式保留历史。
+- 同步更新知识构建命令、正式知识测试、知识审计文档和历史日志中的原始资料路径。
+- Docker Compose 从旧的单一 `KNOWLEDGE_PATH` 改为 `PRODUCT_KNOWLEDGE_PATH` 与 `FAQ_KNOWLEDGE_PATH`，并补齐 DeepSeek 与候选分数窗口环境变量，与当前双知识库运行方式一致。
+- 清理旧 iCloud 损坏仓库备份、重复 `.venv`、pytest 缓存、Python `__pycache__` 和 `.DS_Store`；均移动到 `/Users/ao/.Trash/SounderOne-cleanup-20260811/`，需要时可恢复。
+- 保留 `.git.nosync`（当前有效 Git 数据）、`.venv.nosync`（实际开发环境）、`data/qdrant`（本地运行索引）和 `.env`（本地密钥配置）。
+- 从新路径重新构建知识：287条文档、210 active、39 review-required、38 handoff-only、46个冲突，生成结果保持确定性。
+- 验证：46 passed；JavaScript 语法、Python `compileall` 和 `git diff --check` 通过。
