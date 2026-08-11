@@ -152,3 +152,57 @@
 - 输出口吻兜底扩大到任何包含“资料里/资料中/知识库”的转述句，并清理 Markdown `**`，避免抖音纯文本显示内部表达或星号。
 - 真实同会话 DeepSeek 复测“美白有没有产品推荐 → 那有没有什么抗衰的呢”成功，第二轮推荐玻色因面霜、双A醇眼霜、EUK-134精华和30%玻色因精华。
 - 验证：46 passed；完整 Graph、引用、未命中转人工、Python 编译、JavaScript 语法及差异格式检查通过。
+
+### 阶段总结（2026-08-11）
+
+今天完成了 SOUNDERONE 抖音客服 Agent 从“基础混合 RAG”到“可控业务路由 + 双知识库 + 真实模型回答”的阶段性升级。
+
+#### 已完成
+
+- 明确客服范围为 SOUNDERONE 品牌及相关产品；高危问题继续在流程最前面转人工。
+- 用 LangGraph 建立问候、范围外、信息不足、知识问答、生成失败和人工转接等独立分支。
+- 创建20条范围外话术，并以会话ID和消息ID稳定选择，保证回复多样且 webhook 重试一致。
+- 将知识拆分为产品知识64条和FAQ 223条；两类共210条 active 文档进入 Qdrant Dense + BM25 + RRF 混合检索。
+- 增加受约束问题改写、知识类型路由、产品/浓度/意图一致性过滤、多字词重合门槛和可靠候选分数窗口。
+- 接入并真实验证 DeepSeek V4 Flash；本地运行已使用 DeepSeek，密钥仅保存在被 Git 忽略的 `.env`。
+- 生成上下文加入知识类型、分类、产品别名标签和正文；模型资料不足、返回空内容或 API 故障时转人工。
+- 客服以品牌官方身份直接回答；禁止内部资料转述，输出层清理“资料里/知识库”等表达及 Markdown 标记。
+- 支持无指定产品的选品推荐，以及“美白推荐 → 那有没有什么抗衰的呢”这类多轮推荐意图继承和同义目标扩展。
+- 推荐有可靠知识才回答；例如美白、抗衰已通过真实 DeepSeek 验证，去黑头推荐因没有可靠知识转人工。
+
+#### 当前最终流程
+
+```text
+接收消息
+  -> safety_guard
+  -> intent_router
+       | 问候 -> smalltalk_response
+       | 范围外 -> out_of_scope_response
+       | 信息不足 -> clarify_response
+       | 有效问题 -> rewrite_query
+  -> route_knowledge
+  -> hybrid_retrieve (Dense + BM25 + RRF)
+  -> relevance_gate
+       | 未可靠命中 -> handoff
+  -> generate_answer (DeepSeek V4 Flash)
+       | 资料不足/模型故障 -> handoff
+  -> output_guard
+       | 违规内容 -> handoff
+  -> finalize_response
+```
+
+#### 验证与同步
+
+- 自动化测试：46 passed。
+- 正式双库加载：287条文档，其中210条 active。
+- 真实 DeepSeek 已验证产品用法、美白推荐和多轮抗衰推荐。
+- Python `compileall`、JavaScript 语法和 `git diff --check` 均通过。
+- 今日主要 Git 提交：`b135a32`、`59f0cc9`、`24db834`、`f85180d`、`2318b40`。
+
+#### 下一阶段重点
+
+- 使用真实抖音客服问题建立推荐与问答评测集，持续校准目标词、阈值和转人工率。
+- 审核39条 `review_required` 知识和46个知识冲突，尤其是浓度、美白特证、孕期及产品版本差异。
+- 接入抖音官方验签、解密、消息发送、失败重试和真实人工队列。
+- 将 LangGraph Checkpointer、幂等记录、审计日志和会话记录迁移到持久化存储。
+- 正式上线前轮换当前通过聊天传递过的 DeepSeek API Key，并通过 Secret 管理服务注入。
