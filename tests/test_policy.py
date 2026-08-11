@@ -51,6 +51,18 @@ def test_output_guard_removes_internal_source_language():
         )
         assert found == []
 
+    output, found = policy.sanitize_output(
+        "宝宝，可以考虑夜猫子精华哦～不过咱这边资料里没有直接涉及美白。"
+    )
+    assert output == "宝宝，可以考虑夜猫子精华哦～"
+    assert found == []
+
+
+def test_output_guard_removes_markdown_from_platform_copy():
+    output, found = make_policy().sanitize_output("宝宝，可以看看**玻色因面霜**哦～")
+    assert output == "宝宝，可以看看玻色因面霜哦～"
+    assert found == []
+
 
 def test_business_hours_are_timezone_aware():
     policy = make_policy()

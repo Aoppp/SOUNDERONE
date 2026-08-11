@@ -64,6 +64,9 @@ class SafetyPolicy:
         re.compile(r"(?:据)?(?:现有|目前)?资料(?:里|中)?(?:提到|显示|说明|介绍)[，,：:\s]*"),
         re.compile(r"从知识库来看[，,：:\s]*"),
     )
+    INTERNAL_SOURCE_SENTENCE = re.compile(
+        r"[^。！？～~\n]*(?:知识库|资料里|资料中)[^。！？～~\n]*[。！？～~]?"
+    )
 
     def __init__(self, timezone: str, start: str, end: str):
         self.timezone = ZoneInfo(timezone)
@@ -94,7 +97,14 @@ class SafetyPolicy:
     def sanitize_output(self, text: str) -> tuple[str, list[str]]:
         for pattern in self.INTERNAL_SOURCE_PATTERNS:
             text = pattern.sub("", text)
+        text = self.INTERNAL_SOURCE_SENTENCE.sub("", text)
+        text = text.replace("**", "")
         text = re.sub(r"宝宝[，,]\s*[，,：:]", "宝宝，", text).strip()
+        if not text:
+            return (
+                "宝宝，这个问题需要进一步确认，我马上为您转接人工客服。",
+                ["internal_source_only"],
+            )
         found = [word for word in self.FORBIDDEN_CLAIMS if word in text]
         if found:
             return "宝宝，这个问题需要进一步确认，我马上为您转接人工客服。", found

@@ -11,7 +11,7 @@ from app.config import Settings
 from app.llm import LanguageModel
 from app.models import AgentReply, ConversationEvent, Decision, IncomingMessage
 from app.policy import SafetyPolicy
-from app.rag import HybridKnowledgeBase
+from app.rag import HybridKnowledgeBase, recommendation_goals
 from app.store import InMemoryConversationStore
 
 
@@ -233,7 +233,18 @@ class SounderOneGraphAgent:
         refers_to_context = any(word in text for word in ("这个", "它", "这款", "刚才那个"))
         has_supported_cue = any(cue in text for cue in self.SUPPORT_CUES)
         has_standalone_service_cue = any(cue in text for cue in self.STANDALONE_SERVICE_CUES)
-        has_recommendation_cue = any(cue in text for cue in self.RECOMMENDATION_CUES)
+        has_recommendation_goal = bool(recommendation_goals(text))
+        continues_recommendation = (
+            state.get("query_intent") == "recommendation" and has_recommendation_goal
+        )
+        has_recommendation_cue = (
+            any(cue in text for cue in self.RECOMMENDATION_CUES)
+            or continues_recommendation
+            or (
+                has_recommendation_goal
+                and bool(re.search(r"有没有|有什么|什么|哪|呢", text))
+            )
+        )
         mentions_brand = bool(
             re.search(r"sounder\s*one|搜得旺|你们(?:家)?品牌|你家品牌", text, re.IGNORECASE)
         )
@@ -343,7 +354,9 @@ class SounderOneGraphAgent:
             intent, knowledge_types = "promotion", ["faq"]
         elif re.search(r"退款|退货|补发|漏发|少发|破损|售后|投诉", query):
             intent, knowledge_types = "after_sales", ["faq"]
-        elif re.search(r"推荐|哪款|选什么|有什么.*产品", query):
+        elif re.search(r"推荐|哪款|选什么|有什么.*产品", query) or (
+            recommendation_goals(query) and re.search(r"有没有|有什么|什么|哪|呢", query)
+        ):
             intent, knowledge_types = "recommendation", ["product", "faq"]
         elif re.search(r"怎么使用|怎么用|如何用|怎样用|使用方法|使用顺序|用量", query):
             intent, knowledge_types = "usage", ["product", "faq"]

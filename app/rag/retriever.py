@@ -40,6 +40,28 @@ TAXONOMY_TAGS = {
     "洗护组合",
 }
 
+RECOMMENDATION_GOAL_GROUPS = (
+    ("美白", "提亮", "淡斑", "去黄", "暗黄"),
+    ("毛孔",),
+    ("控油", "油皮", "出油"),
+    ("祛痘", "痘痘", "痘印"),
+    ("抗皱", "淡纹", "细纹", "紧致", "抗衰", "抗老", "初老"),
+    ("补水", "保湿", "干燥", "干皮"),
+    ("黑头",),
+    ("眼袋",),
+    ("敏感肌", "敏感", "泛红"),
+    ("头屑", "去屑"),
+)
+
+
+def recommendation_goals(query: str) -> set[str]:
+    return {
+        term
+        for group in RECOMMENDATION_GOAL_GROUPS
+        if any(term in query for term in group)
+        for term in group
+    }
+
 
 @dataclass(frozen=True)
 class KnowledgeDocument:
@@ -85,7 +107,9 @@ def _query_intent(query: str) -> str | None:
         return "invoice"
     if re.search(r"价格|多少钱|优惠|活动|折扣|到手价", query):
         return "promotion"
-    if re.search(r"推荐|哪款|选什么|有什么.*产品", query):
+    if re.search(r"推荐|哪款|选什么|有什么.*产品", query) or (
+        recommendation_goals(query) and re.search(r"有没有|有什么|什么|哪|呢", query)
+    ):
         return "recommendation"
     if re.search(r"区别|对比|选哪个|怎么选", query):
         return "comparison"
@@ -133,19 +157,6 @@ class HybridKnowledgeBase:
 
     DENSE_VECTOR = "dense"
     BM25_VECTOR = "bm25"
-    RECOMMENDATION_GOAL_GROUPS = (
-        ("美白", "提亮", "淡斑", "去黄", "暗黄"),
-        ("毛孔",),
-        ("控油", "油皮", "出油"),
-        ("祛痘", "痘痘", "痘印"),
-        ("抗皱", "淡纹", "细纹", "紧致"),
-        ("补水", "保湿", "干燥", "干皮"),
-        ("黑头",),
-        ("眼袋",),
-        ("敏感肌", "敏感", "泛红"),
-        ("头屑", "去屑"),
-    )
-
     def __init__(
         self,
         path: Path | Sequence[Path],
@@ -349,14 +360,25 @@ class HybridKnowledgeBase:
     ) -> list[SearchHit]:
         if not lexical_tokens(query):
             return []
+        intent = _query_intent(query)
+        required_recommendation_goals: set[str] = set()
+        retrieval_query = query
+        if intent == "recommendation":
+            required_recommendation_goals = recommendation_goals(query)
+            if not required_recommendation_goals:
+                return []
+            retrieval_query = f"{query} {' '.join(sorted(required_recommendation_goals))}"
+        explicit_recommendation_terms = {
+            goal for goal in required_recommendation_goals if goal in query
+        }
         dense = self.client.query_points(
             collection_name=self.collection_name,
-            query=self.embedder.embed_query(query),
+            query=self.embedder.embed_query(retrieval_query),
             using=self.DENSE_VECTOR,
             limit=prefetch_limit,
             with_payload=False,
         ).points
-        sparse_query = self._query_sparse_vector(query)
+        sparse_query = self._query_sparse_vector(retrieval_query)
         sparse = self.client.query_points(
             collection_name=self.collection_name,
             query=sparse_query,
@@ -370,18 +392,7 @@ class HybridKnowledgeBase:
             for rank, point in enumerate(results, 1):
                 rankings.setdefault(str(point.id), {})[channel] = rank
 
-        intent = _query_intent(query)
-        recommendation_goals: set[str] = set()
-        if intent == "recommendation":
-            recommendation_goals = {
-                term
-                for group in self.RECOMMENDATION_GOAL_GROUPS
-                if any(term in query for term in group)
-                for term in group
-            }
-            if not recommendation_goals:
-                return []
-        query_tokens = set(lexical_tokens(query))
+        query_tokens = set(lexical_tokens(retrieval_query))
         required_ascii = {
             token for token in query_tokens if re.fullmatch(r"[a-z0-9]+", token)
         }
@@ -400,8 +411,22 @@ class HybridKnowledgeBase:
             ):
                 continue
             document_tokens = set(lexical_tokens(document.index_text))
-            if recommendation_goals and not any(
-                goal in document.index_text for goal in recommendation_goals
+            if required_recommendation_goals and not any(
+                goal in document.index_text for goal in required_recommendation_goals
+            ):
+                continue
+            if (
+                intent == "recommendation"
+                and document.knowledge_type == "faq"
+                and not any(
+                    goal in document.index_text for goal in explicit_recommendation_terms
+                )
+            ):
+                continue
+            if (
+                required_recommendation_goals
+                and "护发产品" in document.tags
+                and not re.search(r"头发|头皮|洗发|护发", query)
             ):
                 continue
             if required_ascii and not required_ascii.issubset(document_tokens):
@@ -410,7 +435,9 @@ class HybridKnowledgeBase:
             # Chinese single characters are too noisy for a relevance decision:
             # e.g. "他好" shares 他/好 with ordinary product copy. Require a
             # real multi-character term (or an exact ASCII entity handled above).
-            meaningful_overlap = any(len(token) >= 2 for token in intersection)
+            meaningful_overlap = any(len(token) >= 2 for token in intersection) or bool(
+                required_recommendation_goals
+            )
             if not meaningful_overlap:
                 continue
             rrf = sum(1 / (60 + rank) for rank in channel_ranks.values())

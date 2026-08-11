@@ -104,8 +104,15 @@ def test_recommendation_retrieval_requires_matching_customer_goal():
     knowledge = make_knowledge()
     beauty_hits = knowledge.search("有什么美白产品推荐")
     assert beauty_hits
-    assert beauty_hits[0].document.title == "有美白效果吗?"
-    assert "去黄提亮" in beauty_hits[0].document.content
+    assert any("夜猫子精华" in hit.document.title for hit in beauty_hits)
+    assert all(
+        "美白" in hit.document.index_text or "提亮" in hit.document.index_text
+        for hit in beauty_hits
+    )
+
+    anti_aging_hits = knowledge.search("那有没有什么抗衰的呢")
+    assert anti_aging_hits
+    assert "玻色因面霜" in anti_aging_hits[0].document.title
     assert knowledge.search("有去黑头产品推荐吗") == []
 
 
@@ -173,6 +180,16 @@ def test_agent_answers_grounded_recommendation_and_handoffs_when_missing():
                 "text": "有什么美白产品推荐",
             },
         ).json()
+        follow_up = client.post(
+            "/v1/webhooks/simulator",
+            headers=headers,
+            json={
+                "message_id": "recommendation-follow-up-1",
+                "conversation_id": "recommendation-conversation-1",
+                "user_id": "recommendation-user",
+                "text": "那有没有什么抗衰的呢？",
+            },
+        ).json()
         missing = client.post(
             "/v1/webhooks/simulator",
             headers=headers,
@@ -185,7 +202,7 @@ def test_agent_answers_grounded_recommendation_and_handoffs_when_missing():
         ).json()
 
     assert recommendation["decision"] == "answered"
-    assert recommendation["citations"][0]["title"] == "有美白效果吗?"
+    assert any("夜猫子精华" in citation["title"] for citation in recommendation["citations"])
     assert "clarify_response" not in recommendation["graph_trace"]
     assert recommendation["graph_trace"][1:5] == [
         "intent_router",
@@ -193,6 +210,11 @@ def test_agent_answers_grounded_recommendation_and_handoffs_when_missing():
         "route_knowledge",
         "hybrid_retrieve",
     ]
+    assert follow_up["decision"] == "answered"
+    assert "玻色因面霜" in follow_up["citations"][0]["title"]
+    assert follow_up["citations"][0]["category"] == "product_overview"
+    assert "out_of_scope_response" not in follow_up["graph_trace"]
+    assert "clarify_response" not in follow_up["graph_trace"]
     assert missing["decision"] == "handoff"
     assert missing["handoff_reason"] == "知识库无可靠答案"
     assert missing["citations"] == []
