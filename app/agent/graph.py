@@ -141,6 +141,7 @@ class SounderOneGraphAgent:
         builder.add_node("route_knowledge", self._route_knowledge)
         builder.add_node("hybrid_retrieve", self._hybrid_retrieve)
         builder.add_node("relevance_gate", self._relevance_gate)
+        builder.add_node("direct_faq_answer", self._direct_faq_answer)
         builder.add_node("generate_answer", self._generate_answer)
         builder.add_node("output_guard", self._output_guard)
         builder.add_node("finalize_response", self._finalize_response)
@@ -171,8 +172,13 @@ class SounderOneGraphAgent:
         builder.add_conditional_edges(
             "relevance_gate",
             self._route_after_relevance,
-            {"generate": "generate_answer", "handoff": "handoff"},
+            {
+                "faq": "direct_faq_answer",
+                "generate": "generate_answer",
+                "handoff": "handoff",
+            },
         )
+        builder.add_edge("direct_faq_answer", "output_guard")
         builder.add_conditional_edges(
             "generate_answer",
             self._route_after_generation,
@@ -406,7 +412,10 @@ class SounderOneGraphAgent:
             and top_score - hit["score"] <= self.settings.knowledge_score_window
         ]
         update["hits"] = reliable_hits
-        if not self.policy.is_business_hours() and top_score < 0.62:
+        restored_hits = self.knowledge.restore_hits(reliable_hits)
+        direct_faq = bool(restored_hits and restored_hits[0].document.knowledge_type == "faq")
+        update["direct_faq"] = direct_faq
+        if not direct_faq and not self.policy.is_business_hours() and top_score < 0.62:
             update.update(
                 handoff_reason="非工作时段且知识置信度不足",
                 risk_tags=["off_hours_restricted"],
@@ -417,7 +426,23 @@ class SounderOneGraphAgent:
 
     @staticmethod
     def _route_after_relevance(state: AgentState) -> str:
-        return "handoff" if state.get("handoff_reason") else "generate"
+        if state.get("handoff_reason"):
+            return "handoff"
+        return "faq" if state.get("direct_faq") else "generate"
+
+    def _direct_faq_answer(self, state: AgentState) -> dict:
+        """Return an approved FAQ answer deterministically without invoking an LLM."""
+
+        hits = state.get("hits", [])[:1]
+        restored_hits = self.knowledge.restore_hits(hits)
+        answer = restored_hits[0].document.content.strip()
+        if not answer.startswith(("宝宝", "宝贝")):
+            answer = f"宝宝，{answer}"
+        return {
+            "generated_text": answer,
+            "hits": hits,
+            "trace": self._step(state, "direct_faq_answer"),
+        }
 
     async def _generate_answer(self, state: AgentState) -> dict:
         try:
@@ -510,6 +535,7 @@ class SounderOneGraphAgent:
                 "message": message.model_dump(mode="json"),
                 "trace": [],
                 "hits": [],
+                "direct_faq": False,
                 "generated_text": "",
                 "forbidden_claims": [],
                 "handoff_reason": "",

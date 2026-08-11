@@ -12,6 +12,17 @@ class PolicyResult:
 
 
 class SafetyPolicy:
+    USER_HANDOFF_CUES = (
+        "转人工",
+        "人工服务",
+        "人工客服",
+        "人工",
+        "不要机器人",
+        "别用机器人",
+        "不想和机器人说",
+        "真人客服",
+        "转接客服",
+    )
     HANDOFF_RULES = {
         "adverse_reaction": (
             "过敏",
@@ -74,6 +85,9 @@ class SafetyPolicy:
         self.end = time.fromisoformat(end)
 
     def evaluate_incoming(self, text: str) -> PolicyResult:
+        normalized = re.sub(r"[\s，。！？!?~～,.;；：:]+", "", text.lower())
+        if any(cue in normalized for cue in self.USER_HANDOFF_CUES):
+            return PolicyResult(True, "用户主动要求转人工", ["user_requested_handoff"])
         tags = [name for name, words in self.HANDOFF_RULES.items() if any(word in text for word in words)]
         if self.SENSITIVE_DATA.search(text):
             tags.append("sensitive_data")

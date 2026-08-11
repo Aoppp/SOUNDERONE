@@ -263,7 +263,10 @@ def test_agent_answers_grounded_recommendation_and_handoffs_when_missing():
         ).json()
 
     assert recommendation["decision"] == "answered"
-    assert any("夜猫子精华" in citation["title"] for citation in recommendation["citations"])
+    assert "夜猫子精华" in recommendation["text"]
+    assert recommendation["citations"][0]["knowledge_type"] == "faq"
+    assert "direct_faq_answer" in recommendation["graph_trace"]
+    assert "generate_answer" not in recommendation["graph_trace"]
     assert "clarify_response" not in recommendation["graph_trace"]
     assert recommendation["graph_trace"][1:5] == [
         "intent_router",

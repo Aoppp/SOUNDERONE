@@ -14,6 +14,7 @@ class AgentState(TypedDict, total=False):
     response_decision: str
     last_product: str
     hits: list[dict]
+    direct_faq: bool
     generated_text: str
     forbidden_claims: list[str]
     handoff_reason: str

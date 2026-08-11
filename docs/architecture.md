@@ -9,7 +9,7 @@
 ```text
 START
   -> safety_guard
-       | risk -> handoff -> END
+       | risk / user requests human -> handoff -> END
   -> intent_router
        | pure greeting -> smalltalk_response -> output_guard
        | out of scope -> out_of_scope_response -> output_guard
@@ -19,7 +19,8 @@ START
   -> hybrid_retrieve
   -> relevance_gate
        | low confidence -> handoff -> END
-  -> generate_answer
+       | reliable FAQ -> direct_faq_answer -> output_guard
+       | reliable product knowledge -> generate_answer
        | insufficient knowledge / unavailable -> handoff -> END
   -> output_guard
        | forbidden claim -> handoff -> END
@@ -27,7 +28,7 @@ START
   -> END
 ```
 
-- `safety_guard`：确定性检测不良反应、孕期、医美、复杂售后、法律/舆情和 PII。
+- `safety_guard`：确定性检测不良反应、孕期、医美、复杂售后、法律/舆情和 PII；“转人工/人工服务/不要机器人”等用户主动请求也在此直接转接。
 - `intent_router`：区分纯问候、范围外问题、缺少产品上下文的问题和可检索问题；高危检测已经在它之前完成。
 - `smalltalk_response`：对“你好/在吗/hello”等纯问候返回固定欢迎语，不查询 RAG，避免把寒暄误匹配为产品知识。
 - `out_of_scope_response`：从20条 SOUNDERONE 范围说明中按会话ID和消息ID稳定选择一条；重试结果一致，不调用 RAG。
@@ -36,7 +37,8 @@ START
 - `route_knowledge`：物流、发票、促销等只查 FAQ；产品问题同时查询产品知识和 FAQ。
 - `recommendation`：允许没有具体产品名的选品问题进入产品库和 FAQ，并在多轮中继承上一轮推荐意图。先识别美白/提亮、毛孔、控油、祛痘、抗衰/抗皱/淡纹/紧致、保湿、黑头、眼袋、敏感和去屑等同义目标；产品介绍可按同组词匹配，FAQ 还必须包含用户本轮说出的目标词，避免相近但不相干的话术进入上下文。没有目标或没有对应知识时直接转人工。
 - `hybrid_retrieve`：同时执行 Dense 和 BM25，使用 RRF 合并名次。
-- `relevance_gate`：应用置信度、工作时间、产品浓度和查询意图门槛。
+- `relevance_gate`：应用置信度、工作时间、产品浓度和查询意图门槛。排名第一的可靠命中属于 FAQ 时，不再受夜间生成缩权影响。
+- `direct_faq_answer`：对已通过置信度门槛的 active FAQ 直接返回排名第一的标准答案，不调用 DeepSeek；只保留该条 FAQ 引用并继续执行输出清理。
 - `generate_answer`：默认 Mock；生产可配置 DeepSeek V4 Flash，亦保留 OpenAI 替代。模型只组织检索片段，返回 `INSUFFICIENT_KNOWLEDGE` 或调用失败时转人工。
 - `output_guard`：拦截医疗、绝对化功效和未授权承诺，并确定性清理“根据现有资料/知识库提到/目前资料里”等第三方转述措辞。
 - `finalize_response`：返回引用、检索通道和完整节点轨迹。

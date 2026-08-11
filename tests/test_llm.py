@@ -45,7 +45,7 @@ class InsufficientKnowledgeModel:
 
 
 @pytest.mark.asyncio
-async def test_generation_insufficient_signal_handoffs_instead_of_answering():
+async def test_faq_hit_returns_directly_when_model_would_report_insufficient():
     settings = Settings(
         knowledge_path=Path("knowledge/sample.json"),
         qdrant_path=None,
@@ -70,7 +70,43 @@ async def test_generation_insufficient_signal_handoffs_instead_of_answering():
             text="多久发货",
         )
     )
+    assert reply.decision.value == "answered"
+    assert reply.text.startswith("宝宝，本条仅供系统测试")
+    assert reply.handoff_reason is None
+    assert reply.risk_tags == []
+    assert "direct_faq_answer" in reply.graph_trace
+    assert "generate_answer" not in reply.graph_trace
+
+
+@pytest.mark.asyncio
+async def test_product_generation_insufficient_signal_still_handoffs():
+    settings = Settings(
+        knowledge_path=Path("knowledge/product_knowledge.json"),
+        qdrant_path=None,
+        qdrant_url=None,
+        business_hours_start="00:00",
+        business_hours_end="23:59",
+    )
+    knowledge = HybridKnowledgeBase(
+        Path("knowledge/product_knowledge.json"), HashDenseEmbedder()
+    )
+    agent = SounderOneGraphAgent(
+        settings,
+        knowledge,
+        SafetyPolicy("Asia/Shanghai", "00:00", "23:59"),
+        InsufficientKnowledgeModel(),
+        InMemoryConversationStore(),
+    )
+    reply = await agent.handle(
+        IncomingMessage(
+            platform=Platform.simulator,
+            external_message_id="product-insufficient-1",
+            external_conversation_id="product-insufficient-conversation",
+            external_user_id="user-1",
+            text="玻色因面霜有什么功效",
+        )
+    )
     assert reply.decision.value == "handoff"
     assert reply.handoff_reason == "知识片段不足以生成可靠答案"
     assert "generation_insufficient_knowledge" in reply.risk_tags
-    assert reply.graph_trace[-1] == "handoff"
+    assert reply.graph_trace[-2:] == ["generate_answer", "handoff"]

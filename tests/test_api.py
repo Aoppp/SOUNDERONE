@@ -117,7 +117,7 @@ def test_webhook_answers_grounded_question_and_records_history():
             "route_knowledge",
             "hybrid_retrieve",
             "relevance_gate",
-            "generate_answer",
+            "direct_faq_answer",
             "output_guard",
             "finalize_response",
         ]
@@ -266,6 +266,61 @@ def test_webhook_handoffs_refund_request():
         body = response.json()
         assert body["decision"] == "handoff"
         assert body["graph_trace"] == ["safety_guard", "handoff"]
+
+
+def test_user_can_explicitly_request_human_service():
+    messages = ("转人工", "人工服务", "人工", "不要机器人", "我想找真人客服")
+    with make_client() as client:
+        for index, text in enumerate(messages):
+            response = client.post(
+                "/v1/webhooks/simulator",
+                headers={"X-Webhook-Secret": "test-secret"},
+                json={
+                    "message_id": f"human-service-{index}",
+                    "conversation_id": f"human-service-conversation-{index}",
+                    "user_id": "user-human-service",
+                    "text": text,
+                },
+            )
+            assert response.status_code == 200
+            body = response.json()
+            assert body["decision"] == "handoff"
+            assert body["handoff"] is True
+            assert body["handoff_reason"] == "用户主动要求转人工"
+            assert body["risk_tags"] == ["user_requested_handoff"]
+            assert body["citations"] == []
+            assert body["graph_trace"] == ["safety_guard", "handoff"]
+
+
+def test_reliable_faq_hit_answers_directly_outside_business_hours():
+    settings = Settings(
+        llm_provider="mock",
+        knowledge_path=Path("knowledge/sample.json"),
+        qdrant_path=None,
+        qdrant_url=None,
+        webhook_secret="test-secret",
+        admin_api_key="test-admin",
+        # The current implementation treats a reversed interval as always closed.
+        business_hours_start="23:59",
+        business_hours_end="00:00",
+    )
+    with TestClient(create_app(settings)) as client:
+        response = client.post(
+            "/v1/webhooks/simulator",
+            headers={"X-Webhook-Secret": "test-secret"},
+            json={
+                "message_id": "off-hours-faq-1",
+                "conversation_id": "off-hours-faq-conversation",
+                "user_id": "off-hours-faq-user",
+                "text": "多久发货？",
+            },
+        )
+    body = response.json()
+    assert body["decision"] == "answered"
+    assert body["handoff"] is False
+    assert body["citations"][0]["knowledge_type"] == "faq"
+    assert "direct_faq_answer" in body["graph_trace"]
+    assert "generate_answer" not in body["graph_trace"]
 
 
 def test_webhook_requires_secret():
