@@ -6,7 +6,7 @@
 
 运行知识已拆分为 `product_knowledge.json`（64条）和 `customer_faq.json`（223条），其中合计210条 active 写入 Qdrant。高危先转人工；范围外问题从20条 SOUNDERONE 文案中稳定选择；相关但缺产品信息时追问；有效问题经受约束改写、知识类型路由和混合检索，未可靠命中则转人工。工作区 Git 对象位于 `.git.nosync`，避免再次被 iCloud 自动卸载。
 
-最后验证结果为42项自动化测试通过；DeepSeek 请求结构使用模拟客户端验证，尚未使用真实 Key 发起计费请求。
+最后验证结果为42项自动化测试通过；`deepseek-v4-flash` 已完成真实 API 和运行中完整 Graph 调用，5%传明酸用法回答及产品引用正确。本地 `.env` 已切换为 `LLM_PROVIDER=deepseek`，密钥不在 Git 中。
 
 ## iCloud 恢复记录（已处理）
 
@@ -42,7 +42,6 @@ UV_CACHE_DIR=/tmp/sounderone-uv-cache UV_PROJECT_ENVIRONMENT=.venv.nosync uv run
 ## 尚缺资料/权限
 
 - Excel 中 39 条 review-required 内容的业务审核结果，尤其是浓度、孕期禁忌和监管声明。
-- 可用的 `DEEPSEEK_API_KEY`；当前只完成官方接口适配和模拟测试，未进行真实计费调用。
 - 正式 SKU 唯一编码、在售/停售状态、版本生效日期和知识负责人。
 - 抖音应用的 `app_key` / `app_secret`、客服消息权限包、官方回调和回复样例。
 - 人工工作时间、节假日规则、技能组、SLA、升级路径。

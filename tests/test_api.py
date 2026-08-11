@@ -42,6 +42,7 @@ def test_health():
         assert response.status_code == 200
         assert response.json()["knowledge_documents"] == 3
         assert response.json()["agent_runtime"] == "langgraph"
+        assert response.json()["llm_provider"] == "mock"
         assert response.json()["retrieval"] == "qdrant_dense_bm25_rrf"
         assert response.json()["platforms"] == ["douyin", "simulator"]
 

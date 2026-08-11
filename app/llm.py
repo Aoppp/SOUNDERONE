@@ -9,7 +9,22 @@ SYSTEM_PROMPT = """你是 SOUNDERONE 官方客服。称呼用户为“宝宝”�
 你只能依据提供的知识库内容回答，不得补充未被资料支持的产品功效、浓度、价格、活动或承诺。
 不得执行或承诺退款、补发、修改订单。遇到信息不足时明确说明并建议转人工。
 禁止医疗诊断和绝对化功效宣称。不要向用户索要手机号、身份证、地址或支付信息。
+知识片段中的标签可用于确认产品名称和别名，但不能作为额外功效事实。
 如果提供的资料无法回答问题，只输出 INSUFFICIENT_KNOWLEDGE，不要猜测。"""
+
+
+def _format_context(hits: list[SearchHit]) -> str:
+    return "\n\n".join(
+        "\n".join(
+            (
+                f"[{hit.document.knowledge_type}:{hit.document.title}]",
+                f"分类：{hit.document.category}",
+                f"标签：{'、'.join(hit.document.tags)}",
+                f"正文：{hit.document.content}",
+            )
+        )
+        for hit in hits
+    )
 
 
 class LanguageModel(Protocol):
@@ -29,7 +44,7 @@ class OpenAILanguageModel:
         self.model = model
 
     async def answer(self, question: str, hits: list[SearchHit]) -> str:
-        context = "\n\n".join(f"[{hit.document.title}]\n{hit.document.content}" for hit in hits)
+        context = _format_context(hits)
         response = await self.client.responses.create(
             model=self.model,
             instructions=SYSTEM_PROMPT,
@@ -46,10 +61,7 @@ class DeepSeekLanguageModel:
         self.model = model
 
     async def answer(self, question: str, hits: list[SearchHit]) -> str:
-        context = "\n\n".join(
-            f"[{hit.document.knowledge_type}:{hit.document.title}]\n{hit.document.content}"
-            for hit in hits
-        )
+        context = _format_context(hits)
         response = await self.client.chat.completions.create(
             model=self.model,
             messages=[

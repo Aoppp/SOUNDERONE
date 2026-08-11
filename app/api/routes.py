@@ -41,6 +41,7 @@ async def health(request: Request) -> dict[str, Any]:
         "active_knowledge_documents": len(request.app.state.knowledge.active_documents),
         "knowledge_types": dict(sorted(type_counts.items())),
         "agent_runtime": "langgraph",
+        "llm_provider": request.app.state.settings.llm_provider,
         "retrieval": "qdrant_dense_bm25_rrf",
         "platforms": ["douyin", "simulator"],
     }
