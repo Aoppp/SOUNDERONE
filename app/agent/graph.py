@@ -38,6 +38,9 @@ class SounderOneGraphAgent:
         "搭配",
         "叠加",
         "区别",
+        "推荐",
+        "哪款",
+        "选择",
         "适合",
         "肤质",
         "敏感肌",
@@ -100,6 +103,8 @@ class SounderOneGraphAgent:
         "售后",
         "投诉",
     )
+
+    RECOMMENDATION_CUES = ("推荐", "哪款", "选什么", "有什么产品", "产品选择")
 
     def __init__(
         self,
@@ -228,6 +233,7 @@ class SounderOneGraphAgent:
         refers_to_context = any(word in text for word in ("这个", "它", "这款", "刚才那个"))
         has_supported_cue = any(cue in text for cue in self.SUPPORT_CUES)
         has_standalone_service_cue = any(cue in text for cue in self.STANDALONE_SERVICE_CUES)
+        has_recommendation_cue = any(cue in text for cue in self.RECOMMENDATION_CUES)
         mentions_brand = bool(
             re.search(r"sounder\s*one|搜得旺|你们(?:家)?品牌|你家品牌", text, re.IGNORECASE)
         )
@@ -242,6 +248,7 @@ class SounderOneGraphAgent:
             and not last_product
             and has_supported_cue
             and not has_standalone_service_cue
+            and not has_recommendation_cue
         ):
             return {
                 "conversation_intent": "clarification",
@@ -252,6 +259,7 @@ class SounderOneGraphAgent:
             explicit_product
             or (last_product and has_supported_cue)
             or has_standalone_service_cue
+            or has_recommendation_cue
             or mentions_brand
         )
         if not is_knowledge_query:
@@ -335,6 +343,8 @@ class SounderOneGraphAgent:
             intent, knowledge_types = "promotion", ["faq"]
         elif re.search(r"退款|退货|补发|漏发|少发|破损|售后|投诉", query):
             intent, knowledge_types = "after_sales", ["faq"]
+        elif re.search(r"推荐|哪款|选什么|有什么.*产品", query):
+            intent, knowledge_types = "recommendation", ["product", "faq"]
         elif re.search(r"怎么使用|怎么用|如何用|怎样用|使用方法|使用顺序|用量", query):
             intent, knowledge_types = "usage", ["product", "faq"]
         elif re.search(r"搭配|叠加|一起用|能和|可以和|不能和|同用", query):

@@ -85,6 +85,8 @@ def _query_intent(query: str) -> str | None:
         return "invoice"
     if re.search(r"价格|多少钱|优惠|活动|折扣|到手价", query):
         return "promotion"
+    if re.search(r"推荐|哪款|选什么|有什么.*产品", query):
+        return "recommendation"
     if re.search(r"区别|对比|选哪个|怎么选", query):
         return "comparison"
     if re.search(r"搭配|叠加|一起用|能和|可以和|不能和|同用", query):
@@ -109,6 +111,8 @@ def _matches_intent(document: KnowledgeDocument, intent: str | None) -> bool:
         return document.category in {"customer_service_faq", "general"} and bool(
             re.search(r"价格|优惠|活动|折扣|到手价|价保", title_and_tags)
         )
+    if intent == "recommendation":
+        return document.category in {"product_overview", "customer_service_faq"}
     if intent == "usage":
         return document.category == "product_usage" or (
             document.knowledge_type == "faq"
@@ -129,6 +133,18 @@ class HybridKnowledgeBase:
 
     DENSE_VECTOR = "dense"
     BM25_VECTOR = "bm25"
+    RECOMMENDATION_GOAL_GROUPS = (
+        ("美白", "提亮", "淡斑", "去黄", "暗黄"),
+        ("毛孔",),
+        ("控油", "油皮", "出油"),
+        ("祛痘", "痘痘", "痘印"),
+        ("抗皱", "淡纹", "细纹", "紧致"),
+        ("补水", "保湿", "干燥", "干皮"),
+        ("黑头",),
+        ("眼袋",),
+        ("敏感肌", "敏感", "泛红"),
+        ("头屑", "去屑"),
+    )
 
     def __init__(
         self,
@@ -355,6 +371,16 @@ class HybridKnowledgeBase:
                 rankings.setdefault(str(point.id), {})[channel] = rank
 
         intent = _query_intent(query)
+        recommendation_goals: set[str] = set()
+        if intent == "recommendation":
+            recommendation_goals = {
+                term
+                for group in self.RECOMMENDATION_GOAL_GROUPS
+                if any(term in query for term in group)
+                for term in group
+            }
+            if not recommendation_goals:
+                return []
         query_tokens = set(lexical_tokens(query))
         required_ascii = {
             token for token in query_tokens if re.fullmatch(r"[a-z0-9]+", token)
@@ -374,6 +400,10 @@ class HybridKnowledgeBase:
             ):
                 continue
             document_tokens = set(lexical_tokens(document.index_text))
+            if recommendation_goals and not any(
+                goal in document.index_text for goal in recommendation_goals
+            ):
+                continue
             if required_ascii and not required_ascii.issubset(document_tokens):
                 continue
             intersection = query_tokens & document_tokens

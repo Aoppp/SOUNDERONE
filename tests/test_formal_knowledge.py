@@ -100,6 +100,15 @@ def test_missing_shipping_answer_does_not_match_product_effectiveness():
     assert knowledge.search("多久发货") == []
 
 
+def test_recommendation_retrieval_requires_matching_customer_goal():
+    knowledge = make_knowledge()
+    beauty_hits = knowledge.search("有什么美白产品推荐")
+    assert beauty_hits
+    assert beauty_hits[0].document.title == "有美白效果吗?"
+    assert "去黄提亮" in beauty_hits[0].document.content
+    assert knowledge.search("有去黑头产品推荐吗") == []
+
+
 def test_comparison_and_hair_pairing_use_the_workbook_semantics():
     knowledge = make_knowledge()
     comparison_hits = knowledge.search("5%和10%传明酸有什么区别")
@@ -139,6 +148,54 @@ def test_formal_knowledge_runs_through_agent_with_source_citation():
     assert body["decision"] == "answered"
     assert body["citations"][0]["source_sheet"] == "三蛋丸"
     assert body["citations"][0]["source_row"] == 3
+
+
+def test_agent_answers_grounded_recommendation_and_handoffs_when_missing():
+    settings = Settings(
+        llm_provider="mock",
+        knowledge_path=KNOWLEDGE_PATH,
+        qdrant_path=None,
+        qdrant_url=None,
+        webhook_secret="test-secret",
+        admin_api_key="test-admin",
+        business_hours_start="00:00",
+        business_hours_end="23:59",
+    )
+    headers = {"X-Webhook-Secret": "test-secret"}
+    with TestClient(create_app(settings)) as client:
+        recommendation = client.post(
+            "/v1/webhooks/simulator",
+            headers=headers,
+            json={
+                "message_id": "recommendation-1",
+                "conversation_id": "recommendation-conversation-1",
+                "user_id": "recommendation-user",
+                "text": "有什么美白产品推荐",
+            },
+        ).json()
+        missing = client.post(
+            "/v1/webhooks/simulator",
+            headers=headers,
+            json={
+                "message_id": "recommendation-2",
+                "conversation_id": "recommendation-conversation-2",
+                "user_id": "recommendation-user",
+                "text": "有去黑头产品推荐吗",
+            },
+        ).json()
+
+    assert recommendation["decision"] == "answered"
+    assert recommendation["citations"][0]["title"] == "有美白效果吗?"
+    assert "clarify_response" not in recommendation["graph_trace"]
+    assert recommendation["graph_trace"][1:5] == [
+        "intent_router",
+        "rewrite_query",
+        "route_knowledge",
+        "hybrid_retrieve",
+    ]
+    assert missing["decision"] == "handoff"
+    assert missing["handoff_reason"] == "知识库无可靠答案"
+    assert missing["citations"] == []
 
 
 def test_pregnancy_question_handoffs_before_knowledge_generation():
