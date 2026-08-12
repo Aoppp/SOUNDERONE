@@ -106,6 +106,22 @@ class SounderOneGraphAgent:
 
     RECOMMENDATION_CUES = ("推荐", "哪款", "选什么", "有什么产品", "产品选择")
     FAQ_RECOGNITION_SCORE = 0.90
+    CONTEXT_REFERENCE_CUES = (
+        "这个",
+        "这款",
+        "它",
+        "刚才那个",
+        "这些",
+        "它们",
+        "他们",
+        "上面的",
+        "前面的",
+        "前面说的",
+    )
+    MORE_FOLLOWUP_RE = re.compile(
+        r"还有.*(?:其他|别的|吗|呢)|(?:其他|别的).*(?:吗|呢)|再推荐|换一个"
+    )
+    COLLECTION_REFERENCE_CUES = ("这些", "它们", "他们", "上面的", "前面的", "前面说的")
 
     def __init__(
         self,
@@ -244,12 +260,22 @@ class SounderOneGraphAgent:
         )
         explicit_product = self.knowledge.identify_product(text)
         last_product = explicit_product or state.get("last_product", "")
-        refers_to_context = any(word in text for word in ("这个", "它", "这款", "刚才那个"))
+        refers_to_context = any(word in text for word in self.CONTEXT_REFERENCE_CUES)
+        asks_for_more = bool(self.MORE_FOLLOWUP_RE.search(text))
+        has_topic = bool(state.get("topic_query"))
+        contextual_followup = has_topic and (refers_to_context or asks_for_more)
+        collective_reference = any(cue in text for cue in self.COLLECTION_REFERENCE_CUES)
+        followup_kind = (
+            "more"
+            if asks_for_more
+            else ("collection_reference" if collective_reference else ("reference" if refers_to_context else ""))
+        )
         has_supported_cue = any(cue in text for cue in self.SUPPORT_CUES)
         has_standalone_service_cue = any(cue in text for cue in self.STANDALONE_SERVICE_CUES)
         has_recommendation_goal = bool(recommendation_goals(text))
         continues_recommendation = (
-            state.get("query_intent") == "recommendation" and has_recommendation_goal
+            state.get("topic_intent") == "recommendation"
+            and (has_recommendation_goal or contextual_followup)
         )
         has_recommendation_cue = (
             any(cue in text for cue in self.RECOMMENDATION_CUES)
@@ -262,7 +288,12 @@ class SounderOneGraphAgent:
         mentions_brand = bool(
             re.search(r"sounder\s*one|搜得旺|你们(?:家)?品牌|你家品牌", text, re.IGNORECASE)
         )
-        if not recognized_faq and refers_to_context and not last_product:
+        if (
+            not recognized_faq
+            and not contextual_followup
+            and refers_to_context
+            and not last_product
+        ):
             return {
                 "conversation_intent": "clarification",
                 "retrieval_query": "",
@@ -285,6 +316,7 @@ class SounderOneGraphAgent:
             recognized_faq
             or explicit_product
             or (last_product and has_supported_cue)
+            or contextual_followup
             or has_standalone_service_cue
             or has_recommendation_cue
             or mentions_brand
@@ -298,6 +330,8 @@ class SounderOneGraphAgent:
         return {
             "conversation_intent": "knowledge_query",
             "recognized_faq": recognized_faq,
+            "contextual_followup": contextual_followup,
+            "followup_kind": followup_kind,
             "explicit_product": explicit_product,
             "last_product": last_product,
             "trace": self._step(state, "intent_router"),
@@ -353,7 +387,9 @@ class SounderOneGraphAgent:
         explicit_product = state.get("explicit_product", "")
         resolved_product = explicit_product or state.get("last_product", "")
         retrieval_query = text
-        if resolved_product and not explicit_product and not state.get("recognized_faq"):
+        if state.get("contextual_followup") and not resolved_product:
+            retrieval_query = f"{state.get('topic_query', '')} {text}".strip()
+        elif resolved_product and not explicit_product and not state.get("recognized_faq"):
             retrieval_query = f"{resolved_product} {text}"
         return {
             "retrieval_query": retrieval_query,
@@ -363,7 +399,10 @@ class SounderOneGraphAgent:
 
     def _route_knowledge(self, state: AgentState) -> dict:
         query = state["retrieval_query"]
-        if state.get("recognized_faq"):
+        if state.get("followup_kind") == "more":
+            intent = state.get("topic_intent") or "product_information"
+            knowledge_types = ["product", "faq"]
+        elif state.get("recognized_faq"):
             intent, knowledge_types = "faq_match", ["faq"]
         elif re.search(r"发货|物流|快递|配送|到货", query):
             intent, knowledge_types = "shipping", ["faq"]
@@ -394,8 +433,20 @@ class SounderOneGraphAgent:
     def _hybrid_retrieve(self, state: AgentState) -> dict:
         hits = self.knowledge.search(
             state["retrieval_query"],
+            limit=12 if state.get("followup_kind") == "more" else 4,
             knowledge_types=set(state.get("knowledge_types", [])),
         )
+        if state.get("followup_kind") == "more":
+            previous_ids = set(state.get("topic_document_ids", []))
+            previous_products = set(state.get("topic_products", []))
+            hits = [
+                hit
+                for hit in hits
+                if hit.document.id not in previous_ids
+                and not (
+                    self.knowledge.product_entities(hit.document.index_text) & previous_products
+                )
+            ][:4]
         serialized = [
             {
                 "document_id": hit.document.id,
@@ -404,6 +455,25 @@ class SounderOneGraphAgent:
             }
             for hit in hits
         ]
+        if state.get("followup_kind") == "collection_reference" and serialized:
+            context_score = serialized[0]["score"]
+            previous_ids = set(state.get("topic_document_ids", []))
+            for item in serialized:
+                if item["document_id"] in previous_ids:
+                    item["retrieval_channels"] = list(
+                        dict.fromkeys([*item["retrieval_channels"], "conversation_context"])
+                    )
+            present_ids = {item["document_id"] for item in serialized}
+            context_items = [
+                {
+                    "document_id": document_id,
+                    "score": context_score,
+                    "retrieval_channels": ["conversation_context"],
+                }
+                for document_id in state.get("topic_document_ids", [])
+                if document_id not in present_ids
+            ]
+            serialized = [*context_items, *serialized]
         return {"hits": serialized, "trace": self._step(state, "hybrid_retrieve")}
 
     def _relevance_gate(self, state: AgentState) -> dict:
@@ -426,7 +496,11 @@ class SounderOneGraphAgent:
         ]
         update["hits"] = reliable_hits
         restored_hits = self.knowledge.restore_hits(reliable_hits)
-        direct_faq = bool(restored_hits and restored_hits[0].document.knowledge_type == "faq")
+        direct_faq = bool(
+            restored_hits
+            and restored_hits[0].document.knowledge_type == "faq"
+            and not state.get("contextual_followup")
+        )
         update["direct_faq"] = direct_faq
         if not direct_faq and not self.policy.is_business_hours() and top_score < 0.62:
             update.update(
@@ -505,6 +579,28 @@ class SounderOneGraphAgent:
 
     def _finalize_response(self, state: AgentState) -> dict:
         trace = self._step(state, "finalize_response")
+        current_document_ids = [hit["document_id"] for hit in state.get("hits", [])]
+        current_products = sorted(
+            {
+                product
+                for hit in self.knowledge.restore_hits(state.get("hits", []))
+                for product in self.knowledge.product_entities(hit.document.index_text)
+            }
+        )
+        if state.get("contextual_followup"):
+            topic_query = state.get("topic_query", state.get("retrieval_query", ""))
+            topic_intent = state.get("topic_intent", state.get("query_intent", ""))
+            topic_document_ids = list(
+                dict.fromkeys([*state.get("topic_document_ids", []), *current_document_ids])
+            )[-8:]
+            topic_products = list(
+                dict.fromkeys([*state.get("topic_products", []), *current_products])
+            )[-8:]
+        else:
+            topic_query = state.get("retrieval_query", "")
+            topic_intent = state.get("query_intent", "")
+            topic_document_ids = current_document_ids[-8:]
+            topic_products = list(dict.fromkeys(current_products))[-8:]
         reply = AgentReply(
             conversation_id=self._message(state).external_conversation_id,
             decision=Decision(state.get("response_decision", Decision.answered.value)),
@@ -512,7 +608,14 @@ class SounderOneGraphAgent:
             citations=[hit.citation() for hit in self.knowledge.restore_hits(state["hits"])],
             graph_trace=trace,
         )
-        return {"reply": reply.model_dump(mode="json"), "trace": trace}
+        return {
+            "reply": reply.model_dump(mode="json"),
+            "trace": trace,
+            "topic_query": topic_query,
+            "topic_intent": topic_intent,
+            "topic_document_ids": topic_document_ids,
+            "topic_products": topic_products,
+        }
 
     def _handoff(self, state: AgentState) -> dict:
         trace = self._step(state, "handoff")
@@ -554,6 +657,8 @@ class SounderOneGraphAgent:
                 "trace": [],
                 "hits": [],
                 "recognized_faq": False,
+                "contextual_followup": False,
+                "followup_kind": "",
                 "direct_faq": False,
                 "generated_text": "",
                 "forbidden_claims": [],

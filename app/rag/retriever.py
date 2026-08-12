@@ -237,6 +237,12 @@ class HybridKnowledgeBase:
                 candidates.append((len(shared_terms), -len(alias), alias))
         return max(candidates)[2] if candidates else ""
 
+    def product_entities(self, text: str) -> set[str]:
+        """Return every known product alias explicitly present in a document or message."""
+
+        lowered = text.lower()
+        return {alias for alias in self._product_aliases if alias.lower() in lowered}
+
     def restore_hits(self, serialized_hits: list[dict[str, Any]]) -> list[SearchHit]:
         hits: list[SearchHit] = []
         for item in serialized_hits:

@@ -9,6 +9,12 @@ class AgentState(TypedDict, total=False):
     retrieval_query: str
     conversation_intent: str
     query_intent: str
+    topic_query: str
+    topic_intent: str
+    topic_document_ids: list[str]
+    topic_products: list[str]
+    contextual_followup: bool
+    followup_kind: str
     knowledge_types: list[str]
     recognized_faq: bool
     explicit_product: str

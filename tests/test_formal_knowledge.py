@@ -316,6 +316,105 @@ def test_agent_answers_grounded_recommendation_and_handoffs_when_missing():
     assert missing["citations"] == []
 
 
+def test_multi_turn_elliptical_followups_keep_topic_and_answered_documents():
+    settings = Settings(
+        llm_provider="mock",
+        knowledge_path=KNOWLEDGE_PATH,
+        qdrant_path=None,
+        qdrant_url=None,
+        webhook_secret="test-secret",
+        admin_api_key="test-admin",
+        business_hours_start="00:00",
+        business_hours_end="23:59",
+    )
+    headers = {"X-Webhook-Secret": "test-secret"}
+    with TestClient(create_app(settings)) as client:
+        replies = []
+        for index, text in enumerate(
+            ("推荐什么美白产品吗？", "还有什么其他的吗？", "这些都可以美白吗？")
+        ):
+            replies.append(
+                client.post(
+                    "/v1/webhooks/simulator",
+                    headers=headers,
+                    json={
+                        "message_id": f"elliptical-followup-{index}",
+                        "conversation_id": "elliptical-followup-conversation",
+                        "user_id": "elliptical-followup-user",
+                        "text": text,
+                    },
+                ).json()
+            )
+
+    first, second, third = replies
+    assert first["decision"] == "answered"
+    assert second["decision"] == "answered"
+    assert first["citations"][0]["document_id"] != second["citations"][0]["document_id"]
+    assert all("夜猫子精华" not in citation["title"] for citation in second["citations"])
+    assert third["decision"] == "answered"
+    assert "out_of_scope_response" not in third["graph_trace"]
+    assert "generate_answer" in third["graph_trace"]
+    assert any(
+        "conversation_context" in citation["retrieval_channels"]
+        for citation in third["citations"]
+    )
+
+
+def test_generic_followup_resolution_is_not_tied_to_beauty_topic():
+    settings = Settings(
+        llm_provider="mock",
+        knowledge_path=KNOWLEDGE_PATH,
+        qdrant_path=None,
+        qdrant_url=None,
+        webhook_secret="test-secret",
+        admin_api_key="test-admin",
+        business_hours_start="00:00",
+        business_hours_end="23:59",
+    )
+    headers = {"X-Webhook-Secret": "test-secret"}
+    with TestClient(create_app(settings)) as client:
+        first = client.post(
+            "/v1/webhooks/simulator",
+            headers=headers,
+            json={
+                "message_id": "generic-topic-1",
+                "conversation_id": "generic-topic-conversation",
+                "user_id": "generic-topic-user",
+                "text": "有什么抗衰产品推荐？",
+            },
+        ).json()
+        second = client.post(
+            "/v1/webhooks/simulator",
+            headers=headers,
+            json={
+                "message_id": "generic-topic-2",
+                "conversation_id": "generic-topic-conversation",
+                "user_id": "generic-topic-user",
+                "text": "还有别的吗？",
+            },
+        ).json()
+        third = client.post(
+            "/v1/webhooks/simulator",
+            headers=headers,
+            json={
+                "message_id": "generic-topic-3",
+                "conversation_id": "generic-topic-conversation",
+                "user_id": "generic-topic-user",
+                "text": "它们都适合油皮吗？",
+            },
+        ).json()
+
+    assert first["decision"] == "answered"
+    assert second["decision"] == "answered"
+    assert third["decision"] == "answered"
+    assert "out_of_scope_response" not in second["graph_trace"]
+    assert "out_of_scope_response" not in third["graph_trace"]
+    assert any(
+        "conversation_context" in citation["retrieval_channels"]
+        for citation in third["citations"]
+    )
+
+
 def test_pregnancy_question_handoffs_before_knowledge_generation():
     settings = Settings(
         llm_provider="mock",
