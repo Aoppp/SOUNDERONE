@@ -218,6 +218,38 @@ def test_agent_answers_b5_percentage_with_display_value():
     assert "2E-3" not in body["text"]
 
 
+@pytest.mark.parametrize("用户问法", ["为什么没装满", "容量", "为什么没装满/容量"])
+def test_high_confidence_faq_bypasses_incomplete_domain_keyword_list(用户问法):
+    settings = Settings(
+        llm_provider="mock",
+        knowledge_path=KNOWLEDGE_PATH,
+        qdrant_path=None,
+        qdrant_url=None,
+        webhook_secret="test-secret",
+        admin_api_key="test-admin",
+        business_hours_start="00:00",
+        business_hours_end="23:59",
+    )
+    with TestClient(create_app(settings)) as client:
+        response = client.post(
+            "/v1/webhooks/simulator",
+            headers={"X-Webhook-Secret": "test-secret"},
+            json={
+                "message_id": f"capacity-faq-{用户问法}",
+                "conversation_id": f"capacity-faq-conversation-{用户问法}",
+                "user_id": "capacity-faq-user",
+                "text": 用户问法,
+            },
+        )
+    body = response.json()
+    assert body["decision"] == "answered"
+    assert "包装都是有一定空隙率" in body["text"]
+    assert body["citations"][0]["source_row"] == 80
+    assert body["citations"][0]["knowledge_type"] == "faq"
+    assert "out_of_scope_response" not in body["graph_trace"]
+    assert "direct_faq_answer" in body["graph_trace"]
+
+
 def test_agent_answers_grounded_recommendation_and_handoffs_when_missing():
     settings = Settings(
         llm_provider="mock",

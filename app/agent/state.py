@@ -10,6 +10,7 @@ class AgentState(TypedDict, total=False):
     conversation_intent: str
     query_intent: str
     knowledge_types: list[str]
+    recognized_faq: bool
     explicit_product: str
     response_decision: str
     last_product: str

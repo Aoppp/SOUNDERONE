@@ -105,6 +105,7 @@ class SounderOneGraphAgent:
     )
 
     RECOMMENDATION_CUES = ("推荐", "哪款", "选什么", "有什么产品", "产品选择")
+    FAQ_RECOGNITION_SCORE = 0.90
 
     def __init__(
         self,
@@ -234,6 +235,13 @@ class SounderOneGraphAgent:
                 "retrieval_query": "",
                 "trace": self._step(state, "intent_router"),
             }
+        # Domain keywords can never enumerate every approved FAQ title. A very
+        # high-confidence FAQ hit is itself evidence that this is a supported
+        # question, so do not reject it as out of scope before RAG runs.
+        faq_hits = self.knowledge.search(text, limit=1, knowledge_types={"faq"})
+        recognized_faq = bool(
+            faq_hits and faq_hits[0].score >= self.FAQ_RECOGNITION_SCORE
+        )
         explicit_product = self.knowledge.identify_product(text)
         last_product = explicit_product or state.get("last_product", "")
         refers_to_context = any(word in text for word in ("这个", "它", "这款", "刚才那个"))
@@ -254,14 +262,15 @@ class SounderOneGraphAgent:
         mentions_brand = bool(
             re.search(r"sounder\s*one|搜得旺|你们(?:家)?品牌|你家品牌", text, re.IGNORECASE)
         )
-        if refers_to_context and not last_product:
+        if not recognized_faq and refers_to_context and not last_product:
             return {
                 "conversation_intent": "clarification",
                 "retrieval_query": "",
                 "trace": self._step(state, "intent_router"),
             }
         if (
-            not explicit_product
+            not recognized_faq
+            and not explicit_product
             and not last_product
             and has_supported_cue
             and not has_standalone_service_cue
@@ -273,7 +282,8 @@ class SounderOneGraphAgent:
                 "trace": self._step(state, "intent_router"),
             }
         is_knowledge_query = bool(
-            explicit_product
+            recognized_faq
+            or explicit_product
             or (last_product and has_supported_cue)
             or has_standalone_service_cue
             or has_recommendation_cue
@@ -287,6 +297,7 @@ class SounderOneGraphAgent:
             }
         return {
             "conversation_intent": "knowledge_query",
+            "recognized_faq": recognized_faq,
             "explicit_product": explicit_product,
             "last_product": last_product,
             "trace": self._step(state, "intent_router"),
@@ -342,7 +353,7 @@ class SounderOneGraphAgent:
         explicit_product = state.get("explicit_product", "")
         resolved_product = explicit_product or state.get("last_product", "")
         retrieval_query = text
-        if resolved_product and not explicit_product:
+        if resolved_product and not explicit_product and not state.get("recognized_faq"):
             retrieval_query = f"{resolved_product} {text}"
         return {
             "retrieval_query": retrieval_query,
@@ -352,7 +363,9 @@ class SounderOneGraphAgent:
 
     def _route_knowledge(self, state: AgentState) -> dict:
         query = state["retrieval_query"]
-        if re.search(r"发货|物流|快递|配送|到货", query):
+        if state.get("recognized_faq"):
+            intent, knowledge_types = "faq_match", ["faq"]
+        elif re.search(r"发货|物流|快递|配送|到货", query):
             intent, knowledge_types = "shipping", ["faq"]
         elif "发票" in query:
             intent, knowledge_types = "invoice", ["faq"]
@@ -540,6 +553,7 @@ class SounderOneGraphAgent:
                 "message": message.model_dump(mode="json"),
                 "trace": [],
                 "hits": [],
+                "recognized_faq": False,
                 "direct_faq": False,
                 "generated_text": "",
                 "forbidden_claims": [],
