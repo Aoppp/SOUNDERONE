@@ -2,7 +2,7 @@
 
 ## 当前状态
 
-项目已重构为抖音单平台 Agent MVP，不应直接连接生产店铺。核心流程使用 LangGraph，知识库使用 Qdrant Dense + BM25 混合 RAG 和 RRF 融合。默认 `LLM_PROVIDER=mock`、`EMBEDDING_PROVIDER=hash`，可离线测试；生产回答层已支持 `deepseek-v4-flash`。
+项目已重构为抖音单平台 Agent MVP，不应直接连接生产店铺。核心流程使用 LangGraph，知识库使用 Qdrant Dense + BM25 混合 RAG 和 RRF 融合。默认 `LLM_PROVIDER=mock`、`EMBEDDING_PROVIDER=fastembed`，本地中文语义模型为 `BAAI/bge-small-zh-v1.5`；测试显式使用 hash embedding，生产回答层已支持 `deepseek-v4-flash`。
 
 运行知识已拆分为 `product_knowledge.json`（64条）和 `customer_faq.json`（223条），其中合计210条 active 写入 Qdrant。高危先转人工；范围外问题从20条 SOUNDERONE 文案中稳定选择；相关但缺产品信息时追问；有效问题经受约束改写、知识类型路由和混合检索，未可靠命中则转人工。工作区 Git 对象位于 `.git.nosync`，避免再次被 iCloud 自动卸载。
 
@@ -15,7 +15,7 @@ Excel 导入器现在会解析单元格数字样式，不再把底层小数或�
 可靠 FAQ 命中现在从 `relevance_gate` 进入 `direct_faq_answer`，直接返回排名第一的 active FAQ 标准答案，不调用 DeepSeek，因此不会再因生成模型返回“资料不足”而转人工。用户输入“转人工/人工服务/人工/不要机器人/真人客服”等说法时，会在最前置安全节点直接转人工。最新验证结果为53项自动化测试通过。
 用户主动请求人工的客服回复固定为“好的，这就为您转接人工～”，与系统因风险或知识不足发起的转人工话术分开。
 
-2026-08-12 修复了“FAQ 存在但页面显示本次未使用知识文档”的路由漏洞。`intent_router` 现在先以 `0.90` 高置信度门槛预识别 active FAQ，命中后不再依赖有限的手工业务关键词。“为什么没装满/容量”及两种拆分问法现在都会引用 Excel 第80行 FAQ 并直接回答。最新自动化测试为56项通过。
+2026-08-12 将路由与检索统一：产品实体归一化和轻量混合检索候选共同参与 `intent_router`，不再使用单一 `0.90` FAQ预识别阈值。FAQ、普通产品知识和综合意图使用分型门控；“AM质地为什么这么稀”“你好，B5含量是多少”均能进入RAG。无上下文“这几款”会追问，不再允许模型虚构产品集合。
 
 多轮上下文不再只保存一个 `last_product`，而是持久化当前主题查询、业务意图、已引用文档和已回答产品全部别名。这使“还有其他的吗”能排除重复产品，“这些/它们”能针对前面的产品集合继续追问。该机制已同时在美白、抗衰两种主题和单产品用法指代中通过回归，最新测试为58项通过。
 

@@ -347,7 +347,7 @@ uv run python -m compileall -q app scripts tests
 git diff --check
 ```
 
-2026-08-12 自动化执行结果：共收集 `115` 项，`114 passed, 1 failed`；失败项为 `FAQ-009`。详见 `TEST_REPORT_2026-08-12.md`。手工用例中尚未自动化的场景，执行后应建立对应回归测试。
+2026-08-12 核心改造后的最新自动化结果：`122 passed`；原失败项 `FAQ-009` 已通过。历史执行和逐条真实 DeepSeek 对话仍分别保留在 `TEST_REPORT_2026-08-12.md` 与 `TEST_CONVERSATION_REPORT_2026-08-12.md`，修复前报告不覆盖写，以便追溯。手工用例中尚未自动化的场景，执行后应建立对应回归测试。
 
 ## 17. 发布验收标准
 

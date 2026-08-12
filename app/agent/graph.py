@@ -6,6 +6,7 @@ from langgraph.checkpoint.memory import InMemorySaver
 from langgraph.graph import END, START, StateGraph
 
 from app.agent.state import AgentState
+from app.agent.grounding import DeterministicGroundingVerifier
 from app.agent.responses import stable_out_of_scope_response
 from app.config import Settings
 from app.llm import LanguageModel
@@ -105,7 +106,6 @@ class SounderOneGraphAgent:
     )
 
     RECOMMENDATION_CUES = ("推荐", "哪款", "选什么", "有什么产品", "产品选择")
-    FAQ_RECOGNITION_SCORE = 0.90
     CONTEXT_REFERENCE_CUES = (
         "这个",
         "这款",
@@ -122,6 +122,7 @@ class SounderOneGraphAgent:
         r"还有.*(?:其他|别的|吗|呢)|(?:其他|别的).*(?:吗|呢)|再推荐|换一个"
     )
     COLLECTION_REFERENCE_CUES = ("这些", "它们", "他们", "上面的", "前面的", "前面说的")
+    MULTI_PRODUCT_REFERENCE_RE = re.compile(r"这(?:几|两|三)款|哪(?:个|款)更|它们|这些")
     SYNTHESIS_QUERY_RE = re.compile(
         r"推荐|哪款|哪个|选什么|选哪|怎么选|如何选|哪个更|有什么产品|"
         r"区别|对比|搭配|叠加|一起用|适合我|适合什么|都可以"
@@ -140,6 +141,7 @@ class SounderOneGraphAgent:
         self.policy = policy
         self.llm = llm
         self.store = store
+        self.grounding = DeterministicGroundingVerifier(knowledge.entity_resolver)
         self.checkpointer = InMemorySaver()
         self.graph = self._build_graph()
 
@@ -233,6 +235,7 @@ class SounderOneGraphAgent:
     def _intent_router(self, state: AgentState) -> dict:
         text = self._message(state).text
         normalized = re.sub(r"[\s，。！？!?~～,.]+", "", text.lower())
+        normalized_for_match = re.sub(r"[\s，。！？!?~～,./]+", "", text.lower())
         greetings = {
             "你好",
             "你好呀",
@@ -255,19 +258,36 @@ class SounderOneGraphAgent:
                 "retrieval_query": "",
                 "trace": self._step(state, "intent_router"),
             }
-        # Domain keywords can never enumerate every approved FAQ title. A very
-        # high-confidence FAQ hit is itself evidence that this is a supported
-        # question, so do not reject it as out of scope before RAG runs.
-        faq_hits = self.knowledge.search(text, limit=1, knowledge_types={"faq"})
-        recognized_faq = bool(
-            faq_hits and faq_hits[0].score >= self.FAQ_RECOGNITION_SCORE
-        )
         explicit_product = self.knowledge.identify_product(text)
         last_product = explicit_product or state.get("last_product", "")
         refers_to_context = any(word in text for word in self.CONTEXT_REFERENCE_CUES)
         asks_for_more = bool(self.MORE_FOLLOWUP_RE.search(text))
         has_topic = bool(state.get("topic_query"))
         contextual_followup = has_topic and (refers_to_context or asks_for_more)
+        # A plural reference is only valid when the conversation really contains
+        # multiple products. Never let retrieval/LLM invent the missing objects.
+        if self.MULTI_PRODUCT_REFERENCE_RE.search(text) and len(state.get("topic_products", [])) < 2:
+            return {
+                "conversation_intent": "clarification",
+                "retrieval_query": "",
+                "trace": self._step(state, "intent_router"),
+            }
+        if refers_to_context and not has_topic and not explicit_product:
+            return {
+                "conversation_intent": "clarification",
+                "retrieval_query": "",
+                "trace": self._step(state, "intent_router"),
+            }
+        if (
+            not explicit_product
+            and not state.get("last_product")
+            and re.fullmatch(r"(?:怎么|如何|怎样)?(?:使用|用)(?:呢|呀|啊|吗)?", normalized)
+        ):
+            return {
+                "conversation_intent": "clarification",
+                "retrieval_query": "",
+                "trace": self._step(state, "intent_router"),
+            }
         collective_reference = any(cue in text for cue in self.COLLECTION_REFERENCE_CUES)
         followup_kind = (
             "more"
@@ -292,8 +312,50 @@ class SounderOneGraphAgent:
         mentions_brand = bool(
             re.search(r"sounder\s*one|搜得旺|你们(?:家)?品牌|你家品牌", text, re.IGNORECASE)
         )
+        # Use retrieval as evidence for routing instead of letting a finite cue
+        # list veto a supported question. Product normalization is applied first.
+        probe_query = f"{explicit_product} {text}".strip() if explicit_product else text
+        route_hits = self.knowledge.search(probe_query, limit=2)
+        route_candidate = route_hits[0] if route_hits else None
+        route_candidate_score = route_candidate.score if route_candidate else 0.0
+        route_candidate_type = (
+            route_candidate.document.knowledge_type if route_candidate else ""
+        )
+        faq_title = ""
+        if route_candidate and route_candidate_type == "faq":
+            faq_title = re.sub(
+                r"[\s，。！？!?~～,./]+", "", route_candidate.document.title.lower()
+            )
+            faq_title = re.sub(r"有点|感觉", "", faq_title)
+        candidate_threshold = (
+            self.settings.faq_min_score
+            if route_candidate_type == "faq"
+            else self.settings.route_candidate_min_score
+        )
+        recognized_candidate = bool(
+            route_candidate
+            and route_candidate_score >= candidate_threshold
+            and (
+                explicit_product
+                or contextual_followup
+                or has_supported_cue
+                or has_standalone_service_cue
+                or has_recommendation_cue
+                or mentions_brand
+                or (
+                    route_candidate_type == "faq"
+                    and len(normalized) >= 2
+                    and (
+                        normalized_for_match
+                        in faq_title
+                        or faq_title in normalized_for_match
+                    )
+                )
+            )
+        )
+        recognized_faq = recognized_candidate and route_candidate_type == "faq"
         if (
-            not recognized_faq
+            not recognized_candidate
             and not contextual_followup
             and refers_to_context
             and not last_product
@@ -304,7 +366,7 @@ class SounderOneGraphAgent:
                 "trace": self._step(state, "intent_router"),
             }
         if (
-            not recognized_faq
+            not recognized_candidate
             and not explicit_product
             and not last_product
             and has_supported_cue
@@ -317,7 +379,7 @@ class SounderOneGraphAgent:
                 "trace": self._step(state, "intent_router"),
             }
         is_knowledge_query = bool(
-            recognized_faq
+            recognized_candidate
             or explicit_product
             or (last_product and has_supported_cue)
             or contextual_followup
@@ -334,6 +396,8 @@ class SounderOneGraphAgent:
         return {
             "conversation_intent": "knowledge_query",
             "recognized_faq": recognized_faq,
+            "route_candidate_score": route_candidate_score,
+            "route_candidate_type": route_candidate_type,
             "contextual_followup": contextual_followup,
             "followup_kind": followup_kind,
             "explicit_product": explicit_product,
@@ -391,6 +455,8 @@ class SounderOneGraphAgent:
         explicit_product = state.get("explicit_product", "")
         resolved_product = explicit_product or state.get("last_product", "")
         retrieval_query = text
+        if explicit_product:
+            retrieval_query = f"{explicit_product} {text}"
         if state.get("contextual_followup") and not resolved_product:
             retrieval_query = f"{state.get('topic_query', '')} {text}".strip()
         elif resolved_product and not explicit_product and not state.get("recognized_faq"):
@@ -449,7 +515,7 @@ class SounderOneGraphAgent:
         if state.get("followup_kind") == "more":
             previous_ids = set(state.get("topic_document_ids", []))
             previous_products = set(state.get("topic_products", []))
-            hits = [
+            filtered_hits = [
                 hit
                 for hit in hits
                 if hit.document.id not in previous_ids
@@ -457,6 +523,11 @@ class SounderOneGraphAgent:
                     self.knowledge.product_entities(hit.document.index_text) & previous_products
                 )
             ][:4]
+            # Some goals currently have only one approved product. Do not turn
+            # a valid follow-up into a false no-hit merely because de-duplication
+            # removed every candidate.
+            if filtered_hits:
+                hits = filtered_hits
         serialized = [
             {
                 "document_id": hit.document.id,
@@ -489,7 +560,20 @@ class SounderOneGraphAgent:
     def _relevance_gate(self, state: AgentState) -> dict:
         hits = state.get("hits", [])
         update: dict = {"trace": self._step(state, "relevance_gate")}
-        if not hits or hits[0]["score"] < self.settings.knowledge_min_score:
+        intent = state.get("query_intent", "product_information")
+        top_type = ""
+        if hits:
+            restored = self.knowledge.restore_hits(hits[:1])
+            top_type = restored[0].document.knowledge_type if restored else ""
+        if state.get("contextual_followup") or intent in {
+            "recommendation", "comparison", "compatibility"
+        }:
+            min_score = self.settings.synthesis_min_score
+        elif top_type == "faq":
+            min_score = self.settings.faq_min_score
+        else:
+            min_score = self.settings.product_min_score
+        if not hits or hits[0]["score"] < min_score:
             update["hits"] = []
             update.update(
                 handoff_reason="知识库无可靠答案",
@@ -501,7 +585,7 @@ class SounderOneGraphAgent:
         reliable_hits = [
             hit
             for hit in hits
-            if hit["score"] >= self.settings.knowledge_min_score
+            if hit["score"] >= min_score
             and top_score - hit["score"] <= self.settings.knowledge_score_window
         ]
         update["hits"] = reliable_hits
@@ -565,6 +649,18 @@ class SounderOneGraphAgent:
                 handoff_reason="知识片段不足以生成可靠答案",
                 risk_tags=["generation_insufficient_knowledge"],
             )
+        elif generated:
+            grounding = self.grounding.verify(
+                generated,
+                state["retrieval_query"],
+                self.knowledge.restore_hits(state["hits"]),
+            )
+            update["grounding_failures"] = list(grounding.unsupported_claims)
+            if not grounding.supported:
+                update.update(
+                    handoff_reason="生成回答包含知识引用未支持的事实",
+                    risk_tags=["unsupported_generated_claim"],
+                )
         return update
 
     @staticmethod
@@ -669,11 +765,14 @@ class SounderOneGraphAgent:
                 "trace": [],
                 "hits": [],
                 "recognized_faq": False,
+                "route_candidate_score": 0.0,
+                "route_candidate_type": "",
                 "contextual_followup": False,
                 "followup_kind": "",
                 "direct_faq": False,
                 "requires_synthesis": False,
                 "generated_text": "",
+                "grounding_failures": [],
                 "forbidden_claims": [],
                 "handoff_reason": "",
                 "risk_tags": [],

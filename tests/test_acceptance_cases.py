@@ -19,6 +19,8 @@ def make_client() -> TestClient:
         create_app(
             Settings(
                 llm_provider="mock",
+                embedding_provider="hash",
+                embedding_dimensions=384,
                 knowledge_path=KNOWLEDGE_PATH,
                 qdrant_path=None,
                 qdrant_url=None,

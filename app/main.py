@@ -10,7 +10,7 @@ from app.agent import SounderOneGraphAgent
 from app.llm import DeepSeekLanguageModel, MockLanguageModel, OpenAILanguageModel
 from app.policy import SafetyPolicy
 from app.rag import HybridKnowledgeBase
-from app.rag.embeddings import HashDenseEmbedder, OpenAIDenseEmbedder
+from app.rag.embeddings import FastEmbedDenseEmbedder, HashDenseEmbedder, OpenAIDenseEmbedder
 from app.store import InMemoryConversationStore
 
 
@@ -27,8 +27,17 @@ def create_app(settings: Settings | None = None) -> FastAPI:
                 resolved.embedding_model,
                 resolved.embedding_dimensions,
             )
-        else:
+        elif resolved.embedding_provider == "fastembed":
+            embedder = FastEmbedDenseEmbedder(
+                resolved.embedding_model,
+                resolved.embedding_dimensions,
+            )
+        elif resolved.embedding_provider == "hash":
             embedder = HashDenseEmbedder(resolved.embedding_dimensions)
+        else:
+            raise RuntimeError(
+                f"unsupported EMBEDDING_PROVIDER={resolved.embedding_provider}"
+            )
         knowledge_paths = (
             [resolved.knowledge_path]
             if resolved.knowledge_path

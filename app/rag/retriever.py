@@ -15,6 +15,7 @@ from qdrant_client import QdrantClient, models
 
 from app.models import Citation
 from app.rag.embeddings import DenseEmbedder, lexical_tokens
+from app.rag.entities import ProductEntityResolver
 
 
 TAXONOMY_TAGS = {
@@ -180,6 +181,7 @@ class HybridKnowledgeBase:
         self._documents_by_point: dict[str, KnowledgeDocument] = {}
         self._documents_by_id: dict[str, KnowledgeDocument] = {}
         self._product_aliases: set[str] = set()
+        self.entity_resolver = ProductEntityResolver(set())
         self._document_frequency: Counter[str] = Counter()
         self._average_length = 1.0
         self.reload(rebuild=rebuild)
@@ -204,13 +206,15 @@ class HybridKnowledgeBase:
         parsed = [self._parse_document(item) for item in raw_documents]
         self.documents = list({document.id: document for document in parsed}.values())
         self.active_documents = [doc for doc in self.documents if doc.status == "active"]
-        self._product_aliases = {
+        product_aliases = {
             tag
             for document in self.active_documents
             if document.category.startswith("product_")
             for tag in document.tags
             if 1 <= len(tag) <= 40 and tag in document.title and tag not in TAXONOMY_TAGS
         }
+        self._product_aliases = product_aliases
+        self.entity_resolver = ProductEntityResolver(self._product_aliases)
         self._documents_by_id = {document.id: document for document in self.active_documents}
         self._prepare_bm25()
         if rebuild or not self.client.collection_exists(self.collection_name):
@@ -222,26 +226,9 @@ class HybridKnowledgeBase:
         return len(self.documents)
 
     def identify_product(self, query: str) -> str:
-        matches = [alias for alias in self._product_aliases if alias.lower() in query.lower()]
-        if matches:
-            return max(matches, key=len)
-        # Customers commonly omit the dosage form suffix (for example,
-        # "5%传明酸" instead of "5%传明酸精华"). Accept this natural
-        # shorthand without weakening concentration/entity matching.
-        shorthand_matches = [
-            (shorthand, alias)
-            for alias in self._product_aliases
-            for shorthand in (
-                re.sub(
-                    r"(?:精华液|精华乳|精华油|精华|面霜|乳霜|眼霜|洗发水|护发素)$",
-                    "",
-                    alias,
-                ),
-            )
-            if len(shorthand) >= 3 and shorthand.lower() in query.lower()
-        ]
-        if shorthand_matches:
-            return max(shorthand_matches, key=lambda item: len(item[0]))[1]
+        resolved = self.entity_resolver.identify(query)
+        if resolved:
+            return resolved
         query_tokens = set(lexical_tokens(query))
         query_ascii = {token for token in query_tokens if re.fullmatch(r"[a-z0-9]+", token)}
         candidates: list[tuple[int, int, str]] = []
@@ -257,8 +244,7 @@ class HybridKnowledgeBase:
     def product_entities(self, text: str) -> set[str]:
         """Return every known product alias explicitly present in a document or message."""
 
-        lowered = text.lower()
-        return {alias for alias in self._product_aliases if alias.lower() in lowered}
+        return self.entity_resolver.entities(text)
 
     def restore_hits(self, serialized_hits: list[dict[str, Any]]) -> list[SearchHit]:
         hits: list[SearchHit] = []

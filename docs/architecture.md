@@ -29,7 +29,7 @@ START
 ```
 
 - `safety_guard`：确定性检测不良反应、孕期、医美、复杂售后、法律/舆情和 PII；“转人工/人工服务/不要机器人”等用户主动请求也在此直接转接。
-- `intent_router`：区分纯问候、范围外问题、缺少产品上下文的问题和可检索问题；高危检测已经在它之前完成。路由前会对 active FAQ 做一次高置信度预识别（当前门槛 `0.90`），避免“容量/没装满”等未列入手工业务关键词的现有 FAQ 在 RAG 前被误判为范围外。
+- `intent_router`：区分纯问候、范围外问题、缺少产品上下文的问题和可检索问题；高危检测已经在它之前完成。产品全名、昵称、缩写及省略剂型先归一化；轻量混合检索候选与业务线索共同参与路由，避免有限关键词拥有最终否决权。无真实历史实体时，“这个/这些/这几款”必须澄清。
 - `smalltalk_response`：对“你好/在吗/hello”等纯问候返回固定欢迎语，不查询 RAG，避免把寒暄误匹配为产品知识。
 - `out_of_scope_response`：从20条 SOUNDERONE 范围说明中按会话ID和消息ID稳定选择一条；重试结果一致，不调用 RAG。
 - `clarify_response`：对“怎么用”“这个适合我吗”等缺产品或缺上下文问题追问产品名，不调用 RAG。
@@ -38,10 +38,10 @@ START
 - `route_knowledge`：高置信度预识别的 FAQ 只查 FAQ 库；物流、发票、促销等也只查 FAQ；其他产品问题同时查询产品知识和 FAQ。
 - `recommendation`：允许没有具体产品名的选品问题进入产品库和 FAQ，并在多轮中继承上一轮推荐意图。先识别美白/提亮、毛孔、控油、祛痘、抗衰/抗皱/淡纹/紧致、保湿、黑头、眼袋、敏感和去屑等同义目标；产品介绍可按同组词匹配，FAQ 还必须包含用户本轮说出的目标词，避免相近但不相干的话术进入上下文。没有目标或没有对应知识时直接转人工。
 - `hybrid_retrieve`：同时执行 Dense 和 BM25，使用 RRF 合并名次。
-- `relevance_gate`：应用置信度、工作时间、产品浓度和查询意图门槛。排名第一的可靠命中属于 FAQ 时，不再受夜间生成缩权影响。
+- `relevance_gate`：分别对 FAQ、普通产品知识和推荐/对比/搭配应用独立最低分，并结合 Top1 分数窗口、工作时间和查询意图筛选可靠候选。排名第一的可靠命中属于 FAQ 时，不再受夜间生成缩权影响。
 - `direct_faq_answer`：对已通过置信度门槛的 active FAQ 直接返回排名第一的标准答案，不调用 DeepSeek；只保留该条 FAQ 引用并继续执行输出清理。
 - `answer mode`：FAQ 直答仅用于含量、容量、香型、发货规则等单一标准事实。推荐、选择、对比、搭配、适合性和多轮综合问题即使 Top1 是 FAQ，也会进入 `generate_answer`，由 DeepSeek 在可靠候选内给出结论、差异和有条件建议。
-- `generate_answer`：默认 Mock；生产可配置 DeepSeek V4 Flash，亦保留 OpenAI 替代。模型只组织检索片段，返回 `INSUFFICIENT_KNOWLEDGE` 或调用失败时转人工。系统提示词要求推荐时先回应需求、给候选和侧重点，必要时只追问一个会影响选择的问题；明确区分提亮/去黄/净透与美白特证，不得为显得“智能”而补造事实。
+- `generate_answer`：默认 Mock；生产可配置 DeepSeek V4 Flash，亦保留 OpenAI 替代。模型只组织检索片段，返回 `INSUFFICIENT_KNOWLEDGE` 或调用失败时转人工。生成后确定性校验新增数值、产品实体及关键功效/肤质事实是否存在于引用，不受支持则以 `unsupported_generated_claim` 转人工。
 - `output_guard`：拦截医疗、绝对化功效和未授权承诺，并确定性清理“根据现有资料/知识库提到/目前资料里”等第三方转述措辞。
 - `finalize_response`：返回引用、检索通道和完整节点轨迹。
 
@@ -51,7 +51,7 @@ START
 
 `knowledge/sounderone_knowledge.json` 保留为完整审计源，运行时读取 `product_knowledge.json` 和 `customer_faq.json`。两文件保持原文档 ID、安全状态和 Excel 溯源；Qdrant 使用同一个 Collection，通过 `knowledge_type=product|faq` 路由。每个 active 文档同时写入：
 
-1. `dense`：语义向量。开发/测试使用可复现 hash embedding，生产使用 OpenAI embedding。
+1. `dense`：默认使用 FastEmbed `BAAI/bge-small-zh-v1.5` 中文语义向量（512维）；测试使用可复现 hash embedding，仍支持 OpenAI embedding。
 2. `bm25`：基于词频、文档长度和语料 IDF 生成的稀疏向量。
 
 查询时两个通道各召回 Top 50，用 RRF 融合，再结合 IDF 查询覆盖率排序。查询中的英文/数字词元（如 VCIP、5、10）必须出现在候选文档中；中文候选必须与查询共享至少一个多字词，不能仅凭“他/好”等单字碰撞通过。用法、搭配、对比、物流、发票和促销意图只允许匹配相应知识类别及标题标签。`relevance_gate` 只把超过最低分且与 Top1 分差不超过配置窗口的候选交给生成模型，低分次级结果不会污染上下文。若正式库没有物流答案，“多久发货”会转人工，不能误匹配“多久有效果”。

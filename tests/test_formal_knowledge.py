@@ -166,6 +166,8 @@ def test_comparison_and_hair_pairing_use_the_workbook_semantics():
 
 def test_comparison_and_compatibility_questions_use_llm_synthesis():
     settings = Settings(
+        embedding_provider="hash",
+        embedding_dimensions=384,
         llm_provider="mock",
         knowledge_path=KNOWLEDGE_PATH,
         qdrant_path=None,
@@ -196,6 +198,8 @@ def test_comparison_and_compatibility_questions_use_llm_synthesis():
 
 def test_formal_knowledge_runs_through_agent_with_source_citation():
     settings = Settings(
+        embedding_provider="hash",
+        embedding_dimensions=384,
         llm_provider="mock",
         knowledge_path=KNOWLEDGE_PATH,
         qdrant_path=None,
@@ -225,6 +229,8 @@ def test_formal_knowledge_runs_through_agent_with_source_citation():
 
 def test_agent_answers_b5_percentage_with_display_value():
     settings = Settings(
+        embedding_provider="hash",
+        embedding_dimensions=384,
         llm_provider="mock",
         knowledge_path=KNOWLEDGE_PATH,
         qdrant_path=None,
@@ -256,6 +262,8 @@ def test_agent_answers_b5_percentage_with_display_value():
 @pytest.mark.parametrize("用户问法", ["为什么没装满", "容量", "为什么没装满/容量"])
 def test_high_confidence_faq_bypasses_incomplete_domain_keyword_list(用户问法):
     settings = Settings(
+        embedding_provider="hash",
+        embedding_dimensions=384,
         llm_provider="mock",
         knowledge_path=KNOWLEDGE_PATH,
         qdrant_path=None,
@@ -287,6 +295,8 @@ def test_high_confidence_faq_bypasses_incomplete_domain_keyword_list(用户问�
 
 def test_agent_answers_grounded_recommendation_and_handoffs_when_missing():
     settings = Settings(
+        embedding_provider="hash",
+        embedding_dimensions=384,
         llm_provider="mock",
         knowledge_path=KNOWLEDGE_PATH,
         qdrant_path=None,
@@ -353,6 +363,8 @@ def test_agent_answers_grounded_recommendation_and_handoffs_when_missing():
 
 def test_multi_turn_elliptical_followups_keep_topic_and_answered_documents():
     settings = Settings(
+        embedding_provider="hash",
+        embedding_dimensions=384,
         llm_provider="mock",
         knowledge_path=KNOWLEDGE_PATH,
         qdrant_path=None,
@@ -397,6 +409,8 @@ def test_multi_turn_elliptical_followups_keep_topic_and_answered_documents():
 
 def test_generic_followup_resolution_is_not_tied_to_beauty_topic():
     settings = Settings(
+        embedding_provider="hash",
+        embedding_dimensions=384,
         llm_provider="mock",
         knowledge_path=KNOWLEDGE_PATH,
         qdrant_path=None,
@@ -452,6 +466,8 @@ def test_generic_followup_resolution_is_not_tied_to_beauty_topic():
 
 def test_pregnancy_question_handoffs_before_knowledge_generation():
     settings = Settings(
+        embedding_provider="hash",
+        embedding_dimensions=384,
         llm_provider="mock",
         knowledge_path=KNOWLEDGE_PATH,
         qdrant_path=None,
@@ -478,6 +494,8 @@ def test_pregnancy_question_handoffs_before_knowledge_generation():
 
 def test_langgraph_resolves_product_reference_across_turns():
     settings = Settings(
+        embedding_provider="hash",
+        embedding_dimensions=384,
         llm_provider="mock",
         knowledge_path=KNOWLEDGE_PATH,
         qdrant_path=None,
@@ -517,6 +535,8 @@ def test_langgraph_resolves_product_reference_across_turns():
 
 def test_nonsense_does_not_retrieve_even_when_conversation_has_product_context():
     settings = Settings(
+        embedding_provider="hash",
+        embedding_dimensions=384,
         llm_provider="mock",
         knowledge_path=KNOWLEDGE_PATH,
         qdrant_path=None,

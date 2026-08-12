@@ -11,6 +11,7 @@ START
   -> safety_guard
        | high risk -> handoff
   -> intent_router
+       | retrieval candidate participates in routing
        | pure greeting -> smalltalk_response
        | out of scope -> out_of_scope_response
        | missing product/context -> clarify_response
@@ -19,8 +20,9 @@ START
   -> hybrid_retrieve
   -> relevance_gate
        | no reliable hit -> handoff
-  -> generate_answer
+  -> generate_answer + grounding check
        | insufficient context / model error -> handoff
+       | unsupported number/product/fact -> handoff
   -> output_guard
   -> finalize_response
   -> END
@@ -38,7 +40,8 @@ START
 - Reciprocal Rank Fusion（RRF）
 - DeepSeek V4 Flash 官方 OpenAI 兼容 API（生产回答，可配置）
 - OpenAI Responses API（可选替代）
-- OpenAI Embeddings（生产可选）；默认 hash embedding 只用于离线开发和测试
+- FastEmbed + `BAAI/bge-small-zh-v1.5` 中文语义向量（默认生产配置）
+- Hash embedding 仅用于确定性单元测试；OpenAI Embeddings 仍可选
 - Excel 确定性清洗、冲突检测和风险分区
 
 架构详情见 [docs/architecture.md](docs/architecture.md)，抖音接入边界见 [docs/douyin_integration.md](docs/douyin_integration.md)，知识审计见 [docs/knowledge_base_analysis.md](docs/knowledge_base_analysis.md)。
@@ -65,14 +68,15 @@ UV_CACHE_DIR=/tmp/sounderone-uv-cache UV_PROJECT_ENVIRONMENT=.venv.nosync uv syn
 UV_CACHE_DIR=/tmp/sounderone-uv-cache UV_PROJECT_ENVIRONMENT=.venv.nosync uv run uvicorn app.main:app --reload
 ```
 
-默认使用内存 Qdrant、hash embedding 和 Mock LLM，无需密钥。接入 DeepSeek V4 Flash 时设置：
+默认使用内存 Qdrant、本地中文 BGE 向量和 Mock LLM，无需商业 API 密钥；首次启动会下载约90MB ONNX模型。接入 DeepSeek V4 Flash 时设置：
 
 ```dotenv
 LLM_PROVIDER=deepseek
 DEEPSEEK_API_KEY=...
 DEEPSEEK_MODEL=deepseek-v4-flash
-EMBEDDING_PROVIDER=openai
-OPENAI_API_KEY=...
+EMBEDDING_PROVIDER=fastembed
+EMBEDDING_MODEL=BAAI/bge-small-zh-v1.5
+EMBEDDING_DIMENSIONS=512
 QDRANT_URL=http://qdrant:6333
 ```
 

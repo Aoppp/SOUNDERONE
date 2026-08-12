@@ -52,6 +52,41 @@ class HashDenseEmbedder:
         return self._embed(text)
 
 
+class FastEmbedDenseEmbedder:
+    """Local production semantic embeddings backed by ONNX/FastEmbed."""
+
+    def __init__(self, model: str, dimensions: int):
+        try:
+            from fastembed import TextEmbedding
+        except ImportError as exc:  # pragma: no cover - deployment guard
+            raise RuntimeError(
+                "fastembed is required when EMBEDDING_PROVIDER=fastembed"
+            ) from exc
+        self.model_name = model
+        self.dimensions = dimensions
+        self.client = TextEmbedding(model_name=model)
+
+    def _embed(self, texts: list[str], prefix: str) -> list[list[float]]:
+        prepared = (
+            [f"{prefix}: {text}" for text in texts]
+            if "e5" in self.model_name.lower()
+            else texts
+        )
+        vectors = [vector.tolist() for vector in self.client.embed(prepared)]
+        if vectors and len(vectors[0]) != self.dimensions:
+            raise RuntimeError(
+                f"embedding dimension mismatch: configured {self.dimensions}, "
+                f"model returned {len(vectors[0])}"
+            )
+        return vectors
+
+    def embed_documents(self, texts: list[str]) -> list[list[float]]:
+        return self._embed(texts, "passage")
+
+    def embed_query(self, text: str) -> list[float]:
+        return self._embed([text], "query")[0]
+
+
 class OpenAIDenseEmbedder:
     def __init__(self, api_key: str, model: str, dimensions: int):
         self.client = OpenAI(api_key=api_key)

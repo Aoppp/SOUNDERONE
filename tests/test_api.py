@@ -8,6 +8,7 @@ from app.main import create_app
 
 def make_client() -> TestClient:
     settings = Settings(
+        embedding_provider="hash", embedding_dimensions=384,
         llm_provider="mock",
         knowledge_path=Path("knowledge/sample.json"),
         qdrant_path=None,
@@ -22,6 +23,7 @@ def make_client() -> TestClient:
 
 def make_split_knowledge_client() -> TestClient:
     settings = Settings(
+        embedding_provider="hash", embedding_dimensions=384,
         knowledge_path=None,
         product_knowledge_path=Path("knowledge/product_knowledge.json"),
         faq_knowledge_path=Path("knowledge/customer_faq.json"),
@@ -315,6 +317,8 @@ def test_user_can_explicitly_request_human_service():
 
 def test_reliable_faq_hit_answers_directly_outside_business_hours():
     settings = Settings(
+        embedding_provider="hash",
+        embedding_dimensions=384,
         llm_provider="mock",
         knowledge_path=Path("knowledge/sample.json"),
         qdrant_path=None,

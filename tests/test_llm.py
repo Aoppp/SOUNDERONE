@@ -48,6 +48,7 @@ class InsufficientKnowledgeModel:
 @pytest.mark.asyncio
 async def test_faq_hit_returns_directly_when_model_would_report_insufficient():
     settings = Settings(
+        embedding_provider="hash", embedding_dimensions=384,
         knowledge_path=Path("knowledge/sample.json"),
         qdrant_path=None,
         qdrant_url=None,
@@ -82,6 +83,7 @@ async def test_faq_hit_returns_directly_when_model_would_report_insufficient():
 @pytest.mark.asyncio
 async def test_product_generation_insufficient_signal_still_handoffs():
     settings = Settings(
+        embedding_provider="hash", embedding_dimensions=384,
         knowledge_path=Path("knowledge/product_knowledge.json"),
         qdrant_path=None,
         qdrant_url=None,

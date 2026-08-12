@@ -18,12 +18,15 @@ class AgentState(TypedDict, total=False):
     knowledge_types: list[str]
     requires_synthesis: bool
     recognized_faq: bool
+    route_candidate_score: float
+    route_candidate_type: str
     explicit_product: str
     response_decision: str
     last_product: str
     hits: list[dict]
     direct_faq: bool
     generated_text: str
+    grounding_failures: list[str]
     forbidden_claims: list[str]
     handoff_reason: str
     risk_tags: list[str]

@@ -42,6 +42,8 @@ async def health(request: Request) -> dict[str, Any]:
         "knowledge_types": dict(sorted(type_counts.items())),
         "agent_runtime": "langgraph",
         "llm_provider": request.app.state.settings.llm_provider,
+        "embedding_provider": request.app.state.settings.embedding_provider,
+        "embedding_model": request.app.state.settings.embedding_model,
         "retrieval": "qdrant_dense_bm25_rrf",
         "platforms": ["douyin", "simulator"],
     }

@@ -13,9 +13,9 @@ class Settings(BaseSettings):
     deepseek_api_key: str | None = None
     deepseek_base_url: str = "https://api.deepseek.com"
     deepseek_model: str = "deepseek-v4-flash"
-    embedding_provider: str = "hash"
-    embedding_model: str = "text-embedding-3-small"
-    embedding_dimensions: int = 384
+    embedding_provider: str = "fastembed"
+    embedding_model: str = "BAAI/bge-small-zh-v1.5"
+    embedding_dimensions: int = 512
     # KNOWLEDGE_PATH keeps tests and legacy deployments compatible. When it is
     # unset, the application loads the separately managed product and FAQ files.
     knowledge_path: Path | None = None
@@ -23,6 +23,10 @@ class Settings(BaseSettings):
     faq_knowledge_path: Path = Path("knowledge/customer_faq.json")
     knowledge_min_score: float = 0.48
     knowledge_score_window: float = 0.15
+    faq_min_score: float = 0.72
+    product_min_score: float = 0.50
+    synthesis_min_score: float = 0.48
+    route_candidate_min_score: float = 0.58
     qdrant_url: str | None = None
     qdrant_api_key: str | None = None
     qdrant_path: Path | None = None
