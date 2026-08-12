@@ -62,6 +62,13 @@ class SafetyPolicy:
         "sensitive_population": ("孕妇", "孕妈妈", "孕妈", "怀孕", "孕期", "哺乳期"),
         "medical_procedure": ("医美", "光电项目", "破皮项目", "面部创口"),
     }
+    NEGATIVE_EMOTION_PATTERNS = (
+        re.compile(r"不(?:(?:太|很|非常|特别|极其|真的)\s*){0,2}满意"),
+        re.compile(r"很失望|太失望|非常失望|特别失望|彻底失望"),
+        re.compile(r"很生气|太生气|非常生气|特别生气|气炸了|火大"),
+        re.compile(r"太糟糕|非常糟糕|糟透了|差劲|太离谱|太过分"),
+        re.compile(r"什么态度|怎么处理的|没人管|一直不处理|给个说法"),
+    )
     FORBIDDEN_CLAIMS = ("治疗", "治愈", "抗炎", "消炎", "药到病除", "永久", "百分百", "保证有效")
     SENSITIVE_DATA = re.compile(r"(?<!\d)1[3-9]\d{9}(?!\d)|\b\d{15,18}[0-9Xx]\b")
     INTERNAL_SOURCE_PATTERNS = (
@@ -89,6 +96,8 @@ class SafetyPolicy:
         if any(cue in normalized for cue in self.USER_HANDOFF_CUES):
             return PolicyResult(True, "用户主动要求转人工", ["user_requested_handoff"])
         tags = [name for name, words in self.HANDOFF_RULES.items() if any(word in text for word in words)]
+        if any(pattern.search(text) for pattern in self.NEGATIVE_EMOTION_PATTERNS):
+            tags.append("strong_emotion")
         if self.SENSITIVE_DATA.search(text):
             tags.append("sensitive_data")
         if tags:

@@ -40,7 +40,8 @@ START
 - `hybrid_retrieve`：同时执行 Dense 和 BM25，使用 RRF 合并名次。
 - `relevance_gate`：应用置信度、工作时间、产品浓度和查询意图门槛。排名第一的可靠命中属于 FAQ 时，不再受夜间生成缩权影响。
 - `direct_faq_answer`：对已通过置信度门槛的 active FAQ 直接返回排名第一的标准答案，不调用 DeepSeek；只保留该条 FAQ 引用并继续执行输出清理。
-- `generate_answer`：默认 Mock；生产可配置 DeepSeek V4 Flash，亦保留 OpenAI 替代。模型只组织检索片段，返回 `INSUFFICIENT_KNOWLEDGE` 或调用失败时转人工。
+- `answer mode`：FAQ 直答仅用于含量、容量、香型、发货规则等单一标准事实。推荐、选择、对比、搭配、适合性和多轮综合问题即使 Top1 是 FAQ，也会进入 `generate_answer`，由 DeepSeek 在可靠候选内给出结论、差异和有条件建议。
+- `generate_answer`：默认 Mock；生产可配置 DeepSeek V4 Flash，亦保留 OpenAI 替代。模型只组织检索片段，返回 `INSUFFICIENT_KNOWLEDGE` 或调用失败时转人工。系统提示词要求推荐时先回应需求、给候选和侧重点，必要时只追问一个会影响选择的问题；明确区分提亮/去黄/净透与美白特证，不得为显得“智能”而补造事实。
 - `output_guard`：拦截医疗、绝对化功效和未授权承诺，并确定性清理“根据现有资料/知识库提到/目前资料里”等第三方转述措辞。
 - `finalize_response`：返回引用、检索通道和完整节点轨迹。
 

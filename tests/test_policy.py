@@ -20,6 +20,27 @@ def test_refund_forces_handoff():
     assert result.reason == "复杂售后需要人工处理"
 
 
+def test_general_strong_negative_emotion_patterns_force_handoff():
+    policy = make_policy()
+    messages = (
+        "我现在很不满意！",
+        "这次购物体验非常失望",
+        "你们这个处理真的太离谱了！！",
+        "我现在很生气，给我一个说法",
+        "这是什么态度？一直没人管",
+    )
+    for message in messages:
+        result = policy.evaluate_incoming(message)
+        assert result.must_handoff is True
+        assert result.reason == "用户情绪激动"
+        assert "strong_emotion" in result.risk_tags
+
+
+def test_neutral_satisfaction_question_does_not_trigger_emotion_handoff():
+    result = make_policy().evaluate_incoming("这款产品的满意度怎么样？")
+    assert result.must_handoff is False
+
+
 def test_phone_number_is_sensitive():
     result = make_policy().evaluate_incoming("手机号是13800138000")
     assert result.must_handoff is True

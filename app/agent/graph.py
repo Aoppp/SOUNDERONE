@@ -122,6 +122,10 @@ class SounderOneGraphAgent:
         r"还有.*(?:其他|别的|吗|呢)|(?:其他|别的).*(?:吗|呢)|再推荐|换一个"
     )
     COLLECTION_REFERENCE_CUES = ("这些", "它们", "他们", "上面的", "前面的", "前面说的")
+    SYNTHESIS_QUERY_RE = re.compile(
+        r"推荐|哪款|哪个|选什么|选哪|怎么选|如何选|哪个更|有什么产品|"
+        r"区别|对比|搭配|叠加|一起用|适合我|适合什么|都可以"
+    )
 
     def __init__(
         self,
@@ -402,6 +406,14 @@ class SounderOneGraphAgent:
         if state.get("followup_kind") == "more":
             intent = state.get("topic_intent") or "product_information"
             knowledge_types = ["product", "faq"]
+        elif re.search(r"推荐|哪款|选什么|有什么.*产品", query) or (
+            recommendation_goals(query) and re.search(r"有没有|有什么|什么|哪|呢", query)
+        ):
+            intent, knowledge_types = "recommendation", ["product", "faq"]
+        elif re.search(r"区别|对比|选哪个|怎么选", query):
+            intent, knowledge_types = "comparison", ["product", "faq"]
+        elif re.search(r"搭配|叠加|一起用|能和|可以和|不能和|同用", query):
+            intent, knowledge_types = "compatibility", ["product", "faq"]
         elif state.get("recognized_faq"):
             intent, knowledge_types = "faq_match", ["faq"]
         elif re.search(r"发货|物流|快递|配送|到货", query):
@@ -412,21 +424,19 @@ class SounderOneGraphAgent:
             intent, knowledge_types = "promotion", ["faq"]
         elif re.search(r"退款|退货|补发|漏发|少发|破损|售后|投诉", query):
             intent, knowledge_types = "after_sales", ["faq"]
-        elif re.search(r"推荐|哪款|选什么|有什么.*产品", query) or (
-            recommendation_goals(query) and re.search(r"有没有|有什么|什么|哪|呢", query)
-        ):
-            intent, knowledge_types = "recommendation", ["product", "faq"]
         elif re.search(r"怎么使用|怎么用|如何用|怎样用|使用方法|使用顺序|用量", query):
             intent, knowledge_types = "usage", ["product", "faq"]
-        elif re.search(r"搭配|叠加|一起用|能和|可以和|不能和|同用", query):
-            intent, knowledge_types = "compatibility", ["product", "faq"]
-        elif re.search(r"区别|对比|选哪个|怎么选", query):
-            intent, knowledge_types = "comparison", ["product", "faq"]
         else:
             intent, knowledge_types = "product_information", ["product", "faq"]
+        requires_synthesis = bool(
+            state.get("contextual_followup")
+            or intent in {"recommendation", "comparison", "compatibility"}
+            or self.SYNTHESIS_QUERY_RE.search(query)
+        )
         return {
             "query_intent": intent,
             "knowledge_types": knowledge_types,
+            "requires_synthesis": requires_synthesis,
             "trace": self._step(state, "route_knowledge"),
         }
 
@@ -500,6 +510,7 @@ class SounderOneGraphAgent:
             restored_hits
             and restored_hits[0].document.knowledge_type == "faq"
             and not state.get("contextual_followup")
+            and not state.get("requires_synthesis")
         )
         update["direct_faq"] = direct_faq
         if not direct_faq and not self.policy.is_business_hours() and top_score < 0.62:
@@ -536,6 +547,7 @@ class SounderOneGraphAgent:
             generated = await self.llm.answer(
                 state["retrieval_query"],
                 self.knowledge.restore_hits(state["hits"]),
+                intent=state.get("query_intent"),
             )
         except Exception:
             return {
@@ -660,6 +672,7 @@ class SounderOneGraphAgent:
                 "contextual_followup": False,
                 "followup_kind": "",
                 "direct_faq": False,
+                "requires_synthesis": False,
                 "generated_text": "",
                 "forbidden_claims": [],
                 "handoff_reason": "",

@@ -30,17 +30,18 @@ async def test_deepseek_flash_uses_grounded_chat_completion_payload():
     knowledge = HybridKnowledgeBase(Path("knowledge/sample.json"), HashDenseEmbedder())
     hits = knowledge.search("多久发货")
 
-    answer = await model.answer("多久发货", hits)
+    answer = await model.answer("多久发货", hits, intent="recommendation")
 
     assert answer == "宝宝，测试回答"
     assert captured["model"] == "deepseek-v4-flash"
     assert "[faq:【测试数据】发货时效]" in captured["messages"][1]["content"]
     assert "标签：发货、物流、多久发货" in captured["messages"][1]["content"]
+    assert "当前任务是产品推荐" in captured["messages"][1]["content"]
     assert captured["temperature"] == 0.2
 
 
 class InsufficientKnowledgeModel:
-    async def answer(self, question, hits):
+    async def answer(self, question, hits, *, intent=None):
         return "INSUFFICIENT_KNOWLEDGE"
 
 

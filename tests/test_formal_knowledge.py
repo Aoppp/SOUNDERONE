@@ -100,6 +100,11 @@ def test_product_usage_retrieval_is_concentration_specific_and_traceable():
     assert "10%传明酸" not in hits[0].document.title
 
 
+def test_product_identification_accepts_natural_name_without_dosage_form_suffix():
+    knowledge = make_knowledge()
+    assert knowledge.identify_product("5%传明酸可以和a醇一起用吗") == "5%传明酸精华"
+
+
 def test_b5_percentage_retrieval_never_exposes_raw_scientific_notation():
     knowledge = make_knowledge()
     hits = knowledge.search("b5洗发水，b5含量百分之多少呢")
@@ -157,6 +162,36 @@ def test_comparison_and_hair_pairing_use_the_workbook_semantics():
     assert pairing_hits[0].document.category == "product_note"
     assert pairing_hits[0].document.source_row == 21
     assert "净澈控油沁爽洗发水" in pairing_hits[0].document.title
+
+
+def test_comparison_and_compatibility_questions_use_llm_synthesis():
+    settings = Settings(
+        llm_provider="mock",
+        knowledge_path=KNOWLEDGE_PATH,
+        qdrant_path=None,
+        qdrant_url=None,
+        webhook_secret="test-secret",
+        admin_api_key="test-admin",
+        business_hours_start="00:00",
+        business_hours_end="23:59",
+    )
+    with TestClient(create_app(settings)) as client:
+        for index, text in enumerate(
+            ("5%和10%传明酸有什么区别", "5%传明酸可以和a醇一起用吗")
+        ):
+            body = client.post(
+                "/v1/webhooks/simulator",
+                headers={"X-Webhook-Secret": "test-secret"},
+                json={
+                    "message_id": f"synthesis-intent-{index}",
+                    "conversation_id": f"synthesis-intent-conversation-{index}",
+                    "user_id": "synthesis-intent-user",
+                    "text": text,
+                },
+            ).json()
+            assert body["decision"] == "answered"
+            assert "generate_answer" in body["graph_trace"]
+            assert "direct_faq_answer" not in body["graph_trace"]
 
 
 def test_formal_knowledge_runs_through_agent_with_source_citation():
@@ -297,8 +332,8 @@ def test_agent_answers_grounded_recommendation_and_handoffs_when_missing():
     assert recommendation["decision"] == "answered"
     assert "夜猫子精华" in recommendation["text"]
     assert recommendation["citations"][0]["knowledge_type"] == "faq"
-    assert "direct_faq_answer" in recommendation["graph_trace"]
-    assert "generate_answer" not in recommendation["graph_trace"]
+    assert "generate_answer" in recommendation["graph_trace"]
+    assert "direct_faq_answer" not in recommendation["graph_trace"]
     assert "clarify_response" not in recommendation["graph_trace"]
     assert recommendation["graph_trace"][1:5] == [
         "intent_router",

@@ -16,6 +16,7 @@ class AgentState(TypedDict, total=False):
     contextual_followup: bool
     followup_kind: str
     knowledge_types: list[str]
+    requires_synthesis: bool
     recognized_faq: bool
     explicit_product: str
     response_decision: str

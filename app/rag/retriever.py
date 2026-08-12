@@ -225,6 +225,23 @@ class HybridKnowledgeBase:
         matches = [alias for alias in self._product_aliases if alias.lower() in query.lower()]
         if matches:
             return max(matches, key=len)
+        # Customers commonly omit the dosage form suffix (for example,
+        # "5%传明酸" instead of "5%传明酸精华"). Accept this natural
+        # shorthand without weakening concentration/entity matching.
+        shorthand_matches = [
+            (shorthand, alias)
+            for alias in self._product_aliases
+            for shorthand in (
+                re.sub(
+                    r"(?:精华液|精华乳|精华油|精华|面霜|乳霜|眼霜|洗发水|护发素)$",
+                    "",
+                    alias,
+                ),
+            )
+            if len(shorthand) >= 3 and shorthand.lower() in query.lower()
+        ]
+        if shorthand_matches:
+            return max(shorthand_matches, key=lambda item: len(item[0]))[1]
         query_tokens = set(lexical_tokens(query))
         query_ascii = {token for token in query_tokens if re.fullmatch(r"[a-z0-9]+", token)}
         candidates: list[tuple[int, int, str]] = []

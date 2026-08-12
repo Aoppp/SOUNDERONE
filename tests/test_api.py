@@ -268,6 +268,26 @@ def test_webhook_handoffs_refund_request():
         assert body["graph_trace"] == ["safety_guard", "handoff"]
 
 
+def test_strong_negative_emotion_handoffs_before_scope_routing():
+    with make_client() as client:
+        response = client.post(
+            "/v1/webhooks/simulator",
+            headers={"X-Webhook-Secret": "test-secret"},
+            json={
+                "message_id": "negative-emotion-1",
+                "conversation_id": "negative-emotion-conversation",
+                "user_id": "negative-emotion-user",
+                "text": "我现在很不满意！",
+            },
+        )
+    body = response.json()
+    assert body["decision"] == "handoff"
+    assert body["handoff_reason"] == "用户情绪激动"
+    assert "strong_emotion" in body["risk_tags"]
+    assert body["graph_trace"] == ["safety_guard", "handoff"]
+    assert body["citations"] == []
+
+
 def test_user_can_explicitly_request_human_service():
     messages = ("转人工", "人工服务", "人工", "不要机器人", "我想找真人客服")
     with make_client() as client:
